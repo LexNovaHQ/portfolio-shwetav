@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Shwetav Singh — AI Governance & Contractual Architecture</title>
-<meta name="viewport" content="width=900">
+<meta name="viewport" content="width=794">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -473,12 +473,21 @@ p + p { text-indent: 0; }
 .upper { text-transform: uppercase; letter-spacing: 0.14em; }
 
 /* Print */
-@page { size: A4; margin: 0; }
+@page { size: 210mm 297mm; margin: 0; }
 @media print {
   html, body { background: var(--paper); }
-  .book { padding: 0; gap: 0; }
-  .page { box-shadow: none; page-break-after: always; margin: 0; }
-  .page:last-child { page-break-after: auto; }
+  .book { padding: 0; gap: 0; background: var(--paper); }
+  .page {
+    box-shadow: none;
+    margin: 0;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
 }
 
 </style>
