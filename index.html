@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shwetabh Singh — a litigator making AI legal work defensible enough to deploy</title>
+  <meta name="description" content="A single-page portfolio scaffold showing legal doctrine, AI-risk taxonomy, review-ready instruments, tooling, and systems built around AI law." />
+  <meta property="og:title" content="Shwetabh Singh — a litigator making AI legal work defensible enough to deploy" />
+  <meta property="og:description" content="Doctrine → Taxonomy → Instruments → Tooling → Systems. A portfolio scaffold for AI-law systems and legal architecture." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="theme-color" content="#050505" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --void:#050505;       /* page background */
+      --surface:#0c0c0c;    /* cards/sections */
+      --border:#1e1e1e;     /* hairlines */
+      --marble:#e5e5e5;     /* body text */
+      --gold:#C5A059;        /* accent / headers / active state */
+      --risk-red:#c0392b; --risk-orange:#d68910; --risk-yellow:#d4ac0d; --risk-green:#27865f;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth; background:var(--void);}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(197,160,89,.11), transparent 28rem),
+        radial-gradient(circle at 80% 18%, rgba(255,255,255,.045), transparent 24rem),
+        linear-gradient(180deg, #050505 0%, #070707 42%, #030303 100%);
+      color:var(--marble);
+      font-family:"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.09;
+      z-index:1;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode:screen;
+    }
+    .font-display{font-family:"Cormorant Garamond", Georgia, serif;}
+    .tracked-label{letter-spacing:.2em; text-transform:uppercase;}
+    .gold{color:var(--gold);}
+    .surface{
+      background:linear-gradient(180deg, rgba(12,12,12,.96), rgba(8,8,8,.96));
+      border:1px solid var(--border);
+      box-shadow:0 24px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    .hairline{height:1px; background:linear-gradient(90deg, transparent, rgba(197,160,89,.55), rgba(255,255,255,.07), transparent);}
+    .progress-line{
+      position:fixed; top:0; left:0; height:2px; width:0%; z-index:80;
+      background:linear-gradient(90deg, var(--gold), rgba(197,160,89,.25));
+      box-shadow:0 0 16px rgba(197,160,89,.6);
+    }
+    .topnav{
+      position:sticky; top:0; z-index:70;
+      background:rgba(5,5,5,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(197,160,89,.15);
+    }
+    .nav-link{
+      color:rgba(229,229,229,.66);
+      transition:color .25s ease, border-color .25s ease;
+      border-bottom:1px solid transparent;
+    }
+    .nav-link.active,.nav-link:hover,.nav-link:focus{color:var(--gold); border-color:rgba(197,160,89,.65); outline:none;}
+
+    .page-shell{position:relative; z-index:2;}
+    .main-grid{display:grid; grid-template-columns:minmax(0,1fr);}
+    @media (min-width:1024px){
+      .main-grid{grid-template-columns:190px minmax(0,1fr); gap:2.5rem;}
+    }
+
+    .rail-wrap{display:none;}
+    @media (min-width:1024px){
+      .rail-wrap{display:block; position:sticky; top:86px; align-self:start; height:calc(100vh - 110px);}
+      .rail{
+        position:relative; min-height:640px; height:100%; padding:1rem .25rem;
+      }
+      .rail::before{
+        content:""; position:absolute; left:22px; top:34px; bottom:34px; width:1px;
+        background:linear-gradient(180deg, rgba(197,160,89,.25), rgba(255,255,255,.08), rgba(197,160,89,.25));
+      }
+      .rail-stage{position:relative; display:grid; grid-template-columns:45px 1fr; gap:.75rem; align-items:start; min-height:105px;}
+      .rail-dot{
+        width:16px; height:16px; margin-left:14px; margin-top:1px; border-radius:999px;
+        background:#080808; border:1px solid rgba(197,160,89,.45); box-shadow:0 0 0 5px rgba(5,5,5,.98);
+        transition:all .3s ease;
+      }
+      .rail-stage.active .rail-dot{background:var(--gold); border-color:var(--gold); box-shadow:0 0 0 5px #050505, 0 0 24px rgba(197,160,89,.9);}
+      .rail-stage.active .rail-title{color:var(--gold);}
+      .rail-stage.active .rail-copy{color:rgba(229,229,229,.82);}
+      .rail-title{font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(229,229,229,.48); font-weight:700;}
+      .rail-copy{font-size:.72rem; color:rgba(229,229,229,.42); margin-top:.25rem; line-height:1.35;}
+      .registry-tag{
+        display:inline-flex; align-items:center; gap:.4rem; margin-top:.75rem; padding:.35rem .55rem;
+        border:1px solid rgba(197,160,89,.35); background:rgba(197,160,89,.055); color:var(--gold);
+        font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; border-radius:999px;
+      }
+    }
+    .mobile-funnel{
+      position:sticky; top:56px; z-index:60; display:flex; gap:.35rem; align-items:center; padding:.55rem 1rem;
+      background:rgba(5,5,5,.84); backdrop-filter:blur(14px); border-bottom:1px solid rgba(197,160,89,.12);
+    }
+    .mobile-funnel span{height:3px; flex:1; border-radius:999px; background:rgba(229,229,229,.13); transition:background .25s ease, box-shadow .25s ease;}
+    .mobile-funnel span.active{background:var(--gold); box-shadow:0 0 12px rgba(197,160,89,.55);}
+    @media (min-width:1024px){.mobile-funnel{display:none;}}
+
+    section{scroll-margin-top:110px;}
+    .act{padding:5rem 0;}
+    @media (min-width:768px){.act{padding:7rem 0;}}
+    .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.visible{opacity:1; transform:none;}
+    .load-in{animation:loadIn .85s ease both;}
+    .delay-1{animation-delay:.12s}.delay-2{animation-delay:.24s}.delay-3{animation-delay:.36s}.delay-4{animation-delay:.48s}
+    @keyframes loadIn{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none}}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      min-height:44px; padding:.85rem 1.05rem; border-radius:999px;
+      border:1px solid rgba(197,160,89,.48); color:var(--gold); background:rgba(197,160,89,.06);
+      font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; transition:all .25s ease;
+    }
+    .btn:hover,.btn:focus{background:rgba(197,160,89,.14); transform:translateY(-1px); outline:none; box-shadow:0 0 0 3px rgba(197,160,89,.12);}
+    .btn.secondary{border-color:rgba(229,229,229,.18); color:var(--marble); background:rgba(255,255,255,.025);}
+
+    .placeholder{
+      border:1px dashed rgba(197,160,89,.46); background:linear-gradient(135deg, rgba(197,160,89,.055), rgba(12,12,12,.96));
+      border-radius:1.25rem; padding:1.1rem; min-height:118px;
+    }
+    .placeholder .eyebrow{font-size:.67rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:800;}
+    .placeholder p{color:rgba(229,229,229,.72); line-height:1.65; margin-top:.65rem; font-size:.92rem;}
+    .placeholder .phase{margin-top:.75rem; color:rgba(229,229,229,.45); font-size:.78rem;}
+
+    .case-card,.stage-card,.mini-card{
+      border:1px solid rgba(229,229,229,.09); background:rgba(255,255,255,.025); border-radius:1.15rem; padding:1.1rem;
+    }
+    .case-card h3,.stage-card h3{font-family:"Cormorant Garamond", Georgia, serif; color:var(--gold); font-size:1.35rem; line-height:1.1;}
+    .case-card p,.stage-card p,.mini-card p{color:rgba(229,229,229,.7); line-height:1.62; margin-top:.55rem;}
+    .connector{
+      position:relative; margin:1rem 0 0; padding:1.25rem 1.25rem 1.25rem 1.6rem;
+      border-left:1px solid var(--gold); background:linear-gradient(90deg, rgba(197,160,89,.1), rgba(12,12,12,.8));
+      border-radius:0 1rem 1rem 0;
+      box-shadow:0 0 28px rgba(197,160,89,.08);
+    }
+    .connector::before{content:""; position:absolute; left:-5px; top:1.6rem; width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 18px rgba(197,160,89,.9);}
+    .connector p{font-family:"Cormorant Garamond", Georgia, serif; font-style:italic; font-size:1.35rem; line-height:1.28; color:rgba(229,229,229,.92);}
+
+    .spine-graphic{position:relative; min-height:420px; overflow:hidden;}
+    .spine-graphic::before{content:""; position:absolute; inset:14%; border:1px solid rgba(197,160,89,.16); border-radius:999px; filter:blur(.2px);}
+    .spine-line{position:absolute; left:50%; top:10%; bottom:10%; width:1px; background:linear-gradient(180deg, transparent, rgba(197,160,89,.8), transparent);}
+    .spine-node{position:absolute; left:50%; transform:translateX(-50%); width:13px; height:13px; border-radius:50%; background:var(--gold); box-shadow:0 0 24px rgba(197,160,89,.65);}
+    .spine-node:nth-child(2){top:12%}.spine-node:nth-child(3){top:30%}.spine-node:nth-child(4){top:48%}.spine-node:nth-child(5){top:66%}.spine-node:nth-child(6){top:84%}
+    .spine-label{position:absolute; left:calc(50% + 1.8rem); transform:translateY(-50%); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(229,229,229,.68);}
+    .spine-label.l1{top:12%}.spine-label.l2{top:30%}.spine-label.l3{top:48%}.spine-label.l4{top:66%}.spine-label.l5{top:84%}
+
+    details{border:1px solid rgba(229,229,229,.09); border-radius:1rem; padding:1rem; background:rgba(255,255,255,.022);}
+    summary{cursor:pointer; color:var(--gold); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.78rem;}
+    summary:focus{outline:2px solid rgba(197,160,89,.55); outline-offset:4px; border-radius:.4rem;}
+    .wordmark{font-family:"Cormorant Garamond", Georgia, serif; letter-spacing:.08em;}
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto} .reveal,.load-in,.btn{transition:none; animation:none; transform:none; opacity:1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-line" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="topnav" role="banner">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="#hero" class="wordmark gold text-xl" aria-label="Go to top">Lex Nova HQ</a>
+      <nav class="hidden md:flex items-center gap-6 text-xs tracked-label" aria-label="Primary navigation">
+        <a class="nav-link" href="#foundation">Foundation</a>
+        <a class="nav-link" href="#matrix">The Legal Matrix</a>
+        <a class="nav-link" href="#funnel">The Funnel</a>
+        <a class="nav-link" href="#repos">Repos</a>
+      </nav>
+      <a class="nav-link text-xs tracked-label" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <div class="mobile-funnel" aria-label="Journey progress">
+    <span data-mobile-stage="doctrine" aria-hidden="true"></span>
+    <span data-mobile-stage="taxonomy" aria-hidden="true"></span>
+    <span data-mobile-stage="instruments" aria-hidden="true"></span>
+    <span data-mobile-stage="tooling" aria-hidden="true"></span>
+    <span data-mobile-stage="systems" aria-hidden="true"></span>
+  </div>
+
+  <div class="page-shell mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="main-grid">
+      <aside class="rail-wrap" aria-label="Doctrine to systems funnel rail">
+        <div class="rail" id="rail">
+          <div class="rail-stage" data-stage="doctrine">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Doctrine</div><div class="rail-copy">Act I · legal source layer</div><div class="registry-tag" id="registryTag">76-row registry · derived</div></div>
+          </div>
+          <div class="rail-stage" data-stage="taxonomy">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Taxonomy</div><div class="rail-copy">Act I · risk map</div></div>
+          </div>
+          <div class="rail-stage" data-stage="instruments">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Instruments</div><div class="rail-copy">Act II · clause matrix</div></div>
+          </div>
+          <div class="rail-stage" data-stage="tooling">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Tooling</div><div class="rail-copy">Act III · live loop</div></div>
+          </div>
+          <div class="rail-stage" data-stage="systems">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Systems</div><div class="rail-copy">Act III · reusable architecture</div></div>
+          </div>
+        </div>
+      </aside>
+
+      <main id="main" role="main">
+        <section id="hero" class="min-h-[calc(100vh-4rem)] py-16 sm:py-20 lg:py-24" data-rail="doctrine" aria-labelledby="hero-title">
+          <div class="grid lg:grid-cols-[1.08fr_.92fr] gap-8 lg:gap-12 items-center">
+            <div>
+              <p class="load-in tracked-label text-xs gold mb-5">Doctrine → Taxonomy → Instruments → Tooling → Systems</p>
+              <h1 id="hero-title" class="load-in delay-1 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[.92] text-white max-w-5xl">
+                I practised litigation for three and a half years. Then I built systems that do the substantive part of the work — diagnosing risk, drafting the defenses, running the diligence — and proved them on AI law.
+              </h1>
+              <p class="load-in delay-2 font-display italic gold text-2xl sm:text-3xl lg:text-4xl leading-tight mt-8 max-w-4xl">
+                The hard part of legal AI isn't the AI — it's making a probabilistic machine deterministic enough to trust with law. That's what I engineered.
+              </p>
+              <p class="load-in delay-3 text-base sm:text-lg text-neutral-300 leading-8 mt-7 max-w-3xl">
+                Each one stays close to the real legal problem — what creates the exposure, what closes it, what holds up. I built them in AI law: contracts, compliance, privacy, AI liability, diligence, digital business risk. The build is just the delivery — the legal judgment is the point.
+              </p>
+              <div class="load-in delay-4 mt-7 surface rounded-2xl px-5 py-4 text-sm text-neutral-300 border-l border-l-[var(--gold)]">
+                Three and a half years in litigation (Patna High Court) · B.A. LL.B., NLU Odisha · building AI-law systems since October 2025
+              </div>
+              <div class="load-in delay-4 mt-7 flex flex-col sm:flex-row gap-3">
+                <a class="btn" href="#video-slot">Watch the 3-min walkthrough</a>
+                <a class="btn secondary" href="#live-demo">Run the diligence loop</a>
+              </div>
+              <p class="load-in delay-4 mt-5 text-sm italic text-neutral-500">Everything here is live, open, or on video. Run it, read the code, watch it work.</p>
+            </div>
+
+            <div class="space-y-4">
+              <div id="video-slot" class="placeholder reveal" role="note" aria-label="Placeholder intro video embed">
+                <div class="eyebrow">PLACEHOLDER · HERO MEDIA</div>
+                <p>Intro video embed.</p>
+                <div class="phase">Built in Phase 4.</div>
+              </div>
+              <div class="surface rounded-[2rem] p-5 spine-graphic reveal" aria-label="Spine funnel graphic placeholder">
+                <div class="spine-line" aria-hidden="true"></div>
+                <span class="spine-node" aria-hidden="true"></span><span class="spine-node" aria-hidden="true"></span><span class="spine-node" aria-hidden="true"></span><span class="spine-node" aria-hidden="true"></span><span class="spine-node" aria-hidden="true"></span>
+                <span class="spine-label l1">Doctrine</span><span class="spine-label l2">Taxonomy</span><span class="spine-label l3">Instruments</span><span class="spine-label l4">Tooling</span><span class="spine-label l5">Systems</span>
+                <div class="absolute bottom-5 left-5 right-5 placeholder !min-h-0 !p-4">
+                  <div class="eyebrow">PLACEHOLDER · SPINE FUNNEL GRAPHIC</div>
+                  <p>Animated spine-funnel graphic showing the 5 stages.</p>
+                  <div class="phase">Built in Phase 3.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="foundation" class="act" data-rail="taxonomy" aria-labelledby="foundation-title">
+          <div class="reveal">
+            <p class="tracked-label text-xs gold">ACT I</p>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mt-3">
+              <div>
+                <h2 id="foundation-title" class="font-display text-5xl sm:text-6xl text-white">Foundation</h2>
+                <p class="tracked-label text-xs text-neutral-500 mt-3">Stage tag · Doctrine + Taxonomy</p>
+              </div>
+              <div class="registry-tag self-start lg:self-end">76-row registry · derived</div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mt-10">
+            <article class="mini-card reveal"><p><strong class="gold">Lane A:</strong> companies building AI products</p></article>
+            <article class="mini-card reveal"><p><strong class="gold">Lane B:</strong> companies deploying AI internally. I built for both.</p></article>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-4 mt-6">
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · THE BIBLES</div>
+              <p>Interactive table-of-contents. Click a section → one-line description + one watermarked excerpt. Conveys scope, protects content.</p>
+              <div class="phase">Built in Phase 3; excerpts supplied by owner.</div>
+            </div>
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · ACT I HERO</div>
+              <p>The Risk Map: 10×10 grid, Int.10 archetypes × Ext.10 tripwires. Example-driven presets for chatbot, hiring tool, coding copilot, trading agent.</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+          </div>
+
+          <div class="mt-12 reveal">
+            <p class="tracked-label text-xs gold mb-4">Case-law strip</p>
+            <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+              <article class="case-card"><h3>Moffatt v. Air Canada</h3><p>Your AI's words are your words; a chatbot's hallucination is the company's liability.</p></article>
+              <article class="case-card"><h3>Thaler v. Perlmutter</h3><p>No human author, no copyright; raw AI output may not be yours to own.</p></article>
+              <article class="case-card"><h3>FTC v. Rite Aid</h3><p>Fine-tune on data you can't cleanly delete, and a regulator can force you to destroy the model.</p></article>
+              <article class="case-card"><h3>Soteria v. IBM (2022)</h3><p>A delayed project plus no liability cap equals a "wasted costs" claim that can end a company.</p></article>
+              <article class="case-card"><h3>Vernor v. Autodesk</h3><p>"License" vs "sale" is decided by your contract's language — and it controls product-liability exposure.</p></article>
+              <article class="case-card"><h3>Specht v. Netscape</h3><p>Browsewrap without affirmative consent is unenforceable; consent design is everything.</p></article>
+            </div>
+          </div>
+
+          <div class="connector reveal" aria-label="Connector from Act I to Act II">
+            <p>A map of every AI risk protects no one on its own. It matters only once it becomes something a company can deploy — so I turned the doctrine into instruments.</p>
+          </div>
+        </section>
+
+        <section id="matrix" class="act" data-rail="instruments" aria-labelledby="matrix-title">
+          <div class="reveal">
+            <p class="tracked-label text-xs gold">ACT II</p>
+            <h2 id="matrix-title" class="font-display text-5xl sm:text-6xl text-white mt-3">The Legal Matrix</h2>
+            <p class="font-display italic text-2xl gold mt-3">Law · Risk · Clause</p>
+            <p class="tracked-label text-xs text-neutral-500 mt-3">Stage tag · Instruments</p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-4 mt-10">
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · LEGAL MATRIX</div>
+              <p>The 76-row registry rendered as the matrix — each row: a risk → governing law → the clause that closes it. Show structure + a few sample rows; full registry protected. Rail tag flips to “structured.”</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · DOC-STACK MAP</div>
+              <p>ToS at the centre; DPA, AUP, Privacy, Agentic Addendum, SLA, IP, Playbook as connected nodes showing trigger/dependency logic. Organised by Lane.</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · WORKED CLAUSE</div>
+              <p>One clause end-to-end — founder reality → case/statute → the clause that closes it. Demonstrates construction method; Kill Clause Library not shown.</p>
+              <div class="phase">Phase 1 copy + Phase 3 build.</div>
+            </div>
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · READ-ONLY DOC VIEWER</div>
+              <p>Watermarked, part-full / part-blur Lane A + B docs. “CONFIDENTIAL — Lex Nova HQ — Sample.”</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+          </div>
+
+          <div class="surface rounded-2xl p-5 mt-8 reveal">
+            <p class="font-display italic text-2xl gold">The Vault is what assembles this for a real company — watch it run.</p>
+          </div>
+
+          <div class="connector reveal" aria-label="Connector from Act II to Act III">
+            <p>But a document stack is still hand-work: someone reading the registry, choosing the clauses, assembling the file. The leverage was never the document — it was the system that produces it. So I built that.</p>
+          </div>
+        </section>
+
+        <section id="funnel" class="act" data-rail="tooling" aria-labelledby="funnel-title">
+          <div class="reveal">
+            <p class="tracked-label text-xs gold">ACT III</p>
+            <h2 id="funnel-title" class="font-display text-5xl sm:text-6xl text-white mt-3">The Funnel</h2>
+            <p class="tracked-label text-xs text-neutral-500 mt-3">Stage tag · Tooling + Systems</p>
+          </div>
+
+          <div class="surface rounded-2xl p-5 mt-8 reveal">
+            <p class="font-display italic text-2xl gold">Here's why you can trust the funnel: the registry constrains the model, the Vault→Assembly is deterministic, and the residual judgment goes to human review. As deterministic as law requires.</p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-4 mt-8">
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · OPERATING-SYSTEM MAP</div>
+              <p>One diagram tracing a synthetic record through all stages.</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+            <div id="live-demo" class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · CLOSED-LOOP LIVE DEMO</div>
+              <p>Public Risk Diligence → Vault → Assembly → Delivery. Self-contained demo sandbox; no real data; only Diligence calls external model through server-side Worker proxy. Includes graceful fallback state for rate limits.</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+          </div>
+
+          <div class="mt-10 reveal">
+            <p class="tracked-label text-xs gold mb-4">Funnel stages</p>
+            <div class="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
+              <article class="stage-card"><h3>Signal</h3><p>Intent/Community Hunter <span class="text-neutral-500">(labelled: AI-systems / prompt engineering)</span> — video.</p><a class="btn secondary mt-4" href="#video-slot">Watch</a></article>
+              <article class="stage-card"><h3>Diligence</h3><p>Forensic / Threat-Mapping Engine <span class="text-neutral-500">(AI-risk diligence)</span> — live.</p><a class="btn mt-4" href="#live-demo">Run</a></article>
+              <article class="stage-card"><h3>Scope</h3><p>The Vault <span class="text-neutral-500">(product/business mapping)</span> — demo.</p><a class="btn secondary mt-4" href="#live-demo">Read</a></article>
+              <article class="stage-card"><h3>Assembly</h3><p>Assembly Engine <span class="text-neutral-500">(Vault answers → review-ready doc set)</span> — demo. ← legal-tech peak.</p><a class="btn secondary mt-4" href="#live-demo">Watch</a></article>
+              <article class="stage-card"><h3>Manage</h3><p>CRM (admin + client portals) — screen-recording, synthetic data only. NOT a live link.</p><a class="btn secondary mt-4" href="#video-slot">Watch</a></article>
+            </div>
+          </div>
+
+          <div id="repos" class="grid lg:grid-cols-2 gap-4 mt-8" data-rail="systems">
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · LANE B SCANNER</div>
+              <p>Separate live tool for internal-deployment diagnostic.</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+            <div class="placeholder reveal" role="note">
+              <div class="eyebrow">PLACEHOLDER · ENGINE ROOM / REPOS</div>
+              <p>Automation-library public audited repo framed as reusable architecture beneath the funnel; Upwork engine as breadth note. Repo link card.</p>
+              <div class="phase">Repo link available now.</div>
+            </div>
+          </div>
+
+          <div class="connector reveal" aria-label="Connector from Act III to capstone">
+            <p>Every system here runs on one spine — the scanner reads the registry, the Vault assembles the clauses, and the same disciplined architecture runs the platform beneath them. One method, applied again and again, always starting from the legal problem.</p>
+          </div>
+        </section>
+
+        <section id="capstone" class="act" data-rail="systems" aria-labelledby="capstone-title">
+          <div class="reveal">
+            <p class="tracked-label text-xs gold">CAPSTONE</p>
+            <h2 id="capstone-title" class="font-display text-5xl sm:text-6xl text-white mt-3">One Mind, The Legal Problem First</h2>
+          </div>
+          <div class="placeholder reveal mt-8" role="note">
+            <div class="eyebrow">PLACEHOLDER · PARALLEL-MAPPING TABLE</div>
+            <p>Threat Registry ↔ component-classification.csv · Vault ↔ client-config questionnaire · Lane docs ↔ template assemblies · core/adapter ↔ provider-agnostic core.</p>
+            <div class="phase">Built in Phase 3.</div>
+          </div>
+          <div class="surface rounded-2xl p-6 mt-6 reveal">
+            <p class="font-display text-2xl sm:text-3xl leading-tight text-white">A lawyer who builds legal technology and went deep on the AI-law frontier — rigorous enough that the method generalises. Not a generic systems architect.</p>
+          </div>
+        </section>
+
+        <section id="contact" class="act" data-rail="systems" aria-labelledby="close-title">
+          <div class="reveal">
+            <p class="tracked-label text-xs gold">CLOSE</p>
+            <h2 id="close-title" class="font-display text-5xl sm:text-6xl text-white mt-3">Why I Care</h2>
+          </div>
+          <div class="surface rounded-[1.5rem] p-6 sm:p-8 mt-8 reveal">
+            <p class="text-lg leading-9 text-neutral-200">
+              I didn't arrive at legal tech from software. I arrived from a courtroom. Three and a half years of litigation showed me how much legal work is repeatable — and how much defensible work never reaches the people who need it, because it's too slow or too expensive. The legal tech I care about stays close to that: built around real client problems — contracts, compliance, privacy, AI, diligence, digital business risk — not automation for its own sake. I've spent eight months proving I can build it, alone. I'd rather build it inside a team already taking it seriously.
+            </p>
+            <div class="hairline my-7"></div>
+            <p class="text-sm leading-7 text-neutral-400">
+              Models are routed by data sensitivity. Public-only diagnostics run on free fast-inference tiers — no privacy cost, the input is already public. Client and work data run on paid API tiers with model training disabled. Every demo here uses public or synthetic data only.
+            </p>
+            <p class="mt-5 font-display italic text-2xl gold">All work shown is mine; every link and demo is genuine.</p>
+          </div>
+          <div class="placeholder reveal mt-6" role="note">
+            <div class="eyebrow">PLACEHOLDER · CONTACT</div>
+            <p>Contact email and LinkedIn supplied by owner.</p>
+            <div class="phase">Final content supplied by owner.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="relative z-10 border-t border-[rgba(197,160,89,.16)] py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-neutral-500">
+      <div class="wordmark gold text-xl">Lex Nova HQ</div>
+      <div>Commercial Architecture Practice, Not a Law Firm.</div>
+      <div>© 2026.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const progress = document.getElementById('scrollProgress');
+      const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+      const railStages = Array.from(document.querySelectorAll('.rail-stage'));
+      const mobileStages = Array.from(document.querySelectorAll('[data-mobile-stage]'));
+      const registryTag = document.getElementById('registryTag');
+      const observed = Array.from(document.querySelectorAll('section[data-rail], #repos[data-rail]'));
+      const reveals = Array.from(document.querySelectorAll('.reveal'));
+
+      function stageForScroll(){
+        let current = 'doctrine';
+        let currentId = 'hero';
+        for(const el of observed){
+          const rect = el.getBoundingClientRect();
+          if(rect.top <= window.innerHeight * 0.38){
+            current = el.dataset.rail || current;
+            currentId = el.id || currentId;
+          }
+        }
+        return {stage:current, id:currentId};
+      }
+
+      function updateProgress(){
+        const doc = document.documentElement;
+        const scrolled = doc.scrollTop || document.body.scrollTop;
+        const height = doc.scrollHeight - doc.clientHeight;
+        const pct = height > 0 ? (scrolled / height) * 100 : 0;
+        progress.style.width = pct + '%';
+      }
+
+      function updateActive(){
+        const state = stageForScroll();
+        const stageOrder = ['doctrine','taxonomy','instruments','tooling','systems'];
+        const activeIndex = Math.max(0, stageOrder.indexOf(state.stage));
+        railStages.forEach((item, index) => item.classList.toggle('active', index <= activeIndex));
+        mobileStages.forEach((item, index) => item.classList.toggle('active', index <= activeIndex));
+        if(registryTag){
+          if(activeIndex >= 3) registryTag.textContent = '76-row registry · running';
+          else if(activeIndex >= 2) registryTag.textContent = '76-row registry · structured';
+          else registryTag.textContent = '76-row registry · derived';
+        }
+        const map = {hero:'#hero', foundation:'#foundation', matrix:'#matrix', funnel:'#funnel', repos:'#repos', capstone:'#repos', contact:'#contact'};
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          const target = map[state.id] || (state.stage === 'instruments' ? '#matrix' : state.stage === 'tooling' ? '#funnel' : state.stage === 'systems' ? '#repos' : '#foundation');
+          link.classList.toggle('active', href === target);
+        });
+      }
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.12});
+      reveals.forEach(el => revealObserver.observe(el));
+
+      window.addEventListener('scroll', () => { updateProgress(); updateActive(); }, {passive:true});
+      window.addEventListener('resize', () => { updateProgress(); updateActive(); });
+      updateProgress();
+      updateActive();
+    })();
+  </script>
+</body>
+</html>
