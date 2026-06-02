@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shwetabh Singh — Technology & Data Protection Lawyer | AI Governance & Cross-Border Privacy (GDPR · DPDP · US State Laws)</title>
+  <meta name="description" content="Personal portfolio of Shwetabh Singh: technology and data protection lawyer building AI governance, cross-border privacy, commercial contracts, legal diligence, and legal-tech systems." />
+  <meta property="og:title" content="Shwetabh Singh — Technology & Data Protection Lawyer | AI Governance & Cross-Border Privacy (GDPR · DPDP · US State Laws)" />
+  <meta property="og:description" content="Doctrine → Taxonomy → Instruments → Tooling → Systems. A personal portfolio showing AI-law doctrine turned into instruments, tooling, and systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="theme-color" content="#050505" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --void:#050505;       /* page background */
+      --surface:#0c0c0c;    /* cards/sections */
+      --border:#1e1e1e;     /* hairlines */
+      --marble:#e5e5e5;     /* body text */
+      --gold:#C5A059;        /* accent / headers / active state */
+      --risk-red:#c0392b; --risk-orange:#d68910; --risk-yellow:#d4ac0d; --risk-green:#27865f;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth; background:var(--void);}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(197,160,89,.11), transparent 28rem),
+        radial-gradient(circle at 80% 18%, rgba(255,255,255,.045), transparent 24rem),
+        linear-gradient(180deg, #050505 0%, #070707 42%, #030303 100%);
+      color:var(--marble);
+      font-family:"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.09;
+      z-index:1;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode:screen;
+    }
+    .font-display{font-family:"Cormorant Garamond", Georgia, serif;}
+    .tracked-label{letter-spacing:.2em; text-transform:uppercase;}
+    .gold{color:var(--gold);}
+    .surface{
+      background:linear-gradient(180deg, rgba(12,12,12,.96), rgba(8,8,8,.96));
+      border:1px solid var(--border);
+      box-shadow:0 24px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    .hairline{height:1px; background:linear-gradient(90deg, transparent, rgba(197,160,89,.55), rgba(255,255,255,.07), transparent);}
+    .progress-line{
+      position:fixed; top:0; left:0; height:2px; width:0%; z-index:80;
+      background:linear-gradient(90deg, var(--gold), rgba(197,160,89,.25));
+      box-shadow:0 0 16px rgba(197,160,89,.6);
+    }
+    .topnav{
+      position:sticky; top:0; z-index:70;
+      background:rgba(5,5,5,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(197,160,89,.15);
+    }
+    .nav-link{
+      color:rgba(229,229,229,.66);
+      transition:color .25s ease, border-color .25s ease;
+      border-bottom:1px solid transparent;
+    }
+    .nav-link.active,.nav-link:hover,.nav-link:focus{color:var(--gold); border-color:rgba(197,160,89,.65); outline:none;}
+
+    .page-shell{position:relative; z-index:2;}
+    .main-grid{display:grid; grid-template-columns:minmax(0,1fr);}
+    @media (min-width:1024px){
+      .main-grid{grid-template-columns:190px minmax(0,1fr); gap:2.5rem;}
+    }
+
+    .rail-wrap{display:none;}
+    @media (min-width:1024px){
+      .rail-wrap{display:block; position:sticky; top:86px; align-self:start; height:calc(100vh - 110px);}
+      .rail{
+        position:relative; min-height:640px; height:100%; padding:1rem .25rem;
+      }
+      .rail::before{
+        content:""; position:absolute; left:22px; top:34px; bottom:34px; width:1px;
+        background:linear-gradient(180deg, rgba(197,160,89,.25), rgba(255,255,255,.08), rgba(197,160,89,.25));
+      }
+      .rail-stage{position:relative; display:grid; grid-template-columns:45px 1fr; gap:.75rem; align-items:start; min-height:105px;}
+      .rail-dot{
+        width:16px; height:16px; margin-left:14px; margin-top:1px; border-radius:999px;
+        background:#080808; border:1px solid rgba(197,160,89,.45); box-shadow:0 0 0 5px rgba(5,5,5,.98);
+        transition:all .3s ease;
+      }
+      .rail-stage.active .rail-dot{background:var(--gold); border-color:var(--gold); box-shadow:0 0 0 5px #050505, 0 0 24px rgba(197,160,89,.9);}
+      .rail-stage.active .rail-title{color:var(--gold);}
+      .rail-stage.active .rail-copy{color:rgba(229,229,229,.82);}
+      .rail-title{font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(229,229,229,.48); font-weight:700;}
+      .rail-copy{font-size:.72rem; color:rgba(229,229,229,.42); margin-top:.25rem; line-height:1.35;}
+      .registry-tag{
+        display:inline-flex; align-items:center; gap:.4rem; margin-top:.75rem; padding:.35rem .55rem;
+        border:1px solid rgba(197,160,89,.35); background:rgba(197,160,89,.055); color:var(--gold);
+        font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; border-radius:999px;
+      }
+    }
+    .mobile-funnel{
+      position:sticky; top:56px; z-index:60; display:flex; gap:.35rem; align-items:center; padding:.55rem 1rem;
+      background:rgba(5,5,5,.84); backdrop-filter:blur(14px); border-bottom:1px solid rgba(197,160,89,.12);
+    }
+    .mobile-funnel span{height:3px; flex:1; border-radius:999px; background:rgba(229,229,229,.13); transition:background .25s ease, box-shadow .25s ease;}
+    .mobile-funnel span.active{background:var(--gold); box-shadow:0 0 12px rgba(197,160,89,.55);}
+    @media (min-width:1024px){.mobile-funnel{display:none;}}
+
+    section{scroll-margin-top:110px;}
+    .act{padding:5rem 0;}
+    @media (min-width:768px){.act{padding:7rem 0;}}
+    .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.visible{opacity:1; transform:none;}
+    .load-in{animation:loadIn .85s ease both;}
+    .delay-1{animation-delay:.12s}.delay-2{animation-delay:.24s}.delay-3{animation-delay:.36s}.delay-4{animation-delay:.48s}
+    @keyframes loadIn{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none}}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      min-height:44px; padding:.85rem 1.05rem; border-radius:999px;
+      border:1px solid rgba(197,160,89,.48); color:var(--gold); background:rgba(197,160,89,.06);
+      font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700; transition:all .25s ease;
+    }
+    .btn:hover,.btn:focus{background:rgba(197,160,89,.14); transform:translateY(-1px); outline:none; box-shadow:0 0 0 3px rgba(197,160,89,.12);}
+    .btn.secondary{border-color:rgba(229,229,229,.18); color:var(--marble); background:rgba(255,255,255,.025);}
+
+    .placeholder{
+      border:1px dashed rgba(197,160,89,.46); background:linear-gradient(135deg, rgba(197,160,89,.055), rgba(12,12,12,.96));
+      border-radius:1.25rem; padding:1.1rem; min-height:118px;
+    }
+    .placeholder .eyebrow{font-size:.67rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:800;}
+    .placeholder p{color:rgba(229,229,229,.72); line-height:1.65; margin-top:.65rem; font-size:.92rem;}
+    .placeholder .phase{margin-top:.75rem; color:rgba(229,229,229,.45); font-size:.78rem;}
+    .placeholder:not(.modal .placeholder){cursor:pointer; transition:border-color .25s ease, background .25s ease, transform .25s ease, box-shadow .25s ease;}
+    .placeholder:not(.modal .placeholder):hover,.placeholder:not(.modal .placeholder):focus{border-color:rgba(197,160,89,.9); background:linear-gradient(135deg, rgba(197,160,89,.11), rgba(12,12,12,.96)); transform:translateY(-1px); box-shadow:0 0 0 3px rgba(197,160,89,.10), 0 18px 60px rgba(0,0,0,.28); outline:none;}
+    .placeholder-hint{display:inline-flex; margin-top:.9rem; padding:.38rem .55rem; border:1px solid rgba(197,160,89,.28); border-radius:999px; color:rgba(197,160,89,.86); font-size:.67rem; letter-spacing:.14em; text-transform:uppercase;}
+
+    .case-card,.stage-card,.mini-card{
+      border:1px solid rgba(229,229,229,.09); background:rgba(255,255,255,.025); border-radius:1.15rem; padding:1.1rem;
+    }
+    .case-card h3,.stage-card h3{font-family:"Cormorant Garamond", Georgia, serif; color:var(--gold); font-size:1.35rem; line-height:1.1;}
+    .case-card p,.stage-card p,.mini-card p{color:rgba(229,229,229,.7); line-height:1.62; margin-top:.55rem;}
+    .connector{
+      position:relative; margin:1rem 0 0; padding:1.25rem 1.25rem 1.25rem 1.6rem;
+      border-left:1px solid var(--gold); background:linear-gradient(90deg, rgba(197,160,89,.1), rgba(12,12,12,.8));
+      border-radius:0 1rem 1rem 0;
+      box-shadow:0 0 28px rgba(197,160,89,.08);
+    }
+    .connector::before{content:""; position:absolute; left:-5px; top:1.6rem; width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 18px rgba(197,160,89,.9);}
+    .connector p{font-family:"Cormorant Garamond", Georgia, serif; font-style:italic; font-size:1.35rem; line-height:1.28; color:rgba(229,229,229,.92);}
+
+    .spine-graphic{position:relative; min-height:420px; overflow:hidden;}
+    .spine-graphic::before{content:""; position:absolute; inset:14%; border:1px solid rgba(197,160,89,.16); border-radius:999px; filter:blur(.2px);}
+    .spine-line{position:absolute; left:50%; top:10%; bottom:10%; width:1px; background:linear-gradient(180deg, transparent, rgba(197,160,89,.8), transparent);}
+    .spine-node{position:absolute; left:50%; transform:translateX(-50%); width:13px; height:13px; border-radius:50%; background:var(--gold); box-shadow:0 0 24px rgba(197,160,89,.65);}
+    .spine-node:nth-child(2){top:12%}.spine-node:nth-child(3){top:30%}.spine-node:nth-child(4){top:48%}.spine-node:nth-child(5){top:66%}.spine-node:nth-child(6){top:84%}
+    .spine-label{position:absolute; left:calc(50% + 1.8rem); transform:translateY(-50%); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(229,229,229,.68);}
+    .spine-label.l1{top:12%}.spine-label.l2{top:30%}.spine-label.l3{top:48%}.spine-label.l4{top:66%}.spine-label.l5{top:84%}
+
+    details{border:1px solid rgba(229,229,229,.09); border-radius:1rem; padding:1rem; background:rgba(255,255,255,.022);}
+    summary{cursor:pointer; color:var(--gold); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.78rem;}
+    summary:focus{outline:2px solid rgba(197,160,89,.55); outline-offset:4px; border-radius:.4rem;}
+    .wordmark{font-family:"Cormorant Garamond", Georgia, serif; letter-spacing:.08em;}
+
+
+
+    /* v3 patch layer: horizontal-card primitive while preserving v1 rail/nav/noise/animation system */
+    .card-shell{
+      background:linear-gradient(180deg, rgba(12,12,12,.96), rgba(7,7,7,.96));
+      border:1px solid var(--border);
+      border-radius:2rem;
+      box-shadow:0 24px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.03);
+      padding:1.35rem;
+      overflow:hidden;
+      position:relative;
+    }
+    .card-shell::before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(circle at 14% 0%, rgba(197,160,89,.08), transparent 24rem), radial-gradient(circle at 92% 18%, rgba(255,255,255,.035), transparent 18rem);
+    }
+    .card-shell > *{position:relative; z-index:1;}
+    @media (min-width:640px){.card-shell{padding:1.75rem;}}
+    @media (min-width:1024px){.card-shell{padding:2rem 2.1rem;}}
+    .act{padding:2.4rem 0;}
+    @media (min-width:768px){.act{padding:3.2rem 0;}}
+    .section-title{font-size:2.1rem; line-height:.98;}
+    @media (min-width:640px){.section-title{font-size:2.65rem;}}
+    .compact-title{font-size:2rem; line-height:1;}
+    @media (min-width:640px){.compact-title{font-size:2.4rem;}}
+    .hero-card{min-height:calc(100vh - 7.4rem); display:flex; align-items:center;}
+    .identity-line{color:rgba(229,229,229,.72); line-height:1.65; max-width:64rem;}
+    .modal{position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:1rem; background:rgba(0,0,0,.72); backdrop-filter:blur(16px);}
+    .modal.open{display:flex;}
+    .modal-card{width:min(920px, 100%); border-radius:1.5rem; padding:1rem;}
+    .modal-close{position:absolute; top:1rem; right:1rem; width:42px; height:42px; border-radius:999px; border:1px solid rgba(197,160,89,.4); color:var(--gold); background:rgba(5,5,5,.7);}
+    .play-thumb{min-height:156px; display:grid; place-items:center; text-align:center;}
+    .play-icon{width:54px; height:54px; display:grid; place-items:center; border:1px solid rgba(197,160,89,.5); border-radius:999px; color:var(--gold); margin:0 auto .8rem; box-shadow:0 0 24px rgba(197,160,89,.13);}
+    .law-strip{display:grid; gap:1rem;}
+    @media (min-width:768px){.law-strip{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (min-width:1280px){.law-strip{grid-template-columns:repeat(3,minmax(0,1fr));}}
+    .jurisdiction-card{border:1px solid rgba(229,229,229,.09); background:rgba(255,255,255,.025); border-radius:1.15rem; padding:1.1rem;}
+    .jurisdiction-card h3{font-family:"Cormorant Garamond", Georgia, serif; color:var(--gold); font-size:1.5rem; line-height:1.05;}
+    .jurisdiction-card p{color:rgba(229,229,229,.72); line-height:1.62; margin-top:.55rem;}
+    .small-note{font-size:.78rem; color:rgba(229,229,229,.46); line-height:1.6;}
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto} .reveal,.load-in,.btn{transition:none; animation:none; transform:none; opacity:1;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress-line" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="topnav" role="banner">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="#hero" class="wordmark gold text-xl" aria-label="Go to top">Shwetabh Singh</a>
+      <nav class="hidden md:flex items-center gap-6 text-xs tracked-label" aria-label="Primary navigation">
+        <a class="nav-link" href="#foundation">Foundation</a>
+        <a class="nav-link" href="#matrix">The Legal Matrix</a>
+        <a class="nav-link" href="#funnel">The Funnel</a>
+        <a class="nav-link" href="#repos">Repos</a>
+      </nav>
+      <a class="nav-link text-xs tracked-label" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <div class="mobile-funnel" aria-label="Journey progress">
+    <span data-mobile-stage="doctrine" aria-hidden="true"></span>
+    <span data-mobile-stage="taxonomy" aria-hidden="true"></span>
+    <span data-mobile-stage="instruments" aria-hidden="true"></span>
+    <span data-mobile-stage="tooling" aria-hidden="true"></span>
+    <span data-mobile-stage="systems" aria-hidden="true"></span>
+  </div>
+
+  <div class="page-shell mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="main-grid">
+      <aside class="rail-wrap" aria-label="Doctrine to systems funnel rail">
+        <div class="rail" id="rail">
+          <div class="rail-stage" data-stage="doctrine">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Doctrine</div><div class="rail-copy">Act I · legal source layer</div><div class="registry-tag" id="registryTag">76-row registry · derived</div></div>
+          </div>
+          <div class="rail-stage" data-stage="taxonomy">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Taxonomy</div><div class="rail-copy">Act I · risk map</div></div>
+          </div>
+          <div class="rail-stage" data-stage="instruments">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Instruments</div><div class="rail-copy">Act II · clause matrix</div></div>
+          </div>
+          <div class="rail-stage" data-stage="tooling">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Tooling</div><div class="rail-copy">Act III · live loop</div></div>
+          </div>
+          <div class="rail-stage" data-stage="systems">
+            <div class="rail-dot" aria-hidden="true"></div>
+            <div><div class="rail-title">Systems</div><div class="rail-copy">Act III · reusable architecture</div></div>
+          </div>
+        </div>
+      </aside>
+
+      <main id="main" role="main">
+        <section id="hero" class="act hero-card" data-rail="doctrine" aria-labelledby="hero-title">
+          <div class="card-shell w-full">
+            <div class="grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-8 items-center">
+              <div>
+                <p class="load-in tracked-label text-xs gold mb-3">Personal Portfolio</p>
+                <h1 class="load-in delay-1 font-display compact-title text-white">Shwetabh Singh</h1>
+                <p class="load-in delay-1 identity-line text-sm sm:text-base mt-2">Technology &amp; Data Protection Lawyer | AI Governance &amp; Cross-Border Privacy (GDPR · US State Laws · DPDP) | Commercial Contracts for Startups &amp; Tech</p>
+                <div class="hairline my-5"></div>
+                <p class="load-in delay-2 tracked-label text-xs gold mb-4">Doctrine → Taxonomy → Instruments → Tooling → Systems</p>
+                <h2 id="hero-title" class="load-in delay-2 font-display text-3xl sm:text-4xl leading-[1.02] text-white max-w-5xl">
+                  I practised litigation for three and a half years. Then I built systems that do the substantive part of the work — diagnosing risk, drafting the defenses, running the diligence — and proved them on AI law.
+                </h2>
+                <p class="load-in delay-3 font-display italic gold text-xl sm:text-2xl leading-tight mt-5 max-w-4xl">
+                  The hard part of legal AI isn't the AI — it's making a probabilistic machine deterministic enough to trust with law. That's what I engineered.
+                </p>
+                <div class="load-in delay-4 mt-6 flex flex-col sm:flex-row gap-3">
+                  <button class="btn" data-open-modal="introModal" type="button">Watch the walkthrough</button>
+                  <a class="btn secondary" href="#live-demo">Run the diligence</a>
+                </div>
+                <div class="load-in delay-4 mt-5 surface rounded-2xl px-5 py-4 text-sm text-neutral-300 border-l border-l-[var(--gold)]">
+                  Three and a half years in litigation (Patna High Court) · B.A. LL.B., NLU Odisha · building AI-law systems since October 2025
+                </div>
+              </div>
+              <button class="placeholder play-thumb reveal" type="button" data-open-modal="introModal" aria-label="Open intro video placeholder">
+                <span class="play-icon" aria-hidden="true">▶</span>
+                <span class="eyebrow">PLACEHOLDER · INTRO VIDEO</span>
+                <span class="block mt-2 text-neutral-300">Pop-up walkthrough modal.</span>
+                <span class="phase block">Built in Phase 4.</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="foundation" class="act" data-rail="taxonomy" aria-labelledby="foundation-title">
+          <div class="card-shell">
+            <div class="reveal">
+              <p class="tracked-label text-xs gold">ACT I</p>
+              <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mt-3">
+                <div>
+                  <h2 id="foundation-title" class="font-display section-title text-white">Foundation</h2>
+                  <p class="tracked-label text-xs text-neutral-500 mt-3">Stage tag · Doctrine + Taxonomy</p>
+                </div>
+                <div class="registry-tag self-start lg:self-end">76-row registry · derived</div>
+              </div>
+              <p class="text-base sm:text-lg text-neutral-300 leading-8 mt-6 max-w-4xl">
+                Each one stays close to the real legal problem — what creates the exposure, what closes it, what holds up. I built them in AI law: contracts, compliance, privacy, AI liability, diligence, digital business risk. The build is just the delivery — the legal judgment is the point.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-7">
+              <article class="mini-card reveal"><p><strong class="gold">Lane A:</strong> companies building AI products</p></article>
+              <article class="mini-card reveal"><p><strong class="gold">Lane B:</strong> companies deploying AI internally.</p></article>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-4 mt-6">
+              <div class="placeholder reveal" role="note">
+                <div class="eyebrow">PLACEHOLDER · BIBLES</div>
+                <p>Interactive table-of-contents. Click → description + watermarked excerpt.</p>
+                <div class="phase">Built in Phase 3.</div>
+              </div>
+              <div class="placeholder reveal" role="note">
+                <div class="eyebrow">PLACEHOLDER · RISK MAP</div>
+                <p>10×10 Int.10 × Ext.10, example-driven presets, on-hover definitions.</p>
+                <div class="phase">Built in Phase 3.</div>
+              </div>
+            </div>
+
+            <div class="mt-8 reveal">
+              <p class="tracked-label text-xs gold mb-4">Case-law strip · verify before publish</p>
+              <div class="law-strip">
+                <article class="case-card"><h3>Moffatt v. Air Canada</h3><p>Kills the "separate tool" defence; the chatbot speaks with the company's authority.</p></article>
+                <article class="case-card"><h3>Walters v. OpenAI</h3><p>Point-of-interaction disclaimers defeat "reasonable reliance."</p></article>
+                <article class="case-card"><h3>Specht &amp; Meyer</h3><p>Output waivers need affirmative assent; browsewrap fails.</p></article>
+                <article class="case-card"><h3>Thaler v. Perlmutter</h3><p>No copyright for autonomous AI output; forces HITL governance.</p></article>
+                <article class="case-card"><h3>Bartz v. Anthropic / NYT v. OpenAI</h3><p>The training-data reckoning; forces upstream IP indemnities.</p></article>
+                <article class="case-card"><h3>Registry-held scenarios</h3><p>Mobley v. Workday, Garcia v. Character.AI, Cruz v. Fireflies, SEC AI-washing.</p></article>
+              </div>
+            </div>
+
+            <div class="connector reveal" aria-label="Connector from Act I to Act II">
+              <p>A map of every AI risk protects no one on its own. It matters only once it becomes something a company can deploy — so I turned the doctrine into instruments.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="matrix" class="act" data-rail="instruments" aria-labelledby="matrix-title">
+          <div class="card-shell">
+            <div class="reveal">
+              <p class="tracked-label text-xs gold">ACT II</p>
+              <h2 id="matrix-title" class="font-display section-title text-white mt-3">The Legal Matrix</h2>
+              <p class="font-display italic text-2xl gold mt-3">Law · Risk · Clause</p>
+              <p class="tracked-label text-xs text-neutral-500 mt-3">Stage tag · Instruments</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-4 mt-8">
+              <div class="placeholder reveal" role="note">
+                <div class="eyebrow">PLACEHOLDER · LEGAL MATRIX</div>
+                <p>Rows: risk → law → clause. Threat count = PHASE FILL (80 vs 76 — resolve in Act II + Indian-law phase). Rail tag flips to “structured.”</p>
+                <div class="phase">Built in Phase 3.</div>
+              </div>
+              <div class="placeholder reveal" role="note">
+                <div class="eyebrow">PLACEHOLDER · DOC-STACK MAP</div>
+                <p>ToS as central router. Hooks auto-activate DPA, IP, and liability addenda when technical thresholds are crossed. Doc set: TOS · SLA · PP · DPA · AUP · AGT · HND · IP · RCM · SOP. Click node → trigger logic.</p>
+                <div class="phase">Built in Phase 3.</div>
+              </div>
+            </div>
+
+            <div class="mt-7 reveal">
+              <p class="tracked-label text-xs gold mb-4">Worked clauses</p>
+              <div class="grid md:grid-cols-3 gap-4">
+                <article class="case-card"><h3>The Hallucination Firewall</h3><p>Risk → anchor → fix. Rejects generic “AS IS.” Fixes: hallucination-specific waiver + output-authority boundary + point-of-interaction clickwrap. Anchors: Moffatt, Walters.</p></article>
+                <article class="case-card"><h3>The Algorithmic Disgorgement Shield</h3><p>Solves the AI deletion problem through a RAG-only mandate. Anchors: FTC/Rite Aid, DPDP erasure, GDPR Art. 17.</p></article>
+                <article class="case-card"><h3>The Internal Ownership Trap</h3><p>Standard copyright assignment transfers nothing if AI output is not copyrightable. Anchor: Thaler; HITL SOPs.</p></article>
+              </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-4 mt-7">
+              <div class="placeholder reveal" role="note">
+                <div class="eyebrow">PLACEHOLDER · READ-ONLY DOC VIEWER</div>
+                <p>Watermarked, part-blur viewer. Phase 3 = full clause text in the watermarked viewer.</p>
+                <div class="phase">Built in Phase 3.</div>
+              </div>
+              <div class="surface rounded-2xl p-5 reveal">
+                <p class="font-display italic text-2xl gold">The Vault is what assembles this for a real company — watch it run.</p>
+              </div>
+            </div>
+
+            <div class="connector reveal" aria-label="Connector from Act II to Act III">
+              <p>But a document stack is still hand-work: someone reading the registry, choosing the clauses, assembling the file. The leverage was never the document — it was the system that produces it. So I built that.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="funnel" class="act" data-rail="tooling" aria-labelledby="funnel-title">
+          <div class="card-shell">
+            <div class="reveal">
+              <p class="tracked-label text-xs gold">ACT III</p>
+              <h2 id="funnel-title" class="font-display section-title text-white mt-3">The Funnel</h2>
+              <p class="tracked-label text-xs text-neutral-500 mt-3">Stage tag · Tooling + Systems</p>
+            </div>
+
+            <div class="placeholder reveal mt-7" role="note">
+              <div class="eyebrow">PLACEHOLDER · WALKTHROUGH VIDEO</div>
+              <p>Project-version runs at full power, narrated to show the prompt/agent engineering behind each system. This is the prompt-engineering proof and leads the act.</p>
+              <div class="phase">Built in Phase 4.</div>
+            </div>
+
+            <div class="surface rounded-2xl p-5 mt-6 reveal">
+              <p class="font-display italic text-2xl gold">Here's why you can trust the funnel: the registry constrains the model, the Vault→Assembly is deterministic, and the residual judgment goes to human review. As deterministic as law requires.</p>
+              <p class="text-sm text-neutral-400 mt-4 leading-7">Most AI contracts are deterministic documents sitting on top of probabilistic technology. I built the architecture that closes that gap — and routed the residual to human review.</p>
+            </div>
+
+            <div id="live-demo" class="mt-8 reveal">
+              <p class="tracked-label text-xs gold mb-4">The live funnel · all stages are live test-run portals</p>
+              <div class="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
+                <article class="stage-card"><h3>Signal</h3><p>Intent/Community Hunter — AI-systems / prompt engineering. Live test-run.</p><a class="btn secondary mt-4" href="#live-demo">Placeholder</a></article>
+                <article class="stage-card"><h3>Diligence</h3><p>Run on a URL or upload a PDF/doc → Risk Report. Public data only, not legal advice. External model via server-side Worker proxy.</p><a class="btn mt-4" href="#live-demo">Run</a></article>
+                <article class="stage-card"><h3>Vault</h3><p>Client configuration engine on synthetic input. No real prospect/client data.</p><a class="btn secondary mt-4" href="#live-demo">Open</a></article>
+                <article class="stage-card"><h3>Assembly</h3><p>Watermarked/preview output to protect clause IP.</p><a class="btn secondary mt-4" href="#live-demo">Watch</a></article>
+                <article class="stage-card"><h3>Manage</h3><p>Synthetic sandbox view — NOT the real admin/client portal.</p><a class="btn secondary mt-4" href="#live-demo">View</a></article>
+              </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-4 mt-8">
+              <div class="placeholder reveal" role="note">
+                <div class="eyebrow">PLACEHOLDER · LANE B SCANNER</div>
+                <p>Separate live tool for internal-deployment diagnostic.</p>
+                <div class="phase">Built in Phase 3.</div>
+              </div>
+              <div id="repos" class="placeholder reveal" role="note" data-rail="systems">
+                <div class="eyebrow">PLACEHOLDER · ENGINE ROOM + RUNNABLE AUTOMATION DEMO</div>
+                <p>Automation-library public audited repo link card plus a runnable document-processing pipeline: drop a doc → OCR → extract → classify → summarize → route. Same architecture generalized to any document workflow. Upwork engine noted as further breadth.</p>
+                <div class="phase">Repo link available now; runnable demo built in Phase 3.</div>
+              </div>
+            </div>
+
+            <div class="connector reveal" aria-label="Connector from Act III to capstone">
+              <p>Every system here runs on one spine — the scanner reads the registry, the Vault assembles the clauses, and the same disciplined architecture runs the platform beneath them. One method, applied again and again, always starting from the legal problem.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="capstone" class="act" data-rail="systems" aria-labelledby="capstone-title">
+          <div class="card-shell">
+            <div class="reveal">
+              <p class="tracked-label text-xs gold">CAPSTONE</p>
+              <h2 id="capstone-title" class="font-display section-title text-white mt-3">One Mind: Two Domains, Three Jurisdictions</h2>
+            </div>
+            <div class="placeholder reveal mt-7" role="note">
+              <div class="eyebrow">PLACEHOLDER · PARALLEL-MAPPING TABLE</div>
+              <p>Threat Registry ↔ component-classification.csv · Vault ↔ client-config questionnaire · Lane docs ↔ template assemblies · core/adapter ↔ provider-agnostic core.</p>
+              <div class="phase">Built in Phase 3.</div>
+            </div>
+
+            <div class="mt-7 reveal">
+              <p class="tracked-label text-xs gold mb-4">Cross-border coverage strip · verify all enforcement dates before publish</p>
+              <div class="grid md:grid-cols-3 gap-4">
+                <article class="jurisdiction-card"><h3>IN</h3><p>IT Act 2000 → DPDP Act 2023 · CPA 2019 · Copyright Act 1957 · MeitY AI Guidelines.</p></article>
+                <article class="jurisdiction-card"><h3>EU</h3><p>GDPR · EU AI Act · revised Product Liability Directive.</p></article>
+                <article class="jurisdiction-card"><h3>US</h3><p>UCC Art. 2/2A · UETA §14 · CCPA + state AI laws (CO/TX/IL/NY/CA).</p></article>
+              </div>
+              <p class="small-note mt-4">An Indian AI startup serving global users faces the DPDP transition, the EU AI Act's extraterritorial reach, and US commercial-contract infrastructure — simultaneously.</p>
+            </div>
+
+            <div class="surface rounded-2xl p-6 mt-6 reveal">
+              <p class="font-display text-2xl sm:text-3xl leading-tight text-white">A lawyer who builds legal technology, went deep on the AI-law frontier across three jurisdictions, rigorous enough that the method generalises. Not a generic systems architect.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="act" data-rail="systems" aria-labelledby="close-title">
+          <div class="card-shell">
+            <div class="reveal">
+              <p class="tracked-label text-xs gold">CLOSE</p>
+              <h2 id="close-title" class="font-display section-title text-white mt-3">Why I Care</h2>
+            </div>
+            <div class="surface rounded-[1.5rem] p-6 sm:p-8 mt-7 reveal">
+              <p class="text-lg leading-9 text-neutral-200">
+                I didn't arrive at legal tech from software. I arrived from a courtroom. Three and a half years of litigation showed me how much legal work is repeatable — and how much defensible work never reaches the people who need it, because it's too slow or too expensive. The legal tech I care about stays close to that: built around real client problems — contracts, compliance, privacy, AI, diligence, digital business risk — not automation for its own sake. I've spent eight months proving I can build it, alone. I'd rather build it inside a team already taking it seriously.
+              </p>
+              <div class="hairline my-7"></div>
+              <p class="text-sm leading-7 text-neutral-400">
+                Models are routed by data sensitivity. Public-only diagnostics run on free fast-inference tiers — no privacy cost, the input is already public. Client and work data run on paid API tiers with model training disabled. Every demo here uses public or synthetic data only.
+              </p>
+              <p class="mt-5 font-display italic text-2xl gold">All work shown is mine; every link and demo is genuine.</p>
+            </div>
+            <div class="surface rounded-2xl p-5 mt-6 reveal flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-sm text-neutral-300">
+              <a class="nav-link" href="https://linkedin.com/in/shwetabh-singh" target="_blank" rel="noopener">linkedin.com/in/shwetabh-singh</a>
+              <a class="nav-link" href="mailto:shwetav.alpna.singh@gmail.com">shwetav.alpna.singh@gmail.com</a>
+              <a class="nav-link" href="tel:+918825334336">8825334336</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="relative z-10 border-t border-[rgba(197,160,89,.16)] py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-neutral-500">
+      <div class="wordmark gold text-xl">Shwetabh Singh</div>
+      <div>© 2026 Shwetabh Singh</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="placeholderModal" role="dialog" aria-modal="true" aria-labelledby="placeholderModalTitle" aria-describedby="placeholderModalBody">
+    <div class="modal-card surface relative">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close placeholder modal">×</button>
+      <div class="p-5 sm:p-7">
+        <div class="tracked-label text-xs gold">Portfolio build placeholder</div>
+        <h2 class="font-display compact-title text-white mt-3" id="placeholderModalTitle">Placeholder</h2>
+        <div id="placeholderModalBody" class="mt-5 text-neutral-300 leading-8"></div>
+        <div id="placeholderModalPhase" class="small-note mt-5"></div>
+        <div class="mt-6 border-t border-[rgba(197,160,89,.16)] pt-5 small-note">This is intentionally not filled in the skeleton. Per the brief, unfinished features stay as labelled placeholders until the relevant build phase.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="introModal" role="dialog" aria-modal="true" aria-labelledby="introModalTitle">
+    <div class="modal-card surface relative">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close video modal">×</button>
+      <div class="placeholder !min-h-[320px] grid place-items-center text-center" role="note">
+        <div>
+          <div class="eyebrow" id="introModalTitle">PLACEHOLDER · INTRO VIDEO</div>
+          <p>Intro video embed / walkthrough media slot.</p>
+          <div class="phase">Built in Phase 4. No real media file attached in this scaffold.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const progress = document.getElementById('scrollProgress');
+      const railStages = Array.from(document.querySelectorAll('.rail-stage'));
+      const mobileStages = Array.from(document.querySelectorAll('[data-mobile-stage]'));
+      const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+      const observed = Array.from(document.querySelectorAll('section[data-rail], #repos[data-rail]'));
+      const reveals = Array.from(document.querySelectorAll('.reveal'));
+      const registryTag = document.getElementById('registryTag');
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, {threshold:.12});
+      reveals.forEach(el => io.observe(el));
+
+      function updateProgress(){
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+        progress.style.width = pct + '%';
+      }
+
+      function getCurrent(){
+        let current = {stage:'doctrine', id:'hero'};
+        const offset = window.innerHeight * .35;
+        observed.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if(rect.top - offset <= 0) current = {stage: el.dataset.rail || current.stage, id: el.id || current.id};
+        });
+        return current;
+      }
+
+      function updateActive(){
+        const state = getCurrent();
+        const order = ['doctrine','taxonomy','instruments','tooling','systems'];
+        const activeIndex = Math.max(0, order.indexOf(state.stage));
+        railStages.forEach((item, index) => item.classList.toggle('active', index <= activeIndex));
+        mobileStages.forEach((item, index) => item.classList.toggle('active', index <= activeIndex));
+        if(registryTag){
+          if(activeIndex >= 3) registryTag.textContent = '76-row registry · running';
+          else if(activeIndex >= 2) registryTag.textContent = '76-row registry · structured';
+          else registryTag.textContent = '76-row registry · derived';
+        }
+        const map = {hero:'#hero', foundation:'#foundation', matrix:'#matrix', funnel:'#funnel', repos:'#repos', capstone:'#capstone', contact:'#contact'};
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          const target = map[state.id] || (state.stage === 'instruments' ? '#matrix' : state.stage === 'tooling' ? '#funnel' : state.stage === 'systems' ? '#repos' : '#foundation');
+          link.classList.toggle('active', href === target);
+        });
+      }
+
+      function openModal(id){
+        const modal = document.getElementById(id);
+        if(!modal) return;
+        modal.classList.add('open');
+        const close = modal.querySelector('[data-close-modal]');
+        if(close) close.focus();
+      }
+      function closeModal(modal){
+        if(modal) modal.classList.remove('open');
+      }
+      function openPlaceholderModal(source){
+        const modal = document.getElementById('placeholderModal');
+        const titleEl = document.getElementById('placeholderModalTitle');
+        const bodyEl = document.getElementById('placeholderModalBody');
+        const phaseEl = document.getElementById('placeholderModalPhase');
+        if(!modal || !titleEl || !bodyEl || !phaseEl) return;
+        const title = source.querySelector('.eyebrow')?.textContent?.trim() || 'Placeholder';
+        const body = Array.from(source.querySelectorAll('p')).map(p => p.textContent.trim()).filter(Boolean).join(' ');
+        const phase = source.querySelector('.phase')?.textContent?.trim() || 'Phase fill pending.';
+        titleEl.textContent = title;
+        bodyEl.textContent = body || 'This feature is reserved for a later build phase.';
+        phaseEl.textContent = phase;
+        openModal('placeholderModal');
+      }
+
+      document.querySelectorAll('.placeholder').forEach(card => {
+        if(card.closest('.modal')) return;
+        if(card.dataset.openModal) return;
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Open ' + (card.querySelector('.eyebrow')?.textContent?.trim() || 'placeholder'));
+        if(!card.querySelector('.placeholder-hint')){
+          const hint = document.createElement('span');
+          hint.className = 'placeholder-hint';
+          hint.textContent = 'Open placeholder';
+          card.appendChild(hint);
+        }
+        card.addEventListener('click', () => openPlaceholderModal(card));
+        card.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            openPlaceholderModal(card);
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-open-modal]').forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.openModal)));
+      document.querySelectorAll('[data-close-modal]').forEach(btn => btn.addEventListener('click', () => closeModal(btn.closest('.modal'))));
+      document.querySelectorAll('.modal').forEach(modal => modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(modal); }));
+      window.addEventListener('keydown', (e) => { if(e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(closeModal); });
+
+      window.addEventListener('scroll', () => { updateProgress(); updateActive(); }, {passive:true});
+      window.addEventListener('resize', () => { updateProgress(); updateActive(); });
+      updateProgress();
+      updateActive();
+    })();
+  </script>
+</body>
+</html>
