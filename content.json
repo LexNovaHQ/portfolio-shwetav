@@ -147,7 +147,7 @@
       "Clauses",
       "The Systems"
     ],
-    "header": "Foundation — every AI legal risk, mapped.",
+    "header": "The Legal Foundation — AI law risks mapped into a working taxonomy.",
     "forward_ref": "→ what the diligence engine later detects on its own.",
     "intro": "Each one stays close to the real legal problem — what creates the exposure, what closes it, what holds up. I built them in AI law: contracts, compliance, privacy, AI liability, diligence, digital business risk. The build is just the delivery — the legal judgment is the point.",
     "lanes": [
@@ -285,7 +285,11 @@
       ],
       "presets": [
         {
-          "label": "Chatbot",
+          "key": "customer-chatbot",
+          "label": "Customer chatbot",
+          "description": "Conversational AI answering customers or users.",
+          "underlying_function": "Companion / general conversational interface",
+          "likely_surfaces": "Consumer-public · Personal data",
           "archetype": "CMP",
           "surfaces": [
             "Consumer-Public",
@@ -293,7 +297,24 @@
           ]
         },
         {
-          "label": "Hiring tool",
+          "key": "ai-support-agent",
+          "label": "AI support agent",
+          "description": "AI that responds to tickets, handles customer support, or recommends actions.",
+          "underlying_function": "Doer / Companion",
+          "likely_surfaces": "Consumer-public · Enterprise-private · Personal data",
+          "archetype": "DOE",
+          "surfaces": [
+            "Consumer-Public",
+            "Enterprise-Private",
+            "PII"
+          ]
+        },
+        {
+          "key": "hiring-screening-tool",
+          "label": "Hiring / screening tool",
+          "description": "AI that screens, ranks, scores, or recommends candidates or employees.",
+          "underlying_function": "Judge",
+          "likely_surfaces": "Employment · Personal data",
           "archetype": "JDG",
           "surfaces": [
             "Employment",
@@ -301,7 +322,11 @@
           ]
         },
         {
+          "key": "coding-copilot",
           "label": "Coding copilot",
+          "description": "AI that generates, reviews, or assists with code.",
+          "underlying_function": "Creator",
+          "likely_surfaces": "Content & IP · Enterprise-private",
           "archetype": "CRT",
           "surfaces": [
             "Content&IP",
@@ -309,10 +334,54 @@
           ]
         },
         {
-          "label": "Trading agent",
+          "key": "meeting-note-taker",
+          "label": "Meeting note-taker",
+          "description": "AI that records, transcribes, summarizes, or analyzes meetings.",
+          "underlying_function": "Translator / Reader",
+          "likely_surfaces": "Personal data · Sensitive/biometric-adjacent · Enterprise-private",
+          "archetype": "TRN",
+          "surfaces": [
+            "PII",
+            "Sensitive/Biometric",
+            "Enterprise-Private"
+          ]
+        },
+        {
+          "key": "ai-sdr-outbound-agent",
+          "label": "AI SDR / outbound agent",
+          "description": "AI that sends, sequences, personalizes, or triggers sales/outbound actions.",
+          "underlying_function": "Doer / Orchestrator",
+          "likely_surfaces": "Personal data · Consumer-public · Enterprise-private",
           "archetype": "DOE",
           "surfaces": [
-            "Financial"
+            "PII",
+            "Consumer-Public",
+            "Enterprise-Private"
+          ]
+        },
+        {
+          "key": "rag-knowledge-bot",
+          "label": "RAG knowledge bot",
+          "description": "AI that ingests documents and retrieves answers from a knowledge base.",
+          "underlying_function": "Reader",
+          "likely_surfaces": "Personal data · Infrastructure · Enterprise-private",
+          "archetype": "RDR",
+          "surfaces": [
+            "PII",
+            "Infrastructure",
+            "Enterprise-Private"
+          ]
+        },
+        {
+          "key": "trading-payment-agent",
+          "label": "Trading / payment agent",
+          "description": "AI that acts on financial signals, payment flows, accounts, or transaction logic.",
+          "underlying_function": "Optimizer / Doer",
+          "likely_surfaces": "Financial · Infrastructure",
+          "archetype": "OPT",
+          "surfaces": [
+            "Financial",
+            "Infrastructure"
           ]
         }
       ],
@@ -330,6 +399,28 @@
         },
         "case": "Mobley v. Workday (ongoing)",
         "remediation": "bias-audit + human-in-the-loop clause"
+      },
+      "title": "The Risk Map — classify the AI, then identify the legal surface.",
+      "intro": "The map works in two moves. First, classify what the AI does. Second, identify what legal surface it touches. The output is a triggered risk with authority and remediation.",
+      "move1_heading": "Move 1 — Classify what the AI does",
+      "move1_explanation": "The first question is functional, not promotional. Ignore the company’s marketing label. Ask what the AI actually does.",
+      "preset_instruction": "Select a common AI use case to light the underlying AI function.",
+      "move2_heading": "Move 2 — Identify what legal surface it touches",
+      "move2_explanation": "The same AI function can trigger different legal risks depending on what it touches: personal data, employment, IP, financial decisions, consumers, infrastructure, or physical safety.",
+      "output_heading": "Output — triggered risk → authority → remediation",
+      "output_explanation": "Once function and surface combine, the system can identify the legal risk, cite the authority, and route the remediation into the right instrument or workflow.",
+      "surface_instruction": "Click a lit surface to see why the risk is triggered.",
+      "surface_labels": {
+        "PII": "Personal data",
+        "Sensitive/Biometric": "Sensitive / biometric",
+        "Financial": "Financial",
+        "Minors": "Minors",
+        "Employment": "Employment",
+        "Consumer-Public": "Consumer-public",
+        "Enterprise-Private": "Enterprise-private",
+        "Infrastructure": "Infrastructure",
+        "Content&IP": "Content & IP",
+        "Safety&Physical": "Safety / physical"
       }
     },
     "case_law": [
@@ -366,7 +457,292 @@
         "line": "Meeting-capture AI triggers strict biometric / recording consent."
       }
     ],
-    "connector1": "A map of every AI risk protects no one on its own. It matters only once it becomes something a company can deploy — so I turned the doctrine into instruments."
+    "connector1": "A taxonomy protects no one on its own. Once the risk can be classified, it must be routed into clauses, policies, playbooks, and review-ready instruments. That is Act II.",
+    "orientation_purpose": "The legal work comes first. The systems exist only to deliver it faster, more consistently, and in a reviewable form.",
+    "eyebrow": "ACT I · FOUNDATION",
+    "subline": "Before I built the tools, I built the legal source layer they would read from: AI physics, legal doctrine, defensive controls, and product/instrument routing.",
+    "what_this_proves": "This section shows how technical AI behavior becomes legal risk, how legal risk becomes a control, and how that control is routed into a document, workflow, or system.",
+    "first_fork": {
+      "title": "First Fork — where does the AI risk live?",
+      "subtitle": "Before the taxonomy, the work splits by legal context. The question is not only what does the AI do? The first question is: is the company building AI for others, or using AI inside its own business?",
+      "lanes": [
+        {
+          "key": "lane-a",
+          "visible_label": "Build-side AI products",
+          "internal_label": "Lane A",
+          "who": "Companies building, selling, or exposing AI products to customers, users, APIs, or enterprise buyers.",
+          "focus_chips": [
+            "product/service classification",
+            "hallucination liability",
+            "agentic authority",
+            "customer data processing",
+            "output ownership",
+            "enterprise procurement",
+            "public-facing terms",
+            "downstream API/pass-through risk"
+          ],
+          "routes": [
+            "ToS",
+            "DPA",
+            "Privacy Policy",
+            "AUP",
+            "SLA",
+            "Agentic Addendum",
+            "Product Playbook"
+          ],
+          "explanation": "Lane A asks: if the AI product fails, misleads, processes data, generates output, or acts for a user, what legal architecture protects the company?"
+        },
+        {
+          "key": "lane-b",
+          "visible_label": "Internal AI deployment",
+          "internal_label": "Lane B",
+          "who": "Companies using AI inside the business through employees, contractors, teams, departments, or operational workflows.",
+          "focus_chips": [
+            "shadow AI",
+            "employee tool use",
+            "client-data leakage",
+            "workplace privacy",
+            "AI-assisted work ownership",
+            "human review",
+            "internal governance",
+            "impact assessment"
+          ],
+          "routes": [
+            "AI Use Handbook",
+            "IP Deed",
+            "HITL SOP",
+            "DPIA",
+            "Shadow AI Scanner",
+            "Workplace Playbook"
+          ],
+          "explanation": "Lane B asks: if employees or teams use AI inside the business, how do we control data, authorship, confidentiality, reliance, and human review?"
+        }
+      ],
+      "transition": "Once the lane is clear, the analysis moves into the source layer: what the AI technically does, what legal doctrine that triggers, what defensive control responds, and where the fix must live."
+    },
+    "ai_bible": {
+      "title": "The AI Bible — the source layer behind the taxonomy",
+      "intro": "The taxonomy starts from AI behavior, not document templates. The source layer asks four questions: what the system technically does, what legal doctrine that triggers, what control contains the risk, and which instrument or workflow carries the fix.",
+      "core_spine": [
+        "AI physics",
+        "legal doctrine",
+        "defensive control",
+        "product / instrument routing"
+      ],
+      "columns": [
+        {
+          "title": "AI physics",
+          "text": "What the system technically does: generate, infer, remember, route, act, score, ingest, or automate."
+        },
+        {
+          "title": "Legal doctrine",
+          "text": "The legal exposure triggered by that behavior: reliance, authority, privacy, authorship, consent, discrimination, deletion, or product/service classification."
+        },
+        {
+          "title": "Defensive control",
+          "text": "The legal architecture that contains the risk: waiver, boundary, audit, consent gate, human review, cap, pass-through, or prohibition."
+        },
+        {
+          "title": "Product / instrument routing",
+          "text": "Where the control lives: ToS, DPA, AUP, SLA, Agentic Addendum, Handbook, IP Deed, SOP, DPIA, Vault intake, diligence engine, or portal workflow."
+        }
+      ],
+      "rows": [
+        {
+          "title": "Probabilistic Output",
+          "lane": "Both",
+          "ai_physics": "Probabilistic output can be confidently wrong.",
+          "legal_doctrine": "Reliance, chatbot authority, warranty, misrepresentation, and customer-facing output risk.",
+          "defensive_control": "Hallucination waiver, output authority boundary, point-of-interaction warning, and human verification trigger.",
+          "routing": "ToS · AUP · diligence engine · product UI warning",
+          "why": "Generic AI may be wrong language is not enough. The control must sit where reliance happens and must define what the AI output is legally allowed to be."
+        },
+        {
+          "title": "Agentic Action",
+          "lane": "Lane A",
+          "ai_physics": "Agentic systems can act, retry, spend, route, trigger workflows, or bind a process without a fresh human click.",
+          "legal_doctrine": "Electronic agent attribution, agency risk, authority, automated transaction risk, and operational liability.",
+          "defensive_control": "Spend caps, retry limits, loop thresholds, circuit breakers, approval gates, audit logs, and authority boundaries.",
+          "routing": "Agentic Addendum · ToS · governance log · Vault intake",
+          "why": "Once AI moves from answering to acting, the legal problem changes from wrong output to who is responsible for machine action?"
+        },
+        {
+          "title": "AI Memory / Fine-Tuning",
+          "lane": "Both",
+          "ai_physics": "Fine-tuned or training-based memory is not cleanly deletable like a database row.",
+          "legal_doctrine": "Erasure rights, privacy compliance, model disgorgement, data retention, and subprocessor transparency.",
+          "defensive_control": "RAG-only mandate, deletion architecture, training prohibition, subprocessor disclosure, and data-use boundary.",
+          "routing": "DPA · Privacy Policy · Vault intake · DPIA",
+          "why": "If user data becomes part of model weights, deletion and downstream control become much harder. The legal architecture must be designed around the technical memory model."
+        },
+        {
+          "title": "AI Output / Authorship",
+          "lane": "Both",
+          "ai_physics": "Autonomous AI output may not carry human authorship by default.",
+          "legal_doctrine": "Copyright ownership, assignment failure, authorship evidence, work-product control, and IP-chain risk.",
+          "defensive_control": "Human-in-the-loop authorship protocol, prompt/work-product assignment, contributor warranty, authorship evidence trail.",
+          "routing": "IP Deed · HITL SOP · ToS output terms · Workplace Handbook",
+          "why": "If the business cannot prove a human authorship chain, we own the output may be commercially weak even if the document says it."
+        },
+        {
+          "title": "AI Scoring / Decisioning",
+          "lane": "Lane B",
+          "ai_physics": "AI systems can score, rank, screen, recommend, or influence access to opportunity.",
+          "legal_doctrine": "Bias, discrimination, automated decisioning, employment screening, high-risk decisioning, and explainability risk.",
+          "defensive_control": "Bias audit, human review, prohibited-use boundary, appeal/escalation route, and impact assessment.",
+          "routing": "DPIA · AUP · Handbook · HITL SOP · diligence engine",
+          "why": "The legal issue is not only the model’s output. It is whether the output affects a person’s opportunity, rights, employment, credit, access, or treatment."
+        },
+        {
+          "title": "Consent / Online Terms",
+          "lane": "Lane A",
+          "ai_physics": "AI products often operate through fast online flows where terms, warnings, notices, and consents are buried or skipped.",
+          "legal_doctrine": "Clickwrap enforceability, assent, notice, consent validity, dark-pattern risk, and consumer protection.",
+          "defensive_control": "Affirmative consent UI, visible notice architecture, acceptance logs, renewal/cancellation clarity, and point-of-action warning.",
+          "routing": "ToS · Privacy Policy · UI mandate · product workflow · portal records",
+          "why": "A strong clause is useless if the user never validly assented to it. Legal architecture must reach the interface layer."
+        }
+      ]
+    },
+    "taxonomy_bridge": {
+      "title": "From source layer to working taxonomy",
+      "intro": "The AI Bible is the reasoning layer. The taxonomy turns that reasoning into units a diligence engine can read.",
+      "flow": [
+        "AI Bible source layer",
+        "98 threat units",
+        "10 AI functions + 10 legal surfaces",
+        "triggered risk",
+        "authority",
+        "remediation"
+      ],
+      "scope_stat": "98 threat units · 10 AI functions · 10 legal surfaces · 3 jurisdiction bands",
+      "explanation": "Each threat unit is structured so the system can ask: what AI behavior is present, what legal surface is touched, what authority is relevant, what consequence follows, and what instrument should respond.",
+      "confidentiality_note": "The full source layer and applied-practice notes are not exposed here. The visible layer shows the reasoning architecture, selected examples, and the taxonomy logic."
+    },
+    "worked_examples": {
+      "default": "Select a common AI use case above. The example below will show how the taxonomy turns an AI use case into a legal-risk route.",
+      "items": {
+        "customer-chatbot": {
+          "selected_use_case": "Customer chatbot",
+          "move1": "Companion — the AI speaks directly to users in a conversational interface.",
+          "move2": "Consumer-public + personal data.",
+          "output": "Reliance, misleading output, customer-facing disclosure, privacy, and consent risk.",
+          "authority": "Moffatt v. Air Canada · Walters v. OpenAI · privacy notice / consent principles",
+          "remediation": "Hallucination waiver, output authority boundary, point-of-interaction warning, privacy notice, and escalation path.",
+          "routes_into": "ToS · Privacy Policy · AUP · diligence engine"
+        },
+        "ai-support-agent": {
+          "selected_use_case": "AI support agent",
+          "move1": "Doer / Companion — the AI answers customers and may recommend or trigger support actions.",
+          "move2": "Consumer-public + enterprise-private + personal data.",
+          "output": "Wrong support advice, escalation failure, data exposure, and automated action risk.",
+          "authority": "Chatbot authority and reliance principles · data protection notice/processing duties · electronic action risk where workflows are triggered",
+          "remediation": "Human escalation route, support-output disclaimer, authority boundary, processing disclosure, and action limits.",
+          "routes_into": "ToS · Privacy Policy · AUP · support workflow · portal records"
+        },
+        "hiring-screening-tool": {
+          "selected_use_case": "Hiring / screening tool",
+          "move1": "Judge — the AI scores, ranks, screens, or recommends humans.",
+          "move2": "Employment + personal data.",
+          "output": "Bias, disparate impact, automated decisioning, explainability, and employment-data risk.",
+          "authority": "GDPR Art. 22 logic · EU AI Act high-risk employment logic · employment discrimination principles · workplace privacy principles",
+          "remediation": "Bias audit, human-in-the-loop review, use restriction, audit log, appeal/escalation path, and impact assessment.",
+          "routes_into": "DPIA · AUP · AI Use Handbook · HITL SOP"
+        },
+        "coding-copilot": {
+          "selected_use_case": "Coding copilot",
+          "move1": "Creator — the AI generates or materially assists with code.",
+          "move2": "Content & IP + enterprise-private.",
+          "output": "Ownership uncertainty, open-source contamination, security reliance, and human authorship risk.",
+          "authority": "Thaler v. Perlmutter · IP ownership / assignment principles · software warranty and reliance risk",
+          "remediation": "HITL authorship protocol, output review, IP assignment boundary, open-source review, and prohibited reliance rule.",
+          "routes_into": "IP Deed · HITL SOP · ToS output terms · AUP"
+        },
+        "meeting-note-taker": {
+          "selected_use_case": "Meeting note-taker",
+          "move1": "Translator / Reader — the AI records, transcribes, summarizes, or analyzes spoken content.",
+          "move2": "Personal data + sensitive/biometric-adjacent + enterprise-private.",
+          "output": "Recording consent, biometric/voice risk, confidential information leakage, and privacy disclosure risk.",
+          "authority": "Cruz v. Fireflies · privacy notice/consent principles · confidentiality and workplace privacy principles",
+          "remediation": "meeting consent notice, recording disclosure, retention limit, processing disclosure, and confidential-data handling rule.",
+          "routes_into": "Privacy Policy · DPA · AI Use Handbook · DPIA"
+        },
+        "ai-sdr-outbound-agent": {
+          "selected_use_case": "AI SDR / outbound agent",
+          "move1": "Doer / Orchestrator — the AI personalizes, sequences, sends, routes, or triggers outbound actions.",
+          "move2": "Personal data + consumer-public + enterprise-private.",
+          "output": "automated outreach, consent, spam/dark-pattern, data processing, and action-authority risk.",
+          "authority": "consent and marketing law principles · electronic agent/action attribution principles · consumer protection principles",
+          "remediation": "audience limits, consent/opt-out routing, human approval for campaigns, authority boundary, and audit logs.",
+          "routes_into": "AUP · ToS · Privacy Policy · Agentic Addendum · outbound workflow"
+        },
+        "rag-knowledge-bot": {
+          "selected_use_case": "RAG knowledge bot",
+          "move1": "Reader — the AI ingests, indexes, retrieves, and answers from documents or knowledge bases.",
+          "move2": "Personal data + infrastructure + enterprise-private.",
+          "output": "data ingestion, retention, retrieval leakage, source provenance, and deletion risk.",
+          "authority": "FTC v. Rite Aid logic · GDPR/DPDP deletion and processing principles · confidentiality and subprocessor transparency principles",
+          "remediation": "RAG-only mandate, source logging, access controls, deletion architecture, and subprocessor disclosure.",
+          "routes_into": "DPA · Privacy Policy · Vault intake · DPIA · security workflow"
+        },
+        "trading-payment-agent": {
+          "selected_use_case": "Trading / payment agent",
+          "move1": "Optimizer / Doer — the AI manages or triggers financial decisions, payment flows, or transaction actions.",
+          "move2": "Financial + infrastructure.",
+          "output": "financial reliance, unauthorized transaction, automation error, and high-stakes decision risk.",
+          "authority": "electronic agent/action attribution principles · financial reliance and consumer protection principles · service classification risk",
+          "remediation": "transaction caps, human approval threshold, prohibited reliance warning, audit logs, and circuit breaker.",
+          "routes_into": "Agentic Addendum · ToS · AUP · governance log"
+        }
+      }
+    },
+    "source_rule_spine": {
+      "title": "Source Rule Spine — authority converted into operating rules",
+      "intro": "The cases are not citations for decoration. Each source creates a rule that becomes a registry condition, drafting control, or workflow requirement.",
+      "rows": [
+        {
+          "source": "Moffatt v. Air Canada",
+          "rule": "Chatbot output can bind the company where users reasonably rely on it.",
+          "powers": "Output authority boundary · hallucination controls · customer-facing warning design"
+        },
+        {
+          "source": "Walters v. OpenAI",
+          "rule": "Point-of-interaction disclaimers matter because reliance forms at the moment of use.",
+          "powers": "interface warning · output disclaimer · reliance limitation"
+        },
+        {
+          "source": "Thaler v. Perlmutter",
+          "rule": "Autonomous AI output may fail human authorship requirements.",
+          "powers": "HITL authorship protocol · IP assignment structure · work-product evidence trail"
+        },
+        {
+          "source": "Bartz v. Anthropic",
+          "rule": "Training-data provenance can become a major copyright and dataset-risk issue.",
+          "powers": "dataset provenance controls · upstream IP indemnity · training-data review"
+        },
+        {
+          "source": "FTC v. Rite Aid",
+          "rule": "Regulators can require deletion or destruction of tainted algorithmic systems.",
+          "powers": "RAG-only mandate · deletion architecture · model-memory restrictions"
+        },
+        {
+          "source": "Specht v. Netscape / Meyer v. Uber",
+          "rule": "Online terms must be visible, affirmative, and reasonably presented to bind users.",
+          "powers": "clickwrap design · consent logs · UI mandate · notice architecture"
+        },
+        {
+          "source": "Vernor v. Autodesk",
+          "rule": "Contract structure can affect whether software access is treated as a license rather than ownership transfer.",
+          "powers": "service/access classification · license boundary · platform-use restrictions"
+        },
+        {
+          "source": "Soteria v. IBM",
+          "rule": "Liability wording can preserve or exclude wasted expenditure and major commercial loss categories.",
+          "powers": "liability cap architecture · exclusion drafting · enterprise negotiation playbook"
+        }
+      ]
+    },
+    "connector_visual": "Risk classified → control selected → instrument routed."
   },
   "act2": {
     "header": "Act II — The Legal Matrix: the clauses that close those risks.",

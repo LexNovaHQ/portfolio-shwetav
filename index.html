@@ -175,6 +175,63 @@ section{scroll-margin-top:110px;}
 
 /* ---- RISK MAP ---- */
 .rm-presets{display:flex; flex-wrap:wrap; gap:.5rem;}
+.act1-rail{position:sticky; top:112px; z-index:20; display:flex; gap:.35rem; overflow:auto; padding:.45rem .35rem;
+  margin:1rem -.35rem 0; background:rgba(7,7,7,.72); backdrop-filter:blur(10px); border:1px solid rgba(197,160,89,.12); border-radius:.85rem;}
+.act1-rail a{white-space:nowrap; border:1px solid rgba(229,229,229,.1); color:rgba(229,229,229,.5); border-radius:999px;
+  padding:.35rem .58rem; font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800; transition:all .2s;}
+.act1-rail a.active,.act1-rail a:hover,.act1-rail a:focus{color:var(--gold); border-color:rgba(197,160,89,.55); background:rgba(197,160,89,.08); outline:none;}
+.act1-orient{border-left:1px solid var(--gold); padding:1rem 1.1rem; border-radius:1rem; background:linear-gradient(90deg,rgba(197,160,89,.09),rgba(255,255,255,.018));}
+.act1-diagram{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin-top:.9rem;}
+.diagram-link{border:1px solid rgba(197,160,89,.32); border-radius:.7rem; padding:.55rem .75rem; color:var(--gold); background:rgba(197,160,89,.055);
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800;}
+.diagram-link:hover,.diagram-link:focus{background:rgba(197,160,89,.13); outline:none;}
+.diagram-op{color:rgba(229,229,229,.38); font-size:1rem;}
+.fork-grid{display:grid; grid-template-columns:1fr; gap:1rem;}
+@media(min-width:900px){.fork-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.fork-card{border:1px solid rgba(229,229,229,.1); border-radius:1rem; background:rgba(255,255,255,.02); padding:1rem; transition:all .22s;}
+.fork-card:hover,.fork-card:focus-within,.fork-card.active{border-color:rgba(197,160,89,.55); background:rgba(197,160,89,.06);}
+.fork-card h3{font-family:"Cormorant Garamond",serif; color:var(--gold); font-size:1.45rem; line-height:1.05; margin:0;}
+.fork-meta{font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(229,229,229,.45); margin-top:.2rem;}
+.chip-row{display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.7rem;}
+.soft-chip{border:1px solid rgba(229,229,229,.12); border-radius:999px; padding:.25rem .5rem; color:rgba(229,229,229,.66);
+  font-size:.62rem; line-height:1.2; background:rgba(255,255,255,.018);}
+.route-chip{border-color:rgba(197,160,89,.28); color:rgba(197,160,89,.82);}
+.route-chip.lit{background:rgba(197,160,89,.14); border-color:rgba(197,160,89,.7); color:var(--gold);}
+.source-pipeline{display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin-top:.9rem;}
+.source-step{border:1px solid rgba(197,160,89,.3); border-radius:.75rem; padding:.55rem .75rem; color:var(--gold); background:rgba(197,160,89,.05);
+  font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800;}
+.source-cols{display:grid; grid-template-columns:1fr; gap:.65rem; margin-top:1rem;}
+@media(min-width:900px){.source-cols{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.source-col{border:1px solid rgba(229,229,229,.09); border-radius:.85rem; padding:.75rem; background:rgba(255,255,255,.018);}
+.source-col h4{margin:0; color:var(--gold); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;}
+.source-col p{margin:.4rem 0 0; color:rgba(229,229,229,.67); line-height:1.5; font-size:.76rem;}
+.bible-list{display:grid; gap:.45rem; margin-top:1rem;}
+.bible-row{width:100%; text-align:left; border:1px solid rgba(229,229,229,.1); border-radius:.8rem; background:rgba(255,255,255,.018);
+  padding:.65rem .75rem; color:rgba(229,229,229,.78); transition:all .2s;}
+.bible-row:hover,.bible-row:focus{border-color:rgba(197,160,89,.55); background:rgba(197,160,89,.06); outline:none;}
+.bible-row .ttl{font-family:"Cormorant Garamond",serif; color:var(--gold); font-size:1.1rem; line-height:1;}
+.bible-row .ln{font-size:.75rem; line-height:1.45; margin-top:.25rem;}
+.taxonomy-strip{border:1px solid rgba(197,160,89,.18); border-radius:1rem; padding:1rem; background:rgba(197,160,89,.04);}
+.taxonomy-flow{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; margin:.8rem 0;}
+.taxonomy-flow span{border:1px solid rgba(229,229,229,.1); border-radius:999px; padding:.32rem .55rem; color:rgba(229,229,229,.72); font-size:.66rem;}
+.preset-grid{display:grid; grid-template-columns:1fr; gap:.55rem;}
+@media(min-width:700px){.preset-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(min-width:1180px){.preset-grid{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.preset-card{border:1px solid rgba(229,229,229,.1); border-radius:.85rem; background:rgba(255,255,255,.018); padding:.75rem; color:rgba(229,229,229,.72);
+  text-align:left; transition:all .2s; cursor:pointer;}
+.preset-card:hover,.preset-card:focus,.preset-card.active{border-color:rgba(197,160,89,.6); background:rgba(197,160,89,.075); outline:none;}
+.preset-card .nm{font-family:"Cormorant Garamond",serif; color:var(--gold); font-size:1.12rem; line-height:1;}
+.preset-card .ds{font-size:.72rem; line-height:1.45; margin-top:.35rem;}
+.preset-card .mt{font-size:.58rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(229,229,229,.45); margin-top:.45rem; line-height:1.35;}
+.worked-card{border:1px solid rgba(197,160,89,.22); border-radius:1rem; background:rgba(197,160,89,.04); padding:1rem; min-height:210px;}
+.worked-grid{display:grid; grid-template-columns:1fr; gap:.55rem; margin-top:.75rem;}
+@media(min-width:760px){.worked-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.worked-beat{border-top:1px solid rgba(255,255,255,.06); padding-top:.45rem; color:rgba(229,229,229,.72); font-size:.78rem; line-height:1.5;}
+.worked-beat b{display:block; color:var(--gold); font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.15rem;}
+.source-rule{border:1px solid rgba(229,229,229,.09); border-radius:.75rem; background:rgba(255,255,255,.018); margin:.4rem 0; overflow:hidden;}
+.source-rule summary{cursor:pointer; padding:.7rem .8rem; color:var(--gold); font-family:"Cormorant Garamond",serif; font-size:1.08rem;}
+.source-rule[open] summary{border-bottom:1px solid rgba(197,160,89,.16);}
+.source-rule .inside{padding:.7rem .8rem; color:rgba(229,229,229,.72); font-size:.8rem; line-height:1.55;}
 .rm-arch-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem;}
 @media(min-width:640px){.rm-arch-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
 @media(min-width:1024px){.rm-arch-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
@@ -485,73 +542,74 @@ section{scroll-margin-top:110px;}
 
   // ---------- ACT I ----------
   (function(){
-    var a=C.act1, rm=a.risk_map;
-    var lanes=a.lanes.map(function(l){return '<article class="mini"><p><strong class="gold">'+esc(l.tag)+':</strong> '+esc(l.text)+'</p></article>';}).join('');
-    var diagram=a.architecture_diagram.map(function(b,i){return (i?'<span class="arch-op">'+(i===a.architecture_diagram.length-1?'→':'+')+'</span>':'')+'<span class="arch-box">'+esc(b)+'</span>';}).join('');
-    var spine=rm.note;
-    var cases=a.case_law.map(function(c){return '<article class="case-card"><h3>'+esc(c.name)+(c.tag?'<span class="tagpill">'+esc(c.tag)+'</span>':'')+'</h3><p>'+esc(c.line)+'</p></article>';}).join('');
-    var refSpine=a.reference_layer.spine.map(function(s,i){return (i?'<span class="arch-op">→</span>':'')+'<span class="s">'+esc(s)+'</span>';}).join('');
-    var presets=rm.presets.map(function(p){return '<button class="btn sm" data-preset="'+esc(p.archetype)+'" data-surf="'+esc(p.surfaces.join('|'))+'">'+esc(p.label)+'</button>';}).join('');
-    var archs=rm.archetypes.map(function(x){return '<button class="rm-arch" data-arch="'+esc(x.code)+'" data-tip="'+esc(x.def)+'"><span class="nm">'+esc(x.name)+'</span><span class="kd">'+esc(x.kind)+'</span></button>';}).join('');
-    var we=rm.worked_example;
+    var a=C.act1 || {}, rm=a.risk_map || {};
+    var bible=a.ai_bible || {core_spine:['AI physics','legal doctrine','defensive control','product / instrument routing'], columns:[], rows:[]};
+    var fork=a.first_fork || {lanes:[], transition:''};
+    var bridge=a.taxonomy_bridge || {flow:[]};
+    var rules=a.source_rule_spine || {rows:[]};
+    var railSteps=[
+      ['Orientation','act1-orientation'],['First Fork','act1-first-fork'],['AI Bible','doctrine-layer'],['Taxonomy Bridge','act1-taxonomy-bridge'],
+      ['Risk Map','taxonomy-map'],['Worked Example','act1-worked-example'],['Source Rules','act1-source-rules'],['Act II','instruments-layer']
+    ];
+    function chips(list, cls, data){ return (list||[]).map(function(x){return '<span class="soft-chip '+(cls||'')+'" '+(data||'')+'>'+esc(x)+'</span>';}).join(''); }
+    function arrowJoin(list, cls){ return (list||[]).map(function(x,i){return (i?'<span class="diagram-op">→</span>':'')+'<span class="'+cls+'">'+esc(x)+'</span>';}).join(''); }
+    var localRail=railSteps.map(function(s){return '<a href="#'+s[1]+'" data-act1-nav="'+s[1]+'">'+esc(s[0])+'</a>';}).join('');
+    var diagram='<a class="diagram-link" href="#taxonomy-map">Risk Map</a><span class="diagram-op">+</span><a class="diagram-link" href="#instruments-layer">Clauses</a><span class="diagram-op">→</span><a class="diagram-link" href="#tooling-layer">The Systems</a>';
+    var lanes=(fork.lanes||[]).map(function(l){
+      return '<article class="fork-card" tabindex="0" data-lane="'+esc(l.key)+'"><h3>'+esc(l.visible_label)+'</h3><div class="fork-meta">'+esc(l.internal_label)+'</div>'
+        +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.72);line-height:1.6">'+esc(l.who)+'</p>'
+        +'<div class="chip-row">'+chips(l.focus_chips)+'</div>'
+        +'<div class="chip-row">'+chips(l.routes,'route-chip','data-lane-route="'+esc(l.key)+'"')+'</div>'
+        +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.78);line-height:1.6">'+esc(l.explanation)+'</p></article>';
+    }).join('');
+    var sourceCols=(bible.columns||[]).map(function(c){return '<article class="source-col"><h4>'+esc(c.title)+'</h4><p>'+esc(c.text)+'</p></article>';}).join('');
+    var bibleRows=(bible.rows||[]).map(function(r,i){return '<button class="bible-row" type="button" data-bible-row="'+i+'"><div class="ttl">'+esc(r.title)+'</div><div class="ln">'+esc(r.ai_physics)+'</div><div class="chip-row">'+chips([r.lane||'Both'],'route-chip')+'</div></button>';}).join('');
+    var presets=(rm.presets||[]).map(function(p){return '<button class="preset-card" type="button" data-preset-key="'+esc(p.key||p.label)+'" data-preset="'+esc(p.archetype)+'" data-surf="'+esc((p.surfaces||[]).join('|'))+'"><div class="nm">'+esc(p.label)+'</div><div class="ds">'+esc(p.description||'')+'</div><div class="mt">'+esc(p.underlying_function||'')+'</div><div class="mt">'+esc(p.likely_surfaces||'')+'</div></button>';}).join('');
+    var archs=(rm.archetypes||[]).map(function(x){return '<button class="rm-arch" data-arch="'+esc(x.code)+'" data-tip="'+esc(x.def)+'"><span class="nm">'+esc(x.name)+'</span><span class="kd">'+esc(x.kind)+'</span></button>';}).join('');
+    var sourceRules=(rules.rows||[]).map(function(r){return '<details class="source-rule"><summary>'+esc(r.source)+'</summary><div class="inside"><div><strong class="gold">Rule:</strong> '+esc(r.rule)+'</div><div class="mt-2"><strong class="gold">Powers:</strong> '+esc(r.powers)+'</div></div></details>';}).join('');
     main.appendChild(el(
-    '<section id="foundation" class="act" data-rail="1">'
-    +'<div class="card-shell">'
-      +'<div class="reveal surface rounded-2xl p-4" style="border-left:1px solid var(--gold)"><p style="color:rgba(229,229,229,.82);line-height:1.6;margin:0">'+esc(a.orientation_line)+'</p>'
-        +'<div class="arch-diagram">'+diagram+'</div></div>'
-      +'<div class="reveal mt-7"><p class="eyebrow">ACT I</p>'
-        +'<h2 class="font-display section-title text-white mt-2">'+esc(a.header)+'</h2>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(a.forward_ref)+'</p></div>'
-      +'<p class="reveal mt-5" style="color:rgba(229,229,229,.78);line-height:1.7;max-width:52rem">'+esc(a.intro)+'</p>'
-      +'<div class="reveal grid md:grid-cols-2 gap-3 mt-5">'+lanes+'</div>'
-      // Reference layer
-      +'<div id="doctrine-layer" class="reveal mt-8"><p class="eyebrow mb-2">The Reference Layer</p>'
-        +'<p style="color:rgba(229,229,229,.8);font-style:italic;margin:0 0 .6rem">'+esc(a.reference_layer.frame)+'</p>'
-        +'<div class="spine-step">'+refSpine+'</div>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.7);line-height:1.6">'+esc(a.reference_layer.worked_line)+'</p>'
-        +'<p class="text-sm mt-2" style="color:var(--gold);line-height:1.5">'+esc(a.reference_layer.scope_stat)+'</p>'
-        +'<div class="frost mt-3"><div class="bars"><div style="width:90%"></div><div style="width:75%"></div><div style="width:85%"></div><div style="width:60%"></div></div>'
-          +'<div class="cap"><div><div class="eyebrow">Applied-practice layer</div><p class="text-xs mt-1" style="color:rgba(229,229,229,.5)">'+esc(a.reference_layer.applied_practice)+'</p></div></div></div>'
-      +'</div>'
-      // Risk map
-      +'<div id="taxonomy-map" class="reveal mt-9"><p class="eyebrow mb-1">The Risk Map · AI Classification & Trigger Map</p>'
-        +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(spine)+'</p>'
-        +'<div class="rm-presets mb-3">'+presets+'</div>'
-        +'<div class="grid lg:grid-cols-2 gap-4">'
-          +'<div><p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">Classify · what the AI is</p><div class="rm-arch-grid">'+archs+'</div></div>'
-          +'<div><p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">Trigger · what it touches</p>'
-            +'<button class="rm-surf rm-floor mb-2" id="rm-floor" data-tip="'+esc(rm.global_floor.def)+'">'+esc(rm.global_floor.label)+' <span class="ct">'+rm.global_floor.count+'</span></button>'
-            +'<div class="rm-surf-grid" id="rm-surfaces"></div>'
-            +'<p class="text-xs mt-3" id="rm-hint" style="color:rgba(229,229,229,.4)">Select an archetype (or a preset) to light its surfaces. Click a lit surface for the diagnostic.</p>'
-          +'</div>'
-        +'</div>'
-        // worked example
-        +'<div class="surface rounded-2xl p-4 mt-4"><div class="eyebrow mb-2">Worked example · '+esc(we.title)+'</div>'
-          +'<p class="text-sm" style="color:rgba(229,229,229,.8);line-height:1.6">Triggers <span class="gold">'+esc(we.triggers.join(' + '))+'</span> → '
-          +'<span class="mx-auth"><b>IN</b> '+esc(we.law['in'])+' · <b>EU</b> '+esc(we.law.eu)+' · <b>US</b> '+esc(we.law.us)+'</span> → controlling case <span class="gold">'+esc(we.case)+'</span> → remediation: '+esc(we.remediation)+'.</p>'
-          +'<p class="text-xs mt-2" style="color:rgba(229,229,229,.45)">Diagnostic output: '+esc(rm.diagnostic_format)+'</p></div>'
-      +'</div>'
-      // case strip
-      +'<div class="reveal mt-9"><p class="eyebrow mb-3">Case-law spine</p>'
-        +'<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-3">'+cases+'</div></div>'
-      +'<div class="connector reveal"><p>'+esc(a.connector1)+'</p></div>'
+    '<section id="foundation" class="act" data-rail="1"><div class="card-shell">'
+      +'<div id="act1-orientation" class="reveal act1-orient"><p class="eyebrow">'+esc(a.orientation_purpose||'The legal work comes first.')+'</p>'
+        +'<p class="font-display text-white mt-3" style="font-size:1.55rem;line-height:1.25;margin-bottom:0">'+esc(a.orientation_line||'')+'</p><div class="act1-diagram">'+diagram+'</div></div>'
+      +'<nav class="act1-rail reveal" aria-label="Act I local navigation">'+localRail+'</nav>'
+      +'<div class="reveal mt-7"><p class="eyebrow">'+esc(a.eyebrow||'ACT I · FOUNDATION')+'</p><h2 class="font-display section-title text-white mt-2">'+esc(a.header||'Foundation')+'</h2>'
+        +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.74);line-height:1.65;max-width:56rem">'+esc(a.subline||a.intro||'')+'</p>'
+        +'<div class="surface rounded-2xl p-4 mt-4" style="border-left:1px solid var(--gold)"><p style="margin:0;color:rgba(229,229,229,.82);line-height:1.65">'+esc(a.what_this_proves||'')+'</p></div></div>'
+      +'<div id="act1-first-fork" class="reveal mt-9"><p class="eyebrow mb-2">'+esc(fork.title||'First Fork')+'</p><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">'+esc(fork.subtitle||'')+'</p><div class="fork-grid mt-4">'+lanes+'</div><p class="text-sm mt-4" style="color:var(--gold);line-height:1.6">'+esc(fork.transition||'')+'</p></div>'
+      +'<div id="doctrine-layer" class="reveal mt-9"><p class="eyebrow mb-2">'+esc(bible.title||'The AI Bible')+'</p><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">'+esc(bible.intro||'')+'</p><div class="source-pipeline">'+arrowJoin(bible.core_spine,'source-step')+'</div><div class="source-cols">'+sourceCols+'</div><div class="bible-list">'+bibleRows+'</div></div>'
+      +'<div id="act1-taxonomy-bridge" class="reveal mt-9 taxonomy-strip"><p class="eyebrow mb-2">'+esc(bridge.title||'From source layer to working taxonomy')+'</p><p class="text-sm" style="color:rgba(229,229,229,.74);line-height:1.6">'+esc(bridge.intro||'')+'</p><div class="taxonomy-flow">'+(bridge.flow||[]).map(function(x){return '<span>'+esc(x)+'</span>';}).join('<span class="diagram-op">→</span>')+'</div><p class="text-sm gold">'+esc(bridge.scope_stat||'')+'</p><p class="text-sm mt-2" style="color:rgba(229,229,229,.68);line-height:1.6">'+esc(bridge.explanation||'')+'</p><p class="text-xs mt-2" style="color:rgba(229,229,229,.42);line-height:1.5">'+esc(bridge.confidentiality_note||'')+'</p></div>'
+      +'<div id="taxonomy-map" class="reveal mt-9"><p class="eyebrow mb-1">'+esc(rm.title||'The Risk Map')+'</p><p class="text-sm mb-5" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">'+esc(rm.intro||rm.note||'')+'</p>'
+        +'<div class="surface rounded-2xl p-4"><p class="eyebrow mb-1">'+esc(rm.move1_heading||'Move 1')+'</p><p class="text-xs mb-3" style="color:rgba(229,229,229,.56);line-height:1.5">'+esc(rm.move1_explanation||'')+'</p><p class="text-xs tracked mb-3" style="color:var(--gold)">'+esc(rm.preset_instruction||'Select a common AI use case.')+'</p><div class="preset-grid">'+presets+'</div></div>'
+        +'<div class="grid lg:grid-cols-2 gap-4 mt-4"><div><p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">AI function</p><div class="rm-arch-grid">'+archs+'</div></div>'
+          +'<div><p class="text-xs tracked mb-1" style="color:rgba(229,229,229,.45)">'+esc(rm.move2_heading||'Move 2')+'</p><p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(rm.move2_explanation||'')+'</p><button class="rm-surf rm-floor mb-2" id="rm-floor" data-tip="'+esc((rm.global_floor||{}).def||'')+'">'+esc((rm.global_floor||{}).label||'Global Floor')+' <span class="ct">'+esc((rm.global_floor||{}).count||'')+'</span></button><div class="rm-surf-grid" id="rm-surfaces"></div><p class="text-xs mt-3" id="rm-hint" style="color:rgba(229,229,229,.4)">'+esc(rm.surface_instruction||'Click a lit surface to see why the risk is triggered.')+'</p></div></div>'
+        +'<div class="surface rounded-2xl p-4 mt-4"><p class="eyebrow mb-1">'+esc(rm.output_heading||'Output')+'</p><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.6">'+esc(rm.output_explanation||'')+'</p><div id="rm-route-summary" class="chip-row"></div></div></div>'
+      +'<div id="act1-worked-example" class="reveal mt-6"><div class="worked-card" id="worked-card"></div></div>'
+      +'<div id="act1-source-rules" class="reveal mt-9"><p class="eyebrow mb-2">'+esc(rules.title||'Source Rule Spine')+'</p><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">'+esc(rules.intro||'')+'</p><div class="mt-4">'+sourceRules+'</div></div>'
+      +'<div class="connector reveal"><p>'+esc(a.connector1||'')+'</p></div><div class="hairline mt-4"></div><p class="text-xs tracked mt-3 gold">'+esc(a.connector_visual||'')+'</p>'
     +'</div></section>'));
     buildRiskMap();
+    bindAct1Interactions();
   })();
 
   function buildRiskMap(){
-    var rm=C.act1.risk_map, rows=C.act2.threat_matrix.rows;
-    var surfWrap=document.getElementById('rm-surfaces');
-    var surfDefs={}; rm.surfaces.forEach(function(s){surfDefs[s.name]=s.def;});
-    rm.surfaces.forEach(function(s){
-      var b=el('<button class="rm-surf" data-surf="'+esc(s.name)+'" data-tip="'+esc(s.def)+'">'+esc(s.name)+'</button>');
-      surfWrap.appendChild(b);
+    var rm=C.act1.risk_map, rows=C.act2.threat_matrix.rows, examples=C.act1.worked_examples||{items:{}};
+    var surfWrap=document.getElementById('rm-surfaces'), labels=rm.surface_labels||{};
+    function surfaceLabel(name){ return labels[name]||name; }
+    (rm.surfaces||[]).forEach(function(s){
+      surfWrap.appendChild(el('<button class="rm-surf" data-surf="'+esc(s.name)+'" data-tip="'+esc(s.def)+'">'+esc(surfaceLabel(s.name))+'</button>'));
     });
     var current=null;
     function surfacesFor(code){ var set={}; rows.forEach(function(r){ if(r.archetype===code){ r.surface.forEach(function(s){set[s]=(set[s]||0)+1;}); } }); return set; }
-    function selectArch(code, prelight){
+    function renderWorked(key){
+      var card=document.getElementById('worked-card'), ex=examples.items&&examples.items[key];
+      if(!ex){ card.innerHTML='<p class="eyebrow mb-2">Dynamic Worked Example</p><p style="color:rgba(229,229,229,.72);line-height:1.65;margin:0">'+esc(examples.default||'Select a common AI use case above.')+'</p>'; return; }
+      card.innerHTML='<p class="eyebrow mb-2">Selected use case</p><h3 class="font-display gold" style="font-size:1.55rem;margin:0">'+esc(ex.selected_use_case)+'</h3><div class="worked-grid">'
+        +['move1','move2','output','authority','remediation','routes_into'].map(function(k){var lab={move1:'Move 1',move2:'Move 2',output:'Output',authority:'Authority',remediation:'Remediation',routes_into:'Routes into'}[k]; return '<div class="worked-beat"><b>'+lab+'</b>'+esc(ex[k])+'</div>';}).join('')+'</div>';
+    }
+    function selectArch(code, prelight, presetKey){
       current=code;
       document.querySelectorAll('.rm-arch').forEach(function(n){ n.classList.toggle('active', n.getAttribute('data-arch')===code); });
+      document.querySelectorAll('.preset-card').forEach(function(n){ n.classList.toggle('active', n.getAttribute('data-preset-key')===presetKey); });
       var counts=surfacesFor(code);
       surfWrap.querySelectorAll('.rm-surf').forEach(function(n){
         var name=n.getAttribute('data-surf'); var lit = counts[name]>0 || (prelight&&prelight.indexOf(name)>=0);
@@ -559,27 +617,38 @@ section{scroll-margin-top:110px;}
         var c=n.querySelector('.ct'); if(c)c.remove();
         if(counts[name]>0){ n.insertAdjacentHTML('beforeend',' <span class="ct">'+counts[name]+'</span>'); }
       });
-      document.getElementById('rm-hint').textContent='Click a lit surface to see the registry rows for this archetype.';
+      document.getElementById('rm-hint').textContent=rm.surface_instruction||'Click a lit surface to see why the risk is triggered.';
+      var preset=(rm.presets||[]).filter(function(p){return (p.key||p.label)===presetKey;})[0];
+      document.getElementById('rm-route-summary').innerHTML = preset ? ['Function: '+preset.underlying_function,'Surfaces: '+preset.likely_surfaces].map(function(x){return '<span class="soft-chip route-chip lit">'+esc(x)+'</span>';}).join('') : '';
+      renderWorked(presetKey);
     }
     function showDiag(code, surf){
       var match=rows.filter(function(r){ return (r.archetype===code||r.archetype==='UNI') && r.surface.indexOf(surf)>=0; });
       if(match.length===0){ match=rows.filter(function(r){return r.archetype===code;}).slice(0,6); }
-      var arch=rm.archetypes.filter(function(a){return a.code===code;})[0]||{name:code};
-      var body='<div class="eyebrow">Diagnostic · '+esc(arch.name)+' × '+esc(surf)+'</div><h3>'+match.length+' registry row'+(match.length===1?'':'s')+'</h3>'
-        +'<div class="placeholder-note" style="border:none;padding:0;margin:.6rem 0 0">'+esc(rm.diagnostic_format)+'</div>';
-      body+='<div style="margin-top:.8rem">'+match.slice(0,10).map(function(r){
-        return '<div style="border-bottom:1px solid rgba(255,255,255,.06);padding:.5rem 0">'
-          +'<div class="mx-threat" style="font-size:.85rem">'+esc(r.threat)+' <span class="mx-tier t-'+esc(r.tier)+'">'+esc(r.tier)+'</span></div>'
-          +'<div class="mx-auth" style="margin-top:.25rem">'+authLine(r.authority)+'</div>'
-          +'<div class="mx-clause" style="margin-top:.2rem">'+esc(r.clause)+'</div></div>';
+      var arch=(rm.archetypes||[]).filter(function(a){return a.code===code;})[0]||{name:code};
+      var body='<div class="eyebrow">Diagnostic · '+esc(arch.name)+' × '+esc(surfaceLabel(surf))+'</div><h3>'+match.length+' registry row'+(match.length===1?'':'s')+'</h3>'
+        +'<div class="placeholder-note" style="border:none;padding:0;margin:.6rem 0 0">'+esc(rm.diagnostic_format)+'</div><div style="margin-top:.8rem">'+match.slice(0,10).map(function(r){
+        return '<div style="border-bottom:1px solid rgba(255,255,255,.06);padding:.5rem 0"><div class="mx-threat" style="font-size:.85rem">'+esc(r.threat)+' <span class="mx-tier t-'+esc(r.tier)+'">'+esc(r.tier)+'</span></div><div class="mx-auth" style="margin-top:.25rem">'+authLine(r.authority)+'</div><div class="mx-clause" style="margin-top:.2rem">'+esc(r.clause)+'</div></div>';
       }).join('')+'</div>';
       openModal(body);
     }
     document.querySelectorAll('.rm-arch').forEach(function(n){ n.addEventListener('click', function(){ selectArch(n.getAttribute('data-arch')); }); });
+    document.querySelectorAll('.preset-card').forEach(function(n){ n.addEventListener('click', function(){ selectArch(n.getAttribute('data-preset'), (n.getAttribute('data-surf')||'').split('|'), n.getAttribute('data-preset-key')); }); });
     surfWrap.addEventListener('click', function(e){ var b=e.target.closest('.rm-surf.lit'); if(b&&current) showDiag(current, b.getAttribute('data-surf')); });
     document.getElementById('rm-floor').addEventListener('click', function(){ showDiag('UNI','Consumer-Public'); });
-    document.querySelectorAll('[data-preset]').forEach(function(n){ n.addEventListener('click', function(){ selectArch(n.getAttribute('data-preset'), (n.getAttribute('data-surf')||'').split('|')); }); });
+    renderWorked();
     bindTips(document.getElementById('foundation'));
+  }
+
+  function bindAct1Interactions(){
+    var pinned=null;
+    function focusLane(key){ document.querySelectorAll('.fork-card').forEach(function(c){c.classList.toggle('active', c.getAttribute('data-lane')===key);}); document.querySelectorAll('[data-lane-route]').forEach(function(r){r.classList.toggle('lit', r.getAttribute('data-lane-route')===key);}); }
+    function clearLane(){ if(!pinned){ focusLane(''); } }
+    document.querySelectorAll('.fork-card').forEach(function(card){ var key=card.getAttribute('data-lane'); card.addEventListener('mouseenter',function(){focusLane(key);}); card.addEventListener('focus',function(){focusLane(key);}); card.addEventListener('mouseleave',clearLane); card.addEventListener('blur',clearLane); card.addEventListener('click',function(){pinned=key; focusLane(key);}); });
+    document.querySelectorAll('[data-bible-row]').forEach(function(btn){ btn.addEventListener('click', function(){ var r=(C.act1.ai_bible.rows||[])[parseInt(btn.getAttribute('data-bible-row'),10)]||{}; openModal('<div class="eyebrow">'+esc(r.lane||'Both')+'</div><h3>'+esc(r.title)+'</h3><div class="beat"><div class="lab">AI physics</div><p>'+esc(r.ai_physics)+'</p></div><div class="beat"><div class="lab">Legal doctrine</div><p>'+esc(r.legal_doctrine)+'</p></div><div class="beat"><div class="lab">Defensive control</div><p>'+esc(r.defensive_control)+'</p></div><div class="beat"><div class="lab">Routing</div><p>'+esc(r.routing)+'</p></div><div class="beat"><div class="lab">Why</div><p>'+esc(r.why)+'</p></div>'); }); });
+    var navs=Array.prototype.slice.call(document.querySelectorAll('[data-act1-nav]'));
+    function updateAct1Rail(){ var cur=0, off=window.innerHeight*.35; navs.forEach(function(n,i){ var t=document.getElementById(n.getAttribute('data-act1-nav')); if(t&&t.getBoundingClientRect().top-off<=0) cur=i; }); navs.forEach(function(n,i){ n.classList.toggle('active', i===cur); }); }
+    window.addEventListener('scroll', updateAct1Rail, {passive:true}); window.addEventListener('resize', updateAct1Rail); updateAct1Rail();
   }
 
   function authLine(a){
