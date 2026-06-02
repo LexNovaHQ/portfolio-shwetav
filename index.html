@@ -46,7 +46,7 @@ body::before{content:""; position:fixed; inset:0; pointer-events:none; opacity:.
 .main-grid{display:grid; grid-template-columns:minmax(0,1fr);}
 @media(min-width:1024px){.main-grid{grid-template-columns:210px minmax(0,1fr); gap:2.5rem;}}
 
-/* ---- RAIL (banded, start + terminal, traveling chip) ---- */
+/* ---- RAIL (live argument map) ---- */
 .rail-wrap{display:none;}
 @media(min-width:1024px){
   .rail-wrap{display:block; position:sticky; top:86px; align-self:start; height:calc(100vh - 110px); overflow-y:auto;}
@@ -56,14 +56,21 @@ body::before{content:""; position:fixed; inset:0; pointer-events:none; opacity:.
   .rail-band{font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(197,160,89,.7);
     font-weight:800; margin:1.1rem 0 .35rem 2.7rem;}
   .rail-band .tag{display:block; color:rgba(229,229,229,.38); font-weight:600; letter-spacing:.12em; margin-top:1px;}
-  .rail-stage{position:relative; display:grid; grid-template-columns:44px 1fr; gap:.7rem; align-items:start; min-height:54px;}
+  .rail-stage{position:relative; display:grid; grid-template-columns:44px 1fr; gap:.7rem; align-items:start; min-height:54px;
+    border-radius:.85rem; padding:.12rem .2rem; text-decoration:none; cursor:pointer;}
+  .rail-stage:hover,.rail-stage:focus{background:rgba(197,160,89,.06); outline:none;}
   .rail-dot{width:14px; height:14px; margin-left:14px; margin-top:2px; border-radius:999px; background:#080808;
     border:1px solid rgba(197,160,89,.45); box-shadow:0 0 0 5px rgba(5,5,5,.98); transition:all .3s;}
   .rail-dot.endpoint{transform:rotate(45deg); border-radius:3px;}
+  .rail-stage.completed .rail-dot{background:rgba(197,160,89,.45); border-color:rgba(197,160,89,.75);}
   .rail-stage.active .rail-dot{background:var(--gold); border-color:var(--gold); box-shadow:0 0 0 5px #050505,0 0 22px rgba(197,160,89,.9);}
+  .rail-stage.completed .rail-node{color:rgba(229,229,229,.72);}
   .rail-stage.active .rail-node{color:var(--gold);}
   .rail-node{font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(229,229,229,.5); font-weight:700;}
   .rail-sub{font-size:.68rem; color:rgba(229,229,229,.4); margin-top:.15rem; line-height:1.3;}
+  .rail-why{display:none; margin-top:.5rem; padding:.55rem .65rem; border:1px solid rgba(197,160,89,.24);
+    border-radius:.75rem; background:rgba(197,160,89,.07); color:rgba(229,229,229,.72); font-size:.68rem; line-height:1.45;}
+  .rail-stage.explain .rail-why{display:block;}
   .rail-chip{display:inline-flex; align-items:center; gap:.4rem; margin:1rem 0 0 2.7rem; padding:.35rem .6rem;
     border:1px solid rgba(197,160,89,.35); background:rgba(197,160,89,.06); color:var(--gold);
     font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; border-radius:999px;}
@@ -101,6 +108,25 @@ section{scroll-margin-top:110px;}
 .btn:hover,.btn:focus{background:rgba(197,160,89,.14); transform:translateY(-1px); outline:none; box-shadow:0 0 0 3px rgba(197,160,89,.12);}
 .btn.sec{border-color:rgba(229,229,229,.18); color:var(--marble); background:rgba(255,255,255,.025);}
 .btn.sm{min-height:34px; padding:.45rem .8rem; font-size:.64rem;}
+.quiet-link{display:inline-flex; align-items:center; min-height:44px; color:rgba(229,229,229,.68); font-size:.74rem;
+  letter-spacing:.08em; text-transform:uppercase; font-weight:700; border-bottom:1px solid rgba(197,160,89,.35);}
+.quiet-link:hover,.quiet-link:focus{color:var(--gold); outline:none; border-color:var(--gold);}
+.hero-grid{display:grid; gap:1.5rem; align-items:stretch;}
+@media(min-width:1024px){.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr); gap:2rem;}}
+.proof-panel{height:100%; border:1px solid rgba(197,160,89,.26); background:linear-gradient(180deg,rgba(197,160,89,.07),rgba(255,255,255,.018));
+  border-radius:1.25rem; padding:1.1rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.03);}
+.proof-steps{display:grid; gap:.55rem; margin-top:1rem;}
+.proof-step{display:grid; grid-template-columns:30px 1fr; gap:.65rem; align-items:center;}
+.proof-step .mark{width:30px; height:30px; border-radius:999px; border:1px solid rgba(197,160,89,.42);
+  display:grid; place-items:center; color:var(--gold); font-size:.68rem; font-weight:800; background:rgba(5,5,5,.5);}
+.proof-step .copy{border:1px solid rgba(229,229,229,.09); border-radius:.8rem; padding:.55rem .75rem;
+  color:rgba(229,229,229,.82); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; background:rgba(255,255,255,.018);}
+.proof-step:nth-child(2n) .copy{margin-left:1rem;}
+.proof-chips{display:flex; flex-wrap:wrap; gap:.45rem; margin-top:1rem;}
+.proof-chip{border:1px solid rgba(197,160,89,.34); background:rgba(5,5,5,.38); color:var(--gold); border-radius:999px;
+  padding:.45rem .68rem; font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; transition:all .2s;}
+.proof-chip:hover,.proof-chip:focus{background:rgba(197,160,89,.13); outline:none; box-shadow:0 0 0 3px rgba(197,160,89,.11);}
+.anchor-point{display:block; position:relative; top:-112px; visibility:hidden;}
 .connector{position:relative; margin:1.5rem 0 0; padding:1.2rem 1.2rem 1.2rem 1.6rem; border-left:1px solid var(--gold);
   background:linear-gradient(90deg,rgba(197,160,89,.1),rgba(12,12,12,.8)); border-radius:0 1rem 1rem 0; box-shadow:0 0 28px rgba(197,160,89,.08);}
 .connector::before{content:""; position:absolute; left:-5px; top:1.5rem; width:9px; height:9px; border-radius:50%;
@@ -272,7 +298,8 @@ section{scroll-margin-top:110px;}
 
 <div class="mobile-funnel" aria-label="Journey progress" id="mfunnel">
   <span class="seg" data-ms="0"></span><span class="seg" data-ms="1"></span><span class="seg" data-ms="2"></span>
-  <span class="seg" data-ms="3"></span><span class="seg" data-ms="4"></span>
+  <span class="seg" data-ms="3"></span><span class="seg" data-ms="4"></span><span class="seg" data-ms="5"></span>
+  <span class="seg" data-ms="6"></span>
   <span class="lbl" id="mfunnel-lbl">Start</span>
 </div>
 
@@ -303,7 +330,8 @@ section{scroll-margin-top:110px;}
 <script>
 "use strict";
 (function(){
-  var C = JSON.parse(document.getElementById('content-data').textContent);
+  var embeddedContent = JSON.parse(document.getElementById('content-data').textContent);
+  function boot(C){
   var main = document.getElementById('main');
   var esc = function(s){ s = (s==null?'':String(s)); return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   var el = function(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; };
@@ -331,24 +359,57 @@ section{scroll-margin-top:110px;}
 
   // ---------- HERO ----------
   (function(){
-    var h=C.hero;
-    var ctas = h.ctas.map(function(c){ return '<a class="btn'+(c===h.ctas[1]?' sec':'')+'" href="'+esc(c.target)+'">'+esc(c.label)+'</a>'; }).join('');
+    var h=C.hero || {};
+    var ctas = Array.isArray(h.ctas) ? h.ctas : [];
+    var primary = ctas[0] || {label:'Watch project walkthrough', target:'#funnel-video'};
+    var secondary = ctas[1] || {label:'Explore proof portal', target:'#funnel-sandboxes'};
+    var tertiary = ctas[2] || {label:'View build notes', target:'#capstone'};
+    var arch = Array.isArray(h.proof_architecture) && h.proof_architecture.length ? h.proof_architecture :
+      (h.spine_eyebrow ? String(h.spine_eyebrow).split('→') : ['Legal doctrine','Risk registry','Diligence engine','Client product profile vault','Documents','Portal']);
+    var chips = Array.isArray(h.proof_chips) ? h.proof_chips : [];
+    var archHtml = arch.map(function(step,i){
+      return '<div class="proof-step"><span class="mark">'+(i+1)+'</span><span class="copy">'+esc(String(step).trim())+'</span></div>';
+    }).join('');
+    var chipHtml = chips.length ? chips.map(function(chip,i){
+      return '<button class="proof-chip" type="button" data-proof-chip="'+i+'">'+esc(chip.label || ('Proof '+(i+1)))+'</button>';
+    }).join('') : '<span class="proof-chip" aria-hidden="true">'+esc(h.proof_line || 'Proof artifacts available in the walkthrough')+'</span>';
     main.appendChild(el(
     '<section id="hero" class="act" data-rail="0" style="min-height:calc(100vh - 7.4rem); display:flex; align-items:center">'
     +'<div class="card-shell w-full">'
-      +'<h1 class="load-in font-display text-white" style="font-size:2.2rem;line-height:1">'+esc(h.name)+'</h1>'
-      +'<p class="load-in d1 text-sm sm:text-base mt-2" style="color:rgba(229,229,229,.72);max-width:60rem;line-height:1.6">'+esc(h.identity_line)+'</p>'
-      +'<div class="hairline my-5"></div>'
-      +'<p class="load-in d2 eyebrow mb-1">'+esc(h.spine_eyebrow)+'</p>'
-      +'<p class="load-in d2 text-xs mb-4" style="color:rgba(229,229,229,.5)">'+esc(h.spine_explainer)+'</p>'
-      +'<h2 class="load-in d3 font-display text-white" style="font-size:1.55rem;line-height:1.18;max-width:50rem">'+esc(h.hook)+'</h2>'
-      +'<p class="load-in d4 font-display italic gold" style="font-size:1.7rem;line-height:1.2;margin-top:1.1rem;max-width:46rem">'+esc(h.thesis)+'</p>'
-      +'<div class="load-in d5 mt-6 flex flex-col sm:flex-row gap-3">'+ctas+'</div>'
-      +'<p class="load-in d5 text-xs mt-3" style="color:rgba(229,229,229,.45)">'+esc(h.proof_line)+'</p>'
-      +'<div class="load-in d5 surface rounded-2xl px-5 py-4 text-sm mt-5" style="color:rgba(229,229,229,.8);border-left:1px solid var(--gold)">'+esc(h.credential_bar)+'</div>'
+      +'<div class="hero-grid">'
+        +'<div>'
+          +'<h1 class="load-in font-display text-white" style="font-size:2.35rem;line-height:1">'+esc(h.name || 'Shwetabh Singh')+'</h1>'
+          +'<p class="load-in d1 text-sm sm:text-base mt-2" style="color:rgba(229,229,229,.72);max-width:60rem;line-height:1.6">'+esc(h.identity_line || '')+'</p>'
+          +'<p class="load-in d2 text-base mt-4" style="color:rgba(229,229,229,.86);max-width:50rem;line-height:1.65">'+esc(h.builder_line || h.spine_explainer || '')+'</p>'
+          +'<div class="hairline my-5"></div>'
+          +'<h2 class="load-in d3 font-display text-white" style="font-size:1.55rem;line-height:1.18;max-width:50rem">'+esc(h.hook || '')+'</h2>'
+          +'<p id="hero-thesis" class="load-in d4 font-display italic gold" style="font-size:1.7rem;line-height:1.2;margin-top:1.1rem;max-width:46rem">'+esc(h.thesis || '')+'</p>'
+          +'<div class="load-in d5 mt-6 flex flex-col sm:flex-row sm:items-center gap-3">'
+            +'<a class="btn" href="'+esc(primary.target || '#funnel-video')+'">'+esc(primary.label || 'Watch project walkthrough')+'</a>'
+            +'<a class="btn sec" href="'+esc(secondary.target || '#funnel-sandboxes')+'">'+esc(secondary.label || 'Explore proof portal')+'</a>'
+            +'<a class="quiet-link" href="'+esc(tertiary.target || '#capstone')+'">'+esc(tertiary.label || 'View build notes')+'</a>'
+          +'</div>'
+          +'<p class="load-in d5 text-xs mt-3" style="color:rgba(229,229,229,.45)">'+esc(h.proof_line || '')+'</p>'
+        +'</div>'
+        +'<aside class="load-in d4 proof-panel" aria-label="Built legal delivery system proof">'
+          +'<p class="eyebrow">BUILT LEGAL DELIVERY SYSTEM</p>'
+          +'<div class="proof-steps">'+archHtml+'</div>'
+          +'<div class="proof-chips">'+chipHtml+'</div>'
+        +'</aside>'
+      +'</div>'
+      +'<div class="load-in d5 surface rounded-2xl px-5 py-4 text-sm mt-6" style="color:rgba(229,229,229,.8);border-left:1px solid var(--gold)">'+esc(h.credential_bar || '')+'</div>'
     +'</div></section>'));
     // responsive hook sizing up
     var hk=main.querySelector('#hero h2'); if(window.innerWidth>=640){hk.style.fontSize='1.9rem';}
+    document.querySelectorAll('[data-proof-chip]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var chip=chips[parseInt(btn.getAttribute('data-proof-chip'),10)] || {};
+        openModal('<div class="eyebrow">Proof chip</div><h3>'+esc(chip.label || btn.textContent)+'</h3>'
+          +'<div class="beat"><div class="lab">What</div><p>'+esc(chip.what || 'Proof detail is available in the walkthrough.')+'</p></div>'
+          +'<div class="beat"><div class="lab">Supports</div><p>'+esc(chip.supports || 'Supports the legal delivery system argument.')+'</p></div>'
+          +'<div class="beat"><div class="lab">Proof</div><p>'+esc(chip.proof || h.proof_line || 'Shown through scrubbed proof artifacts.')+'</p></div>');
+      });
+    });
   })();
 
   // ---------- ACT I ----------
@@ -373,7 +434,7 @@ section{scroll-margin-top:110px;}
       +'<p class="reveal mt-5" style="color:rgba(229,229,229,.78);line-height:1.7;max-width:52rem">'+esc(a.intro)+'</p>'
       +'<div class="reveal grid md:grid-cols-2 gap-3 mt-5">'+lanes+'</div>'
       // Reference layer
-      +'<div class="reveal mt-8"><p class="eyebrow mb-2">The Reference Layer</p>'
+      +'<div id="doctrine-layer" class="reveal mt-8"><p class="eyebrow mb-2">The Reference Layer</p>'
         +'<p style="color:rgba(229,229,229,.8);font-style:italic;margin:0 0 .6rem">'+esc(a.reference_layer.frame)+'</p>'
         +'<div class="spine-step">'+refSpine+'</div>'
         +'<p class="text-sm" style="color:rgba(229,229,229,.7);line-height:1.6">'+esc(a.reference_layer.worked_line)+'</p>'
@@ -382,7 +443,7 @@ section{scroll-margin-top:110px;}
           +'<div class="cap"><div><div class="eyebrow">Applied-practice layer</div><p class="text-xs mt-1" style="color:rgba(229,229,229,.5)">'+esc(a.reference_layer.applied_practice)+'</p></div></div></div>'
       +'</div>'
       // Risk map
-      +'<div class="reveal mt-9"><p class="eyebrow mb-1">The Risk Map · AI Classification & Trigger Map</p>'
+      +'<div id="taxonomy-map" class="reveal mt-9"><p class="eyebrow mb-1">The Risk Map · AI Classification & Trigger Map</p>'
         +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(spine)+'</p>'
         +'<div class="rm-presets mb-3">'+presets+'</div>'
         +'<div class="grid lg:grid-cols-2 gap-4">'
@@ -465,6 +526,7 @@ section{scroll-margin-top:110px;}
     main.appendChild(el(
     '<section id="matrix" class="act" data-rail="2">'
     +'<div class="card-shell">'
+      +'<span id="instruments-layer" class="anchor-point" aria-hidden="true"></span>'
       +'<div class="reveal"><p class="eyebrow">ACT II</p>'
         +'<h2 class="font-display section-title text-white mt-2">'+esc(a.header)+'</h2>'
         +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(a.forward_ref)+'</p>'
@@ -614,12 +676,12 @@ section{scroll-margin-top:110px;}
       +'<div class="reveal"><p class="eyebrow">ACT III</p>'
         +'<h2 class="font-display section-title text-white mt-2">'+esc(a.header)+'</h2>'
         +'<p class="text-xs mt-2" style="color:rgba(229,229,229,.45)">'+esc(a.scope_note)+'</p></div>'
-      +'<div id="funnel-video" class="reveal surface rounded-2xl p-5 mt-6"><div class="eyebrow mb-2">Primary exhibit · Walkthrough video</div>'
+      +'<div id="funnel-video" class="reveal surface rounded-2xl p-5 mt-6"><span id="tooling-layer" class="anchor-point" aria-hidden="true"></span><div class="eyebrow mb-2">Primary exhibit · Walkthrough video</div>'
         +'<p class="text-sm" style="color:rgba(229,229,229,.78);line-height:1.6">'+esc(a.master_video.frame)+'</p>'
         +'<p class="text-xs mt-2" style="color:rgba(229,229,229,.4)">'+esc(a.master_video.phase)+' · placeholder in this build.</p></div>'
       +'<div class="reveal surface rounded-2xl p-5 mt-4"><p class="font-display italic gold" style="font-size:1.3rem;line-height:1.35;margin:0">'+esc(a.determinism_principle)+'</p>'
         +'<p class="text-xs mt-3" style="color:rgba(229,229,229,.45)">OS map: '+esc(a.os_map)+'</p></div>'
-      +'<div id="funnel-sandboxes" class="reveal mt-6"><p class="eyebrow mb-3">The funnel · Watch / Run / Read</p>'
+      +'<div id="funnel-sandboxes" class="reveal mt-6"><span id="systems-layer" class="anchor-point" aria-hidden="true"></span><p class="eyebrow mb-3">The funnel · Watch / Run / Read</p>'
         +'<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-3">'+stations+'</div></div>'
       +'<div class="connector reveal"><p>'+esc(a.connector3)+'</p></div>'
     +'</div></section>'));
@@ -641,7 +703,7 @@ section{scroll-margin-top:110px;}
       +'<div class="reveal mt-6"><p class="eyebrow mb-1">'+esc(c.parallel_map.header)+'</p>'
         +'<p class="text-sm" style="color:rgba(229,229,229,.65);line-height:1.6;max-width:54rem">'+esc(c.parallel_map.frame)+'</p>'
         +'<table class="pm-table"><thead><tr><th>The law (first)</th><th>The engineering (after)</th></tr></thead><tbody>'+pm+'</tbody></table></div>'
-      +'<div class="reveal surface rounded-2xl p-6 mt-6"><p class="font-display text-white" style="font-size:1.7rem;line-height:1.3;margin:0">'+esc(c.identity_line)+'</p></div>'
+      +'<div id="close-fit" class="reveal surface rounded-2xl p-6 mt-6"><p class="font-display text-white" style="font-size:1.7rem;line-height:1.3;margin:0">'+esc(c.identity_line)+'</p></div>'
     +'</div></section>'));
   })();
 
@@ -671,32 +733,51 @@ section{scroll-margin-top:110px;}
   // ---------- RAIL ----------
   (function(){
     var rail=document.getElementById('rail');
+    var railData=C.rail || {nodes:[], chip:{}};
+    var fallbackTargets=['hero-thesis','doctrine-layer','taxonomy-map','instruments-layer','tooling-layer','systems-layer','close-fit'];
+    var fallbackWhy=[
+      'Establishes the claim: lawyer first, systems second.',
+      'Shows the legal source layer: cases, statutes, and risk principles.',
+      'Shows how AI use cases become legal risk categories.',
+      'Shows how mapped risks become clauses, policies, and playbooks.',
+      'Shows the diligence and intake workflows that operationalize the legal work.',
+      'Shows the reusable delivery layer: portal, vault, and automation architecture.',
+      'Converts the proof into the hiring argument for legal tech practice.'
+    ];
     var html='';
-    C.rail.nodes.forEach(function(n,i){
+    (railData.nodes || []).forEach(function(n,i){
+      var label=n.label || n.node || ('Step '+(i+1));
+      var target=n.target || fallbackTargets[i] || 'hero';
+      var why=n.why || fallbackWhy[i] || n.sub || label;
       if(n.kind==='start'||n.kind==='terminal'){
-        html+='<div class="rail-stage" data-node="'+i+'"><div class="rail-dot endpoint"></div><div><div class="rail-node">'+esc(n.label)+'</div><div class="rail-sub">'+esc(n.sub)+'</div></div></div>';
+        html+='<a class="rail-stage" href="#'+esc(target)+'" data-node="'+i+'" data-target="'+esc(target)+'"><div class="rail-dot endpoint"></div><div><div class="rail-node">'+esc(label)+'</div><div class="rail-sub">'+esc(n.sub)+'</div><div class="rail-why">'+esc(why)+'</div></div></a>';
       } else {
         // band header only when band changes
-        var prev=C.rail.nodes[i-1];
+        var prev=railData.nodes[i-1];
         if(!prev||prev.band!==n.band){ html+='<div class="rail-band">'+esc(n.band)+'<span class="tag">'+esc(n.band_tag)+'</span></div>'; }
-        html+='<div class="rail-stage" data-node="'+i+'"><div class="rail-dot"></div><div><div class="rail-node">'+esc(n.node)+'</div><div class="rail-sub">'+esc(n.sub)+'</div></div></div>';
+        html+='<a class="rail-stage" href="#'+esc(target)+'" data-node="'+i+'" data-target="'+esc(target)+'"><div class="rail-dot"></div><div><div class="rail-node">'+esc(label)+'</div><div class="rail-sub">'+esc(n.sub)+'</div><div class="rail-why">'+esc(why)+'</div></div></a>';
       }
     });
-    html+='<div class="rail-chip" id="rail-chip"><span class="pulse"></span><span id="rail-chip-text">'+esc(C.rail.chip.derived)+'</span></div>';
+    html+='<div class="rail-chip" id="rail-chip"><span class="pulse"></span><span id="rail-chip-text">'+esc((railData.chip||{}).derived || 'law → system argument')+'</span></div>';
     rail.innerHTML=html;
   })();
 
   // ---------- SCROLL / SPY / REVEAL ----------
   (function(){
     var progress=document.getElementById('progress');
-    var sections=Array.prototype.slice.call(document.querySelectorAll('section[data-rail]'));
     var railStages=Array.prototype.slice.call(document.querySelectorAll('.rail-stage'));
     var mfSegs=Array.prototype.slice.call(document.querySelectorAll('.mobile-funnel .seg'));
     var mfLbl=document.getElementById('mfunnel-lbl');
     var chipText=document.getElementById('rail-chip-text');
     var navLinks=Array.prototype.slice.call(document.querySelectorAll('.nav-link[href^="#"]'));
     var navMap={hero:'#foundation',foundation:'#foundation',matrix:'#matrix',funnel:'#funnel',capstone:'#capstone',contact:'#contact'};
-    var stageLabels=['Foundation','Foundation','The Legal Matrix','The Funnel','Capstone'];
+    var railData=C.rail || {nodes:[], chip:{}};
+    var railTargets=railStages.map(function(st){ return document.getElementById(st.getAttribute('data-target')); });
+    var railLabels=railStages.map(function(st){
+      var node=(railData.nodes || [])[parseInt(st.getAttribute('data-node'),10)] || {};
+      return node.label || node.node || 'Start';
+    });
+    var activeRail=-1, explainTimer=null;
 
     var reveals=document.querySelectorAll('.reveal');
     if('IntersectionObserver' in window){
@@ -706,29 +787,41 @@ section{scroll-margin-top:110px;}
       reveals.forEach(function(n){n.classList.add('visible');});
     }
 
+    function showRailWhy(idx){
+      if(idx<0 || !railStages[idx]) return;
+      if(explainTimer) window.clearTimeout(explainTimer);
+      railStages.forEach(function(st){ st.classList.remove('explain'); });
+      railStages[idx].classList.add('explain');
+      explainTimer=window.setTimeout(function(){ railStages[idx].classList.remove('explain'); }, 5200);
+    }
+    railStages.forEach(function(st,idx){
+      st.addEventListener('mouseenter', function(){ showRailWhy(idx); });
+      st.addEventListener('focus', function(){ showRailWhy(idx); });
+      st.addEventListener('click', function(){ showRailWhy(idx); });
+    });
+
     function update(){
       var max=document.documentElement.scrollHeight-window.innerHeight;
       progress.style.width=(max>0?(window.scrollY/max*100):0)+'%';
-      var cur=0, curId='hero', off=window.innerHeight*.4;
-      sections.forEach(function(s){ if(s.getBoundingClientRect().top-off<=0){ cur=parseInt(s.getAttribute('data-rail'),10); curId=s.id; } });
-      // rail nodes: light start + all nodes whose data-rail index <= cur ; terminal lights at last section
-      railStages.forEach(function(st){
-        var ni=parseInt(st.getAttribute('data-node'),10);
-        var node=C.rail.nodes[ni];
-        var lit=false;
-        if(node.kind==='start') lit=true;
-        else if(node.kind==='terminal') lit=(curId==='capstone'||curId==='contact');
-        else {
-          // map rail stage to its data-rail band index
-          var bandIdx = node.band.indexOf('ACT I')>=0?1 : node.band.indexOf('ACT II')>=0?2 : 3;
-          // node order within: doctrine/taxonomy=1, instruments=2, tooling/systems=3
-          lit = cur>=bandIdx;
+      var cur=0, curId='hero', off=window.innerHeight*.42;
+      railTargets.forEach(function(target,idx){
+        if(target && target.getBoundingClientRect().top-off<=0){
+          cur=idx;
+          curId=target.closest('section') ? target.closest('section').id : target.id;
         }
-        st.classList.toggle('active', lit);
       });
+      railStages.forEach(function(st,idx){
+        st.classList.toggle('completed', idx<cur);
+        st.classList.toggle('active', idx===cur);
+      });
+      if(cur!==activeRail){
+        activeRail=cur;
+        showRailWhy(cur);
+      }
       mfSegs.forEach(function(s,idx){ s.classList.toggle('active', idx<=cur); });
-      mfLbl.textContent=stageLabels[cur]||'Start';
-      chipText.textContent = cur>=3?C.rail.chip.running : cur>=2?C.rail.chip.structured : C.rail.chip.derived;
+      mfLbl.textContent=railLabels[cur]||'Start';
+      var chip=railData.chip || {};
+      chipText.textContent = cur>=4 ? (chip.running || 'instruments → delivery system') : cur>=3 ? (chip.structured || 'risks → instruments') : (chip.derived || 'law → system argument');
       var target=navMap[curId]||'#foundation';
       navLinks.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')===target); });
     }
@@ -737,6 +830,15 @@ section{scroll-margin-top:110px;}
     update();
   })();
 
+  }
+  if(window.fetch){
+    fetch('content.json', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : embeddedContent; })
+      .then(function(fresh){ boot(fresh || embeddedContent); })
+      .catch(function(){ boot(embeddedContent); });
+  } else {
+    boot(embeddedContent);
+  }
 })();
 </script>
 </body>
