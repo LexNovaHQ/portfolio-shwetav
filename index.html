@@ -141,6 +141,8 @@ section{scroll-margin-top:110px;}
 .chain-note{display:none; margin-top:.38rem; color:rgba(229,229,229,.68); font-size:.66rem; letter-spacing:0; text-transform:none; font-weight:400; line-height:1.45;}
 .chain-node:hover .chain-note,.chain-node:focus .chain-note,.chain-node.chain-open .chain-note{display:block;}
 .proof-disclaimer{margin:.95rem 0 .45rem; color:rgba(229,229,229,.38); font-size:.56rem; letter-spacing:.12em; text-transform:uppercase;}
+.proof-subtitle{margin:.95rem 0 .2rem; color:rgba(245,245,245,.78); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; font-weight:800;}
+.proof-subtitle+.proof-disclaimer{margin-top:0;}
 .proof-chips{display:grid; grid-template-columns:1fr; gap:.45rem; margin-top:0;}
 @media(min-width:640px){.proof-chips{grid-template-columns:repeat(2,minmax(0,1fr));}}
 .proof-chip{border:1px solid rgba(197,160,89,.34); background:rgba(5,5,5,.38); color:var(--gold); border-radius:999px;
@@ -432,6 +434,7 @@ section{scroll-margin-top:110px;}
         +'<aside class="load-in d4 proof-panel" aria-label="Built legal delivery system proof">'
           +'<p class="eyebrow">BUILT LEGAL DELIVERY SYSTEM</p>'
           +'<div class="proof-chain" aria-label="Legal delivery system chain">'+chainHtml+'</div>'
+          +'<p class="proof-subtitle">System Engines</p>'
           +'<p class="proof-disclaimer">Click to know more</p>'
           +'<div class="proof-chips">'+chipHtml+'</div>'
         +'</aside>'
