@@ -1,77 +1,142 @@
 {
   "_meta": {
     "note": "Single content source for portfolio-shwetabh.lexnovahq.com. Stripped/watermarked-safe: no commercial framing, no Architect Notes, no secrets. Matrix rows derived from verified LEX_NOVA_REGISTRY_v2 (98 threats).",
-    "page_title": "Shwetabh Singh — a litigator making AI legal work defensible enough to deploy",
-    "og_title": "Shwetabh Singh — a litigator making AI legal work defensible enough to deploy",
-    "og_description": "Doctrine → Taxonomy → Instruments → Tooling → Systems. The path the work took, from the law itself to the systems that run it.",
+    "page_title": "Shwetabh Singh — Technology & Data Protection Lawyer building legal delivery systems",
+    "og_title": "Shwetabh Singh — Technology & Data Protection Lawyer building legal delivery systems",
+    "og_description": "AI governance, cross-border privacy, commercial contracts, and the legal delivery systems that make the work structured, reviewable, and deployable.",
     "footer": "© 2026 Shwetabh Singh"
   },
   "hero": {
     "name": "Shwetabh Singh",
-    "identity_line": "Technology & Data Protection Lawyer | AI Governance & Cross-Border Privacy (GDPR · US State Laws · DPDP) | Commercial Contracts for Startups & Tech",
+    "identity_line": "Technology & Data Protection Lawyer | AI Governance · Cross-Border Privacy · Commercial Contracts for Tech",
+    "builder_line": "Building legal delivery systems that make AI governance, privacy, and contract work structured, reviewable, and deployable.",
     "spine_eyebrow": "Doctrine → Taxonomy → Instruments → Tooling → Systems",
-    "spine_explainer": "The path the work actually took — from the law itself to the systems that run it.",
-    "hook": "I practised litigation for three and a half years. Then I built systems that do the substantive part of the work — diagnosing risk, drafting the defenses, running the diligence — and proved them on AI law.",
+    "spine_explainer": "The path the work actually took — law first, systems second.",
+    "hook": "My legal foundation is 3.5 years of litigation. Since October 2025, I have been turning AI governance and commercial-contract work into structured legal systems — risk registries, diligence workflows, client intake logic, document assembly, and review portals — so the work becomes easier to review, repeat, and deploy.",
     "thesis": "The hard part of legal AI isn't the AI — it's making a probabilistic machine deterministic enough to trust with law. That's what I engineered.",
+    "proof_architecture": [
+      "Legal doctrine",
+      "Risk registry",
+      "Diligence engine",
+      "Client product profile vault",
+      "Documents",
+      "Portal"
+    ],
+    "proof_chips": [
+      {
+        "label": "AI Risk Diligence Engine",
+        "what": "A diligence layer that turns public/product facts into legal-risk findings using a structured threat registry.",
+        "supports": "Supports AI governance review by showing what risk is triggered, why it matters, and what legal instrument should respond.",
+        "proof": "Shown through project walkthrough and scrubbed proof artifacts."
+      },
+      {
+        "label": "Internal AI Use Review",
+        "what": "A review workflow for shadow AI, employee tool use, client-data exposure, output ownership, and workplace governance.",
+        "supports": "Supports internal AI policy, handbook, impact assessment, IP, and human-review controls.",
+        "proof": "Shown through the workplace governance scanner and related document stack."
+      },
+      {
+        "label": "Client Product Profile Vault",
+        "what": "A structured intake vault that maps product facts — market exposure, model architecture, output ownership, SLA posture, PII processing, and AI archetype — into document-routing logic.",
+        "supports": "Supports ToS, DPA, AUP, SLA, Agentic Addendum, Privacy Policy, and related review-ready documents.",
+        "proof": "Built as a four-module intake wizard with clause-injection mappings."
+      },
+      {
+        "label": "Risk-to-Clause Mapping System",
+        "what": "A legal mapping layer that connects risks, authorities, trigger conditions, and remediation clauses.",
+        "supports": "Supports reviewability: a reviewer can trace why a clause exists and what legal risk it closes.",
+        "proof": "Shown through the threat matrix and living document interaction."
+      },
+      {
+        "label": "Document Assembly Workflow",
+        "what": "A workflow for turning client/product inputs into a structured document stack instead of hand-building every draft from zero.",
+        "supports": "Supports repeatable legal delivery while keeping human review and legal judgment in the loop.",
+        "proof": "Shown through the Vault-to-document assembly path."
+      },
+      {
+        "label": "Client Review Portal",
+        "what": "A delivery layer for client intake, review, document status, and structured handoff.",
+        "supports": "Supports review-ready delivery: the legal work is organized for client and counsel review.",
+        "proof": "Shown through safe/scrubbed portal proof artifacts."
+      }
+    ],
     "ctas": [
       {
-        "label": "Watch the walkthrough",
+        "label": "Watch project walkthrough",
         "target": "#funnel-video"
       },
       {
-        "label": "Run the diligence",
+        "label": "Explore proof portal",
         "target": "#funnel-sandboxes"
+      },
+      {
+        "label": "View build notes",
+        "target": "#capstone"
       }
     ],
-    "proof_line": "Everything here is live, open, or on video. Run it, read the code, watch it work.",
-    "credential_bar": "Three and a half years in litigation (Patna High Court) · B.A. LL.B., NLU Odisha · building it hands-on since October 2025"
+    "proof_line": "Demos and videos use public, synthetic, or scrubbed proof artifacts only.",
+    "credential_bar": "3.5 years litigation · B.A. LL.B., NLU Odisha · AI governance · privacy · commercial contracts · building hands-on since Oct 2025"
   },
   "rail": {
     "chip": {
-      "derived": "98-threat registry · derived",
-      "structured": "98-threat registry · structured",
-      "running": "98-threat registry · running"
+      "derived": "law → system argument",
+      "structured": "risks → instruments",
+      "running": "instruments → delivery system"
     },
     "nodes": [
       {
         "kind": "start",
         "label": "Start",
-        "sub": "the thesis"
+        "sub": "the thesis",
+        "target": "hero-thesis",
+        "why": "Establishes the claim: lawyer first, systems second."
       },
       {
         "band": "ACT I · FOUNDATION",
         "band_tag": "the law",
         "node": "Doctrine",
-        "sub": "the reference layer · 98 threats"
+        "sub": "the legal source layer",
+        "target": "doctrine-layer",
+        "why": "Shows the legal source layer: cases, statutes, and risk principles."
       },
       {
         "band": "ACT I · FOUNDATION",
         "band_tag": "the law",
         "node": "Taxonomy",
-        "sub": "the risk map"
+        "sub": "the risk map",
+        "target": "taxonomy-map",
+        "why": "Shows how AI use cases become legal risk categories."
       },
       {
         "band": "ACT II · THE LEGAL MATRIX",
         "band_tag": "the instruments",
         "node": "Instruments",
-        "sub": "clauses + the document stack"
+        "sub": "clauses, policies, playbooks",
+        "target": "instruments-layer",
+        "why": "Shows how mapped risks become clauses, policies, and playbooks."
       },
       {
         "band": "ACT III · THE FUNNEL",
         "band_tag": "built to deliver it",
         "node": "Tooling",
-        "sub": "the live diagnostic + assembly loop"
+        "sub": "diligence + intake workflows",
+        "target": "tooling-layer",
+        "why": "Shows the diligence and intake workflows that operationalize the legal work."
       },
       {
         "band": "ACT III · THE FUNNEL",
         "band_tag": "built to deliver it",
         "node": "Systems",
-        "sub": "the reusable architecture"
+        "sub": "the reusable delivery layer",
+        "target": "systems-layer",
+        "why": "Shows the reusable delivery layer: portal, vault, and automation architecture."
       },
       {
         "kind": "terminal",
         "label": "Close",
-        "sub": "the conviction"
+        "sub": "the fit",
+        "target": "close-fit",
+        "why": "Converts the proof into the hiring argument for legal tech practice."
       }
     ]
   },
@@ -537,1401 +602,23 @@
             "us": "Uniform Electronic Transactions Act §14"
           },
           "clause": "TOS §9.2",
-          "tier": "T2"
-        },
-        {
-          "id": "ORC_LIA_001",
-          "threat": "Foundation Model SLA Breach",
-          "lane": "A",
-          "archetype": "ORC",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Commercial Contract Liability (B2B SLA Indemnification Standards)"
-          },
-          "clause": "SLA §4.3",
-          "tier": "T2"
-        },
-        {
-          "id": "SHD_LIA_001",
-          "threat": "The False Negative Breach",
-          "lane": "A",
-          "archetype": "SHD",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Soteria Insurance Ltd v. IBM United Kingdom Ltd [2022] EWHC 2084 (TCC)"
-          },
-          "clause": "TOS §9.2",
-          "tier": "T2"
-        },
-        {
-          "id": "SHD_LIA_002",
-          "threat": "Due-Care Negligence Defense",
-          "lane": "A",
-          "archetype": "SHD",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "ISO 27001 / SOC 2 Type II (Industry Due-Care Standards)"
-          },
-          "clause": "TOS §9.2",
-          "tier": "T3"
-        },
-        {
-          "id": "SHD_LIA_003",
-          "threat": "Mean Time to Evidence Standard",
-          "lane": "A",
-          "archetype": "SHD",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Mean Time to Evidence Standard (SEC Cyber Disclosure / NIST SP 800-61r3)"
-          },
-          "clause": "AGT §7.1",
-          "tier": "T3"
-        },
-        {
-          "id": "SHD_LIA_004",
-          "threat": "Continuous Audit Shift",
-          "lane": "A",
-          "archetype": "SHD",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Continuous Compliance Auditing Requirements (Industry-Wide Shift)"
-          },
-          "clause": "AGT §7.1",
-          "tier": "T4"
-        },
-        {
-          "id": "MOV_LIA_001",
-          "threat": "Bodily Injury Tort Exposure",
-          "lane": "A",
-          "archetype": "MOV",
-          "surface": [
-            "Consumer-Public",
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "State-Level Physical Tort Law (Negligence, Strict Liability, Wrongful Death)"
-          },
-          "clause": "TOS §2.2",
-          "tier": "T1"
-        },
-        {
-          "id": "MOV_LIA_002",
-          "threat": "Continuous Learning Liability Reset",
-          "lane": "A",
-          "archetype": "MOV",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "German Transposition of EU PLD (ProdHaftG Reform 2026)",
-            "us": "—"
-          },
-          "clause": "TOS §2.4",
           "tier": "T1"
         },
         {
           "id": "UNI_HAL_001",
-          "threat": "Bot Accountability for Promises",
+          "threat": "Chatbot Promissory Estoppel",
           "lane": "A",
           "archetype": "UNI",
           "surface": [
-            "Consumer-Public"
+            "Consumer-Public",
+            "Enterprise-Private"
           ],
           "authority": {
-            "in": "CPA 2019 (misleading representation / unfair trade practice)",
-            "eu": "EU AI Act Art. 50 (AI disclosure); UCPD (misleading practices)",
-            "us": "Moffatt v. Air Canada (BC CRT 2024, persuasive); FTC §5"
-          },
-          "clause": "TOS §8.1",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_HAL_002",
-          "threat": "Defamation via AI Output",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Consumer-Public"
-          ],
-          "authority": {
-            "in": "Defamation (tort) + IT Act 2000",
-            "eu": "GDPR Art. 5(1)(d) accuracy; member-state defamation",
-            "us": "Walters v. OpenAI (N.D. Ga. 2025); negligent misrepresentation"
+            "in": "—",
+            "eu": "—",
+            "us": "Moffatt v. Air Canada (B.C. Civil Resolution Tribunal, 2024)"
           },
           "clause": "TOS §8.2",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_HAL_003",
-          "threat": "Tort Negligence for Output",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Consumer-Public"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "General Tort Law (Negligence, Negligent Misrepresentation)"
-          },
-          "clause": "TOS §8.1",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_HAL_004",
-          "threat": "Undisclosed AI Interaction",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Consumer-Public"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EU AI Act Art. 50 transparency — applies 2 Aug 2026 (NOT deferred); Reg (EU) 2024/1689",
-            "us": "—"
-          },
-          "clause": "TOS §2.1",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_INF_001",
-          "threat": "Upstream Infringement Liability",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Infrastructure",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Bartz v. Anthropic (N.D. Cal. 2025 Settlement, $1.5B)"
-          },
-          "clause": "TOS §8.7",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_INF_002",
-          "threat": "UGC Safe Harbor Collapse",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Consumer-Public",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "DMCA §512 / Section 230 (47 U.S.C. §230)"
-          },
-          "clause": "TOS §6.6",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_INF_003",
-          "threat": "India 3-Hour SGI Takedown",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "PII",
-            "Consumer-Public",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "IT (Intermediary Guidelines) Amendment Rules 2026 (eff. 20 Feb 2026) Rule 3(1)(d) — 3-hr takedown on court/govt order; S"
-          },
-          "clause": "TOS §6.6",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_INF_004",
-          "threat": "Training Data Fair Use Collapse",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Infrastructure",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Bartz v. Anthropic (N.D. Cal. 2025, $1.5B Settlement) / Thomson Reuters v. ROSS (D. Del. 2025)"
-          },
-          "clause": "AUP §2.2(c)",
-          "tier": "T1"
-        },
-        {
-          "id": "CRT_INF_001",
-          "threat": "Copyright Requires Human Authorship",
-          "lane": "A",
-          "archetype": "CRT",
-          "surface": [
-            "Consumer-Public",
-            "Infrastructure",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "Copyright Act 1957 §2(d); RAGHAV (human author required)",
-            "eu": "Originality = author's own intellectual creation (no AI-authorship harmonisation)",
-            "us": "Thaler v. Perlmutter (D.D.C. 2023, aff'd D.C. Cir. 2025)"
-          },
-          "clause": "TOS §6.2",
-          "tier": "T3"
-        },
-        {
-          "id": "CRT_INF_002",
-          "threat": "India 2-Hour Deepfake / NCII Takedown",
-          "lane": "A",
-          "archetype": "CRT",
-          "surface": [
-            "PII",
-            "Consumer-Public",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "IT Rules 2026 Amendment — 2-hr takedown for non-consensual deepfake imagery & CSAM; SGI defined (Rule 2(1)(wa)); mandato",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "AUP §2.2(c)",
-          "tier": "T2"
-        },
-        {
-          "id": "CRT_INF_003",
-          "threat": "California Watermark and Dataset Disclosure",
-          "lane": "A",
-          "archetype": "CRT",
-          "surface": [
-            "Consumer-Public",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "California AB 2013 / SB 942"
-          },
-          "clause": "AUP §2.2(c)",
-          "tier": "T3"
-        },
-        {
-          "id": "CRT_INF_004",
-          "threat": "EU GPAI Copyright Compliance",
-          "lane": "A",
-          "archetype": "CRT",
-          "surface": [
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EU AI Act GPAI Obligations / EU Code of Practice",
-            "us": "—"
-          },
-          "clause": "AUP §2.2(c)",
-          "tier": "T3"
-        },
-        {
-          "id": "CRT_INF_005",
-          "threat": "NO FAKES Act Voice and Visual Clones",
-          "lane": "A",
-          "archetype": "CRT",
-          "surface": [
-            "Consumer-Public",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "NO FAKES Act (S.1367, pending)"
-          },
-          "clause": "TOS §6.2",
-          "tier": "T5"
-        },
-        {
-          "id": "RDR_INF_001",
-          "threat": "RAG Market Substitution",
-          "lane": "A",
-          "archetype": "RDR",
-          "surface": [
-            "PII",
-            "Enterprise-Private",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Dow Jones v. Perplexity (S.D.N.Y. 2024) / Google v. SerpApi (N.D. Cal. 2025)"
-          },
-          "clause": "TOS §4.1(e)",
-          "tier": "T2"
-        },
-        {
-          "id": "RDR_INF_002",
-          "threat": "DMCA §1201 Anti-Circumvention",
-          "lane": "A",
-          "archetype": "RDR",
-          "surface": [
-            "PII",
-            "Enterprise-Private",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "DMCA §1201 (17 U.S.C. §1201)"
-          },
-          "clause": "TOS §4.1(e)",
-          "tier": "T2"
-        },
-        {
-          "id": "RDR_INF_003",
-          "threat": "RAG Copyright Litigation Surge",
-          "lane": "A",
-          "archetype": "RDR",
-          "surface": [
-            "Enterprise-Private",
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Publisher-Led RAG Litigation (NYT v. OpenAI Extension; WSJ, Dow Jones, Axel Springer, Condé Nast)"
-          },
-          "clause": "DPA §4.1",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_PRV_001",
-          "threat": "Illegal Cross-Border Data Migration",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §16 (negative-list transfer model)",
-            "eu": "Schrems II (CJEU C-311/18); GDPR Ch. V + SCCs",
-            "us": "No federal regime; EU–US Data Privacy Framework"
-          },
-          "clause": "DPA §6.2",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_PRV_002",
-          "threat": "Missing Data Processing Agreements",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "GDPR Articles 17, 20, 28",
-            "us": "—"
-          },
-          "clause": "DPA §6.2",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_PRV_003",
-          "threat": "India Reasonable Security Failure",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "India IT Act §43A / Digital Personal Data Protection Act 2023",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "DPA §8.1",
-          "tier": "T2"
-        },
-        {
-          "id": "RDR_PRV_001",
-          "threat": "The Algorithmic Disgorgement Death Penalty",
-          "lane": "A",
-          "archetype": "RDR",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §8(7) + Rule 8 (erasure when purpose served)",
-            "eu": "GDPR Art. 17 (right to erasure)",
-            "us": "FTC v. Rite Aid (2023); FTC algorithmic disgorgement"
-          },
-          "clause": "DPA §4.1",
-          "tier": "T1"
-        },
-        {
-          "id": "RDR_PRV_002",
-          "threat": "Deceptively Trained Model Enforcement",
-          "lane": "A",
-          "archetype": "RDR",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "FTC Act Section 5 (15 U.S.C. §45)"
-          },
-          "clause": "DPA §4.1",
-          "tier": "T1"
-        },
-        {
-          "id": "ORC_PRV_001",
-          "threat": "Downstream LLM Training Leakage",
-          "lane": "A",
-          "archetype": "ORC",
-          "surface": [
-            "Enterprise-Private",
-            "PII"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EDPB Enforcement Guidance / GDPR Article 28",
-            "us": "—"
-          },
-          "clause": "DPA §5.3",
-          "tier": "T2"
-        },
-        {
-          "id": "ORC_PRV_002",
-          "threat": "Dynamic Sub-Processor Trap",
-          "lane": "A",
-          "archetype": "ORC",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "GDPR Article 28(2) and 28(4)",
-            "us": "—"
-          },
-          "clause": "DPA §5.4",
-          "tier": "T3"
-        },
-        {
-          "id": "ORC_PRV_003",
-          "threat": "CPRA Service Provider Disqualification",
-          "lane": "A",
-          "archetype": "ORC",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "California Privacy Rights Act (CPRA)"
-          },
-          "clause": "DPA §5.3",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_DEC_001",
-          "threat": "EU AI Act Prohibited Practices",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EU AI Act Article 5 (Regulation (EU) 2024/1689)",
-            "us": "—"
-          },
-          "clause": "AUP §2.5",
-          "tier": "T1"
-        },
-        {
-          "id": "JDG_DEC_001",
-          "threat": "Vendor Immunity and HITL Theater",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Mobley v. Workday (N.D. Cal. 2024-2026)"
-          },
-          "clause": "AGT §2.2",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_002",
-          "threat": "Illegal Consumer Reporting Agency Classification",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Class Action v. Eightfold AI (2026) / Fair Credit Reporting Act"
-          },
-          "clause": "AUP §3.4(a)",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_003",
-          "threat": "Healthcare Sole-Decision-Maker Bans",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Sensitive/Biometric",
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "State Insurance Codes (Arizona, Maryland, Nebraska, Texas)"
-          },
-          "clause": "TOS §5.1",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_004",
-          "threat": "Mandatory Bias Audit Regimes",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "NYC Local Law 144 / Illinois HB 3773"
-          },
-          "clause": "AUP §3.4(a)",
-          "tier": "T3"
-        },
-        {
-          "id": "JDG_DEC_005",
-          "threat": "Colorado AI Act — Repealed & Replaced",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Colorado SB 24-205 REPEALED by SB 26-189 (signed 14 May 2026); replacement disclosure-regime eff. 1 Jan 2027; under DOJ/"
-          },
-          "clause": "AUP §3.4(a)",
-          "tier": "T3"
-        },
-        {
-          "id": "JDG_DEC_006",
-          "threat": "EU AI Act High-Risk Classification",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EU AI Act Annex III high-risk — DEFERRED to 2 Dec 2027 by Digital Omnibus (pending adoption); Reg (EU) 2024/1689",
-            "us": "—"
-          },
-          "clause": "TOS §5.1",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_007",
-          "threat": "State AI Law Preemption Uncertainty",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "DOJ AI Litigation Task Force / Federal Preemption Litigation"
-          },
-          "clause": "AUP §3.4(a)",
-          "tier": "T5"
-        },
-        {
-          "id": "JDG_DEC_008",
-          "threat": "GDPR Right Against Automated Decisions",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "GDPR Article 22",
-            "us": "—"
-          },
-          "clause": "TOS §7.4",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_009",
-          "threat": "Illinois AIVAA Video Interview Consent",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Illinois AI Video Interview Act (820 ILCS 42)"
-          },
-          "clause": "AUP §3.4(a)",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_010",
-          "threat": "Texas TRAIGA Prohibited Uses",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Texas Responsible AI Governance Act (TRAIGA, HB 149)"
-          },
-          "clause": "AUP §3.4(a)",
-          "tier": "T3"
-        },
-        {
-          "id": "JDG_HRM_001",
-          "threat": "Algorithmic Clinical Malpractice",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Sensitive/Biometric",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Estate of Lokken v. UnitedHealth (D. Minn. 2023)"
-          },
-          "clause": "TOS §5.1",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_HRM_002",
-          "threat": "Healthcare AI Impersonation",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Sensitive/Biometric",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "California AB 489"
-          },
-          "clause": "AUP §3.1",
-          "tier": "T2"
-        },
-        {
-          "id": "CMP_HRM_001",
-          "threat": "The Therapeutic Trap",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Minors",
-            "Consumer-Public",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Garcia v. Character.AI / Google (M.D. Fla. 2024, Settlement in Principle Jan 2026)"
-          },
-          "clause": "AUP §3.5",
-          "tier": "T1"
-        },
-        {
-          "id": "CMP_HRM_002",
-          "threat": "Persistent Memory Pathologization",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Consumer-Public",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Gavalas v. Google (Filed Mar 4, 2026)"
-          },
-          "clause": "TOS §5.2",
-          "tier": "T2"
-        },
-        {
-          "id": "CMP_HRM_003",
-          "threat": "Psychological Manipulation Enforcement",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Consumer-Public",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Kentucky v. Character Technologies (KY AG 2026)"
-          },
-          "clause": "TOS §5.2",
-          "tier": "T2"
-        },
-        {
-          "id": "CMP_HRM_004",
-          "threat": "Minor-User Protection Mandates",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Minors",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "California SB 243 / New York S3008"
-          },
-          "clause": "AUP §3.5",
-          "tier": "T2"
-        },
-        {
-          "id": "CMP_HRM_005",
-          "threat": "EU Emotion Detection Ban",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EU AI Act Article 5(1)(f)",
-            "us": "—"
-          },
-          "clause": "TOS §5.2",
-          "tier": "T1"
-        },
-        {
-          "id": "CMP_HRM_006",
-          "threat": "Manipulative Engagement Ban",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Consumer-Public",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Washington SB 5984 (pending)"
-          },
-          "clause": "TOS §5.2",
-          "tier": "T5"
-        },
-        {
-          "id": "CMP_HRM_007",
-          "threat": "Federal Minor Companion AI Ban",
-          "lane": "A",
-          "archetype": "CMP",
-          "surface": [
-            "Minors",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "The GUARD Act (pending)"
-          },
-          "clause": "AUP §3.5",
-          "tier": "T5"
-        },
-        {
-          "id": "TRN_BIO_001",
-          "threat": "The Diarization Voiceprint Trap",
-          "lane": "Both",
-          "archetype": "TRN",
-          "surface": [
-            "Sensitive/Biometric",
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Cruz v. Fireflies.AI (N.D. Cal. Dec 18, 2025) / Basich v. Microsoft Corp. (N.D. Ill. Feb 5, 2026)"
-          },
-          "clause": "AUP §3.6",
-          "tier": "T1"
-        },
-        {
-          "id": "TRN_BIO_002",
-          "threat": "Strict Liability Biometric Consent",
-          "lane": "A",
-          "archetype": "TRN",
-          "surface": [
-            "Sensitive/Biometric"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Illinois BIPA (740 ILCS 14) / Texas CUBI (Tex. Bus. & Com. §503.001)"
-          },
-          "clause": "AUP §3.6",
-          "tier": "T1"
-        },
-        {
-          "id": "TRN_BIO_003",
-          "threat": "Colorado Biometric Retention Architecture",
-          "lane": "A",
-          "archetype": "TRN",
-          "surface": [
-            "Sensitive/Biometric"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Colorado Privacy Act Biometric Amendment (HB 24-1130)"
-          },
-          "clause": "AUP §3.6",
-          "tier": "T3"
-        },
-        {
-          "id": "TRN_BIO_004",
-          "threat": "Expanding State Biometric Regimes",
-          "lane": "A",
-          "archetype": "TRN",
-          "surface": [
-            "Sensitive/Biometric"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "State-Level Biometric Legislation (Washington, New York, Massachusetts, others pending)"
-          },
-          "clause": "AUP §3.6",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_FRD_001",
-          "threat": "AI Capability Misrepresentation",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "SEC v. Delphia (2024) / SEC v. Presto Automation (2025) / SEC+DOJ v. Nate Inc. (2025)"
-          },
-          "clause": "AUP §2.8",
-          "tier": "T1"
-        },
-        {
-          "id": "UNI_FRD_002",
-          "threat": "SEC AI Washing Enforcement Priority",
-          "lane": "A",
-          "archetype": "UNI",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "SEC Cyber and Emerging Technologies Unit (CETU) FY2026 Enforcement Designation"
-          },
-          "clause": "AUP §2.8",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_FRD_001",
-          "threat": "AI Evidence Fabrication",
-          "lane": "A",
-          "archetype": "JDG",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "Federal Rule of Civil Procedure 11 Sanctions / 18 U.S.C. §1623 / Federal Courts AI Citation Rulings"
-          },
-          "clause": "AUP §2.7",
-          "tier": "T2"
-        },
-        {
-          "id": "OPT_TRD_001",
-          "threat": "EU AI Act Critical Infrastructure High-Risk",
-          "lane": "A",
-          "archetype": "OPT",
-          "surface": [
-            "Financial"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "EU AI Act Annex III - Critical Infrastructure (Regulation (EU) 2024/1689)",
-            "us": "—"
-          },
-          "clause": "TOS §5.4(f)",
-          "tier": "T2"
-        },
-        {
-          "id": "OPT_TRD_002",
-          "threat": "SEBI Black Box Traceability",
-          "lane": "A",
-          "archetype": "OPT",
-          "surface": [
-            "PII",
-            "Financial"
-          ],
-          "authority": {
-            "in": "SEBI Algorithmic Trading Regulations (Amendment 2026)",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "AGT §6.4",
-          "tier": "T2"
-        },
-        {
-          "id": "OPT_TRD_003",
-          "threat": "Systemic Financial Instability Scrutiny",
-          "lane": "A",
-          "archetype": "OPT",
-          "surface": [
-            "Financial"
-          ],
-          "authority": {
-            "in": "Global Regulatory Scrutiny (FSB, IOSCO, Fed, ECB, BoE, RBI)",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "TOS §5.4(f)",
-          "tier": "T3"
-        },
-        {
-          "id": "OPT_TRD_004",
-          "threat": "Algorithmic Collusion",
-          "lane": "A",
-          "archetype": "OPT",
-          "surface": [
-            "Financial"
-          ],
-          "authority": {
-            "in": "—",
-            "eu": "—",
-            "us": "California AB 325 / Sherman Act §1 / DOJ AI Pricing Coordination Guidance"
-          },
-          "clause": "AUP §2.9",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_CNS_IN1",
-          "threat": "DPDP Consent Architecture Failure",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §6 + DPDP Rules 2025 (G.S.R. 846(E))",
-            "eu": "GDPR Art. 6/7 (lawful basis / consent)",
-            "us": "CCPA/CPRA opt-out; state consent laws"
-          },
-          "clause": "DPA (India consent module)",
-          "tier": "T1"
-        },
-        {
-          "id": "UNI_PRV_IN1",
-          "threat": "DPDP Children's Data (§9)",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "Minors"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §9 + DPDP Rules 2025",
-            "eu": "GDPR Art. 8",
-            "us": "COPPA; CA AADC"
-          },
-          "clause": "PP / AUP (minors module)",
-          "tier": "T1"
-        },
-        {
-          "id": "UNI_INF_IN1",
-          "threat": "CERT-In 6-Hour Breach Reporting",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "Infrastructure"
-          ],
-          "authority": {
-            "in": "CERT-In Directions 2022 (IT Act §70B); 6-hr report + 180-day logs in India",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "DPA / SOP (incident module)",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_PRV_IN2",
-          "threat": "IT Act §72A Wrongful Disclosure",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "IT Act 2000 §72A — imprisonment up to 3 yrs or fine up to ₹5,00,000",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "DPA (confidentiality covenant)",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_CNS_IN2",
-          "threat": "India Dark-Patterns Regime",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "Consumer-Public"
-          ],
-          "authority": {
-            "in": "CCPA Dark Patterns Guidelines 2023 (§18 CPA 2019, 30 Nov 2023) — 13 specified patterns",
-            "eu": "UCPD; DSA",
-            "us": "FTC §5; ROSCA"
-          },
-          "clause": "TOS / AUP (consent module)",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_PRV_IN3",
-          "threat": "DPDP Cross-Border Transfer",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §16 + DPDP Rules 2025 — negative-list (blacklist) model",
-            "eu": "GDPR adequacy/SCCs (contrast)",
-            "us": "—"
-          },
-          "clause": "DPA (transfer module)",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_PRV_IN4",
-          "threat": "DPDP Dual Breach-Notification",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §8(6) + Rules — notify Data Protection Board + affected principals",
-            "eu": "GDPR Art. 33/34 (contrast)",
-            "us": "state breach laws"
-          },
-          "clause": "DPA (incident module)",
-          "tier": "T2"
-        },
-        {
-          "id": "UNI_PRV_IN5",
-          "threat": "DPDP Significant Data Fiduciary Duties",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §10 + DPDP Rules 2025 — DPIA, India-based DPO, annual independent audit",
-            "eu": "GDPR Art. 35 (DPIA)",
-            "us": "—"
-          },
-          "clause": "DPIA / SOP",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_DEC_IN1",
-          "threat": "MeitY AI Governance Advisories",
-          "lane": "Both",
-          "archetype": "UNI",
-          "surface": [
-            "Infrastructure"
-          ],
-          "authority": {
-            "in": "MeitY AI advisories (evolving) — no crisp current instrument",
-            "eu": "—",
-            "us": "—"
-          },
-          "clause": "governance (monitor)",
-          "tier": "T4"
-        },
-        {
-          "id": "UNI_LIA_LB1",
-          "threat": "Shadow-AI Data Leakage",
-          "lane": "B",
-          "archetype": "UNI",
-          "surface": [
-            "Enterprise-Private",
-            "PII"
-          ],
-          "authority": {
-            "in": "Indian Contract Act / common-law confidentiality",
-            "eu": "GDPR (employee data)",
-            "us": "DTSA / trade-secret"
-          },
-          "clause": "HND + SOP",
-          "tier": "T1"
-        },
-        {
-          "id": "CRT_INF_LB1",
-          "threat": "Internal IP Contamination",
-          "lane": "B",
-          "archetype": "CRT",
-          "surface": [
-            "Content&IP"
-          ],
-          "authority": {
-            "in": "Copyright Act 1957 (human-author)",
-            "eu": "Copyright Directive TDM",
-            "us": "Thaler v. Perlmutter"
-          },
-          "clause": "IP + HND",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_LB1",
-          "threat": "Deployed HR-Tool Bias (Employer)",
-          "lane": "B",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "DPDP (employee data)",
-            "eu": "GDPR Art. 22; AI Act Annex III (2 Dec 2027)",
-            "us": "Title VII/EEOC; NYC LL144; IL HB3773 (1 Jan 2026); TX TRAIGA (1 Jan 2026)"
-          },
-          "clause": "DPIA + SOP",
-          "tier": "T1"
-        },
-        {
-          "id": "JDG_DEC_LB2",
-          "threat": "DPIA / FRIA Failure",
-          "lane": "B",
-          "archetype": "JDG",
-          "surface": [
-            "Employment",
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023 §10 (DPIA)",
-            "eu": "GDPR Art. 35; EU AI Act Art. 27 FRIA",
-            "us": "—"
-          },
-          "clause": "DPIA",
-          "tier": "T2"
-        },
-        {
-          "id": "RDR_PRV_LB1",
-          "threat": "Employee Data in Fine-Tuning",
-          "lane": "B",
-          "archetype": "RDR",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP Act 2023",
-            "eu": "GDPR (lawful basis)",
-            "us": "CCPA/CPRA"
-          },
-          "clause": "DPIA + SOP (RAG-only)",
-          "tier": "T2"
-        },
-        {
-          "id": "JDG_DEC_LB3",
-          "threat": "Missing Internal HITL",
-          "lane": "B",
-          "archetype": "JDG",
-          "surface": [
-            "Employment"
-          ],
-          "authority": {
-            "in": "DPDP (automated processing)",
-            "eu": "GDPR Art. 22; EU AI Act Art. 14",
-            "us": "state automated-decision rules"
-          },
-          "clause": "SOP (HITL protocol)",
-          "tier": "T2"
-        },
-        {
-          "id": "SHD_LIA_LB1",
-          "threat": "No AI Governance Log / Audit Trail",
-          "lane": "B",
-          "archetype": "SHD",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "DPDP SDF audit",
-            "eu": "EU AI Act record-keeping",
-            "us": "insurer / audit requirements"
-          },
-          "clause": "SOP (governance log)",
-          "tier": "T3"
-        },
-        {
-          "id": "UNI_FRD_LB1",
-          "threat": "Vendor-Risk Flow-Down Failure",
-          "lane": "B",
-          "archetype": "UNI",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "Indian Contract Act",
-            "eu": "GDPR Art. 28",
-            "us": "contract / indemnity"
-          },
-          "clause": "HND + flow-down addendum",
-          "tier": "T3"
-        },
-        {
-          "id": "DOE_FIN_001",
-          "threat": "Runaway-Agent Financial Liability",
-          "lane": "A",
-          "archetype": "DOE",
-          "surface": [
-            "Financial",
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "Indian Contract Act (agency); IT Act §11 (attribution)",
-            "eu": "EU AI Act (high-risk duties where applicable)",
-            "us": "UETA §14 (electronic agent binds principal)"
-          },
-          "clause": "AGT (Circuit Breaker)",
-          "tier": "T1"
-        },
-        {
-          "id": "DOE_HAL_001",
-          "threat": "Agentic Hallucination → Action",
-          "lane": "A",
-          "archetype": "DOE",
-          "surface": [
-            "Consumer-Public",
-            "Safety&Physical"
-          ],
-          "authority": {
-            "in": "tort / negligence",
-            "eu": "AI Act human-oversight (Art. 14)",
-            "us": "Moffatt (extended); negligence"
-          },
-          "clause": "AGT (HITL checkpoints)",
-          "tier": "T1"
-        },
-        {
-          "id": "DOE_LIA_002",
-          "threat": "Agent Tool / Credential Misuse",
-          "lane": "A",
-          "archetype": "DOE",
-          "surface": [
-            "Infrastructure",
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "Indian Contract Act / IT Act",
-            "eu": "GDPR (unauthorised processing)",
-            "us": "agency / negligence"
-          },
-          "clause": "AGT (scope limits) + AUP",
-          "tier": "T2"
-        },
-        {
-          "id": "DOE_HAL_002",
-          "threat": "Undisclosed Agent Impersonation",
-          "lane": "A",
-          "archetype": "DOE",
-          "surface": [
-            "Consumer-Public"
-          ],
-          "authority": {
-            "in": "CPA 2019 (misleading)",
-            "eu": "EU AI Act Art. 50 (2 Aug 2026)",
-            "us": "FTC impersonation rule"
-          },
-          "clause": "AGT / AUP (disclosure)",
-          "tier": "T2"
-        },
-        {
-          "id": "DOE_LIA_003",
-          "threat": "Liability-Cap Circumvention by Autonomous Action",
-          "lane": "A",
-          "archetype": "DOE",
-          "surface": [
-            "Enterprise-Private"
-          ],
-          "authority": {
-            "in": "Indian Contract Act",
-            "eu": "B2B contract",
-            "us": "UCC / contract"
-          },
-          "clause": "AGT + TOS",
-          "tier": "T3"
-        },
-        {
-          "id": "DOE_PRV_001",
-          "threat": "Autonomous Over-Scope Data Processing",
-          "lane": "A",
-          "archetype": "DOE",
-          "surface": [
-            "PII"
-          ],
-          "authority": {
-            "in": "DPDP (purpose limitation)",
-            "eu": "GDPR (purpose limitation)",
-            "us": "CCPA"
-          },
-          "clause": "AGT + DPA",
           "tier": "T2"
         }
       ]
@@ -1939,56 +626,63 @@
     "stack_overview": {
       "laneA": [
         {
-          "doc": "TOS",
-          "role": "central router",
-          "line": "Master terms; routes every other document by trigger."
+          "doc": "DOC_TOS",
+          "line": "Defines AI as probabilistic service, not product; hallucination and reliance architecture."
         },
         {
-          "doc": "DPA",
-          "line": "Data processing terms; fires on PII / EU data."
+          "doc": "DOC_AGT",
+          "line": "Agent authority, circuit breakers, spend caps, retry storms."
         },
         {
-          "doc": "AGT",
-          "line": "Agent addendum; fires on autonomous capability."
+          "doc": "DOC_DPA",
+          "line": "RAG-only, sub-processors, SCCs, deletion architecture."
         },
         {
-          "doc": "AUP",
-          "line": "Acceptable-use; injection, sensitive-surface, bias blocks."
+          "doc": "DOC_AUP",
+          "line": "Prohibited/conditional AI use cases and enforcement gates."
         },
         {
-          "doc": "PP",
-          "line": "Privacy policy; controller-side processing."
+          "doc": "DOC_PP",
+          "line": "User-facing AI data processing disclosure."
         },
         {
-          "doc": "SLA",
-          "line": "Service levels; enterprise uptime / liability."
+          "doc": "DOC_SLA",
+          "line": "AI-specific uptime + TTFT performance commitments."
+        },
+        {
+          "doc": "DOC_PBK_A",
+          "line": "Enterprise negotiation playbook for AI-procurement redlines."
         }
       ],
       "laneB": [
         {
-          "doc": "HND",
-          "line": "Internal AI-use handbook for staff deployment."
+          "doc": "DOC_SCAN",
+          "line": "Shadow AI discovery survey and risk scoring."
         },
         {
-          "doc": "IP",
-          "line": "Prompt-assignment + ownership chain for internal output."
+          "doc": "DOC_HND",
+          "line": "Employee AI use policy and traffic-light framework."
         },
         {
-          "doc": "DPIA",
-          "line": "Data-protection impact assessment for internal tools."
+          "doc": "DOC_IP",
+          "line": "AI-assisted work ownership and moral-rights waiver."
         },
         {
-          "doc": "SOP",
-          "line": "Human-in-the-loop operating procedures."
+          "doc": "DOC_SOP",
+          "line": "HITL authorship evidence workflow."
         },
         {
-          "doc": "Scanner",
-          "line": "Internal-deployment risk diagnostic."
+          "doc": "DOC_DPIA",
+          "line": "AI impact assessment and risk classification."
+        },
+        {
+          "doc": "DOC_PBK_B",
+          "line": "Internal/external governance negotiation scripts."
         }
       ]
     },
     "living_document": {
-      "behavior": "Real TOS (the spine doc) renders fully blurred at rest. Click a button → scroll + pop + un-blur the specific clause, with the 3-beat explanation. Full animation. Mobile degrades to stacked full-screen sequence.",
+      "behavior": "Click a risk on the left; the document on the right lights the clause that closes it. Click a Vault trigger; the router lights the documents it fires.",
       "spine_doc": "TOS (central router)",
       "watermark": "CONFIDENTIAL — Sample — Shwetabh Singh",
       "threat_buttons": [
