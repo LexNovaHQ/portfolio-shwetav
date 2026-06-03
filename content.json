@@ -745,24 +745,51 @@
     "connector_visual": "Risk classified → control selected → instrument routed."
   },
   "act2": {
-    "header": "Act II — The Legal Matrix: the clauses that close those risks.",
-    "forward_ref": "→ what the Vault later assembles automatically.",
-    "system_framing": "A classification system I built and refined — 98 threats, role-coded, read across three jurisdictions.",
-    "provenance": "98 active threats, refined from 81 through forensic-engine runs; schema normalized for cross-border coverage.",
+    "header": "The Legal Matrix ? threat IDs converted into clauses, policies, playbooks, and review-ready instruments.",
+    "eyebrow": "ACT II ? THE LEGAL MATRIX",
+    "subline": "Act I classified the risk. Act II shows how that risk becomes legal architecture: a threat ID, an authority, a defensive control, and the instrument that carries the fix.",
+    "core_visual_line": "Risk classified ? control selected ? instrument routed",
+    "explanation": "The registry is not a list of legal issues. It is a routing layer: each threat ID carries the risk, authority, control logic, and document destination.",
+    "guide_line": "Follow the route: matrix first, instrument map second, clause viewer third.",
+    "local_rail": [
+      {
+        "label": "Orientation",
+        "target": "act2-orientation"
+      },
+      {
+        "label": "Threat Matrix",
+        "target": "act2-threat-matrix"
+      },
+      {
+        "label": "Instrument Architecture",
+        "target": "instruments-layer"
+      },
+      {
+        "label": "Living Document",
+        "target": "act2-living-document"
+      },
+      {
+        "label": "Vault Router",
+        "target": "act2-vault-router"
+      },
+      {
+        "label": "Act III Bridge",
+        "target": "act2-act3-bridge"
+      }
+    ],
     "threat_matrix": {
-      "tease": "This is the registry the diligence engine reads →",
-      "ip_note": "Breadth only: threat → authority → clause reference. The drafted clause text lives, watermarked, in the Living Document only.",
-      "filters": [
-        "Archetype",
-        "Surface",
-        "Lane",
-        "Global Floor"
-      ],
-      "honesty_note": "Cells showing — are deliberately blank: that row carries only its actual cited authority. No invented cross-border parallels.",
+      "title": "Threat Matrix ? the registry behind the instruments",
+      "intro": "The threat matrix converts AI-law risk into structured rows: threat ID, lane, AI function, legal surface, authority, tier, and clause route.",
+      "proof_line": "98 threat units ? 17 fields ? Lane A / Lane B routing ? IN / EU / US authority mapping",
+      "integrity_note": "If a jurisdiction is not mapped, the cell stays blank. The matrix does not invent fake IN/EU/US parallels just to look complete.",
+      "guide_text": "Filter the matrix or click a row to see how a threat becomes a document route.",
       "columns": [
+        "Threat ID",
         "Threat",
-        "Authority (IN / EU / US)",
-        "Clause",
+        "Lane",
+        "AI function / surface",
+        "Authority",
+        "Clause / instrument route",
         "Tier"
       ],
       "rows": [
@@ -999,150 +1026,120 @@
         }
       ]
     },
-    "stack_overview": {
-      "laneA": [
+    "instrument_architecture": {
+      "title": "Instrument Architecture ? the document stack is a legal system",
+      "intro": "The documents are not standalone files. Each instrument has a role, dependency, and trigger. The stack works because the documents route into each other.",
+      "guide_line": "Hover a document to see its role. Click to open the stack logic. Try a route to see which instruments activate together."
+    },
+    "living_document": {
+      "title": "Living Document ? how risk becomes an instrument",
+      "intro": "Select a threat or commercial trigger. The viewer reveals the clause, connected documents, and the legal logic that makes the instrument work.",
+      "guide_line": "Click a trigger to reveal the clause and connected instruments.",
+      "watermark": "SAMPLE / EXCERPT / REVIEW-READY STRUCTURE",
+      "triggers": [
         {
-          "doc": "DOC_TOS",
-          "line": "Defines AI as probabilistic service, not product; hallucination and reliance architecture."
+          "label": "Hallucination / Output Authority",
+          "group": "AI Risk Trigger",
+          "lane": "Lane A",
+          "main_document": "Main document: DOC_AI_A_TOS",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_AGT",
-          "line": "Agent authority, circuit breakers, spend caps, retry storms."
+          "label": "Agentic Action / Circuit Breaker",
+          "group": "AI Risk Trigger",
+          "lane": "Lane A",
+          "main_document": "Main document: DOC_AI_A_AGT",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_DPA",
-          "line": "RAG-only, sub-processors, SCCs, deletion architecture."
+          "label": "RAG-only / Deletion Architecture",
+          "group": "AI Risk Trigger",
+          "lane": "Lane A, with Lane B relevance where internal AI tools process personal data",
+          "main_document": "Main document: DOC_AI_A_DPA",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_AUP",
-          "line": "Prohibited/conditional AI use cases and enforcement gates."
+          "label": "AI Output / HITL Authorship",
+          "group": "AI Risk Trigger",
+          "lane": "Both, but main viewer route should start with Lane A ToS and show Lane B support documents",
+          "main_document": "Main document: DOC_AI_A_TOS",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_PP",
-          "line": "User-facing AI data processing disclosure."
+          "label": "Product / Service Classification",
+          "group": "AI Risk Trigger",
+          "lane": "Lane A",
+          "main_document": "Main document: DOC_AI_A_TOS",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_SLA",
-          "line": "AI-specific uptime + TTFT performance commitments."
+          "label": "Privacy / Transfer Routing",
+          "group": "AI Risk Trigger",
+          "lane": "Both",
+          "main_document": "Main document: DOC_AI_A_DPA",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_PBK_A",
-          "line": "Enterprise negotiation playbook for AI-procurement redlines."
-        }
-      ],
-      "laneB": [
-        {
-          "doc": "DOC_SCAN",
-          "line": "Shadow AI discovery survey and risk scoring."
+          "label": "Indemnity Routing",
+          "group": "Commercial Architecture Trigger",
+          "lane": "Lane A, with Lane B flow-down relevance",
+          "main_document": "Main document: DOC_AI_A_TOS",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_HND",
-          "line": "Employee AI use policy and traffic-light framework."
+          "label": "Liability Cap / Exclusions",
+          "group": "Commercial Architecture Trigger",
+          "lane": "Lane A",
+          "main_document": "Main document: DOC_AI_A_TOS",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_IP",
-          "line": "AI-assisted work ownership and moral-rights waiver."
+          "label": "SLA / Service Credits",
+          "group": "Commercial Architecture Trigger",
+          "lane": "Lane A",
+          "main_document": "Main document: DOC_AI_A_SLA",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_SOP",
-          "line": "HITL authorship evidence workflow."
+          "label": "Data Processing / Subprocessors",
+          "group": "Commercial Architecture Trigger",
+          "lane": "Lane A, with Lane B relevance where employee/internal data is processed",
+          "main_document": "Main document: DOC_AI_A_DPA",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_DPIA",
-          "line": "AI impact assessment and risk classification."
+          "label": "AUP / Prohibited Use",
+          "group": "Commercial Architecture Trigger",
+          "lane": "Lane A, with Lane B policy analogue",
+          "main_document": "Main document: DOC_AI_A_AUP",
+          "main_clause_title": ""
         },
         {
-          "doc": "DOC_PBK_B",
-          "line": "Internal/external governance negotiation scripts."
+          "label": "Suspension / Termination Route",
+          "group": "Commercial Architecture Trigger",
+          "lane": "Lane A, with cross-document enforcement relevance",
+          "main_document": "Main document: DOC_AI_A_TOS",
+          "main_clause_title": ""
         }
       ]
     },
-    "living_document": {
-      "behavior": "Click a risk on the left; the document on the right lights the clause that closes it. Click a Vault trigger; the router lights the documents it fires.",
-      "spine_doc": "TOS (central router)",
-      "watermark": "CONFIDENTIAL — Sample — Shwetabh Singh",
-      "threat_buttons": [
-        {
-          "threat": "Chatbot hallucination binds you",
-          "clause": "TOS §8 Hallucination Waiver",
-          "case": "Moffatt / Walters",
-          "what": "A hallucination-specific waiver + output-authority boundary + point-of-interaction clickwrap.",
-          "why": "Moffatt binds the chatbot's words to the company; a point-of-interaction disclaimer defeats the reasonable reliance the company would otherwise owe (Walters). A generic “AS-IS” clause does neither."
-        },
-        {
-          "threat": "Agent overspends / auto-contracts",
-          "clause": "AGT Circuit Breaker",
-          "case": "UETA §14",
-          "what": "Per-incident spend cap, retry and loop limits, and machine-action attribution.",
-          "why": "UETA §14 attributes an electronic agent's actions to the principal — so the agent's spending is the company's liability. The circuit breaker caps the blast radius before it compounds."
-        },
-        {
-          "threat": "“Delete my data” = delete the model",
-          "clause": "DPA §4 RAG-Only Mandate",
-          "case": "Rite Aid / GDPR Art. 17 / DPDP §8(7)",
-          "what": "Mandates retrieval-augmented generation over fine-tuning, so user data never bakes into model weights.",
-          "why": "Fine-tuning makes data mathematically un-deletable; an erasure request then can't be honored, exposing FTC algorithmic disgorgement (Rite Aid) and breach of GDPR Art. 17 / DPDP §8(7). RAG keeps deletion possible."
-        },
-        {
-          "threat": "Your AI output is public domain",
-          "clause": "IP Prompt Assignment + HITL",
-          "case": "Thaler v. Perlmutter",
-          "what": "Assigns the human selection/arrangement logic and mandates human-in-the-loop authorship.",
-          "why": "Raw autonomous AI output isn't copyrightable (Thaler), so a standard “assign all copyrights” transfers nothing. The chain secures enterprise IP by anchoring it to human authorship."
-        },
-        {
-          "threat": "AI reclassified as a product (strict liability)",
-          "clause": "TOS §2.2 Service Classification",
-          "case": "EU PLD 2024/2853",
-          "what": "Defines the offering as a service, not a product, with the supporting structural terms.",
-          "why": "The revised EU Product Liability Directive can sweep software/AI into strict product liability. The classification clause holds the service line and the defenses that go with it."
-        },
-        {
-          "threat": "Cross-border consent fails",
-          "clause": "Cross-Border Consent Clause",
-          "case": "DPDP §6 / GDPR Art. 6–7 / CCPA",
-          "what": "Layered consent and lawful-basis architecture across three regimes.",
-          "why": "Consent valid in one jurisdiction is invalid in another: DPDP §6 notice+consent, GDPR Art. 6–7 lawful basis, and CCPA opt-out are different instruments. The clause layers all three."
-        }
-      ],
-      "trigger_buttons": {
-        "note": "Wired to the real vault.js engine and the Act I surfaces. Click a condition → the router fires → connected docs pop alongside, hooks lit → labelled ‘what the Vault injects automatically when you flag this →’ (hands into Act III).",
-        "items": [
-          {
-            "trigger": "Agentic capability",
-            "surface": "Doer",
-            "fires": "TOS §2.7 + entire DOC_AGT",
-            "injects": "spend caps §4.1/§4.2, circuit breaker"
-          },
-          {
-            "trigger": "EU data",
-            "surface": "Consumer-Public / Enterprise-Private",
-            "fires": "DPA §6.2–6.4 + Schedule D",
-            "injects": "Standard Contractual Clauses attached"
-          },
-          {
-            "trigger": "PII processing",
-            "surface": "PII",
-            "fires": "DOC_DPA + DOC_PP activate",
-            "injects": "controller / processor split"
-          },
-          {
-            "trigger": "RAG vs Fine-tuning",
-            "surface": "memory architecture",
-            "fires": "RAG → DPA §4 fires; Fine-tune → §4 omitted, TOS §6.1(c) opt-in",
-            "injects": "the conditional deletion logic, live"
-          },
-          {
-            "trigger": "Indemnity / remedial",
-            "surface": "liability",
-            "fires": "TOS ↔ DPA ↔ AGT",
-            "injects": "cross-referenced caps light across documents"
-          }
-        ]
-      },
-      "vault_tease": "B2C + EU data → Consumer + EU surfaces → injects §8 and attaches the DPA into Schedule A → this is the base the Vault assembles from →"
+    "vault_router": {
+      "title": "Vault Router ? how the stack becomes dynamic",
+      "intro": "The document map is the static architecture. The Vault turns client/product answers into document routing.",
+      "guide_line": "Toggle a product fact to see which instruments activate.",
+      "toggles": [
+        "B2B / B2C",
+        "EU users",
+        "Personal data",
+        "Agentic capability",
+        "SLA required",
+        "Output ownership",
+        "High-risk use case",
+        "Internal employee AI use"
+      ]
     },
-    "connector2": "But a document stack is still hand-work: someone reading the registry, choosing the clauses, assembling the file. The leverage was never the document — it was the system that produces it. So I built that."
+    "connector2": "A document stack is still hand-work if someone must read the registry, select the clauses, and assemble the file manually. The leverage was not the document alone ? it was the system that could produce it. So I built that.",
+    "connector_visual": "Instrument architecture ? intake logic ? automated assembly"
   },
   "act3": {
     "header": "Act III — The Funnel: the machine that runs it.",

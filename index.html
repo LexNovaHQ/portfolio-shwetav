@@ -319,6 +319,76 @@ section{scroll-margin-top:110px;}
 .ld-router-cap{font-size:.76rem; color:rgba(229,229,229,.7); margin-top:.5rem; line-height:1.5; min-height:1.2rem;}
 .vault-tease{font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold); font-size:1.1rem; margin-top:.8rem; line-height:1.4;}
 
+/* ---- ACT II REBUILD ---- */
+.act2-rail{position:sticky; top:112px; z-index:18; display:flex; gap:.35rem; overflow:auto; padding:.45rem .35rem;
+  margin:1rem -.35rem 0; background:rgba(7,7,7,.74); backdrop-filter:blur(10px); border:1px solid rgba(197,160,89,.12); border-radius:.85rem;}
+.act2-rail a{white-space:nowrap; border:1px solid rgba(229,229,229,.1); color:rgba(229,229,229,.5); border-radius:999px;
+  padding:.35rem .58rem; font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800; transition:all .2s;}
+.act2-rail a.active,.act2-rail a:hover,.act2-rail a:focus{color:var(--gold); border-color:rgba(197,160,89,.55); background:rgba(197,160,89,.08); outline:none;}
+.act2-flow{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; margin:1rem 0;}
+.act2-flow span{border:1px solid rgba(197,160,89,.28); border-radius:.7rem; padding:.55rem .75rem; color:var(--gold);
+  background:rgba(197,160,89,.055); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800;}
+.act2-flow b{color:rgba(229,229,229,.38); font-weight:400;}
+.mx-filters select,.mx-toggle{border-radius:999px; padding:.45rem .75rem; font-size:.72rem;}
+.mx-table{font-size:.78rem;}
+.mx-table tr{cursor:pointer;}
+.mx-id{font-size:.58rem; color:rgba(197,160,89,.72); letter-spacing:.08em; text-transform:uppercase;}
+.instr-lanes{display:grid; grid-template-columns:1fr; gap:1rem;}
+@media(min-width:1024px){.instr-lanes{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.instr-lane{border:1px solid rgba(229,229,229,.1); background:rgba(255,255,255,.018); border-radius:1rem; padding:1rem;}
+.instr-lane h3{font-family:"Cormorant Garamond",serif; color:var(--gold); font-size:1.35rem; line-height:1.05; margin:0;}
+.instr-lane p{font-size:.78rem; color:rgba(229,229,229,.62); line-height:1.55; margin:.45rem 0 0;}
+.instr-map{display:grid; grid-template-columns:1fr; gap:.55rem; margin-top:1rem;}
+.doc-node{position:relative; width:100%; text-align:left; border:1px solid rgba(229,229,229,.11); background:rgba(255,255,255,.02);
+  border-radius:.75rem; padding:.62rem .72rem; color:rgba(229,229,229,.75); cursor:pointer; transition:all .22s;}
+.doc-node.central{border-color:rgba(197,160,89,.55); background:rgba(197,160,89,.08); color:var(--gold);}
+.doc-node:hover,.doc-node:focus,.doc-node.active,.doc-node.routed{border-color:rgba(197,160,89,.7); background:rgba(197,160,89,.11); outline:none; box-shadow:0 0 0 3px rgba(197,160,89,.08);}
+.doc-node .dt{font-family:"Cormorant Garamond",serif; font-size:1.05rem; line-height:1;}
+.doc-node .rl{font-size:.58rem; color:rgba(229,229,229,.5); line-height:1.35; margin-top:.25rem;}
+.route-chips{display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.85rem;}
+.route-line{min-height:1.4rem; color:rgba(229,229,229,.68); font-size:.76rem; line-height:1.5; margin-top:.65rem;}
+.ld-grid{gap:1rem;}
+@media(min-width:1080px){.ld-grid{grid-template-columns:320px 1fr;}}
+.ld-group-title{font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); font-weight:800; margin:.8rem 0 .35rem;}
+.ld-btn:hover,.ld-btn:focus{border-color:rgba(197,160,89,.5); background:rgba(197,160,89,.06); outline:none;}
+.ld-focus-backdrop{display:none; position:fixed; inset:0; z-index:72; background:rgba(0,0,0,.62);}
+.ld-focus-backdrop.open{display:block;}
+.ld-doc{min-height:520px;}
+.ld-doc.focused{position:relative; z-index:73; border-color:rgba(197,160,89,.62); box-shadow:0 24px 90px rgba(0,0,0,.72),0 0 0 1px rgba(197,160,89,.16); background:#080808;}
+.ld-close{display:none; position:absolute; top:.7rem; right:.7rem; z-index:2;}
+.ld-doc.focused .ld-close{display:inline-flex;}
+.ld-doc.focused .ld-watermark{right:3.25rem;}
+.ld-default{border:1px dashed rgba(197,160,89,.24); border-radius:.8rem; padding:.9rem; color:rgba(229,229,229,.45); font-size:.78rem; line-height:1.55; background:rgba(197,160,89,.035);}
+.ld-blur-row{height:9px; background:rgba(229,229,229,.17); filter:blur(3px); border-radius:99px; margin:.5rem 0; opacity:.7;}
+.ld-selected{display:none;}
+.ld-doc.has-selection .ld-default{display:none;}
+.ld-doc.has-selection .ld-selected{display:block;}
+.ld-section-head{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(229,229,229,.45); margin:.65rem 0;}
+.clause-box{border:1px solid rgba(197,160,89,.32); border-left:3px solid var(--gold); background:rgba(197,160,89,.055);
+  border-radius:.75rem; padding:1rem; color:rgba(245,245,245,.9); font-size:.82rem; line-height:1.62; white-space:pre-wrap; overflow:auto; max-height:54vh;}
+.ld-style-badge{display:inline-flex; border:1px solid rgba(197,160,89,.38); color:var(--gold); border-radius:999px; padding:.22rem .5rem;
+  font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; margin:.25rem .25rem .5rem 0;}
+.mini-doc-grid{display:grid; grid-template-columns:1fr; gap:.65rem; margin-top:.9rem;}
+@media(min-width:900px){.mini-doc-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.connected-mini-doc{border:1px solid rgba(229,229,229,.1); background:rgba(255,255,255,.02); border-radius:.75rem; padding:.75rem;}
+.connected-mini-doc h4{font-family:"Cormorant Garamond",serif; color:var(--gold); font-size:1.05rem; margin:0;}
+.connected-mini-doc .reason{font-size:.68rem; color:rgba(229,229,229,.46); line-height:1.45; margin:.25rem 0;}
+.connected-mini-doc pre{white-space:pre-wrap; margin:.45rem 0 0; color:rgba(229,229,229,.74); font-size:.72rem; line-height:1.5; font-family:Inter,system-ui,sans-serif;}
+.annotation-grid{display:grid; gap:.55rem; margin-top:.9rem;}
+.annotation-callout{border:1px solid rgba(197,160,89,.18); background:rgba(197,160,89,.04); border-radius:.75rem; padding:.7rem;}
+.annotation-callout .lab{font-size:.58rem; color:var(--gold); letter-spacing:.1em; text-transform:uppercase; font-weight:800;}
+.annotation-callout p{margin:.25rem 0 0; font-size:.76rem; line-height:1.55; color:rgba(229,229,229,.72);}
+.vault-panel{border:1px solid rgba(197,160,89,.18); border-radius:1rem; padding:1rem; background:rgba(197,160,89,.035);}
+.vault-toggles{display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.8rem;}
+.vault-chip{border:1px solid rgba(229,229,229,.14); background:rgba(255,255,255,.02); color:rgba(229,229,229,.64); border-radius:999px;
+  padding:.38rem .65rem; font-size:.68rem; cursor:pointer; transition:all .2s;}
+.vault-chip.on{border-color:rgba(197,160,89,.72); color:var(--gold); background:rgba(197,160,89,.12);}
+.vault-docs{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.8rem;}
+.vault-doc{font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid rgba(229,229,229,.14);
+  color:rgba(229,229,229,.55); border-radius:999px; padding:.22rem .5rem; transition:all .25s;}
+.vault-doc.fired{border-color:var(--gold); color:var(--gold); background:rgba(197,160,89,.12); box-shadow:0 0 14px rgba(197,160,89,.25);}
+.vault-route{font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--gold); font-size:1.08rem; margin-top:.8rem; line-height:1.4;}
+
 /* ---- ACT III / CAPSTONE / CLOSE ---- */
 .station{border:1px solid rgba(229,229,229,.1); background:rgba(255,255,255,.02); border-radius:1rem; padding:1rem 1.1rem; display:flex; flex-direction:column;}
 .station h3{font-family:"Cormorant Garamond",serif; color:var(--gold); font-size:1.35rem; margin:0; line-height:1;}
@@ -411,7 +481,7 @@ section{scroll-margin-top:110px;}
 "use strict";
 (function(){
   var embeddedContent = JSON.parse(document.getElementById('content-data').textContent);
-  function boot(C){
+  function boot(C, act2Manifest){
   var main = document.getElementById('main');
   var esc = function(s){ s = (s==null?'':String(s)); return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   var el = function(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; };
@@ -652,6 +722,7 @@ section{scroll-margin-top:110px;}
   }
 
   function authLine(a){
+    a=a||{};
     var parts=[];
     if(a['in']&&a['in']!=='—') parts.push('<span class="j"><b>IN</b> '+esc(a['in'])+'</span>');
     if(a.eu&&a.eu!=='—') parts.push('<span class="j"><b>EU</b> '+esc(a.eu)+'</span>');
@@ -662,142 +733,225 @@ section{scroll-margin-top:110px;}
 
   // ---------- ACT II ----------
   (function(){
-    var a=C.act2;
+    var m=normalizeAct2(act2Manifest, C.act2);
+    var rail=(m.local_rail||[]).map(function(n){return '<a href="#'+esc(n.target)+'" data-act2-nav="'+esc(n.target)+'">'+esc(n.label)+'</a>';}).join('');
+    var flow=(m.orientation.core_visual_line||'Risk classified → control selected → instrument routed').split('→').map(function(s){return '<span>'+esc(s.trim())+'</span>';}).join('<b>→</b>');
     main.appendChild(el(
     '<section id="matrix" class="act" data-rail="2">'
     +'<div class="card-shell">'
-      +'<span id="instruments-layer" class="anchor-point" aria-hidden="true"></span>'
-      +'<div class="reveal"><p class="eyebrow">ACT II</p>'
-        +'<h2 class="font-display section-title text-white mt-2">'+esc(a.header)+'</h2>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(a.forward_ref)+'</p>'
-        +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:52rem">'+esc(a.system_framing)+'</p>'
-        +'<p class="text-xs mt-2" style="color:rgba(229,229,229,.5)">'+esc(a.provenance)+'</p></div>'
-      // matrix
-      +'<div class="reveal mt-7"><p class="eyebrow mb-1">Exhibit 1 · The Threat Matrix</p>'
-        +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(a.threat_matrix.ip_note)+' '+esc(a.threat_matrix.honesty_note)+'</p>'
+      +'<div class="ld-focus-backdrop" id="ld-focus-backdrop"></div>'
+      +'<div id="act2-orientation" class="reveal"><p class="eyebrow">'+esc(m.orientation.eyebrow)+'</p>'
+        +'<h2 class="font-display section-title text-white mt-2">'+esc(m.orientation.heading)+'</h2>'
+        +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:54rem">'+esc(m.orientation.subline)+'</p>'
+        +'<div class="act2-flow">'+flow+'</div>'
+        +'<p class="text-sm" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:50rem">'+esc(m.orientation.explanation)+'</p>'
+        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.orientation.guide_line)+'</p></div>'
+      +'<nav class="act2-rail" aria-label="Act II local map">'+rail+'</nav>'
+      +'<div id="act2-threat-matrix" class="reveal mt-7"><p class="eyebrow mb-1">'+esc(m.threat_matrix.title)+'</p>'
+        +'<p class="text-sm mb-2" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.threat_matrix.intro)+'</p>'
+        +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(m.threat_matrix.proof_line)+' · '+esc(m.threat_matrix.integrity_note)+'</p>'
         +'<div class="mx-filters mb-3" id="mx-filters"></div>'
         +'<div class="mx-scroll"><table class="mx-table"><thead><tr>'
-          +a.threat_matrix.columns.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')
+          +m.threat_matrix.columns.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')
           +'</tr></thead><tbody id="mx-body"></tbody></table></div>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(a.threat_matrix.tease)+'</p></div>'
-      // stack overview
-      +'<div class="reveal mt-8"><p class="eyebrow mb-2">Exhibit 2 · The Stack Overview</p>'
-        +'<p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">Lane A · build-side</p>'
-        +'<div class="stack-grid mb-4">'+a.stack_overview.laneA.map(stackCard).join('')+'</div>'
-        +'<p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">Lane B · deploy-side</p>'
-        +'<div class="stack-grid">'+a.stack_overview.laneB.map(stackCard).join('')+'</div></div>'
-      // living document
-      +'<div class="reveal mt-8"><p class="eyebrow mb-2">Exhibit 3 · The Living Document</p>'
-        +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(a.living_document.behavior)+'</p>'
+        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.threat_matrix.guide_text)+'</p></div>'
+      +'<div class="reveal mt-8"><span id="instruments-layer" class="anchor-point" aria-hidden="true"></span><p class="eyebrow mb-1">'+esc(m.instrument_architecture.title)+'</p>'
+        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.instrument_architecture.intro)+'</p>'
+        +'<p class="text-xs mt-2 mb-4" style="color:var(--gold)">'+esc(m.instrument_architecture.guide_line)+'</p>'
+        +'<div class="instr-lanes" id="instr-lanes"></div>'
+        +'<div class="route-chips" id="route-chips"></div><div class="route-line" id="route-line"></div></div>'
+      +'<div id="act2-living-document" class="reveal mt-8"><p class="eyebrow mb-1">'+esc(m.living_document.title)+'</p>'
+        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.living_document.intro)+'</p>'
+        +'<p class="text-xs mt-2 mb-3" style="color:var(--gold)">'+esc(m.living_document.guide_line)+'</p>'
         +'<div class="ld-grid">'
           +'<div>'
-            +'<p class="text-xs tracked mb-2" style="color:var(--gold)">Threats → the clause that closes it</p>'
             +'<div id="ld-threats"></div>'
-            +'<p class="text-xs tracked mb-2 mt-4" style="color:var(--gold)">Triggers → the Vault router</p>'
-            +'<div id="ld-triggers"></div>'
           +'</div>'
-          +'<div><div class="ld-doc" id="ld-doc"><span class="ld-watermark">'+esc(a.living_document.watermark)+'</span>'
-            +'<div class="ld-doc-title">Master Terms of Service — '+esc(a.living_document.spine_doc)+'</div>'
-            +'<div id="ld-clauses"></div>'
-            +'<div class="ld-router" id="ld-router"></div>'
-            +'<div class="ld-router-cap" id="ld-router-cap"></div>'
-            +'<div class="vault-tease">'+esc(a.living_document.vault_tease)+'</div>'
+          +'<div><div class="ld-doc" id="ld-doc"><span class="ld-watermark">'+esc(m.living_document.watermark)+'</span>'
+            +'<button class="btn sm ld-close" id="ld-close" type="button">Close</button>'
+            +'<div class="ld-doc-title" id="ld-doc-title">'+esc(m.living_document.default_note)+'</div>'
+            +'<div class="ld-default"><div class="ld-blur-row" style="width:92%"></div><div class="ld-blur-row" style="width:76%"></div><div class="ld-blur-row" style="width:63%"></div><p>'+esc(m.living_document.default_note)+'</p></div>'
+            +'<div class="ld-selected" id="ld-selected"></div>'
           +'</div></div>'
         +'</div></div>'
-      +'<div class="connector reveal"><p>'+esc(a.connector2)+'</p></div>'
+      +'<div id="act2-vault-router" class="reveal mt-8 vault-panel"><p class="eyebrow mb-1">'+esc(m.vault_router.title)+'</p>'
+        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.vault_router.intro)+'</p>'
+        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.vault_router.guide_line)+'</p>'
+        +'<div class="vault-toggles" id="vault-toggles"></div><div class="vault-docs" id="vault-docs"></div><div class="vault-route" id="vault-route"></div></div>'
+      +'<div id="act2-act3-bridge" class="connector reveal"><p>'+esc(m.bridge.connector_line)+'</p><div class="act2-flow"><span>'+esc(m.bridge.visual_line.split('→')[0].trim())+'</span><b>→</b><span>'+esc((m.bridge.visual_line.split('→')[1]||'intake logic').trim())+'</span><b>→</b><span>'+esc((m.bridge.visual_line.split('→')[2]||'automated assembly').trim())+'</span></div><a class="btn sm" href="#'+esc(m.bridge.target)+'">'+esc(m.bridge.button_label)+'</a></div>'
     +'</div></section>'));
-    buildMatrix(); buildLivingDoc();
+    buildMatrix(m); buildInstrumentMap(m); buildLivingDoc(m); buildVaultRouter(m); bindAct2Rail();
   })();
 
-  function stackCard(d){
-    return '<div class="stack-card'+(d.role?' router':'')+'"><div class="dt">'+esc(d.doc)+'</div>'
-      +(d.role?'<div class="rl">'+esc(d.role)+'</div>':'')+'<div class="ln">'+esc(d.line)+'</div></div>';
+  function normalizeAct2(manifest, fallback){
+    if(manifest && manifest.orientation && manifest.living_document) return manifest;
+    fallback=fallback||{};
+    var rows=(fallback.threat_matrix&&fallback.threat_matrix.rows)||[];
+    return {
+      local_rail:fallback.local_rail||[{label:'Orientation',target:'act2-orientation'},{label:'Threat Matrix',target:'act2-threat-matrix'},{label:'Instrument Architecture',target:'instruments-layer'},{label:'Living Document',target:'act2-living-document'},{label:'Vault Router',target:'act2-vault-router'},{label:'Act III Bridge',target:'act2-act3-bridge'}],
+      orientation:{eyebrow:fallback.eyebrow||'ACT II · THE LEGAL MATRIX',heading:fallback.header||'The Legal Matrix',subline:fallback.subline||'',core_visual_line:fallback.core_visual_line||'Risk classified → control selected → instrument routed',explanation:fallback.explanation||'',guide_line:fallback.guide_line||''},
+      threat_matrix:{title:(fallback.threat_matrix&&fallback.threat_matrix.title)||'Threat Matrix',intro:(fallback.threat_matrix&&fallback.threat_matrix.intro)||'',proof_line:(fallback.threat_matrix&&fallback.threat_matrix.proof_line)||'98 threat units',integrity_note:(fallback.threat_matrix&&fallback.threat_matrix.integrity_note)||'',guide_text:(fallback.threat_matrix&&fallback.threat_matrix.guide_text)||'',columns:(fallback.threat_matrix&&fallback.threat_matrix.columns)||['Threat ID','Threat','Lane','AI function / surface','Authority','Clause / instrument route','Tier'],rows:rows},
+      instrument_architecture:fallback.instrument_architecture||{title:'Instrument Architecture',intro:'',guide_line:'',lanes:[],routes:[]},
+      living_document:{title:(fallback.living_document&&fallback.living_document.title)||'Living Document',intro:(fallback.living_document&&fallback.living_document.intro)||'',guide_line:(fallback.living_document&&fallback.living_document.guide_line)||'',watermark:(fallback.living_document&&fallback.living_document.watermark)||'SAMPLE / EXCERPT / REVIEW-READY STRUCTURE',default_note:'Select a threat or commercial trigger to reveal the clause logic.',trigger_groups:[{label:'Triggers',triggers:((fallback.living_document&&fallback.living_document.triggers)||[]).map(function(t){return t.label;})}],triggers:((fallback.living_document&&fallback.living_document.triggers)||[]).map(function(t){return {label:t.label,group:t.group,lane:t.lane,main_reveal_route:[t.main_document,t.main_clause_title].filter(Boolean),main_clause:'Manifest unavailable; basic Act II fallback is rendering from content.json.',connected_mini_docs:[],annotations:[],display:{}};})},
+      vault_router:fallback.vault_router||{title:'Vault Router',intro:'',guide_line:'',toggles:[]},
+      bridge:{connector_line:fallback.connector2||'',visual_line:fallback.connector_visual||'Instrument architecture → intake logic → automated assembly',button_label:'See the system that runs it',target:'tooling-layer'}
+    };
   }
 
-  function buildMatrix(){
-    var mx=C.act2.threat_matrix, rows=mx.rows;
-    var arche={}; rows.forEach(function(r){arche[r.archetype]=1;});
-    var surfs={}; rows.forEach(function(r){r.surface.forEach(function(s){surfs[s]=1;});});
+  function buildMatrix(m){
+    var rows=m.threat_matrix.rows||[];
+    var arche={}, surfs={}, tiers={};
+    rows.forEach(function(r){ if(r.archetype) arche[r.archetype]=1; (r.surface||[]).forEach(function(s){surfs[s]=1;}); if(r.tier) tiers[r.tier]=1; });
     var fwrap=document.getElementById('mx-filters');
     function opts(obj,all){ return '<option value="">'+all+'</option>'+Object.keys(obj).sort().map(function(k){return '<option>'+esc(k)+'</option>';}).join(''); }
     fwrap.innerHTML='<select id="f-arch">'+opts(arche,'All archetypes')+'</select>'
       +'<select id="f-surf">'+opts(surfs,'All surfaces')+'</select>'
       +'<select id="f-lane"><option value="">All lanes</option><option>A</option><option>B</option><option>Both</option></select>'
-      +'<button class="mx-toggle" id="f-floor">Global Floor</button>'
+      +'<select id="f-tier">'+opts(tiers,'All tiers')+'</select>'
+      +'<select id="f-auth"><option value="">All authority bands</option><option value="in">IN</option><option value="eu">EU</option><option value="us">US</option></select>'
       +'<button class="mx-toggle" id="f-all">Show all 98</button>'
       +'<span class="text-xs" id="mx-count" style="color:rgba(229,229,229,.45)"></span>';
     var rank={T1:1,T2:2,T3:3,T4:4,T5:5};
-    var showAll=false, floorOnly=false;
+    var showAll=false;
+    function hasAuth(r,band){ var v=r.authority&&r.authority[band]; return !!(v && v!=='—' && v!=='-'); }
     function render(){
-      var fa=document.getElementById('f-arch').value, fs=document.getElementById('f-surf').value, fl=document.getElementById('f-lane').value;
+      var fa=document.getElementById('f-arch').value, fs=document.getElementById('f-surf').value, fl=document.getElementById('f-lane').value, ft=document.getElementById('f-tier').value, fb=document.getElementById('f-auth').value;
       var list=rows.filter(function(r){
-        if(floorOnly && r.archetype!=='UNI') return false;
         if(fa && r.archetype!==fa) return false;
-        if(fs && r.surface.indexOf(fs)<0) return false;
+        if(fs && (r.surface||[]).indexOf(fs)<0) return false;
         if(fl && r.lane!==fl) return false;
+        if(ft && r.tier!==ft) return false;
+        if(fb && !hasAuth(r,fb)) return false;
         return true;
       });
       list.sort(function(a,b){return (rank[a.tier]||9)-(rank[b.tier]||9);});
-      var filtered = fa||fs||fl||floorOnly;
+      var filtered = fa||fs||fl||ft||fb;
       var shown = (showAll||filtered)?list:list.slice(0,14);
       document.getElementById('mx-body').innerHTML=shown.map(function(r){
-        return '<tr><td class="mx-threat">'+esc(r.threat)+'<div style="font-size:.6rem;color:rgba(229,229,229,.35);margin-top:.15rem">'+esc(r.archetype)+' · '+esc(r.surface.join(', '))+' · Lane '+esc(r.lane)+'</div></td>'
+        return '<tr data-row="'+esc(r.id||'')+'"><td><div class="mx-id">'+esc(r.id||'—')+'</div></td><td class="mx-threat">'+esc(r.threat)+'<div style="font-size:.6rem;color:rgba(229,229,229,.35);margin-top:.15rem">'+esc(r.archetype||'')+' · '+esc((r.surface||[]).join(', '))+'</div></td>'
+          +'<td>'+esc(r.lane||'')+'</td><td>'+esc(r.archetype||'')+'<div style="font-size:.62rem;color:rgba(229,229,229,.42)">'+esc((r.surface||[]).join(', '))+'</div></td>'
           +'<td class="mx-auth">'+authLine(r.authority)+'</td>'
           +'<td class="mx-clause">'+esc(r.clause)+'</td>'
           +'<td><span class="mx-tier t-'+esc(r.tier)+'">'+esc(r.tier)+'</span></td></tr>';
       }).join('');
-      document.getElementById('mx-count').textContent = shown.length+' of '+list.length+(list.length!==rows.length?(' (filtered from '+rows.length+')'):' threats');
+      document.getElementById('mx-count').textContent = shown.length+' displayed · '+list.length+' selected · 98 threat units mapped';
+      document.querySelectorAll('#mx-body tr').forEach(function(tr){
+        tr.addEventListener('click', function(){
+          var r=shown.filter(function(x){return String(x.id||'')===tr.getAttribute('data-row');})[0]||{};
+          openModal('<div class="eyebrow">'+esc(r.id||'Threat row')+' · Lane '+esc(r.lane||'')+' · '+esc(r.tier||'')+'</div><h3>'+esc(r.threat||'Threat')+'</h3>'
+            +'<div class="beat"><div class="lab">AI function / surface</div><p>'+esc(r.archetype||'')+' · '+esc((r.surface||[]).join(', '))+'</p></div>'
+            +'<div class="beat"><div class="lab">Authority</div><p>'+authLine(r.authority)+'</p></div>'
+            +'<div class="beat"><div class="lab">Defensive control</div><p>'+esc(r.defensive_control||r.clause||'Clause route')+'</p></div>'
+            +'<div class="beat"><div class="lab">Clause / instrument route</div><p style="color:var(--gold)">'+esc(r.clause||'')+'</p></div>'
+            +'<div class="beat"><div class="lab">Connected documents</div><p>'+esc(r.connected_documents||r.clause||'Document route shown in the instrument architecture layer.')+'</p></div>'
+            +'<div class="beat"><div class="lab">Why it matters</div><p>'+esc(r.why_it_matters||'This row shows how the registry converts a classified risk into authority, control logic, and a document destination.')+'</p></div>');
+        });
+      });
     }
-    ['f-arch','f-surf','f-lane'].forEach(function(id){document.getElementById(id).addEventListener('change',render);});
-    document.getElementById('f-floor').addEventListener('click',function(){floorOnly=!floorOnly; this.classList.toggle('on',floorOnly); render();});
+    ['f-arch','f-surf','f-lane','f-tier','f-auth'].forEach(function(id){document.getElementById(id).addEventListener('change',render);});
     document.getElementById('f-all').addEventListener('click',function(){showAll=!showAll; this.classList.toggle('on',showAll); this.textContent=showAll?'Show top 14':'Show all 98'; render();});
     render();
   }
 
-  function buildLivingDoc(){
-    var ld=C.act2.living_document;
-    // build doc clauses from the 6 threat buttons (clause heading + frosted body + reveal text)
-    var cwrap=document.getElementById('ld-clauses');
-    ld.threat_buttons.forEach(function(t,i){
-      cwrap.appendChild(el('<div class="ld-clause" id="clause-'+i+'"><h4>'+esc(t.clause)+'</h4>'
-        +'<div class="body"><div class="bar" style="width:92%"></div><div class="bar" style="width:78%"></div><div class="bar" style="width:64%"></div>'
-        +'<div class="reveal-text"><strong style="color:var(--gold)">'+esc(t.what)+'</strong><br>'+esc(t.why)+'</div></div></div>'));
-    });
-    // threat buttons
-    var twrap=document.getElementById('ld-threats');
-    ld.threat_buttons.forEach(function(t,i){
-      var b=el('<button class="ld-btn" data-clause="'+i+'"><div class="th">'+esc(t.threat)+'</div><div class="cl">'+esc(t.clause)+' · '+esc(t.case)+'</div></button>');
-      b.addEventListener('click', function(){
-        document.querySelectorAll('.ld-btn[data-clause]').forEach(function(n){n.classList.remove('active');});
-        b.classList.add('active');
-        document.querySelectorAll('.ld-clause').forEach(function(n){n.classList.remove('lit');});
-        var cl=document.getElementById('clause-'+i); cl.classList.add('lit');
-        cl.scrollIntoView({behavior:'smooth', block:'center'});
-        openModal('<div class="eyebrow">'+esc(t.case)+'</div><h3>'+esc(t.threat)+'</h3>'
-          +'<div class="beat"><div class="lab">The clause</div><p style="color:var(--gold)">'+esc(t.clause)+'</p></div>'
-          +'<div class="beat"><div class="lab">What it does</div><p>'+esc(t.what)+'</p></div>'
-          +'<div class="beat"><div class="lab">Why it holds</div><p>'+esc(t.why)+'</p></div>');
+  function buildInstrumentMap(m){
+    var lanes=m.instrument_architecture.lanes||[], wrap=document.getElementById('instr-lanes');
+    wrap.innerHTML=lanes.map(function(lane){
+      var nodes=[{name:lane.central_node, role:lane.function_tag, central:true}].concat(lane.instruments||[]);
+      return '<article class="instr-lane"><h3>'+esc(lane.label)+'</h3><p>'+esc(lane.subline)+'</p><div class="instr-map">'+nodes.map(function(d){
+        return '<button class="doc-node'+(d.central?' central':'')+'" type="button" data-doc-node="'+esc(d.name)+'" data-lane="'+esc(lane.key)+'"><div class="dt">'+esc(d.name)+'</div><div class="rl">'+esc(d.role||'Central router')+'</div></button>';
+      }).join('')+'</div></article>';
+    }).join('');
+    document.querySelectorAll('[data-doc-node]').forEach(function(btn){
+      btn.addEventListener('mouseenter', function(){ btn.classList.add('active'); });
+      btn.addEventListener('mouseleave', function(){ btn.classList.remove('active'); });
+      btn.addEventListener('click', function(){
+        var lane=lanes.filter(function(l){return l.key===btn.getAttribute('data-lane');})[0]||{};
+        var name=btn.getAttribute('data-doc-node');
+        var modal=lane.modal||{};
+        openModal('<div class="eyebrow">'+esc(lane.label||'Instrument')+'</div><h3>'+esc(name)+'</h3>'
+          +'<div class="beat"><div class="lab">Role in stack</div><p>'+esc(name===lane.central_node?modal.role_in_stack:(btn.querySelector('.rl')||{}).textContent)+'</p></div>'
+          +'<div class="beat"><div class="lab">When it activates</div><p>'+esc(name===lane.central_node?modal.when_it_activates:'When the selected route or client facts trigger this instrument.')+'</p></div>'
+          +'<div class="beat"><div class="lab">What it controls</div><p>'+esc(name===lane.central_node?modal.what_it_controls:'A specific part of the legal control stack, linked through the central router.')+'</p></div>'
+          +'<div class="beat"><div class="lab">Connected documents</div><p>'+esc(name===lane.central_node?modal.connected_documents:'Shown through the route chips and living document connections.')+'</p></div>'
+          +'<div class="beat"><div class="lab">Why it matters</div><p>'+esc(name===lane.central_node?modal.why_it_matters:'The map shows dependency and trigger logic, not a standalone document gallery.')+'</p></div>');
       });
-      twrap.appendChild(b);
     });
-    // trigger buttons
-    var gwrap=document.getElementById('ld-triggers');
-    var routerDocs=['TOS','DPA','AGT','AUP','PP','SLA','IP'];
-    var routerWrap=document.getElementById('ld-router');
-    routerWrap.innerHTML=routerDocs.map(function(d){return '<span class="ld-docchip" data-doc="'+d+'">'+d+'</span>';}).join('');
-    var cap=document.getElementById('ld-router-cap');
-    ld.trigger_buttons.items.forEach(function(g){
-      var b=el('<button class="ld-btn trig"><div class="th">'+esc(g.trigger)+'</div><div class="cl">'+esc(g.surface)+'</div></button>');
-      b.addEventListener('click', function(){
-        document.querySelectorAll('.ld-btn.trig').forEach(function(n){n.classList.remove('active');});
-        b.classList.add('active');
-        var fired=g.fires.toUpperCase();
-        routerWrap.querySelectorAll('.ld-docchip').forEach(function(ch){ ch.classList.toggle('fired', fired.indexOf(ch.getAttribute('data-doc'))>=0); });
-        cap.innerHTML='<strong class="gold">Fires:</strong> '+esc(g.fires)+' &nbsp;<strong class="gold">Vault injects:</strong> '+esc(g.injects);
+    var rwrap=document.getElementById('route-chips'), rline=document.getElementById('route-line');
+    rwrap.innerHTML='<span class="proof-subtitle" style="margin:.2rem .4rem 0 0">'+esc(m.instrument_architecture.routes_title||'Try a route')+'</span>'+(m.instrument_architecture.routes||[]).map(function(r,i){return '<button class="btn sm sec" type="button" data-route="'+i+'">'+esc(r.label)+'</button>';}).join('');
+    document.querySelectorAll('[data-route]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var r=(m.instrument_architecture.routes||[])[parseInt(btn.getAttribute('data-route'),10)]||{};
+        document.querySelectorAll('[data-route]').forEach(function(n){n.classList.remove('sec');});
+        document.querySelectorAll('[data-doc-node]').forEach(function(n){n.classList.toggle('routed',(r.highlights||[]).indexOf(n.getAttribute('data-doc-node'))>=0);});
+        rline.textContent=r.line||'';
       });
-      gwrap.appendChild(b);
     });
-    cap.innerHTML='<span style="color:rgba(229,229,229,.45)">'+esc(ld.trigger_buttons.note)+'</span>';
+  }
+
+  function buildLivingDoc(m){
+    var ld=m.living_document, twrap=document.getElementById('ld-threats'), selected=document.getElementById('ld-selected'), doc=document.getElementById('ld-doc'), backdrop=document.getElementById('ld-focus-backdrop');
+    function triggerByLabel(label){ return (ld.triggers||[]).filter(function(t){return t.label===label;})[0]; }
+    twrap.innerHTML=(ld.trigger_groups||[]).map(function(g){
+      return '<div class="ld-group-title">'+esc(g.label)+'</div>'+g.triggers.map(function(label){
+        var t=triggerByLabel(label)||{label:label};
+        return '<button class="ld-btn" type="button" data-trigger-label="'+esc(t.label)+'"><div class="th">'+esc(t.label)+'</div><div class="cl">'+esc(t.lane||'')+' · '+esc(t.mapping_status||t.group||'')+'</div></button>';
+      }).join('');
+    }).join('');
+    function closeFocus(){ doc.classList.remove('focused'); backdrop.classList.remove('open'); }
+    document.getElementById('ld-close').addEventListener('click', closeFocus);
+    backdrop.addEventListener('click', closeFocus);
+    window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeFocus(); });
+    document.querySelectorAll('[data-trigger-label]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var t=triggerByLabel(btn.getAttribute('data-trigger-label'))||{};
+        document.querySelectorAll('[data-trigger-label]').forEach(function(n){n.classList.remove('active');});
+        btn.classList.add('active');
+        var route=(t.main_reveal_route||[]).join(' · ');
+        var badges=[];
+        if(t.display&&t.display.section_style) badges.push(t.display.section_style);
+        if(t.display&&t.display.badge) badges.push(t.display.badge);
+        if(t.display&&t.display.conspicuous_box) badges.push('conspicuous box');
+        selected.innerHTML='<div class="ld-section-head">'+esc(t.group||'Trigger')+' · '+esc(t.accuracy_flag||'')+'</div>'
+          +'<h3 class="font-display gold" style="font-size:1.5rem;line-height:1.05;margin:.15rem 0 .35rem">'+esc(t.label||'Trigger')+'</h3>'
+          +'<p class="text-xs mb-2" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(route)+'</p>'
+          +badges.map(function(b){return '<span class="ld-style-badge">'+esc(b)+'</span>';}).join('')
+          +'<pre class="clause-box">'+esc(t.main_clause||'Clause manifest unavailable in fallback mode.')+'</pre>'
+          +'<div class="mini-doc-grid">'+(t.connected_mini_docs||[]).map(function(d){return '<article class="connected-mini-doc"><h4>'+esc(d.title)+'</h4>'+(d.reason?'<div class="reason">'+esc(d.reason)+'</div>':'')+'<pre>'+esc(d.excerpt)+'</pre></article>';}).join('')+'</div>'
+          +'<div class="annotation-grid">'+(t.annotations||[]).map(function(a){return '<div class="annotation-callout"><div class="lab">'+esc(a.label)+'</div><p>'+esc(a.text)+'</p></div>';}).join('')+'</div>';
+        document.getElementById('ld-doc-title').textContent=(t.main_document_display||[]).join(' · ') || t.label || ld.default_note;
+        doc.classList.add('has-selection','focused');
+        backdrop.classList.add('open');
+        doc.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    });
+  }
+
+  function buildVaultRouter(m){
+    var toggles=m.vault_router.toggles||[], active={'B2B / B2C':1,'EU users':1,'Personal data':1,'Agentic capability':1};
+    var docs=['ToS','Privacy Policy','DPA','AUP','Agentic Addendum','SLA','IP Deed','AI Use Handbook','Shadow AI Scanner','HITL SOP','DPIA'];
+    document.getElementById('vault-toggles').innerHTML=toggles.map(function(t){return '<button class="vault-chip'+(active[t]?' on':'')+'" type="button" data-vault="'+esc(t)+'">'+esc(t)+'</button>';}).join('');
+    document.getElementById('vault-docs').innerHTML=docs.map(function(d){return '<span class="vault-doc" data-vault-doc="'+esc(d)+'">'+esc(d)+'</span>';}).join('');
+    function update(){
+      var fired=['ToS'];
+      if(active['B2B / B2C']) fired.push('Privacy Policy');
+      if(active['EU users']||active['Personal data']) fired.push('Privacy Policy','DPA');
+      if(active['Agentic capability']) fired.push('AUP','Agentic Addendum');
+      if(active['SLA required']) fired.push('SLA');
+      if(active['Output ownership']) fired.push('IP Deed','HITL SOP');
+      if(active['High-risk use case']) fired.push('DPIA','AUP');
+      if(active['Internal employee AI use']) fired.push('AI Use Handbook','Shadow AI Scanner','HITL SOP','DPIA');
+      document.querySelectorAll('[data-vault-doc]').forEach(function(d){d.classList.toggle('fired', fired.indexOf(d.getAttribute('data-vault-doc'))>=0);});
+      var facts=Object.keys(active).filter(function(k){return active[k];}).join(' + ') || 'No facts selected';
+      document.getElementById('vault-route').textContent=facts+' → '+(m.vault_router.route_line||'trigger conditions → document stack → review-ready route');
+    }
+    document.querySelectorAll('[data-vault]').forEach(function(btn){ btn.addEventListener('click', function(){ var k=btn.getAttribute('data-vault'); active[k]=!active[k]; btn.classList.toggle('on',!!active[k]); update(); }); });
+    update();
+  }
+
+  function bindAct2Rail(){
+    var navs=Array.prototype.slice.call(document.querySelectorAll('[data-act2-nav]'));
+    function updateAct2Rail(){ var cur=0, off=window.innerHeight*.36; navs.forEach(function(n,i){ var t=document.getElementById(n.getAttribute('data-act2-nav')); if(t&&t.getBoundingClientRect().top-off<=0) cur=i; }); navs.forEach(function(n,i){ n.classList.toggle('active', i===cur); }); }
+    window.addEventListener('scroll', updateAct2Rail, {passive:true}); window.addEventListener('resize', updateAct2Rail); updateAct2Rail();
   }
 
   // ---------- ACT III ----------
@@ -974,10 +1128,15 @@ section{scroll-margin-top:110px;}
   if(window.fetch){
     fetch('content.json', {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : embeddedContent; })
-      .then(function(fresh){ boot(fresh || embeddedContent); })
-      .catch(function(){ boot(embeddedContent); });
+      .then(function(fresh){
+        return fetch('data/act2-manifest.json', {cache:'no-store'})
+          .then(function(r){ return r.ok ? r.json() : null; })
+          .catch(function(){ return null; })
+          .then(function(act2){ boot(fresh || embeddedContent, act2); });
+      })
+      .catch(function(){ boot(embeddedContent, null); });
   } else {
-    boot(embeddedContent);
+    boot(embeddedContent, null);
   }
 })();
 </script>
