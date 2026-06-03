@@ -24,7 +24,7 @@
     ],
     "proof_chips": [
       {
-        "label": "AI Risk Diligence Engine",
+        "label": "Diligence Engine",
         "what": "A diligence layer that turns public/product facts into legal-risk findings using a structured threat registry.",
         "supports": "Supports AI governance review by showing what risk is triggered, why it matters, and what legal instrument should respond.",
         "proof": "Shown through project walkthrough and scrubbed proof artifacts."
@@ -63,11 +63,11 @@
     "ctas": [
       {
         "label": "Watch project walkthrough",
-        "target": "#funnel-video"
+        "target": "#project-walkthrough"
       },
       {
         "label": "Explore proof portal",
-        "target": "#funnel-sandboxes"
+        "target": "#sandbox-os"
       },
       {
         "label": "View build notes",
@@ -1147,7 +1147,7 @@
     "subline": "Acts I–II showed the law, taxonomy, threat matrix, and instruments. Act III shows the system that runs the work: diligence, Vault assembly, portal delivery, maintenance review, and controlled AI workflow proof.",
     "core_thesis": "The law came first. The system exists to deliver it.",
     "orientation": {
-      "title": "The Legal Delivery System — from legal risk to review-ready delivery.",
+      "title": "from legal risk to review-ready delivery.",
       "visual_chain": [
         "Legal risk",
         "Diligence Engine",
@@ -1168,10 +1168,10 @@
       }
     },
     "project_walkthrough": {
-      "title": "Project Environment Walkthrough — from prompt-agent reasoning to portal delivery.",
-      "subline": "Recorded project-environment runs across frontier model workspaces — ChatGPT Projects, Claude, and Gemini — showing how source files, threat registries, prompt-agent roles, diligence reports, Vault logic, and Lex Nova's CRM/client portal infrastructure work together as one legal delivery system.",
-      "safety_note": "Recorded with synthetic or scrubbed data. Internal prompts, client data, production credentials, and full private source files are not exposed.",
-      "proof_line": "This proves prompt and systems orchestration, not just app-building: source files, registries, prompt-agent runs, legal reasoning, intake logic, and delivery infrastructure are connected into one workflow.",
+      "title": "Project Environment Walkthrough — full-power legal delivery runs.",
+      "subline": "Recorded project runs across ChatGPT Projects, Claude, and Gemini showing how source files, registries, prompt-agent roles, diligence reports, Vault logic, and Lex Nova's portal/CRM layer connect into one delivery workflow.",
+      "safety_note": "Synthetic/scrubbed data only. No client data, credentials, or private prompt stack exposed.",
+      "proof_line": "Prompt orchestration · registry-grounded reasoning · Vault routing · portal delivery",
       "environment_chips": [
         "ChatGPT Project Run",
         "Claude Run",
@@ -1206,7 +1206,7 @@
         },
         {
           "label": "View system map",
-          "href": "#act3-sandbox-os"
+          "href": "#sandbox-os"
         },
         {
           "label": "Open sandbox",
@@ -1232,7 +1232,7 @@
             "description": "Reads internal AI-use survey facts and classifies employee/tool/data/output risks into governance routes."
           }
         ],
-        "input_row": "Website / document / pasted materials / internal-use survey",
+        "input_row": "Website · document · pasted materials · internal-use survey",
         "chain": [
           "Source material",
           "profile extraction",
@@ -1240,7 +1240,7 @@
           "threat matrix match",
           "diligence report"
         ],
-        "output_row": "Company profile · product profile · triggered risks · evidence · remediation route · push to assembly",
+        "output_row": "Structured diligence report",
         "node_details": {
           "Source material": "Website, uploaded document, pasted public text, or internal-use survey.",
           "profile extraction": "Extracts company, product, AI behavior, data flows, users, jurisdiction, and operational context.",
@@ -1266,7 +1266,7 @@
       },
       "engine_b": {
         "title": "Vault Assembly & Delivery Engine",
-        "subline": "Diligence report + Vault answers converted into product profile, clause routes, document payload, portal delivery, and maintenance review.",
+        "subline": "Diligence report + Vault answers converted into a product profile, clause routes, assembly payload, and final review-ready document draft pushed to CRM.",
         "formula": [
           "Vault questionnaire",
           "+",
@@ -1280,8 +1280,9 @@
           "product profile",
           "clause / schedule routing",
           "assembly payload",
-          "dummy portal / CRM",
-          "maintenance radar"
+          "document assembly",
+          "final review-ready document draft",
+          "pushed to CRM / delivery layer"
         ],
         "node_details": {
           "Vault questionnaire": "Client/product answers: market exposure, users, AI architecture, model providers, data flows, sub-processors, output/IP, SLA posture, and agentic controls.",
@@ -1289,9 +1290,20 @@
           "product profile": "Converts Vault answers and diligence findings into a structured legal profile.",
           "clause / schedule routing": "Determines which clauses, schedules, addenda, policies, and playbooks activate.",
           "assembly payload": "Structured output that can be passed to n8n, Make, or document automation for assembly.",
-          "dummy portal / CRM": "Shows delivery state, document status, client profile, and review-ready handoff using synthetic data.",
-          "maintenance radar": "Demo logic showing how new or updated registry entries can be checked against the client profile and delivered stack to classify coverage as covered, upcoming, or exposed."
-        }
+          "document assembly": "Turns the routed payload into a review-ready draft using the activated document structure.",
+          "final review-ready document draft": "The core engine output: a final review-ready document draft prepared for lawyer/client review.",
+          "pushed to CRM / delivery layer": "The finished draft is handed to the CRM or delivery layer for status, review, and client-facing handoff."
+        },
+        "preview_cards": [
+          "Final review-ready document draft",
+          "CRM / client delivery status",
+          "Maintenance radar"
+        ],
+        "delivery_layer": [
+          "pushed to CRM / delivery layer",
+          "dummy client portal status",
+          "maintenance radar"
+        ]
       },
       "gateway": {
         "title": "Open the live sandbox",
@@ -1320,7 +1332,7 @@
     },
     "prompt_agent_proof": {
       "title": "Prompt-Agent Engineering — controlled legal intelligence workflows.",
-      "subline": "The same legal reasoning was decomposed into role-based prompt systems: source discovery, evidence extraction, registry matching, legal-risk analysis, document routing, and human-review checkpoints.",
+      "subline": "A walkthrough of how legal work was decomposed into role-based prompt systems: source discovery, evidence extraction, registry matching, architecture decisions, reviewable outputs, and human-review checkpoints.",
       "flow": [
         "Signal / source",
         "evidence extraction",
@@ -1373,7 +1385,7 @@
         "sample JSON output",
         "role decomposition map"
       ],
-      "why_not_live": "Public live signal hunting would distort the identity. It could look like cold-outreach tooling. The point is not lead generation. The point is structured prompt-agent engineering for legal intelligence.",
+      "why_not_live": "Video only: public live signal hunting would misframe the work as outreach tooling.",
       "ctas": [
         {
           "label": "Watch prompt-agent walkthrough",
@@ -1442,7 +1454,8 @@
       ],
       "bridge": "That is the through-line: a legal mind using systems to make legal work more precise, not a technologist borrowing legal language.",
       "cta": "Continue to Capstone"
-    }
+    },
+    "display_heading": "from legal risk to review-ready delivery."
   },
   "capstone": {
     "title": "One Mind: The Legal Problem First — Across Three Jurisdictions",
