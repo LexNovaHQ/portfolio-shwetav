@@ -745,10 +745,10 @@
     "connector_visual": "Risk classified → control selected → instrument routed."
   },
   "act2": {
-    "header": "The Legal Matrix ? threat IDs converted into clauses, policies, playbooks, and review-ready instruments.",
-    "eyebrow": "ACT II ? THE LEGAL MATRIX",
+    "header": "The Legal Matrix — threat IDs converted into clauses, policies, playbooks, and review-ready instruments.",
+    "eyebrow": "ACT II · THE LEGAL MATRIX",
     "subline": "Act I classified the risk. Act II shows how that risk becomes legal architecture: a threat ID, an authority, a defensive control, and the instrument that carries the fix.",
-    "core_visual_line": "Risk classified ? control selected ? instrument routed",
+    "core_visual_line": "Risk classified → control selected → instrument routed",
     "explanation": "The registry is not a list of legal issues. It is a routing layer: each threat ID carries the risk, authority, control logic, and document destination.",
     "guide_line": "Follow the route: matrix first, instrument map second, clause viewer third.",
     "local_rail": [
@@ -778,9 +778,9 @@
       }
     ],
     "threat_matrix": {
-      "title": "Threat Matrix ? the registry behind the instruments",
+      "title": "Threat Matrix — the registry behind the instruments",
       "intro": "The threat matrix converts AI-law risk into structured rows: threat ID, lane, AI function, legal surface, authority, tier, and clause route.",
-      "proof_line": "98 threat units ? 17 fields ? Lane A / Lane B routing ? IN / EU / US authority mapping",
+      "proof_line": "98 threat units · 17 fields · Lane A / Lane B routing · IN / EU / US authority mapping",
       "integrity_note": "If a jurisdiction is not mapped, the cell stays blank. The matrix does not invent fake IN/EU/US parallels just to look complete.",
       "guide_text": "Filter the matrix or click a row to see how a threat becomes a document route.",
       "columns": [
@@ -1027,12 +1027,12 @@
       ]
     },
     "instrument_architecture": {
-      "title": "Instrument Architecture ? the document stack is a legal system",
+      "title": "Instrument Architecture — the document stack is a legal system",
       "intro": "The documents are not standalone files. Each instrument has a role, dependency, and trigger. The stack works because the documents route into each other.",
       "guide_line": "Hover a document to see its role. Click to open the stack logic. Try a route to see which instruments activate together."
     },
     "living_document": {
-      "title": "Living Document ? how risk becomes an instrument",
+      "title": "Living Document — how risk becomes an instrument",
       "intro": "Select a threat or commercial trigger. The viewer reveals the clause, connected documents, and the legal logic that makes the instrument work.",
       "guide_line": "Click a trigger to reveal the clause and connected instruments.",
       "watermark": "SAMPLE / EXCERPT / REVIEW-READY STRUCTURE",
@@ -1124,7 +1124,7 @@
       ]
     },
     "vault_router": {
-      "title": "Vault Router ? how the stack becomes dynamic",
+      "title": "Vault Router — how the stack becomes dynamic",
       "intro": "The document map is the static architecture. The Vault turns client/product answers into document routing.",
       "guide_line": "Toggle a product fact to see which instruments activate.",
       "toggles": [
@@ -1138,8 +1138,8 @@
         "Internal employee AI use"
       ]
     },
-    "connector2": "A document stack is still hand-work if someone must read the registry, select the clauses, and assemble the file manually. The leverage was not the document alone ? it was the system that could produce it. So I built that.",
-    "connector_visual": "Instrument architecture ? intake logic ? automated assembly"
+    "connector2": "A document stack is still hand-work if someone must read the registry, select the clauses, and assemble the file manually. The leverage was not the document alone — it was the system that could produce it. So I built that.",
+    "connector_visual": "Instrument architecture → intake logic → automated assembly"
   },
   "act3": {
     "header": "Act III — The Funnel: the machine that runs it.",

@@ -31,17 +31,17 @@
     }
   ],
   "orientation": {
-    "eyebrow": "ACT II ? THE LEGAL MATRIX",
-    "heading": "The Legal Matrix ? threat IDs converted into clauses, policies, playbooks, and review-ready instruments.",
+    "eyebrow": "ACT II · THE LEGAL MATRIX",
+    "heading": "The Legal Matrix — threat IDs converted into clauses, policies, playbooks, and review-ready instruments.",
     "subline": "Act I classified the risk. Act II shows how that risk becomes legal architecture: a threat ID, an authority, a defensive control, and the instrument that carries the fix.",
-    "core_visual_line": "Risk classified ? control selected ? instrument routed",
+    "core_visual_line": "Risk classified → control selected → instrument routed",
     "explanation": "The registry is not a list of legal issues. It is a routing layer: each threat ID carries the risk, authority, control logic, and document destination.",
     "guide_line": "Follow the route: matrix first, instrument map second, clause viewer third."
   },
   "threat_matrix": {
-    "title": "Threat Matrix ? the registry behind the instruments",
+    "title": "Threat Matrix — the registry behind the instruments",
     "intro": "The threat matrix converts AI-law risk into structured rows: threat ID, lane, AI function, legal surface, authority, tier, and clause route.",
-    "proof_line": "98 threat units ? 17 fields ? Lane A / Lane B routing ? IN / EU / US authority mapping",
+    "proof_line": "98 threat units · 17 fields · Lane A / Lane B routing · IN / EU / US authority mapping",
     "integrity_note": "If a jurisdiction is not mapped, the cell stays blank. The matrix does not invent fake IN/EU/US parallels just to look complete.",
     "guide_text": "Filter the matrix or click a row to see how a threat becomes a document route.",
     "columns": [
@@ -288,13 +288,13 @@
     ]
   },
   "instrument_architecture": {
-    "title": "Instrument Architecture ? the document stack is a legal system",
+    "title": "Instrument Architecture — the document stack is a legal system",
     "intro": "The documents are not standalone files. Each instrument has a role, dependency, and trigger. The stack works because the documents route into each other.",
     "guide_line": "Hover a document to see its role. Click to open the stack logic. Try a route to see which instruments activate together.",
     "lanes": [
       {
         "key": "laneA",
-        "label": "Lane A ? Build-side AI products",
+        "label": "Lane A — Build-side AI products",
         "subline": "For companies building, selling, or exposing AI products to customers, users, APIs, or enterprise buyers.",
         "central_node": "Terms of Service",
         "function_tag": "Central commercial router",
@@ -329,13 +329,13 @@
           "role_in_stack": "Central commercial router for Lane A.",
           "when_it_activates": "Always active for product-side AI companies.",
           "what_it_controls": "service classification, output authority, hallucination/reliance, liability cap, indemnity, termination, privacy/DPA gateway, AUP enforcement.",
-          "connected_documents": "DPA ? Privacy Policy ? AUP ? SLA ? Agentic Addendum ? Product Playbook.",
+          "connected_documents": "DPA · Privacy Policy · AUP · SLA · Agentic Addendum · Product Playbook.",
           "why_it_matters": "Without a central router, every document becomes a standalone template. The ToS makes the stack legally coherent."
         }
       },
       {
         "key": "laneB",
-        "label": "Lane B ? Internal AI deployment",
+        "label": "Lane B — Internal AI deployment",
         "subline": "For companies using AI inside the business through employees, contractors, teams, departments, or operational workflows.",
         "central_node": "AI Use Handbook",
         "function_tag": "Internal governance spine",
@@ -366,7 +366,7 @@
           "role_in_stack": "Internal governance spine for Lane B.",
           "when_it_activates": "When employees, contractors, teams, or workflows use AI internally.",
           "what_it_controls": "permitted AI use, traffic-light rules, confidentiality, employee duties, human review, restricted tools, client-data handling.",
-          "connected_documents": "Shadow AI Scanner ? IP Deed ? HITL SOP ? DPIA ? Workplace Playbook.",
+          "connected_documents": "Shadow AI Scanner · IP Deed · HITL SOP · DPIA · Workplace Playbook.",
           "why_it_matters": "Internal AI risk is not solved by a product ToS. It needs workplace governance, authorship controls, review evidence, and impact assessment."
         }
       }
@@ -376,7 +376,7 @@
     "routes": [
       {
         "label": "Personal Data",
-        "line": "Personal data trigger ? DPA + Privacy Policy + ToS privacy gateway",
+        "line": "Personal data trigger → DPA + Privacy Policy + ToS privacy gateway",
         "highlights": [
           "DPA",
           "Privacy Policy",
@@ -385,7 +385,7 @@
       },
       {
         "label": "Agentic AI",
-        "line": "Agentic capability ? ToS gateway + Agentic Addendum + AUP enforcement + SLA carve-outs",
+        "line": "Agentic capability → ToS gateway + Agentic Addendum + AUP enforcement + SLA carve-outs",
         "highlights": [
           "Terms of Service",
           "Agentic Addendum",
@@ -395,7 +395,7 @@
       },
       {
         "label": "Enterprise SLA",
-        "line": "Enterprise performance commitment ? SLA + ToS sole-remedy/cap architecture + Agentic carve-outs",
+        "line": "Enterprise performance commitment → SLA + ToS sole-remedy/cap architecture + Agentic carve-outs",
         "highlights": [
           "SLA",
           "Terms of Service",
@@ -404,7 +404,7 @@
       },
       {
         "label": "AI Output / IP",
-        "line": "AI-generated output ? ToS output terms + IP Deed + HITL SOP + Handbook review controls",
+        "line": "AI-generated output → ToS output terms + IP Deed + HITL SOP + Handbook review controls",
         "highlights": [
           "Terms of Service",
           "IP Deed",
@@ -414,7 +414,7 @@
       },
       {
         "label": "Employee AI Use",
-        "line": "Internal AI use ? AI Use Handbook + Shadow AI Scanner + HITL SOP + IP Deed + DPIA",
+        "line": "Internal AI use → AI Use Handbook + Shadow AI Scanner + HITL SOP + IP Deed + DPIA",
         "highlights": [
           "AI Use Handbook",
           "Shadow AI Scanner",
@@ -426,7 +426,7 @@
     ]
   },
   "living_document": {
-    "title": "Living Document ? how risk becomes an instrument",
+    "title": "Living Document — how risk becomes an instrument",
     "intro": "Select a threat or commercial trigger. The viewer reveals the clause, connected documents, and the legal logic that makes the instrument work.",
     "guide_line": "Click a trigger to reveal the clause and connected instruments.",
     "watermark": "SAMPLE / EXCERPT / REVIEW-READY STRUCTURE",
@@ -1488,7 +1488,7 @@
     ]
   },
   "vault_router": {
-    "title": "Vault Router ? how the stack becomes dynamic",
+    "title": "Vault Router — how the stack becomes dynamic",
     "intro": "The document map is the static architecture. The Vault turns client/product answers into document routing.",
     "guide_line": "Toggle a product fact to see which instruments activate.",
     "toggles": [
@@ -1503,11 +1503,11 @@
     ],
     "selected_facts": "B2C + EU users + personal data + agentic capability",
     "output": "Activates ToS, Privacy Policy, DPA, AUP, Agentic Addendum, and selected UI notice controls.",
-    "route_line": "Product facts ? trigger conditions ? document stack ? review-ready route"
+    "route_line": "Product facts → trigger conditions → document stack → review-ready route"
   },
   "bridge": {
-    "connector_line": "A document stack is still hand-work if someone must read the registry, select the clauses, and assemble the file manually. The leverage was not the document alone ? it was the system that could produce it. So I built that.",
-    "visual_line": "Instrument architecture ? intake logic ? automated assembly",
+    "connector_line": "A document stack is still hand-work if someone must read the registry, select the clauses, and assemble the file manually. The leverage was not the document alone — it was the system that could produce it. So I built that.",
+    "visual_line": "Instrument architecture → intake logic → automated assembly",
     "button_label": "See the system that runs it",
     "target": "tooling-layer"
   }
