@@ -116,18 +116,18 @@
         "why": "Shows how mapped risks become clauses, policies, and playbooks."
       },
       {
-        "band": "ACT III · THE FUNNEL",
+        "band": "ACT III · LEGAL DELIVERY SYSTEM",
         "band_tag": "built to deliver it",
         "node": "Tooling",
-        "sub": "diligence + intake workflows",
+        "sub": "diligence + delivery loop",
         "target": "tooling-layer",
         "why": "Shows the diligence and intake workflows that operationalize the legal work."
       },
       {
-        "band": "ACT III · THE FUNNEL",
+        "band": "ACT III · LEGAL DELIVERY SYSTEM",
         "band_tag": "built to deliver it",
         "node": "Systems",
-        "sub": "the reusable delivery layer",
+        "sub": "sandbox OS + portal delivery",
         "target": "systems-layer",
         "why": "Shows the reusable delivery layer: portal, vault, and automation architecture."
       },
@@ -1142,68 +1142,307 @@
     "connector_visual": "Instrument architecture → intake logic → automated assembly"
   },
   "act3": {
-    "header": "Act III — The Funnel: the machine that runs it.",
-    "scope_note": "Live tools (the four sandboxes) and the videos are a separate build phase. Structure, copy, the OS map, the automation-library link, and Connector 3 are real now.",
-    "determinism_principle": "Here's why you can trust the funnel: the registry constrains the model, the Vault→Assembly is deterministic, and the residual judgment goes to human review. As deterministic as law requires.",
-    "master_video": {
-      "placeholder": true,
-      "frame": "Primary exhibit — a chaptered full-power walkthrough of the project-version engines (most powerful models, in the ChatGPT/Claude project interface), narrated for the prompt/agent engineering. Chapters: Signal → Diligence → Assembly → CRM. Shows the client-deliverable docs (Architect Notes excluded) and the threat-registry CSV as provenance. CRM chapter uses synthetic data only.",
-      "phase": "Phase 4"
-    },
-    "os_map": "One synthetic record traced end-to-end through the stations.",
-    "stations": [
-      {
-        "name": "Signal",
-        "system": "Spear multi-agent + signal hunters",
-        "frame": "Engineering proof, not a product — multi-agent LLM pipeline.",
-        "affordances": [
-          "Watch",
-          "Read"
-        ]
-      },
-      {
-        "name": "Diligence",
-        "system": "Forensic Engine (Sandbox 1)",
-        "frame": "Run a URL or upload a doc → Risk Report (mechanical trigger → law IN/US/EU → remediation). AI-risk diligence; the same engine generalises to any diligence domain.",
-        "affordances": [
-          "Watch",
-          "Run",
-          "Read"
-        ]
-      },
-      {
-        "name": "Assembly",
-        "system": "Vault → Assembly → CRM (Sandbox 2)",
-        "frame": "One closed-loop engine, step-by-step, synthetic input. Law-as-code. Manage = synthetic sandbox, never the real portal.",
-        "affordances": [
-          "Watch",
-          "Run",
-          "Read"
-        ]
-      },
-      {
-        "name": "Lane B Scanner",
-        "system": "Internal-deployment diagnostic (Sandbox 3)",
-        "frame": "The deploy-side counterpart — the key Lane B artifact.",
-        "affordances": [
-          "Watch",
-          "Run",
-          "Read"
-        ]
-      },
-      {
-        "name": "Automation Engine",
-        "system": "automation-library (Sandbox 4)",
-        "frame": "Public, audited repo (real now) + a runnable document pipeline: drop a doc → OCR → extract → classify → summarise → route. The same architecture, generalised.",
-        "affordances": [
-          "Watch",
-          "Run",
-          "Read"
-        ],
-        "repo_live": true
+    "header": "Act III: The Legal Delivery System — from legal risk to review-ready delivery.",
+    "eyebrow": "ACT III · THE LEGAL DELIVERY SYSTEM",
+    "subline": "Acts I–II showed the law, taxonomy, threat matrix, and instruments. Act III shows the system that runs the work: diligence, Vault assembly, portal delivery, maintenance review, and controlled AI workflow proof.",
+    "core_thesis": "The law came first. The system exists to deliver it.",
+    "orientation": {
+      "title": "The Legal Delivery System — from legal risk to review-ready delivery.",
+      "visual_chain": [
+        "Legal risk",
+        "Diligence Engine",
+        "Diligence Report",
+        "Vault Assembly",
+        "Document Route",
+        "Portal Delivery",
+        "Maintenance Radar"
+      ],
+      "node_details": {
+        "Legal risk": "The legal exposure identified from product behavior, internal AI use, public material, or client facts.",
+        "Diligence Engine": "Domain materials become structured risk findings. AI law as proof domain.",
+        "Diligence Report": "Structured transfer object: profile, classification, threat matches, evidence, and remediation route.",
+        "Vault Assembly": "Client/product answers combine with the diligence report to produce a product profile.",
+        "Document Route": "The system determines which clauses, schedules, addenda, policies, and playbooks activate.",
+        "Portal Delivery": "The review-ready stack is delivered through a dummy client portal/CRM view using synthetic data.",
+        "Maintenance Radar": "Updated registry entries can be checked against the product profile and delivered stack to classify coverage."
       }
-    ],
-    "connector3": "Every system here runs on one spine — the scanner reads the registry, the Vault assembles the clauses, and the platform proves the architecture isn't specific to law at all. Which is the whole point."
+    },
+    "project_walkthrough": {
+      "title": "Project Environment Walkthrough — from prompt-agent reasoning to portal delivery.",
+      "subline": "Recorded project-environment runs across frontier model workspaces — ChatGPT Projects, Claude, and Gemini — showing how source files, threat registries, prompt-agent roles, diligence reports, Vault logic, and Lex Nova's CRM/client portal infrastructure work together as one legal delivery system.",
+      "safety_note": "Recorded with synthetic or scrubbed data. Internal prompts, client data, production credentials, and full private source files are not exposed.",
+      "proof_line": "This proves prompt and systems orchestration, not just app-building: source files, registries, prompt-agent runs, legal reasoning, intake logic, and delivery infrastructure are connected into one workflow.",
+      "environment_chips": [
+        "ChatGPT Project Run",
+        "Claude Run",
+        "Gemini Run"
+      ],
+      "chapters": [
+        "Source files / project context",
+        "Signal or source intake",
+        "Diligence Engine",
+        "Threat registry match",
+        "Vault assembly logic",
+        "Portal / CRM delivery",
+        "Maintenance review"
+      ],
+      "flow": [
+        "Project source files",
+        "signal / source intake",
+        "Diligence Engine run",
+        "threat matrix matching",
+        "diligence report",
+        "Vault assembly logic",
+        "product profile",
+        "document routing",
+        "CRM / admin view",
+        "client portal delivery"
+      ],
+      "ctas": [
+        {
+          "label": "Watch walkthrough",
+          "href": "#",
+          "state": "placeholder"
+        },
+        {
+          "label": "View system map",
+          "href": "#act3-sandbox-os"
+        },
+        {
+          "label": "Open sandbox",
+          "href": "https://sandbox.lexnovahq.com"
+        }
+      ]
+    },
+    "sandbox_os": {
+      "title": "Sandbox Operating System — run the legal delivery loop with synthetic data.",
+      "subline": "The sandbox is a public-safe version of the delivery system. Diligence findings become assembly inputs. Vault answers become document-routing logic. The final output lands in a dummy portal and maintenance view.",
+      "domain": "sandbox.lexnovahq.com",
+      "engine_a": {
+        "title": "Diligence Engine",
+        "subline": "Domain materials converted into structured risk findings.",
+        "framing": "The Diligence Engine is domain-adaptable. AI law as proof domain because Acts I–II already built the taxonomy, threat matrix, and instrument stack.",
+        "modes": [
+          {
+            "label": "AI product diligence",
+            "description": "Reads public-facing product/legal material and classifies the product's AI function, legal surface, and triggered risks."
+          },
+          {
+            "label": "Internal AI Use Diligence",
+            "description": "Reads internal AI-use survey facts and classifies employee/tool/data/output risks into governance routes."
+          }
+        ],
+        "input_row": "Website / document / pasted materials / internal-use survey",
+        "chain": [
+          "Source material",
+          "profile extraction",
+          "function / surface classification",
+          "threat matrix match",
+          "diligence report"
+        ],
+        "output_row": "Company profile · product profile · triggered risks · evidence · remediation route · push to assembly",
+        "node_details": {
+          "Source material": "Website, uploaded document, pasted public text, or internal-use survey.",
+          "profile extraction": "Extracts company, product, AI behavior, data flows, users, jurisdiction, and operational context.",
+          "function / surface classification": "Classifies what the AI does and what legal surface it touches: Doer, Reader, Judge, Creator, PII, employment, IP/content, enterprise-private, consumer-public.",
+          "threat matrix match": "Runs the classified profile against the threat matrix and risk map.",
+          "diligence report": "Produces the structured report used by the assembly layer."
+        }
+      },
+      "transfer": {
+        "title": "Structured Diligence Report",
+        "contents": [
+          "company profile",
+          "product profile",
+          "AI function classification",
+          "legal surfaces",
+          "threat matches",
+          "evidence basis",
+          "authority band",
+          "remediation route",
+          "suggested document route"
+        ],
+        "line": "Push to Assembly →"
+      },
+      "engine_b": {
+        "title": "Vault Assembly & Delivery Engine",
+        "subline": "Diligence report + Vault answers converted into product profile, clause routes, document payload, portal delivery, and maintenance review.",
+        "formula": [
+          "Vault questionnaire",
+          "+",
+          "Diligence report",
+          "=",
+          "Product profile + document routing"
+        ],
+        "chain": [
+          "Vault questionnaire",
+          "Diligence report",
+          "product profile",
+          "clause / schedule routing",
+          "assembly payload",
+          "dummy portal / CRM",
+          "maintenance radar"
+        ],
+        "node_details": {
+          "Vault questionnaire": "Client/product answers: market exposure, users, AI architecture, model providers, data flows, sub-processors, output/IP, SLA posture, and agentic controls.",
+          "Diligence report": "The structured report pushed from the Diligence Engine or uploaded into the assembly flow.",
+          "product profile": "Converts Vault answers and diligence findings into a structured legal profile.",
+          "clause / schedule routing": "Determines which clauses, schedules, addenda, policies, and playbooks activate.",
+          "assembly payload": "Structured output that can be passed to n8n, Make, or document automation for assembly.",
+          "dummy portal / CRM": "Shows delivery state, document status, client profile, and review-ready handoff using synthetic data.",
+          "maintenance radar": "Demo logic showing how new or updated registry entries can be checked against the client profile and delivered stack to classify coverage as covered, upcoming, or exposed."
+        }
+      },
+      "gateway": {
+        "title": "Open the live sandbox",
+        "subline": "Run the synthetic legal delivery loop: diligence → assembly → delivery → maintenance.",
+        "domain": "sandbox.lexnovahq.com",
+        "safety_note": "Public-safe sandbox. Synthetic data only. No production client data, internal prompt stack, credentials, or private registry corpus exposed.",
+        "ctas": [
+          {
+            "label": "Open Sandbox",
+            "href": "https://sandbox.lexnovahq.com"
+          },
+          {
+            "label": "Start with Diligence",
+            "href": "https://sandbox.lexnovahq.com/diligence"
+          },
+          {
+            "label": "Jump to Assembly",
+            "href": "https://sandbox.lexnovahq.com/assembly"
+          },
+          {
+            "label": "View Maintenance Demo",
+            "href": "https://sandbox.lexnovahq.com/maintenance"
+          }
+        ]
+      }
+    },
+    "prompt_agent_proof": {
+      "title": "Prompt-Agent Engineering — controlled legal intelligence workflows.",
+      "subline": "The same legal reasoning was decomposed into role-based prompt systems: source discovery, evidence extraction, registry matching, legal-risk analysis, document routing, and human-review checkpoints.",
+      "flow": [
+        "Signal / source",
+        "evidence extraction",
+        "registry-grounded analysis",
+        "architecture decision",
+        "reviewable output",
+        "human review"
+      ],
+      "modules": [
+        {
+          "name": "Signal / source discovery",
+          "purpose": "Finds potential legal-risk triggers or source materials.",
+          "input": "Public/synthetic source material or defined search context.",
+          "output": "Structured source candidates and trigger context.",
+          "guardrail": "Not presented as public live lead generation."
+        },
+        {
+          "name": "Hunter / diligence run",
+          "purpose": "Reads materials, extracts evidence, classifies risk, and routes findings.",
+          "input": "Source materials, registry, and product/legal context.",
+          "output": "Evidence-grounded diligence findings.",
+          "guardrail": "Registry-grounded; no unsupported legal claims."
+        },
+        {
+          "name": "Architect",
+          "purpose": "Selects the strongest risks and structures the legal argument or document route.",
+          "input": "Diligence findings and threat-route data.",
+          "output": "Structured architecture decision.",
+          "guardrail": "Human legal review remains final."
+        },
+        {
+          "name": "Copy / communication layer",
+          "purpose": "Converts structured legal findings into clear, reviewable outputs.",
+          "input": "Architecture decision and audience context.",
+          "output": "Readable memo, report, or communication draft.",
+          "guardrail": "Does not invent evidence or legal authority."
+        },
+        {
+          "name": "Community Signal",
+          "purpose": "Captures public pain signals and legal-risk patterns without turning the system into blind marketing automation.",
+          "input": "Public discussion patterns or synthetic examples.",
+          "output": "Risk-pattern observations.",
+          "guardrail": "Used as intelligence, not public autonomous outreach."
+        }
+      ],
+      "proof_format": [
+        "video walkthrough",
+        "architecture diagram",
+        "scrubbed transcript excerpt",
+        "sample JSON output",
+        "role decomposition map"
+      ],
+      "why_not_live": "Public live signal hunting would distort the identity. It could look like cold-outreach tooling. The point is not lead generation. The point is structured prompt-agent engineering for legal intelligence.",
+      "ctas": [
+        {
+          "label": "Watch prompt-agent walkthrough",
+          "href": "#",
+          "state": "placeholder"
+        },
+        {
+          "label": "View scrubbed output sample",
+          "href": "#",
+          "state": "placeholder"
+        }
+      ]
+    },
+    "workflow_automation_proof": {
+      "title": "Workflow Automation Proof — the same control logic outside law.",
+      "subline": "Reusable workflow infrastructure: intake, validation, classification, routing, logging, notification, and human review.",
+      "proof_layers": [
+        {
+          "title": "Automation build notes and component library proof",
+          "description": "Show repository/build notes only if the public repo is actually proof-ready. Do not claim a public audited repo unless the repository genuinely contains audited artifacts."
+        },
+        {
+          "title": "Category 2 Upwork workflow demo",
+          "description": "One end-to-end practical workflow: form/webhook intake → validation → classification → routing → sheet/CRM write → notification → audit log → limited agentic node → human approval."
+        }
+      ],
+      "flow": [
+        "Form / webhook intake",
+        "validation",
+        "classification",
+        "routing",
+        "sheet / CRM write",
+        "notification",
+        "audit log",
+        "limited agentic node",
+        "human approval"
+      ],
+      "agentic_boundary": "The agentic node recommends, drafts, classifies, or prepares a next action. It does not autonomously send, spend, delete, or execute external actions without human review.",
+      "ctas": [
+        {
+          "label": "View automation build notes",
+          "href": "#",
+          "state": "placeholder"
+        },
+        {
+          "label": "Watch Category 2 demo",
+          "href": "#",
+          "state": "placeholder"
+        },
+        {
+          "label": "View repository",
+          "href": "#",
+          "state": "conditional"
+        }
+      ]
+    },
+    "close_bridge": {
+      "title": "The system is not a replacement for legal judgment.",
+      "line": "It is the operating layer that makes legal judgment structured, reviewable, and repeatable.",
+      "proof_chain": [
+        "law",
+        "classification",
+        "instrument routing",
+        "controlled assembly",
+        "human review"
+      ],
+      "bridge": "That is the through-line: a legal mind using systems to make legal work more precise, not a technologist borrowing legal language.",
+      "cta": "Continue to Capstone"
+    }
   },
   "capstone": {
     "title": "One Mind: The Legal Problem First — Across Three Jurisdictions",
