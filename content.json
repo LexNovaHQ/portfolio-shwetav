@@ -79,7 +79,7 @@
   },
   "rail": {
     "chip": {
-      "derived": "law → system argument",
+      "derived": "law → method",
       "structured": "risks → instruments",
       "running": "instruments → delivery system"
     },
@@ -95,48 +95,80 @@
         "band": "ACT I · FOUNDATION",
         "band_tag": "the law",
         "node": "Doctrine",
-        "sub": "the legal source layer",
+        "sub": "AI physics → legal doctrine",
         "target": "doctrine-layer",
-        "why": "Shows the legal source layer: cases, statutes, and risk principles."
+        "why": "Shows the legal source layer: how AI mechanics create legal consequences."
       },
       {
         "band": "ACT I · FOUNDATION",
         "band_tag": "the law",
         "node": "Taxonomy",
-        "sub": "the risk map",
+        "sub": "risk surfaces",
         "target": "taxonomy-map",
         "why": "Shows how AI use cases become legal risk categories."
       },
       {
         "band": "ACT II · THE LEGAL MATRIX",
         "band_tag": "the instruments",
+        "node": "Matrix",
+        "sub": "98 threats → authority → controls",
+        "target": "act2-threat-matrix",
+        "why": "Shows the registry that converts AI legal risk into traceable threat units."
+      },
+      {
+        "band": "ACT II · THE LEGAL MATRIX",
+        "band_tag": "the instruments",
         "node": "Instruments",
-        "sub": "clauses, policies, playbooks",
-        "target": "instruments-layer",
-        "why": "Shows how mapped risks become clauses, policies, and playbooks."
+        "sub": "document stack + clause viewer",
+        "target": "act2-living-document",
+        "why": "Shows how mapped risks become clauses, policies, addenda, and playbooks."
       },
       {
         "band": "ACT III · LEGAL DELIVERY SYSTEM",
         "band_tag": "built to deliver it",
-        "node": "Tooling",
-        "sub": "diligence + delivery loop",
-        "target": "tooling-layer",
-        "why": "Shows the diligence and intake workflows that operationalize the legal work."
+        "node": "Walkthrough",
+        "sub": "project runs",
+        "target": "project-walkthrough",
+        "why": "Shows the full-power system run in project/model environments."
       },
       {
         "band": "ACT III · LEGAL DELIVERY SYSTEM",
         "band_tag": "built to deliver it",
-        "node": "Systems",
-        "sub": "sandbox OS + portal delivery",
-        "target": "systems-layer",
-        "why": "Shows the reusable delivery layer: portal, vault, and automation architecture."
+        "node": "Sandbox OS",
+        "sub": "diligence → assembly → delivery",
+        "target": "sandbox-os",
+        "why": "Shows the public-safe sandbox where the delivery loop can be tested with synthetic data."
+      },
+      {
+        "band": "ACT III · LEGAL DELIVERY SYSTEM",
+        "band_tag": "built to deliver it",
+        "node": "Prompt Systems",
+        "sub": "controlled legal intelligence",
+        "target": "prompt-agent-proof",
+        "why": "Shows controlled prompt-agent workflows for legal intelligence and reviewable output."
+      },
+      {
+        "band": "ACT III · LEGAL DELIVERY SYSTEM",
+        "band_tag": "built to deliver it",
+        "node": "Automation",
+        "sub": "general workflow proof",
+        "target": "workflow-automation-proof",
+        "why": "Shows that the same controlled workflow logic can be applied outside law."
+      },
+      {
+        "band": "CAPSTONE",
+        "band_tag": "the method",
+        "node": "Synthesis",
+        "sub": "one legal method",
+        "target": "capstone",
+        "why": "Synthesizes the portfolio into one legal method across jurisdictions and systems."
       },
       {
         "kind": "terminal",
         "label": "Close",
-        "sub": "the fit",
-        "target": "close-fit",
-        "why": "Converts the proof into the hiring argument for legal tech practice."
+        "sub": "technology & data protection lawyer",
+        "target": "contact",
+        "why": "Converts the proof into the hiring argument."
       }
     ]
   },
@@ -1458,41 +1490,77 @@
     "display_heading": "from legal risk to review-ready delivery."
   },
   "capstone": {
-    "title": "One Mind: The Legal Problem First — Across Three Jurisdictions",
-    "crossborder": {
-      "lead": true,
-      "in": "IT Act 2000 → DPDP Act 2023 · CPA 2019 · Copyright Act 1957 · IT Amendment Rules 2026 (3-hour takedown) · MeitY advisories",
-      "eu": "GDPR · EU AI Act 2024/1689 (Art. 50: 2 Aug 2026; high-risk Annex III: 2 Dec 2027) · Product Liability Directive 2024/2853",
-      "us": "UCC Art. 2/2A · UETA §14 · CCPA/CPRA · TX TRAIGA · IL HB3773 (Colorado AI Act: repealed/replaced — not active)"
-    },
-    "parallel_map": {
-      "header": "The same legal discipline, even in the engineering.",
-      "frame": "The law came first and trained the instinct — classification, dependency, controlled assembly — and it shows up when I build software. Not a method that generalises across domains; a legal mind that shaped the code.",
+    "eyebrow": "CAPSTONE",
+    "title": "One legal method. Three jurisdictions. One delivery system.",
+    "subline": "The jurisdiction changes. The method does not: classify the technology, identify the legal surface, map the authority, route the instrument, preserve review.",
+    "jurisdiction_lenses": [
+      {
+        "label": "IN",
+        "title": "India lens",
+        "body": "DPDP, IT Act, Consumer Protection, Copyright, platform and intermediary duties.",
+        "method": "Data, disclosure, platform conduct, consumer-facing risk, and IP/output review."
+      },
+      {
+        "label": "EU",
+        "title": "EU lens",
+        "body": "GDPR, EU AI Act, SCCs, product liability, high-risk systems, transparency duties.",
+        "method": "Personal data, high-risk classification, provider/deployer duties, transfer and safety controls."
+      },
+      {
+        "label": "US",
+        "title": "US lens",
+        "body": "UCC, UETA, CCPA/CPRA, TRAIGA, state AI/privacy and commercial-risk regimes.",
+        "method": "Contract formation, electronic agents, privacy promises, AI-use restrictions, commercial remedies."
+      }
+    ],
+    "method_spine": [
+      "Classify the technology",
+      "Identify the legal surface",
+      "Map the authority",
+      "Route the instrument",
+      "Assemble review-ready output",
+      "Preserve human review"
+    ],
+    "method_note": "The legal question changes by jurisdiction, but the operating method stays the same.",
+    "mirror": {
+      "header": "The legal method becomes the system.",
+      "frame": "The code does not lead the law. The legal method shapes the system: classification, routing, controlled assembly, and review.",
       "rows": [
         {
-          "legal": "Threat Registry",
-          "engineering": "component-classification.csv"
+          "legal": "Legal doctrine",
+          "system": "Risk registry"
         },
         {
-          "legal": "The Vault (client-config questionnaire)",
-          "engineering": "client-config layer"
+          "legal": "Risk classification",
+          "system": "Diligence Engine"
         },
         {
-          "legal": "Lane docs (template assemblies)",
-          "engineering": "template assemblies"
+          "legal": "Client facts",
+          "system": "Product Profile Vault"
         },
         {
-          "legal": "Core / adapter clause structure",
-          "engineering": "provider-agnostic core"
+          "legal": "Instrument design",
+          "system": "Clause / schedule routing"
+        },
+        {
+          "legal": "Review-ready drafting",
+          "system": "Assembly payload"
+        },
+        {
+          "legal": "Legal judgment",
+          "system": "Human review checkpoint"
         }
       ]
     },
-    "identity_line": "A litigator who taught himself to build — not a builder who picked up law. The legal judgment leads; the code is only how I ship it."
+    "closing_line": "A technology and data protection lawyer using systems to make legal work more structured, reviewable, repeatable, and deployable."
   },
   "close": {
-    "body": "I'm a lawyer by instinct, not by accident. I spent three and a half years in a courtroom before I wrote a line of code, and what drew me next wasn't technology for its own sake — it was the place where law and technology collide. Privacy, data protection, AI: the questions there are still open, the old answers don't quite fit, and that's exactly what pulled me in. So I taught myself to build — not to leave the law, but to go deeper into it than paper alone would let me. The technology made me a sharper lawyer; it was never the other way round. I didn't become a builder who picked up law. I stayed a lawyer who learned to build. I'd rather do this work — at the edge of tech and privacy law — inside a team already taking it seriously.",
-    "governance_note": "Models are routed by data sensitivity. Public-only diagnostics run on free fast-inference tiers — no privacy cost, the input is already public. Client and work data run on paid API tiers with model training disabled. Every demo here uses public or synthetic data only.",
-    "genuineness": "All work shown is mine; every link and demo is genuine.",
+    "eyebrow": "TERMINAL",
+    "title": "The fit",
+    "body": "I am a Technology & Data Protection Lawyer building legal delivery systems for AI governance, privacy, and commercial contracts. The point is not to replace legal judgment with software. It is to make legal judgment structured, reviewable, repeatable, and easier to deploy.",
+    "fit_line": "I want to do this inside a team already working at the edge of technology, data protection, AI governance, and commercial contracts.",
+    "governance_note": "All demos use public, synthetic, or scrubbed data. No client data, credentials, or private prompt stack is exposed.",
+    "genuineness": "All work shown is mine.",
     "contact": {
       "linkedin": "https://linkedin.com/in/shwetabh-singh",
       "email": "shwetav.alpna.singh@gmail.com",
