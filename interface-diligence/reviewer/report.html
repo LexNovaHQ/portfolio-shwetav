@@ -27,7 +27,6 @@
     const params = new URLSearchParams(location.search);
     const runId = params.get("run_id") || "";
     const backendUrl = (sessionStorage.getItem("ln_reviewer_backend_url") || "").replace(/\/$/, "");
-    const apiKey = sessionStorage.getItem("ln_reviewer_api_key") || "";
     const report = document.getElementById("report");
     const meta = document.getElementById("meta");
 
@@ -37,13 +36,11 @@
     });
 
     async function loadReport() {
-      if (!runId || !backendUrl || !apiKey) {
-        throw new Error("Missing run_id, backend URL, or operator API key. Open this report from the reviewer console.");
+      if (!runId || !backendUrl) {
+        throw new Error("Missing run_id or backend URL. Open this report from the reviewer console.");
       }
 
-      const response = await fetch(`${backendUrl}/v1/reviewer/report/${encodeURIComponent(runId)}`, {
-        headers: { "x-ln-api-key": apiKey }
-      });
+      const response = await fetch(`${backendUrl}/public/reviewer/report/${encodeURIComponent(runId)}`);
       const json = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(`${response.status}: ${JSON.stringify(json)}`);
 
