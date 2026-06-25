@@ -23,14 +23,11 @@
   <main>
     <h1>Interface Diligence Reviewer</h1>
     <p>Paste a target URL, create a backend run, and auto-advance through the Gemini + deterministic pipeline.</p>
-    <p class="warn">MVP note: this page is operator-key gated. Do not expose the backend API key to external reviewers.</p>
+    <p class="warn">MVP public-safe mode: the browser does not receive the backend operator API key. Backend public routes are rate-limited and must be explicitly enabled.</p>
 
     <div class="card">
       <label for="backendUrl">Backend URL</label>
       <input id="backendUrl" placeholder="https://your-cloud-run-url" />
-
-      <label for="apiKey">Operator API Key</label>
-      <input id="apiKey" type="password" placeholder="GPT_ACTION_API_KEY" />
 
       <label for="targetUrl">Target URL</label>
       <input id="targetUrl" placeholder="https://sarvam.ai" />
