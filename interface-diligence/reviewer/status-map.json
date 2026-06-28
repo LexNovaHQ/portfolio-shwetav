@@ -1,7 +1,0 @@
-{
-  "CREATED": "Run created",
-  "QUEUED": "Backend runner queued",
-  "RUNNING": "Backend runner active",
-  "COMPLETE": "Renderer payload ready",
-  "CONTROLLED_FAILURE": "Run stopped before renderer payload"
-}
