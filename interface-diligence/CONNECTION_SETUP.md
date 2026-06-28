@@ -18,10 +18,10 @@ The browser must not call the Cloud Run URL directly.
 Set this in the Cloudflare Worker environment:
 
 ```text
-DILIGENCE_BACKEND_URL=https://<cloud-run-service-url>
+DILIGENCE_BACKEND_URL=<cloud-run-service-url>
 ```
 
-Do not include a trailing slash.
+Use the full HTTPS Cloud Run service URL. Do not include a trailing slash.
 
 ## Public routes proxied
 
