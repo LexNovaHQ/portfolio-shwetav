@@ -1,47 +1,46 @@
+const API_BASE = "/api/interface-diligence";
+const POLL_INTERVAL_MS = 4000;
+const MAX_POLLS = 240;
+
 const els = {
-  backendUrl: document.getElementById("backendUrl"),
   targetUrl: document.getElementById("targetUrl"),
   runButton: document.getElementById("runButton"),
   statusBox: document.getElementById("statusBox"),
   reportLink: document.getElementById("reportLink")
 };
 
-els.backendUrl.value = sessionStorage.getItem("ln_reviewer_backend_url") || "";
 els.runButton.addEventListener("click", runDiligence);
 
 async function runDiligence() {
-  const backendUrl = cleanBaseUrl(els.backendUrl.value);
   const targetUrl = els.targetUrl.value.trim();
 
-  if (!backendUrl || !targetUrl) {
-    setStatus({ ok: false, error: "MISSING_INPUT", message: "Backend URL and target URL are required." });
+  if (!targetUrl) {
+    setStatus({ ok: false, error: "MISSING_INPUT", message: "Target URL is required." });
     return;
   }
 
-  sessionStorage.setItem("ln_reviewer_backend_url", backendUrl);
   els.runButton.disabled = true;
   els.reportLink.textContent = "";
 
   try {
-    const created = await request(backendUrl, "/public/reviewer/jobs", {
+    const created = await request("/public/reviewer/jobs", {
       method: "POST",
       body: JSON.stringify({ target_url: targetUrl })
     });
 
-    setStatus(created);
+    const runId = created.run_id;
+    sessionStorage.setItem("ln_reviewer_last_run_id", runId);
+    setStatus({ step: "created", ...created });
 
-    let latest = created;
-    for (let i = 0; i < 30; i += 1) {
-      latest = await request(backendUrl, `/public/reviewer/jobs/${created.run_id}/advance`, {
-        method: "POST",
-        body: JSON.stringify({ max_steps: 1 })
-      });
-      setStatus(latest);
-      if (latest.current_phase === "COMPLETE" || latest.status === "COMPLETE") break;
-    }
+    const queued = await request(`/public/reviewer/jobs/${encodeURIComponent(runId)}/advance`, {
+      method: "POST",
+      body: JSON.stringify({ auto_continue: true, max_steps: 1 })
+    });
+    setStatus({ step: "queued", ...queued });
 
-    if (latest.current_phase === "COMPLETE" || latest.status === "COMPLETE") {
-      const href = `report.html?run_id=${encodeURIComponent(created.run_id)}`;
+    const latest = await pollUntilComplete(runId);
+    if (isComplete(latest.run || latest)) {
+      const href = `report.html?run_id=${encodeURIComponent(runId)}`;
       els.reportLink.innerHTML = `<a href="${href}" target="_blank" rel="noopener">Open report</a>`;
     }
   } catch (error) {
@@ -51,24 +50,44 @@ async function runDiligence() {
   }
 }
 
-async function request(baseUrl, path, init) {
-  const response = await fetch(`${baseUrl}${path}`, {
+async function pollUntilComplete(runId) {
+  let latest = null;
+  for (let i = 0; i < MAX_POLLS; i += 1) {
+    await delay(POLL_INTERVAL_MS);
+    latest = await request(`/public/reviewer/jobs/${encodeURIComponent(runId)}`, { method: "GET" });
+    setStatus({ step: "poll", poll_count: i + 1, ...latest });
+    if (isComplete(latest.run || latest)) return latest;
+    if (isTerminalFailure(latest.run || latest)) throw new Error(`Run stopped before completion: ${JSON.stringify(latest)}`);
+  }
+  throw new Error(`Timed out waiting for run ${runId} to complete.`);
+}
+
+async function request(path, init = {}) {
+  const headers = new Headers(init.headers || {});
+  if (init.body && !headers.has("content-type")) headers.set("content-type", "application/json");
+
+  const response = await fetch(`${API_BASE}${path}`, {
     ...init,
-    headers: {
-      "content-type": "application/json",
-      ...(init.headers || {})
-    }
+    headers
   });
 
   const json = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    throw new Error(`${response.status}: ${JSON.stringify(json)}`);
-  }
+  if (!response.ok) throw new Error(`${response.status}: ${JSON.stringify(json)}`);
   return json;
 }
 
-function cleanBaseUrl(value) {
-  return String(value || "").trim().replace(/\/$/, "");
+function isComplete(run) {
+  return run?.current_phase === "COMPLETE" || run?.status === "COMPLETE";
+}
+
+function isTerminalFailure(run) {
+  const status = String(run?.status || "").toUpperCase();
+  const phase = String(run?.current_phase || "").toUpperCase();
+  return status.includes("FAIL") || status.includes("CONTROLLED_FAILURE") || phase.includes("CONTROLLED_FAILURE");
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function setStatus(value) {
