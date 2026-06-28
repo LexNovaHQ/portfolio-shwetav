@@ -1,0 +1,7 @@
+/api/interface-diligence/*
+  Cache-Control: no-store
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+
+/interface-diligence/reviewer/report.html
+  Cache-Control: no-store
