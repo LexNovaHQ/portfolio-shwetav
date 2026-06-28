@@ -8,25 +8,32 @@
     body { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #0b0d12; color: #f5f7fb; }
     main { max-width: 1040px; margin: 0 auto; padding: 44px 20px; }
     h1 { margin: 0 0 8px; }
-    h2 { margin-top: 32px; }
-    p { color: #aab2c5; }
+    h2 { margin-top: 0; }
+    h3 { margin: 18px 0 8px; }
+    p { color: #aab2c5; line-height: 1.5; }
     pre { white-space: pre-wrap; background: #111722; border: 1px solid #2c3343; padding: 16px; border-radius: 10px; overflow: auto; }
     .section { background: #0f1420; border: 1px solid #252c3d; border-radius: 16px; padding: 20px; margin: 18px 0; }
     .warn { color: #ffd37a; }
+    .meta { color: #d8deea; }
+    .pill { display: inline-block; margin: 4px 8px 4px 0; padding: 4px 9px; border: 1px solid #2c3343; border-radius: 999px; color: #cfd6e6; font-size: 12px; }
+    details { margin-top: 12px; }
+    summary { cursor: pointer; color: #9fc2ff; }
+    a { color: #9fc2ff; }
   </style>
 </head>
 <body>
   <main>
+    <p><a href="./index.html">← Back to reviewer console</a></p>
     <h1>Interface Diligence Report</h1>
     <p id="meta">Loading...</p>
-    <p class="warn">MVP report renderer. This displays the backend renderer payload without legal-advice framing.</p>
+    <p class="warn">Connection test renderer. This page renders the backend <code>renderer_payload</code> through the same-origin Cloudflare API proxy. Premium report UI comes next.</p>
     <div id="report"></div>
   </main>
 
   <script>
+    const API_BASE = "/api/interface-diligence";
     const params = new URLSearchParams(location.search);
     const runId = params.get("run_id") || "";
-    const backendUrl = (sessionStorage.getItem("ln_reviewer_backend_url") || "").replace(/\/$/, "");
     const report = document.getElementById("report");
     const meta = document.getElementById("meta");
 
@@ -36,22 +43,74 @@
     });
 
     async function loadReport() {
-      if (!runId || !backendUrl) {
-        throw new Error("Missing run_id or backend URL. Open this report from the reviewer console.");
-      }
+      if (!runId) throw new Error("Missing run_id in report URL.");
 
-      const response = await fetch(`${backendUrl}/public/reviewer/report/${encodeURIComponent(runId)}`);
+      const response = await fetch(`${API_BASE}/public/reviewer/report/${encodeURIComponent(runId)}`);
       const json = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(`${response.status}: ${JSON.stringify(json)}`);
 
-      const payload = json.renderer_payload || {};
-      meta.textContent = `${payload.target || "Target"} — ${payload.validation_status || "UNKNOWN"}`;
-      report.innerHTML = (payload.sections || []).map((section) => `
+      const payload = normalizePayload(json.renderer_payload || {});
+      const shell = payload.report_shell || {};
+      const sections = sectionList(payload);
+
+      meta.innerHTML = [
+        `<span class="meta">${escapeHtml(shell.target_display_name || payload.target || "Target")}</span>`,
+        `<span class="pill">${escapeHtml(shell.validation_status || payload.validation_status || "UNKNOWN")}</span>`,
+        `<span class="pill">${escapeHtml(shell.run_id || payload.run_id || runId)}</span>`
+      ].join(" ");
+
+      report.innerHTML = `
         <section class="section">
-          <h2>${escapeHtml(section.title || section.id || "Section")}</h2>
-          <pre>${escapeHtml(JSON.stringify(section.data || {}, null, 2))}</pre>
+          <h2>${escapeHtml(shell.report_title || "Interface Public-Footprint Diligence Report")}</h2>
+          <p>${escapeHtml(shell.qualified_review_notice || "Review-ready support material. Qualified review required before reliance.")}</p>
+          <p>${escapeHtml(shell.public_footprint_limitation || "Public-footprint limitation applies.")}</p>
         </section>
-      `).join("");
+        ${sections.map(renderSection).join("")}
+      `;
+    }
+
+    function normalizePayload(value) {
+      return value.renderer_payload && typeof value.renderer_payload === "object" ? value.renderer_payload : value;
+    }
+
+    function sectionList(payload) {
+      if (Array.isArray(payload.section_list)) return payload.section_list;
+      if (payload.sections && typeof payload.sections === "object") {
+        const order = Array.isArray(payload.section_order) ? payload.section_order : Object.keys(payload.sections);
+        return order.map((key) => ({ id: key, title: payload.sections[key]?.heading || key, data: payload.sections[key] || {} }));
+      }
+      return [];
+    }
+
+    function renderSection(section) {
+      return `
+        <section class="section" id="${escapeHtml(section.id || "section")}">
+          <h2>${escapeHtml(section.title || section.data?.heading || section.id || "Section")}</h2>
+          ${renderSectionSummary(section.data || {})}
+          <details>
+            <summary>Technical payload</summary>
+            <pre>${escapeHtml(JSON.stringify(section.data || {}, null, 2))}</pre>
+          </details>
+        </section>
+      `;
+    }
+
+    function renderSectionSummary(data) {
+      if (!data || typeof data !== "object") return "";
+      const keys = Object.keys(data).filter((key) => !["key", "heading"].includes(key)).slice(0, 6);
+      return keys.map((key) => `<p><strong>${escapeHtml(labelize(key))}:</strong> ${escapeHtml(compactValue(data[key]))}</p>`).join("");
+    }
+
+    function compactValue(value) {
+      if (value === null || value === undefined || value === "") return "Not specified";
+      if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") return String(value);
+      if (Array.isArray(value)) return `${value.length} row(s)`;
+      if (typeof value === "object") return `${Object.keys(value).length} field(s)`;
+      return String(value);
+    }
+
+    function labelize(value) {
+      return String(value || "").replace(/_/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
     }
 
     function escapeHtml(value) {
