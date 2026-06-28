@@ -17,22 +17,20 @@
     a { color: #9fc2ff; }
     .card { background: #0f1420; border: 1px solid #252c3d; border-radius: 16px; padding: 22px; margin-top: 24px; }
     .warn { color: #ffd37a; }
+    .muted { color: #7f8798; font-size: 13px; }
   </style>
 </head>
 <body>
   <main>
     <h1>Interface Diligence Reviewer</h1>
-    <p>Paste a target URL, create a backend run, and auto-advance through the Gemini + deterministic pipeline.</p>
-    <p class="warn">MVP public-safe mode: the browser does not receive the backend operator API key. Backend public routes are rate-limited and must be explicitly enabled.</p>
+    <p>Paste a target URL and start a public-footprint diligence run. The browser talks only to this domain; Cloudflare proxies the request to the GCloud backend.</p>
+    <p class="warn">Connection mode: same-origin API proxy at <code>/api/interface-diligence</code>. No Cloud Run URL is exposed in the browser UI.</p>
 
     <div class="card">
-      <label for="backendUrl">Backend URL</label>
-      <input id="backendUrl" placeholder="https://your-cloud-run-url" />
-
       <label for="targetUrl">Target URL</label>
-      <input id="targetUrl" placeholder="https://sarvam.ai" />
-
+      <input id="targetUrl" placeholder="https://sarvam.ai" autocomplete="url" />
       <button id="runButton">Run diligence</button>
+      <p class="muted">The backend creates the run, queues the async pipeline, stores artifacts, and returns the report payload when complete.</p>
     </div>
 
     <div class="card">
