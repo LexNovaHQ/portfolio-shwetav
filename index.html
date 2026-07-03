@@ -135,6 +135,15 @@ section{scroll-margin-top:110px;}
 .hero-formation{display:flex; flex-wrap:wrap; gap:.42rem; align-items:center; margin-top:1rem; color:rgba(229,229,229,.74); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;}
 .hero-formation span{display:inline-flex; align-items:center;}
 .hero-formation span+span::before{content:""; width:18px; height:1px; margin:0 .42rem 0 0; background:rgba(197,160,89,.58);}
+.proof-architecture-grid{display:grid; gap:1rem; align-items:start;}
+@media(min-width:920px){.proof-architecture-grid{grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);}}
+.method-chain-panel{border-left:1px solid rgba(197,160,89,.45); padding-left:1rem;}
+.method-chain-instruction{color:rgba(229,229,229,.58); font-size:.76rem; line-height:1.55; margin:.45rem 0 .9rem;}
+.method-chain{display:grid; gap:.55rem;}
+.method-chain button{position:relative; width:100%; text-align:left; border:1px solid rgba(229,229,229,.11); border-radius:.75rem; padding:.62rem .78rem .62rem 1rem; background:rgba(255,255,255,.018); color:rgba(229,229,229,.84); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800; transition:all .2s; cursor:pointer;}
+.method-chain button::before{content:""; position:absolute; left:-1.28rem; top:50%; width:9px; height:9px; border-radius:999px; border:1px solid rgba(197,160,89,.72); background:#090909; transform:translateY(-50%); box-shadow:0 0 0 4px #090909;}
+.method-chain button:hover,.method-chain button:focus{outline:none; color:var(--gold); border-color:rgba(197,160,89,.7); background:rgba(197,160,89,.09);}
+.method-chain button:hover::before,.method-chain button:focus::before{background:var(--gold); box-shadow:0 0 0 4px #090909,0 0 16px rgba(197,160,89,.72);}
 .proof-panel{height:100%; border:1px solid rgba(197,160,89,.26); background:linear-gradient(180deg,rgba(197,160,89,.07),rgba(255,255,255,.018));
   border-radius:1.25rem; padding:1.15rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.03);}
 .proof-chain{position:relative; display:grid; grid-template-columns:1fr; gap:.62rem; margin-top:1rem; padding-left:.75rem;}
@@ -687,7 +696,7 @@ body.ld-theater-lock{overflow:hidden;}
     credential_bar: 'B.A. LL.B., NLU Odisha · 3.5 years litigation · AI governance · privacy · commercial contracts · building hands-on since Oct 2025',
     ctas: [
       {label:'Open live diligence system', target:'https://sandbox.lexnovahq.com/interface-diligence/diligence-system/'},
-      {label:'View proof architecture', target:'#instruments-layer'},
+      {label:'View proof architecture', target:'#proof-architecture'},
       {label:'View proof archive', target:'#capstone'}
     ]
   };
@@ -750,6 +759,81 @@ body.ld-theater-lock{overflow:hidden;}
       +'</div>'
       +'<div class="load-in d5 surface rounded-2xl hero-credential" style="color:rgba(229,229,229,.8);border-left:1px solid var(--gold)">'+esc(h.credential_bar || '')+'</div>'
     +'</div></section>'));
+  })();
+
+  // ---------- SECTION 2 / PROOF ARCHITECTURE ----------
+  (function(){
+    var methodChain=[
+      {
+        title:'Doctrine',
+        practice:'Legal practice starts with rules, cases, statutes, regulatory patterns, guidance, enforcement logic, and contract failure modes.',
+        operationalized:'I used doctrine as the source layer, not as decoration. The question was: what legal issue keeps repeating, and what must a lawyer check every time it appears?',
+        layer:'Source doctrine and legal reasoning base.'
+      },
+      {
+        title:'Legal Units',
+        practice:'Most legal rules are too broad to run directly. I broke legal exposure into smaller fields: conduct, surface, authority, trigger, evidence, control, fix, and review owner.',
+        operationalized:'Each field captures one part of the legal reasoning, so the system can prepare the issue without pretending to decide it. The trigger field is the key conversion point: it turns a broad legal exposure into observable facts the reviewer can test.',
+        layer:'Registry fields.'
+      },
+      {
+        title:'Fact Review',
+        practice:'The system does not jump from facts to legal conclusions. It first maps the target, product or activity, data or asset flow, and legal or governance documents.',
+        operationalized:'This keeps the work grounded in evidence before any exposure route is applied. Facts first. Exposure second. Review route third.',
+        layer:'Factual profiles.'
+      },
+      {
+        title:'Human Judgment',
+        practice:'The system does not decide compliance, liability, enforceability, sufficiency, or legal adequacy.',
+        operationalized:'In AI terms, this is the HITL layer. In legal terms, this is where structured preparation stops and qualified legal judgment begins.',
+        layer:'Review route.'
+      },
+      {
+        title:'Drafting Support',
+        practice:'Once findings are confirmed, they can be routed into document families, clause routes, control routes, evidence requests, counsel questions, and review-ready draft paths.',
+        operationalized:'The system prepares the drafting payload. The lawyer owns the judgment.',
+        layer:'Assembler.'
+      },
+      {
+        title:'Regulatory Updates',
+        practice:'The loop does not end with one report. New laws, circulars, regulatory guidance, enforcement actions, cases, and sector updates become signals.',
+        operationalized:'Those signals can update the registry, revise trigger logic, adjust control expectations, and flag existing routes for review.',
+        layer:'Regulatory signal loop.'
+      }
+    ];
+    var chainHtml=methodChain.map(function(item,i){
+      return '<button type="button" data-method-chain="'+i+'">'+esc(item.title)+'</button>';
+    }).join('');
+    main.appendChild(el(
+    '<section id="proof-architecture" class="act" style="min-height:auto">'
+    +'<div class="card-shell">'
+      +'<div class="proof-architecture-grid">'
+        +'<div class="reveal">'
+          +'<p class="eyebrow">Proof Architecture</p>'
+          +'<h2 class="font-display section-title text-white mt-2">How the legal method became the system.</h2>'
+          +'<p class="mini mt-4">Most legal work becomes clearer when doctrine is broken into smaller units: what rule applies, what facts trigger it, what evidence proves it, what control responds, and who must review it.</p>'
+          +'<div class="mt-5" style="display:grid;gap:.85rem;color:rgba(229,229,229,.74);line-height:1.68;font-size:.9rem;max-width:56rem">'
+            +'<p>Legal work is not mechanical, but much of its preparation is repetitive: classify the issue, test the facts, review the documents, check the evidence, route the control, and prepare the next draft or review question.</p>'
+            +'<p>My method was to break legal doctrine into working units. Each unit asks a narrow legal-preparation question: what conduct matters, what surface makes it sensitive, what authority anchors it, what facts trigger it, what evidence is visible, what control may respond, and where human judgment must take over.</p>'
+            +'<p>That became the foundation of the system. I did not build it as a product to sell. I built it as practice infrastructure — a way to use code, AI, and automation to make legal preparation more consistent, traceable, and review-ready.</p>'
+          +'</div>'
+        +'</div>'
+        +'<aside class="reveal method-chain-panel" aria-label="Method Chain">'
+          +'<p class="eyebrow">Method Chain</p>'
+          +'<p class="method-chain-instruction">Click each part of the chain to see how legal reasoning was broken into repeatable legal-practice work.</p>'
+          +'<div class="method-chain">'+chainHtml+'</div>'
+        +'</aside>'
+      +'</div>'
+    +'</div></section>'));
+    document.querySelectorAll('[data-method-chain]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item=methodChain[parseInt(btn.getAttribute('data-method-chain'),10)] || methodChain[0];
+        openModal('<p class="eyebrow">Method Chain</p><h3>'+esc(item.title)+'</h3>'
+          +'<div class="beat"><div class="lab">What it means in legal practice</div><p>'+esc(item.practice)+'</p></div>'
+          +'<div class="beat"><div class="lab">How I operationalized it</div><p>'+esc(item.operationalized)+'</p></div>'
+          +'<div class="beat"><div class="lab">What system layer came from it</div><p>'+esc(item.layer)+'</p></div>', false);
+      });
+    });
   })();
 
   // ---------- ACT I ----------
