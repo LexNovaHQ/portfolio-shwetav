@@ -578,6 +578,22 @@ body.ld-theater-lock{overflow:hidden;}
 .terminal-point{border:1px solid rgba(229,229,229,.09);border-radius:.9rem;background:rgba(255,255,255,.018);padding:.75rem .85rem;color:rgba(229,229,229,.72);font-size:.82rem;line-height:1.5;}
 .terminal-point strong{display:block;color:var(--gold);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.32rem;}
 /* ---- LEAN READABILITY PASS END ---- */
+
+/* ---- MAIN OS CTA + READABILITY REPAIR PATCH START ---- */
+.act3-runtime-cta-row{margin-top:1.05rem;border:1px solid rgba(197,160,89,.32);border-radius:1.2rem;background:radial-gradient(circle at 10% 0%,rgba(197,160,89,.16),transparent 34%),linear-gradient(180deg,rgba(13,13,13,.98),rgba(6,6,6,.98));padding:1.05rem;display:grid;gap:1rem;align-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+@media(min-width:860px){.act3-runtime-cta-row{grid-template-columns:minmax(0,1fr) auto;}}
+.act3-runtime-cta-row h3{font-family:"Cormorant Garamond",Georgia,serif;color:#fff;font-size:1.82rem;line-height:1.04;margin:.25rem 0 .45rem;}
+.act3-runtime-cta-row p{margin:0;color:rgba(229,229,229,.68);line-height:1.58;font-size:.86rem;max-width:54rem;}
+.act3-runtime-cta-actions{display:flex;flex-direction:column;gap:.45rem;align-items:flex-start;}
+@media(min-width:860px){.act3-runtime-cta-actions{align-items:flex-end;}}
+.act3-runtime-cta-actions .btn{min-height:56px;padding:1rem 1.28rem;font-size:.76rem;white-space:nowrap;border-color:rgba(197,160,89,.68);background:rgba(197,160,89,.1);}
+.act3-runtime-cta-note{font-size:.68rem!important;color:rgba(229,229,229,.48)!important;line-height:1.45!important;max-width:24rem!important;}
+.os-gate-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1rem;}
+.os-gate-list{margin:.85rem 0 0;padding-left:1.05rem;color:rgba(229,229,229,.76);line-height:1.65;font-size:.86rem;}
+.worked-grid-empty{grid-template-columns:repeat(3,minmax(0,1fr));}
+@media(max-width:760px){.worked-grid-empty{grid-template-columns:1fr;}.act3-runtime-cta-actions .btn{width:100%;}}
+/* ---- MAIN OS CTA + READABILITY REPAIR PATCH END ---- */
+
 /* ---- ACT III / CAPSTONE / CLOSE ---- */
 .act3-kicker{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:800;}
 .act3-copy{color:rgba(229,229,229,.68); line-height:1.65; font-size:.88rem;}
@@ -846,6 +862,18 @@ body.ld-theater-lock{overflow:hidden;}
   var modal=document.getElementById('modal'), mbody=document.getElementById('modal-body'), modalCard=modal.querySelector('.modal-card');
   function openModal(html, wide){ mbody.innerHTML=html; modalCard.classList.toggle('wide', !!wide); modal.classList.add('open'); modal.querySelector('[data-close]').focus(); }
   function closeModal(){ modal.classList.remove('open'); modalCard.classList.remove('wide'); }
+  function openInterfaceOSGate(url){
+    openModal('<p class="eyebrow">Read the Interface first</p><h3>Start with the portfolio, then open the operating system.</h3>'
+      +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.78);line-height:1.65">The live diligence system makes more sense after the full Interface is read: Act I explains the legal source layer, Act II explains the diligence architecture, and Act III explains how the runtime stays review-bound.</p>'
+      +'<ul class="os-gate-list"><li>Continue reading if you want the legal method before the tool.</li><li>Proceed to the OS only if you already understand the Interface.</li></ul>'
+      +'<div class="os-gate-actions"><button class="btn sec" type="button" data-close>Continue reading the Interface</button><a class="btn" href="'+esc(url)+'" target="_blank" rel="noopener">Still proceed to the OS</a></div>', false);
+  }
+  document.addEventListener('click', function(e){
+    var link=e.target.closest('[data-interface-os-gate]');
+    if(!link) return;
+    e.preventDefault();
+    openInterfaceOSGate(link.getAttribute('href') || 'https://sandbox.lexnovahq.com/interface-diligence/diligence-system/');
+  });
   modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
   document.querySelector('#modal [data-close]').addEventListener('click', closeModal);
   window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
@@ -873,7 +901,7 @@ body.ld-theater-lock{overflow:hidden;}
           +'<p id="hero-thesis" class="load-in d4 font-display italic gold hero-thesis">'+esc(h.thesis || '')+'</p>'
           +(formationHtml ? '<div class="load-in d5 hero-formation" aria-label="Formation spine">'+formationHtml+'</div>' : '')
           +'<div class="load-in d5 mt-5 flex flex-col sm:flex-row sm:items-center gap-3 hero-cta">'
-            +'<a class="btn" href="'+esc(primary.target || '#project-walkthrough')+'">'+esc(primary.label || 'Watch project walkthrough')+'</a>'
+            +'<a class="btn" href="'+esc(primary.target || '#project-walkthrough')+'"'+(String(primary.target || '').indexOf('sandbox.lexnovahq.com/interface-diligence/diligence-system/')>=0?' data-interface-os-gate="true"':'')+'>'+esc(primary.label || 'Watch project walkthrough')+'</a>'
             +'<a class="btn sec" href="'+esc(secondary.target || '#sandbox-os')+'">'+esc(secondary.label || 'Explore proof portal')+'</a>'
             +'<a class="quiet-link" href="'+esc(tertiary.target || '#capstone')+'">'+esc(tertiary.label || 'View build notes')+'</a>'
           +'</div>'
@@ -1014,25 +1042,32 @@ body.ld-theater-lock{overflow:hidden;}
     function surfacesFor(code){ var set={}; rows.forEach(function(r){ if(r.archetype===code){ r.surface.forEach(function(s){set[s]=(set[s]||0)+1;}); } }); return set; }
     function renderWorked(key){
       var card=document.getElementById('worked-card'), ex=examples.items&&examples.items[key];
-      if(!ex){ card.innerHTML='<p style="color:rgba(229,229,229,.72);line-height:1.65;margin:0">Select a use case above. The route below will show how the system converts an AI behavior into a legal review path.</p>'; return; }
+      if(!ex){ card.innerHTML='<div class="worked-grid worked-grid-empty"><div class="worked-beat"><b>Start</b>Select a use case or AI function above.</div><div class="worked-beat"><b>Then</b>The function and legal surface will light up.</div><div class="worked-beat"><b>Output</b>The system shows the legal review path.</div></div>'; return; }
       card.innerHTML='<div class="worked-grid">'
         +['selected_use_case','move1','move2','output','authority','remediation','routes_into'].map(function(k){var lab={selected_use_case:'Selected use case',move1:'AI function',move2:'Legal surface',output:'Triggered review issue',authority:'Authority signal',remediation:'Remediation route',routes_into:'Routes into'}[k]; return '<div class="worked-beat"><b>'+lab+'</b>'+esc(ex[k])+'</div>';}).join('')+'</div>';
+    }
+    function renderFunctionRoute(code, litNames){
+      var card=document.getElementById('worked-card');
+      var arch=(rm.archetypes||[]).filter(function(a){return a.code===code;})[0]||{name:code,kind:'AI function'};
+      var lit=(litNames||[]).map(surfaceLabel).join(' · ') || 'Surface depends on the selected use case';
+      card.innerHTML='<div class="worked-grid worked-grid-empty"><div class="worked-beat"><b>Selected AI function</b>'+esc(arch.name)+' · '+esc(arch.kind||'')+'</div><div class="worked-beat"><b>Legal surface</b>'+esc(lit)+'</div><div class="worked-beat"><b>Next action</b>Choose a common use case or click a lit surface to open the diagnostic route.</div></div>';
     }
     function selectArch(code, prelight, presetKey){
       current=code;
       document.querySelectorAll('.rm-arch').forEach(function(n){ n.classList.toggle('active', n.getAttribute('data-arch')===code); });
       document.querySelectorAll('.preset-card').forEach(function(n){ n.classList.toggle('active', n.getAttribute('data-preset-key')===presetKey); });
-      var counts=surfacesFor(code);
+      var counts=surfacesFor(code), litNames=[];
       surfWrap.querySelectorAll('.rm-surf').forEach(function(n){
         var name=n.getAttribute('data-surf'); var lit = counts[name]>0 || (prelight&&prelight.indexOf(name)>=0);
         n.classList.toggle('lit', !!lit);
+        if(lit) litNames.push(name);
         var c=n.querySelector('.ct'); if(c)c.remove();
         if(counts[name]>0){ n.insertAdjacentHTML('beforeend',' <span class="ct">'+counts[name]+'</span>'); }
       });
-      document.getElementById('rm-hint').textContent=rm.surface_instruction||'Click a lit surface to see why the risk is triggered.';
+      document.getElementById('rm-hint').textContent=litNames.length ? (rm.surface_instruction||'Click a lit surface to see why the risk is triggered.') : 'No surface is lit for this function alone. Choose a common use case above, or click Global Floor for universal rows.';
       var preset=(rm.presets||[]).filter(function(p){return (p.key||p.label)===presetKey;})[0];
-      document.getElementById('rm-route-summary').innerHTML = preset ? ['Selected use case: '+preset.label,'AI function: '+preset.underlying_function,'Legal surface: '+preset.likely_surfaces].map(function(x){return '<span class="soft-chip route-chip lit">'+esc(x)+'</span>';}).join('') : '';
-      renderWorked(presetKey);
+      document.getElementById('rm-route-summary').innerHTML = preset ? ['Selected use case: '+preset.label,'AI function: '+preset.underlying_function,'Legal surface: '+preset.likely_surfaces].map(function(x){return '<span class="soft-chip route-chip lit">'+esc(x)+'</span>';}).join('') : '<span class="soft-chip route-chip lit">Selected AI function: '+esc(((rm.archetypes||[]).filter(function(a){return a.code===code;})[0]||{}).name||code)+'</span>';
+      if(presetKey) renderWorked(presetKey); else renderFunctionRoute(code, litNames);
     }
     function showDiag(code, surf){
       var match=rows.filter(function(r){ return (r.archetype===code||r.archetype==='UNI') && r.surface.indexOf(surf)>=0; });
