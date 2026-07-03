@@ -502,6 +502,21 @@ body.ld-theater-lock{overflow:hidden;}
   .ld-document-page-modal{min-height:560px;}
 }
 
+.act2-arch-grid{display:grid; gap:1rem;}
+@media(min-width:980px){.act2-arch-grid{grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);}}
+.act2-registry-select{width:100%; border:1px solid rgba(197,160,89,.34); border-radius:.75rem; background:#080808; color:var(--marble); padding:.75rem .85rem; font-size:.88rem;}
+.act2-context-grid{display:grid; gap:.75rem; grid-template-columns:1fr;}
+@media(min-width:760px){.act2-context-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.act2-stack{display:grid; gap:.65rem; grid-template-columns:1fr; margin-top:1rem;}
+@media(min-width:900px){.act2-stack{grid-template-columns:repeat(3,minmax(0,1fr));}}
+.act2-stack-node{border:1px solid rgba(229,229,229,.12); background:rgba(255,255,255,.018); color:rgba(229,229,229,.78); border-radius:.75rem; padding:.8rem; text-align:left; cursor:pointer; transition:border-color .2s,background .2s,color .2s,transform .2s;}
+.act2-stack-node:hover,.act2-stack-node:focus{outline:none; border-color:rgba(197,160,89,.7); background:rgba(197,160,89,.08); color:var(--marble); transform:translateY(-1px);}
+.act2-labor-grid,.act2-boundary-grid,.act2-proof-grid{display:grid; gap:.75rem; grid-template-columns:1fr;}
+@media(min-width:820px){.act2-labor-grid,.act2-boundary-grid,.act2-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.act2-action-flow{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; margin-top:.8rem;}
+.act2-action-flow span{border:1px solid rgba(197,160,89,.26); border-radius:.7rem; padding:.48rem .65rem; color:rgba(229,229,229,.78); background:rgba(197,160,89,.045); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; font-weight:800;}
+.act2-action-flow b{color:rgba(229,229,229,.36); font-weight:400;}
+
 /* ---- ACT III / CAPSTONE / CLOSE ---- */
 .act3-kicker{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:800;}
 .act3-copy{color:rgba(229,229,229,.68); line-height:1.65; font-size:.88rem;}
@@ -969,57 +984,124 @@ body.ld-theater-lock{overflow:hidden;}
 
   // ---------- ACT II ----------
   (function(){
-    var m=normalizeAct2(act2Manifest, C.act2);
-    var rail=(m.local_rail||[]).map(function(n){return '<a href="#'+esc(n.target)+'" data-act2-nav="'+esc(n.target)+'">'+esc(n.label)+'</a>';}).join('');
-    var flow=(m.orientation.core_visual_line||'Risk classified → control selected → instrument routed').split('→').map(function(s){return '<span>'+esc(s.trim())+'</span>';}).join('<b>→</b>');
-    var ldWatermark=(m.living_document.watermark||'SAMPLE / REVIEW-READY STRUCTURE').replace(' / EXCERPT','');
+    var registries=[
+      {
+        key:'ai',
+        label:'AI Product Legal Exposure Registry',
+        status:'Implemented domain instance',
+        domain:'AI / SaaS products and AI-enabled workflows',
+        behavior:['Generate, infer, route, score, summarize, recommend, remember, or act through model output.','Expose probabilistic output to users, employees, customers, APIs, or downstream systems.','Convert technical AI behavior into legal classification, authority, and remediation routes.'],
+        surfaces:['Personal data and sensitive data','Consumer-public and enterprise-private exposure','Employment, content/IP, model reliance, agentic authority, and third-party pass-throughs'],
+        objects:['AI function classification','Legal surface classification','Threat unit','Authority band','Control route','Document route'],
+        documents:['Terms of Service','Data Processing Addendum','Acceptable Use Policy','Service Level Agreement','Agentic Addendum','AI Use Handbook','Human Review SOP'],
+        exposures:['Hallucination reliance','Output ownership and IP leakage','Training or input-data misuse','Automated decision / employment screening','Shadow AI and client-data exposure','Agentic action authority'],
+        routes:['Classify the product or workflow','Trigger legal surfaces','Map to authority and control','Route to report stack','Push to assembly and delivery']
+      },
+      {
+        key:'fintech',
+        label:'FinTech Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'Payments, lending, trading, embedded finance, and financial workflow automation',
+        behavior:['Move money, score risk, route transactions, automate onboarding, or surface financial recommendations.','Create exposure through regulated activity, consumer reliance, payment rails, fraud controls, and third-party processors.','Convert product facts into licensing, disclosure, security, and contractual review routes.'],
+        surfaces:['Payments and stored value','Credit, underwriting, and affordability','Market conduct, trading, and investment signals','KYC, AML, fraud, sanctions, and consumer disclosure'],
+        objects:['Financial activity classification','User and counterparty map','Regulated-function trigger','Control obligation','Partner / processor route','Disclosure route'],
+        documents:['User Terms','Partner Agreement','Processor Addendum','Risk Disclosure','KYC / AML SOP','Incident Response Playbook','Vendor Diligence Memo'],
+        exposures:['Unlicensed regulated activity','Consumer disclosure gaps','Processor liability and settlement failure','Fraud-control breakdown','Algorithmic financial recommendation risk','Vendor and API pass-through exposure'],
+        routes:['Classify the financial activity','Identify user, rail, and counterparty exposure','Map licensing and disclosure triggers','Route controls into contracts and SOPs','Push to diligence and partner review']
+      }
+    ];
+    var stack=[
+      {title:'Target Profile',question:'What product, market, users, AI behavior, and legal surfaces are actually in scope?',boundary:'Facts first; no legal conclusion until the product profile is stable.'},
+      {title:'Exposure Registry',question:'Which risk units are triggered by the product behavior and operating context?',boundary:'Registry logic maps exposure; it does not replace lawyer review.'},
+      {title:'Authority Map',question:'Which IN / EU / US authorities or commercial doctrines make the exposure legally relevant?',boundary:'Authority is summarized into review prompts, not presented as final advice.'},
+      {title:'Control Route',question:'Which control closes the exposure: disclosure, consent, audit, human review, deletion, limitation, or pass-through?',boundary:'Controls remain reviewable and traceable to the triggered exposure.'},
+      {title:'Instrument Route',question:'Which document, clause, policy, addendum, SOP, or playbook carries the control?',boundary:'Document routing is structured support for counsel, not autonomous drafting approval.'},
+      {title:'Delivery Object',question:'What should downstream systems receive: report, product profile, assembly payload, portal status, or maintenance alert?',boundary:'The output is review-ready and bounded before any client-facing delivery.'}
+    ];
+    var labor=[
+      {title:'Legal judgment',body:'Defines the registry, authority mapping, control logic, review boundaries, and final acceptance criteria.'},
+      {title:'System execution',body:'Collects facts, applies structured classification, preserves traceability, and prepares the downstream delivery object.'},
+      {title:'Human review',body:'Confirms the risk analysis, revises clauses or controls, and decides what can be sent outside the system.'},
+      {title:'Client delivery',body:'Receives an organized report, routed document stack, and status layer rather than an unstructured draft dump.'}
+    ];
+    var boundaries=[
+      {title:'Review-ready, not self-executing',body:'The architecture prepares a legal work product for review; it does not claim autonomous legal sign-off.'},
+      {title:'Traceable by design',body:'Each report point should be traceable back to a product fact, registry trigger, authority band, and routed control.'},
+      {title:'Domain-adaptable',body:'AI is the implemented proof domain; FinTech shows the same architecture can hold another regulated vertical.'},
+      {title:'Public-safe proof',body:'The page shows architecture and scrubbed proof posture without exposing private corpus, client data, or prompts.'}
+    ];
+    var actions=['Diligence report','Product profile','Clause route','Assembly payload','Portal delivery','Maintenance radar'];
     main.appendChild(el(
-    '<section id="matrix" class="act" data-rail="2">'
-    +'<div class="card-shell">'
-      +'<div id="act2-orientation" class="reveal"><p class="eyebrow">'+esc(m.orientation.eyebrow)+'</p>'
-        +'<h2 class="font-display section-title text-white mt-2">'+esc(m.orientation.heading)+'</h2>'
-        +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:54rem">'+esc(m.orientation.subline)+'</p>'
-        +'<div class="act2-flow">'+flow+'</div>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:50rem">'+esc(m.orientation.explanation)+'</p>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.orientation.guide_line)+'</p></div>'
-      +'<nav class="act2-rail" aria-label="Act II local map">'+rail+'</nav>'
-      +'<div id="act2-threat-matrix" class="reveal mt-7"><p class="eyebrow mb-1">'+esc(m.threat_matrix.title)+'</p>'
-        +'<p class="text-sm mb-2" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.threat_matrix.intro)+'</p>'
-        +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(m.threat_matrix.proof_line)+' · '+esc(m.threat_matrix.integrity_note)+'</p>'
-        +'<div class="mx-preview-shell"><div class="mx-filters mb-3" id="mx-filters"></div>'
-          +'<div class="mx-scroll"><table class="mx-table mx-preview-table"><thead><tr>'
-            +m.threat_matrix.columns.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')
-            +'</tr></thead><tbody id="mx-body"></tbody></table></div>'
-          +'<div class="registry-actions"><p class="text-xs" style="color:var(--gold);margin:0">'+esc(m.threat_matrix.guide_text)+'</p><button class="btn sm sec" type="button" id="mx-open-full">Open full registry view</button></div></div></div>'
-      +'<div class="reveal mt-8"><span id="instruments-layer" class="anchor-point" aria-hidden="true"></span><p class="eyebrow mb-1">'+esc(m.instrument_architecture.title)+'</p>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.instrument_architecture.intro)+'</p>'
-        +'<p class="text-xs mt-2 mb-4" style="color:var(--gold)">'+esc(m.instrument_architecture.guide_line)+'</p>'
-        +'<div class="instr-lanes" id="instr-lanes"></div>'
-        +'<div class="route-chips" id="route-chips"></div><div class="route-line" id="route-line"></div></div>'
-      +'<div id="act2-living-document" class="reveal mt-8"><p class="eyebrow mb-1">'+esc(m.living_document.title)+'</p>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.living_document.intro)+'</p>'
-        +'<p class="text-xs mt-2 mb-3" style="color:var(--gold)">'+esc(m.living_document.guide_line)+'</p>'
-        +'<div class="ld-grid">'
-          +'<aside class="ld-trigger-rail" aria-label="Living document trigger list">'
-            +'<div id="ld-threats"></div>'
-          +'</aside>'
-          +'<div class="ld-preview-shell">'
-            +'<div class="ld-document-page ld-preview-page" id="ld-preview-page"><div class="ld-doc-watermark">'+esc(ldWatermark)+'</div>'
-              +'<div class="ld-doc-title">'+esc(m.living_document.default_note)+'</div>'
-              +'<div class="ld-redacted-section"><div class="doc-section-title">SECTION 8: DISCLAIMERS & WARRANTY LIMITATIONS</div><div class="ld-blur-line" style="width:92%"></div><div class="ld-blur-line" style="width:78%"></div><div class="ld-blur-line" style="width:66%"></div></div>'
-              +'<div class="ld-redacted-section"><div class="doc-section-title">SECTION 10: INDEMNIFICATION</div><div class="ld-blur-line" style="width:88%"></div><div class="ld-blur-line" style="width:70%"></div><div class="ld-blur-line" style="width:58%"></div></div>'
-              +'<div class="ld-preview-note">'+esc(m.living_document.default_note)+'</div>'
-              +'<div class="ld-selection-chip" id="ld-selection-chip"></div>'
-            +'</div>'
+      '<section id="matrix" class="act" data-rail="2">'
+      +'<div class="card-shell">'
+        +'<div id="act2-orientation" class="reveal">'
+          +'<p class="eyebrow">ACT II · DILIGENCE ARCHITECTURE</p>'
+          +'<h2 class="font-display section-title text-white mt-2">From legal exposure to review-ready delivery architecture.</h2>'
+          +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:56rem">Act II is the operating layer between doctrine and delivery: a vertical registry, a locked report stack, and a controlled route from legal risk to documents, portals, and maintenance workflows.</p>'
+          +'<div class="act2-action-flow"><span>Product facts</span><b>-></b><span>Registry trigger</span><b>-></b><span>Report stack</span><b>-></b><span>Review-ready output</span></div>'
+        +'</div>'
+        +'<div class="reveal mt-8 act2-arch-grid">'
+          +'<div>'
+            +'<p class="eyebrow mb-1">Active Vertical Registry</p>'
+            +'<select id="act2-registry-select" class="act2-registry-select" aria-label="Active Vertical Registry">'+registries.map(function(r){return '<option value="'+esc(r.key)+'">'+esc(r.label)+' - '+esc(r.status)+'</option>';}).join('')+'</select>'
+            +'<div id="act2-registry-context" class="act2-context-grid mt-4"></div>'
           +'</div>'
-        +'</div></div>'
-      +'<div id="act2-vault-router" class="reveal mt-8 vault-panel"><p class="eyebrow mb-1">'+esc(m.vault_router.title)+'</p>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.vault_router.intro)+'</p>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.vault_router.guide_line)+'</p>'
-        +'<div class="vault-toggles" id="vault-toggles"></div><div class="vault-docs" id="vault-docs"></div><div class="vault-route" id="vault-route"></div></div>'
-      +'<div id="act2-act3-bridge" class="connector reveal"><p>'+esc(m.bridge.connector_line)+'</p><div class="act2-flow"><span>'+esc(m.bridge.visual_line.split('→')[0].trim())+'</span><b>→</b><span>'+esc((m.bridge.visual_line.split('→')[1]||'intake logic').trim())+'</span><b>→</b><span>'+esc((m.bridge.visual_line.split('→')[2]||'automated assembly').trim())+'</span></div><a class="btn sm" href="#'+esc(m.bridge.target)+'">'+esc(m.bridge.button_label)+'</a></div>'
-    +'</div></section>'));
-    buildMatrix(m); buildInstrumentMap(m); buildLivingDoc(m); buildVaultRouter(m); bindAct2Rail();
+          +'<div>'
+            +'<p class="eyebrow mb-1">Registry context panel</p>'
+            +'<div id="act2-registry-summary"></div>'
+          +'</div>'
+        +'</div>'
+        +'<div class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Locked report stack</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">The stack keeps the work reviewable: profile, registry trigger, authority, control, instrument, and delivery object stay separate instead of collapsing into one opaque answer.</p>'
+          +'<div class="act2-stack">'+stack.map(function(s,i){return '<button class="act2-stack-node" type="button" data-stack="'+i+'"><strong class="gold">'+esc(s.title)+'</strong><p class="text-xs mt-2" style="line-height:1.5;margin-bottom:0">'+esc(s.question)+'</p></button>';}).join('')+'</div>'
+        +'</div>'
+        +'<div class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Division of Labor</p>'
+          +'<div class="act2-labor-grid">'+labor.map(function(x){return '<div class="beat"><div class="lab">'+esc(x.title)+'</div><p>'+esc(x.body)+'</p></div>';}).join('')+'</div>'
+        +'</div>'
+        +'<div class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Review-Ready Boundary</p>'
+          +'<div class="act2-boundary-grid">'+boundaries.map(function(x){return '<div class="beat"><div class="lab">'+esc(x.title)+'</div><p>'+esc(x.body)+'</p></div>';}).join('')+'</div>'
+        +'</div>'
+        +'<div class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Implemented AI Domain Instance</p>'
+          +'<div class="act2-proof-grid">'
+            +'<div class="beat"><div class="lab">AI registry proof</div><p>The AI / SaaS registry is the implemented domain instance: AI behavior, legal surfaces, exposure objects, document routes, and downstream action layers are already modeled as a working proof domain.</p></div>'
+            +'<div class="beat"><div class="lab">Proof architecture</div><p>It connects back to the page proof spine: doctrine, taxonomy, diligence engine, product profile vault, documents, and portal delivery.</p><button class="btn sm sec mt-3" type="button" id="act2-ai-proof">Open AI proof architecture</button></div>'
+          +'</div>'
+        +'</div>'
+        +'<div class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Downstream Action Layer</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">Once the registry produces a reviewable object, the system can hand it to the delivery layer without losing the legal source path.</p>'
+          +'<div class="act2-action-flow">'+actions.map(function(a,i){return (i?'<b>-></b>':'')+'<span>'+esc(a)+'</span>';}).join('')+'</div>'
+        +'</div>'
+        +'<div class="connector reveal" id="act2-act3-bridge"><p>Bridge to Act III: the diligence architecture becomes the legal delivery system that runs the work through sandbox, assembly, portal, maintenance, and controlled workflow proof.</p><div class="act2-action-flow"><span>Architecture</span><b>-></b><span>Execution</span><b>-></b><span>ACT III</span></div><a class="btn sm" href="#project-walkthrough">Continue to ACT III</a></div>'
+      +'</div></section>'
+    ));
+    function list(title, items){
+      return '<div class="beat"><div class="lab">'+esc(title)+'</div><p>'+items.map(esc).join('<br>')+'</p></div>';
+    }
+    function renderRegistry(key){
+      var r=registries.filter(function(x){return x.key===key;})[0]||registries[0];
+      document.getElementById('act2-registry-summary').innerHTML=
+        '<div class="beat"><div class="lab">'+esc(r.status)+'</div><p><strong class="gold">'+esc(r.label)+'</strong><br>'+esc(r.domain)+'</p></div>'
+        +'<div class="act2-action-flow">'+r.routes.map(function(x,i){return (i?'<b>-></b>':'')+'<span>'+esc(x)+'</span>';}).join('')+'</div>';
+      document.getElementById('act2-registry-context').innerHTML=
+        list('Behavior',r.behavior)+list('Legal surfaces',r.surfaces)+list('Registry objects',r.objects)+list('Document routes',r.documents)+list('Exposure examples',r.exposures);
+    }
+    function openStackModal(i){
+      var s=stack[i]||stack[0];
+      openModal('<div class="eyebrow">Locked report stack</div><h3>'+esc(s.title)+'</h3><div class="beat"><div class="lab">Question</div><p>'+esc(s.question)+'</p></div><div class="beat"><div class="lab">Boundary</div><p>'+esc(s.boundary)+'</p></div>');
+    }
+    function openAIProofModal(){
+      var ai=registries[0];
+      openModal('<div class="eyebrow">Implemented AI Domain Instance</div><h3>'+esc(ai.label)+'</h3><p class="text-sm mt-2" style="color:rgba(229,229,229,.72);line-height:1.6">The AI registry is the implemented proof domain for the diligence architecture. It maps product behavior to legal surfaces, exposure units, authority bands, document routes, and downstream delivery actions.</p><div class="act2-proof-grid mt-4">'+list('Surfaces',ai.surfaces)+list('Documents',ai.documents)+list('Exposures',ai.exposures)+list('Routes',ai.routes)+'</div><p class="text-xs mt-4" style="color:var(--gold)">This modal uses the existing page modal system and keeps private registry details out of the public surface.</p>', true);
+    }
+    document.getElementById('act2-registry-select').addEventListener('change', function(){ renderRegistry(this.value); });
+    document.querySelectorAll('[data-stack]').forEach(function(n){ n.addEventListener('click', function(){ openStackModal(parseInt(n.getAttribute('data-stack'),10)); }); });
+    document.getElementById('act2-ai-proof').addEventListener('click', openAIProofModal);
+    renderRegistry('ai');
   })();
 
   function normalizeAct2(manifest, fallback){
