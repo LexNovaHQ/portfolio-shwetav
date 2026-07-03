@@ -502,6 +502,39 @@ body.ld-theater-lock{overflow:hidden;}
   .ld-document-page-modal{min-height:560px;}
 }
 
+/* ---- ACT II DILIGENCE ARCHITECTURE PATCH START ---- */
+.act2-diligence-local-rail{display:flex; flex-wrap:wrap; gap:.45rem; margin:1.15rem 0 0; padding:.55rem; border:1px solid rgba(197,160,89,.16); border-radius:1rem; background:rgba(255,255,255,.018);}
+.act2-diligence-local-rail a{display:inline-flex; align-items:center; min-height:32px; padding:.36rem .62rem; border-radius:999px; border:1px solid rgba(229,229,229,.12); color:rgba(229,229,229,.62); font-size:.61rem; letter-spacing:.11em; text-transform:uppercase; font-weight:800; text-decoration:none;}
+.act2-diligence-local-rail a:hover,.act2-diligence-local-rail a:focus{outline:none; color:var(--gold); border-color:rgba(197,160,89,.55); background:rgba(197,160,89,.07);}
+.act2-diligence-flow{display:flex; flex-wrap:wrap; gap:.45rem; align-items:center; margin-top:1rem;}
+.act2-diligence-flow span{border:1px solid rgba(197,160,89,.26); border-radius:.75rem; padding:.5rem .68rem; color:rgba(229,229,229,.78); background:rgba(197,160,89,.045); font-size:.66rem; letter-spacing:.065em; text-transform:uppercase; font-weight:800;}
+.act2-diligence-flow b{color:rgba(229,229,229,.35); font-weight:500;}
+.act2-diligence-grid{display:grid; gap:1rem;}
+@media(min-width:980px){.act2-diligence-grid{grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);}}
+.act2-diligence-select{width:100%; border:1px solid rgba(197,160,89,.34); border-radius:.85rem; background:#080808; color:var(--marble); padding:.78rem .9rem; font-size:.88rem;}
+.act2-diligence-select:focus{outline:none; border-color:rgba(197,160,89,.76); box-shadow:0 0 0 3px rgba(197,160,89,.12);}
+.act2-diligence-card{border:1px solid rgba(229,229,229,.1); border-radius:1rem; background:rgba(255,255,255,.018); padding:.9rem;}
+.act2-diligence-card .k{font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:800; margin-bottom:.45rem;}
+.act2-diligence-card p{margin:0; color:rgba(229,229,229,.68); line-height:1.58; font-size:.82rem;}
+.act2-diligence-card strong{color:var(--marble);}
+.act2-diligence-context{display:grid; gap:.75rem; grid-template-columns:1fr; margin-top:1rem;}
+@media(min-width:760px){.act2-diligence-context{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.act2-diligence-stack{display:grid; gap:.65rem; grid-template-columns:1fr; margin-top:1rem;}
+@media(min-width:900px){.act2-diligence-stack{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.act2-diligence-stack-node{border:1px solid rgba(229,229,229,.12); background:rgba(255,255,255,.018); color:rgba(229,229,229,.78); border-radius:.8rem; padding:.78rem; text-align:left; cursor:pointer; transition:border-color .2s,background .2s,color .2s,transform .2s; min-height:122px;}
+.act2-diligence-stack-node:hover,.act2-diligence-stack-node:focus{outline:none; border-color:rgba(197,160,89,.7); background:rgba(197,160,89,.08); color:var(--marble); transform:translateY(-1px);}
+.act2-diligence-stack-node .num{display:inline-flex; align-items:center; justify-content:center; width:1.35rem; height:1.35rem; border-radius:999px; border:1px solid rgba(197,160,89,.4); color:var(--gold); font-size:.62rem; font-weight:800; margin-bottom:.52rem;}
+.act2-diligence-stack-node strong{display:block; color:var(--gold); font-size:.76rem; line-height:1.25;}
+.act2-diligence-stack-node p{font-size:.7rem; color:rgba(229,229,229,.58); line-height:1.45; margin:.45rem 0 0;}
+.act2-diligence-two{display:grid; gap:.8rem; grid-template-columns:1fr; margin-top:.9rem;}
+@media(min-width:820px){.act2-diligence-two{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.act2-diligence-list{margin:0; padding-left:1rem; color:rgba(229,229,229,.7); font-size:.82rem; line-height:1.6;}
+.act2-diligence-list li{margin:.22rem 0;}
+.act2-diligence-proof{display:grid; gap:.8rem; grid-template-columns:1fr; margin-top:.9rem;}
+@media(min-width:820px){.act2-diligence-proof{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.act2-diligence-badge{display:inline-flex; align-items:center; min-height:26px; border:1px solid rgba(197,160,89,.35); color:var(--gold); background:rgba(197,160,89,.06); padding:.28rem .55rem; border-radius:999px; font-size:.58rem; letter-spacing:.11em; text-transform:uppercase; font-weight:800; margin:.25rem .25rem 0 0;}
+/* ---- ACT II DILIGENCE ARCHITECTURE PATCH END ---- */
+
 /* ---- ACT III / CAPSTONE / CLOSE ---- */
 .act3-kicker{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:800;}
 .act3-copy{color:rgba(229,229,229,.68); line-height:1.65; font-size:.88rem;}
@@ -710,6 +743,23 @@ body.ld-theater-lock{overflow:hidden;}
   };
   function boot(C, act2Manifest){
   C.hero = Object.assign({}, C.hero || {}, lockedHero);
+  /* ---- ACT II DILIGENCE RAIL PATCH START ---- */
+  if(C.rail && Array.isArray(C.rail.nodes)){
+    C.rail.nodes = C.rail.nodes.map(function(n){
+      if(n && n.target === 'act2-threat-matrix'){
+        return {band:'ACT II · DILIGENCE ARCHITECTURE', band_tag:'the architecture', node:'Architecture', sub:'active registry → report stack', target:'act2-active-registry', why:'Shows that AI is one domain and the diligence architecture is cross-domain.'};
+      }
+      if(n && n.target === 'act2-living-document'){
+        return {band:'ACT II · DILIGENCE ARCHITECTURE', band_tag:'the architecture', node:'Report Stack', sub:'profiles → registry → remediation', target:'act2-report-stack', why:'Shows the locked review-ready diligence stack and downstream action layer.'};
+      }
+      return n;
+    });
+  }
+  if(C.rail && C.rail.chip){
+    C.rail.chip.structured = 'architecture → registry';
+    C.rail.chip.running = 'architecture → delivery system';
+  }
+  /* ---- ACT II DILIGENCE RAIL PATCH END ---- */
   var main = document.getElementById('main');
   var esc = function(s){ s = (s==null?'':String(s)); return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   var el = function(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; };
@@ -969,57 +1019,227 @@ body.ld-theater-lock{overflow:hidden;}
 
   // ---------- ACT II ----------
   (function(){
-    var m=normalizeAct2(act2Manifest, C.act2);
-    var rail=(m.local_rail||[]).map(function(n){return '<a href="#'+esc(n.target)+'" data-act2-nav="'+esc(n.target)+'">'+esc(n.label)+'</a>';}).join('');
-    var flow=(m.orientation.core_visual_line||'Risk classified → control selected → instrument routed').split('→').map(function(s){return '<span>'+esc(s.trim())+'</span>';}).join('<b>→</b>');
-    var ldWatermark=(m.living_document.watermark||'SAMPLE / REVIEW-READY STRUCTURE').replace(' / EXCERPT','');
+    var registries=[
+      {
+        key:'ai',
+        label:'AI Product Legal Exposure Registry',
+        status:'Implemented domain instance',
+        domain:'AI / SaaS products and AI-enabled workflows',
+        behavior:['UNI','Doer','Judge','Companion','Creator','Reader','Orchestrator','Translator','Shield','Optimizer','Mover'],
+        surfaces:['Consumer-public','Enterprise-private','PII','Employment','Sensitive / biometric','Financial','Content & IP','Safety / physical','Infrastructure','Minors'],
+        objects:['Customer content','Prompts','Outputs','Embeddings','Logs','Usage data','Model-provider routes','Training / fine-tuning signals','RAG / vector storage'],
+        documents:['Terms','Privacy Policy','DPA','AUP','SLA','AI Policy','Trust / Security','Subprocessors'],
+        exposures:['AI output reliance','Human review gap','Model training / fine-tuning use','Generated content ownership','Agent authority','Sensitive data restriction','AI indemnity','Subprocessor / model-provider route'],
+        routes:['ToS route','Privacy Policy route','DPA route','AUP route','SLA route','Agentic Addendum route','DPIA route','HITL SOP route','IP route']
+      },
+      {
+        key:'fintech',
+        label:'FinTech Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'Payments, lending, credit, open banking, customer funds, and financial-product workflows',
+        behavior:['Payments','Lending','Scoring','KYC / AML','Advice','Trading','Custody','Insurance','Collections'],
+        surfaces:['Consumer credit','Customer funds','Payments','Transaction data','KYC documents','Open banking'],
+        objects:['Payment data','KYC documents','Credit data','Transaction data','Mandates','Wallet balance','Customer funds'],
+        documents:['User Agreement','Payment Terms','Credit Agreement','Fee Schedule','KYC / AML disclosures','Bank Partner Disclosure'],
+        exposures:['Unlicensed lending / broking perimeter trap','APR / fee disclosure failure','BNPL affordability / responsible lending gap','KYC / AML onboarding failure','Customer funds safeguarding gap','Robo-advice suitability trap','Algorithmic credit discrimination','Payment dispute / refund handling gap','Open banking consent-scope mismatch','Mis-selling / dark-pattern add-on sale'],
+        routes:['Payment authorization','Fees / APR disclosure','Chargeback route','KYC / AML route','Partner-bank role disclosure','Customer-funds treatment','Credit reporting route','Collections boundary','Advice boundary']
+      },
+      {
+        key:'healthtech',
+        label:'HealthTech Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'Health data, telehealth, patient workflows, clinical-support systems, and health vendor chains',
+        behavior:['PHI handling','Telemedicine','Triage','Clinical decision support','Diagnostics','Remote monitoring','Prescription workflow','Mental health workflow','Billing workflow'],
+        surfaces:['PHI','Patient record','Clinical diagnosis','Prescription','Mental health','Minors','Emergency care'],
+        objects:['PHI','Clinical notes','Diagnostic data','Prescription data','Remote-monitoring data','Patient records','Caregiver data','Emergency-contact data'],
+        documents:['Terms','Health Privacy Notice','BAA route','Telehealth Consent','Medical Disclaimer','Emergency Notice'],
+        exposures:['BAA / business associate gap','Minimum-necessary failure','Unlicensed clinical advice boundary failure','Emergency escalation failure','Diagnostic performance claim gap','Remote-monitoring false-negative exposure','Patient access / records rights gap','Health data vendor-chain gap','Prescription workflow authorization gap','Billing / claims automation false-claim exposure'],
+        routes:['PHI route','BAA route','Telehealth consent route','Emergency escalation route','Clinical disclaimer route','Provider responsibility route','Prescription authorization route','Patient rights route']
+      },
+      {
+        key:'banking-finance',
+        label:'Banking / Finance Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'Deposits, custody, securities, investment advice, AML / sanctions, outsourcing, and market-conduct workflows',
+        behavior:['Deposits','Banking-as-a-service','Payments','Credit','Custody','Brokerage','Investment advice','AML / sanctions','Fraud monitoring','Operational resilience'],
+        surfaces:['Deposits','Securities','Investment advice','AML','Sanctions','Complaints','Client assets','Customer funds','Operational resilience','Outsourcing'],
+        objects:['Deposit account data','Securities orders','Investment profile','AML records','Complaints','Client assets','Trading instruction','Custody records'],
+        documents:['Account Terms','Deposit Terms','Brokerage Agreement','Custody Agreement','Advisory Agreement','Risk Disclosures'],
+        exposures:['Deposit insurance misrepresentation','Bank partner disclosure failure','Unlicensed regulated activity perimeter breach','Suitability / best-interest mismatch','AML / sanctions screening gap','Customer funds commingling / safeguarding gap','Operational resilience / vendor concentration gap','Complaint / dispute handling failure','Unfair fees / dark-pattern add-on sale','Market conduct / manipulation exposure'],
+        routes:['Deposit insurance route','Account terms route','Custody route','Suitability route','Risk disclosure route','AML / sanctions route','Complaint-handling route','Outsourcing route','Operational resilience route']
+      },
+      {
+        key:'employment-tech',
+        label:'Employment Tech Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'Hiring, screening, workplace analytics, employee monitoring, candidate data, and employment decisioning workflows',
+        behavior:['Hiring screen','Candidate ranking','Employee monitoring','Workplace analytics','Performance scoring','Background check workflow','Scheduling / workforce automation','Internal HR support'],
+        surfaces:['Employment','Candidate data','Employee data','Sensitive data','Decisioning','Workplace privacy','Discrimination / bias surface','Notice and consent surface'],
+        objects:['Candidate profile','Resume / CV','Interview data','Assessment score','Employee record','Performance data','Workplace communications','Monitoring logs'],
+        documents:['Candidate Notice','Employee Privacy Notice','AI Hiring Disclosure','Workplace AI Policy','Assessment Terms','Vendor DPA','HITL SOP','Appeal / Review Route'],
+        exposures:['Automated screening disclosure gap','Bias-audit / adverse-impact review gap','Human review route missing','Candidate notice failure','Employee monitoring transparency gap','Sensitive-data collection mismatch','Vendor-role ambiguity','Appeal / escalation route absence'],
+        routes:['Candidate notice route','Employee privacy route','HITL review route','Bias-audit evidence request','Vendor DPA route','Assessment terms route','Workplace policy route','Appeal / escalation route']
+      },
+      {
+        key:'saas-privacy-security',
+        label:'SaaS Privacy / Security Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'SaaS data processing, enterprise procurement, vendor governance, security controls, subprocessors, and privacy/security review workflows',
+        behavior:['Data processing','Subprocessing','Enterprise account administration','Security control management','Access logging','Data retention','Cross-border transfer','Incident handling','Customer-content handling'],
+        surfaces:['PII','Enterprise data','Customer content','Subprocessors','Security','Transfer','Retention','Access control','Incident response'],
+        objects:['Customer content','Account data','User logs','Admin data','Support tickets','Subprocessor data','Security logs','Usage analytics'],
+        documents:['Terms','Privacy Policy','DPA','Security Page','Trust Center','Subprocessor List','SLA','Incident Notice Terms','Data Retention Schedule'],
+        exposures:['DPA absence','Subprocessor disclosure gap','Retention / deletion ambiguity','Security-control overclaim','Incident notice gap','Transfer-mechanism gap','Customer-content training ambiguity','Admin-access / support-access gap','SLA mismatch'],
+        routes:['DPA route','Subprocessor route','Security-control route','Retention / deletion route','Incident notice route','Transfer route','Customer-content boundary','SLA route']
+      },
+      {
+        key:'consumer-app',
+        label:'Consumer App Legal Exposure Registry',
+        status:'Architecture preview',
+        domain:'Consumer-facing apps, subscriptions, user data, digital content, minors, cancellation flows, and public-facing product claims',
+        behavior:['Consumer onboarding','Subscription / billing','Cancellation','User content','Recommendation / personalization','Messaging / notification','Marketplace interaction','Minor-facing experience'],
+        surfaces:['Consumer-public','PII','Minors','Payments','User-generated content','Dark-pattern surface','Cancellation','Advertising / claims'],
+        objects:['Account data','Payment data','User content','Usage data','Preference data','Child / minor data','Cancellation records','Support records'],
+        documents:['Terms','Privacy Policy','Subscription Terms','Cancellation Policy','Community Guidelines','Content Policy','Minor / Age Notice','Support / Complaint Route'],
+        exposures:['Subscription cancellation friction','Dark-pattern notice gap','Minor-facing consent gap','Consumer refund ambiguity','User-content ownership ambiguity','Privacy notice mismatch','Advertising / claim substantiation gap','Complaint route absence'],
+        routes:['Subscription terms route','Cancellation route','Privacy notice route','Minor / age-gate route','Content policy route','Refund route','Support / complaint route','Consumer disclosure route']
+      }
+    ];
+
+    var stack=[
+      {title:'Target Profile',question:'Who is the target, what public business wrapper does it present, where does it appear to sit, who does it appear to serve, and what high-level product or service is being reviewed?',boundary:'It does not map product behavior, data flows, legal document adequacy, registry exposure, or redline routes.'},
+      {title:'Product / Activity Profile',question:'What product, service, workflow, transaction, decision, content operation, data operation, financial operation, clinical operation, customer-facing activity, or backend activity does the target perform?',boundary:'It does not decide whether that activity is legal, regulated, risky, compliant, or adequately controlled.'},
+      {title:'Data / Asset Provenance Profile',question:'Whose data, money, record, instruction, content, health information, financial asset, consent, transaction, or regulated object enters the system; who controls it; who processes it; where it moves; who receives it; what controls are visible; and what proof is missing?',boundary:'It does not decide whether processing, transfer, custody, consent, safeguarding, or retention is legally compliant.'},
+      {title:'Legal / Governance Cartography Profile',question:'What legal, governance, disclosure, policy, contractual, safety, security, consent, and control documents exist; what kind of documents they are; where the major sections and control-language locations are; what notices are visible; what documents reference each other; and what is missing or inaccessible?',boundary:'It does not assess clause adequacy, enforceability, compliance, or redline needs.'},
+      {title:'Active Vertical Legal Exposure Registry',question:'Which domain-specific exposure taxonomy should be applied to the mapped target, activity, data / asset, and legal-cartography profiles?',boundary:'It supplies exposure patterns. It does not decide final legal sufficiency.'},
+      {title:'Legal Exposure Profile',question:'Which registry exposure patterns appear, are controlled, are absent, or cannot be assessed from public proof, based on the locked upstream profiles?',boundary:'It is not general legal commentary, not an AI-risk essay, and not a compliance verdict.'},
+      {title:'Document Redline & Remediation Matrix',question:'What document, clause, control, evidence request, owner, priority, and local counsel question should each profile finding route into?',boundary:'It is a review-ready action layer. It does not give final legal advice, compliance verdicts, liability findings, enforceability conclusions, market-standard conclusions, or unqualified claims that a fix cures the issue.'},
+      {title:'Final Partner Assessment',question:'What is the partner-readable legal architecture posture after the profiles, registry application, exposure rows, and remediation routes are synthesized?',boundary:'It is final diligence synthesis, not legal advice, not redline, and not a compliance opinion.'}
+    ];
+
+    var labor=[
+      {title:'Registry supplies',body:'Domain intelligence: exposure row IDs, exposure names, domain behavior taxonomy, surface / regulated context taxonomy, authority anchors, pain logic, public-footprint triggers, exclusion logic, and default remediation routes.'},
+      {title:'GPT derives',body:'Target-specific application: identity, product / activity behavior, domain behavior classification, surface classification, data / asset provenance, legal document locations, trigger/control evaluation, row status, missing proof, redline route reconciliation, and final synthesis.'},
+      {title:'Code derives',body:'Mechanical integrity: row counts, missing rows, duplicate rows, status counts, evidence reference validity, source reference validity, profile reference validity, matrix joins, schema validation, renderer ordering, and final handoff shape.'},
+      {title:'Counsel owns',body:'Legal judgment: final application of law, enforceability, document adequacy, compliance posture, legal sufficiency, market-standard sufficiency, jurisdiction-specific drafting, and final review.'}
+    ];
+
+    var canSay=['public materials indicate','visible public signal','not visible from public footprint','requires local counsel review','requires private confirmation','review priority','document route','control route','legal architecture posture','review-ready draft route'];
+    var mustNeverSay=['compliance','non-compliance','liability','illegality','lawfulness','enforceability','unenforceability','legal sufficiency','market-standard sufficiency','that a redline cures an issue'];
+    var aiProof=['98 AI exposure rows','AI behavior taxonomy','AI surface taxonomy','authority anchors','pain tiers','Hunter_Trigger','TRIGGER_IF / EXCLUDE_IF','Lex_Nova_Fix','document / control routing'];
+    var runtimeDerived=['target identity','AI product / activity mechanics','AI archetype match','AI surface match','data / content / model lifecycle map','legal document / control locations','public evidence basis','trigger and exclude condition truth values','row status','missing proof','fix-to-target reconciliation','redline action type','final assessment'];
+    var actionFlow=['Legal Exposure Profile','Document Redline & Remediation Matrix','Final Partner Assessment'];
+    var rail=[
+      {label:'Architecture',target:'act2-orientation'},
+      {label:'Active Registry',target:'act2-active-registry'},
+      {label:'Report Stack',target:'act2-report-stack'},
+      {label:'Division of Labor',target:'act2-division-labor'},
+      {label:'Boundary',target:'act2-boundary'},
+      {label:'AI Registry Proof',target:'act2-ai-proof-section'},
+      {label:'Action Layer',target:'act2-action-layer'},
+      {label:'Act III',target:'act2-act3-bridge'}
+    ];
+
+    function chipList(items){ return (items||[]).map(function(x){ return '<span class="act2-diligence-badge">'+esc(x)+'</span>'; }).join(''); }
+    function listBlock(title, items){ return '<div class="act2-diligence-card"><div class="k">'+esc(title)+'</div><p>'+esc((items||[]).join(' · '))+'</p></div>'; }
+    function bulletList(items){ return '<ul class="act2-diligence-list">'+(items||[]).map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
+    function flow(items){ return '<div class="act2-diligence-flow">'+(items||[]).map(function(x,i){ return (i?'<b>→</b>':'')+'<span>'+esc(x)+'</span>'; }).join('')+'</div>'; }
+
     main.appendChild(el(
-    '<section id="matrix" class="act" data-rail="2">'
-    +'<div class="card-shell">'
-      +'<div id="act2-orientation" class="reveal"><p class="eyebrow">'+esc(m.orientation.eyebrow)+'</p>'
-        +'<h2 class="font-display section-title text-white mt-2">'+esc(m.orientation.heading)+'</h2>'
-        +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:54rem">'+esc(m.orientation.subline)+'</p>'
-        +'<div class="act2-flow">'+flow+'</div>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:50rem">'+esc(m.orientation.explanation)+'</p>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.orientation.guide_line)+'</p></div>'
-      +'<nav class="act2-rail" aria-label="Act II local map">'+rail+'</nav>'
-      +'<div id="act2-threat-matrix" class="reveal mt-7"><p class="eyebrow mb-1">'+esc(m.threat_matrix.title)+'</p>'
-        +'<p class="text-sm mb-2" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.threat_matrix.intro)+'</p>'
-        +'<p class="text-xs mb-3" style="color:rgba(229,229,229,.5);line-height:1.5">'+esc(m.threat_matrix.proof_line)+' · '+esc(m.threat_matrix.integrity_note)+'</p>'
-        +'<div class="mx-preview-shell"><div class="mx-filters mb-3" id="mx-filters"></div>'
-          +'<div class="mx-scroll"><table class="mx-table mx-preview-table"><thead><tr>'
-            +m.threat_matrix.columns.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')
-            +'</tr></thead><tbody id="mx-body"></tbody></table></div>'
-          +'<div class="registry-actions"><p class="text-xs" style="color:var(--gold);margin:0">'+esc(m.threat_matrix.guide_text)+'</p><button class="btn sm sec" type="button" id="mx-open-full">Open full registry view</button></div></div></div>'
-      +'<div class="reveal mt-8"><span id="instruments-layer" class="anchor-point" aria-hidden="true"></span><p class="eyebrow mb-1">'+esc(m.instrument_architecture.title)+'</p>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.instrument_architecture.intro)+'</p>'
-        +'<p class="text-xs mt-2 mb-4" style="color:var(--gold)">'+esc(m.instrument_architecture.guide_line)+'</p>'
-        +'<div class="instr-lanes" id="instr-lanes"></div>'
-        +'<div class="route-chips" id="route-chips"></div><div class="route-line" id="route-line"></div></div>'
-      +'<div id="act2-living-document" class="reveal mt-8"><p class="eyebrow mb-1">'+esc(m.living_document.title)+'</p>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.living_document.intro)+'</p>'
-        +'<p class="text-xs mt-2 mb-3" style="color:var(--gold)">'+esc(m.living_document.guide_line)+'</p>'
-        +'<div class="ld-grid">'
-          +'<aside class="ld-trigger-rail" aria-label="Living document trigger list">'
-            +'<div id="ld-threats"></div>'
-          +'</aside>'
-          +'<div class="ld-preview-shell">'
-            +'<div class="ld-document-page ld-preview-page" id="ld-preview-page"><div class="ld-doc-watermark">'+esc(ldWatermark)+'</div>'
-              +'<div class="ld-doc-title">'+esc(m.living_document.default_note)+'</div>'
-              +'<div class="ld-redacted-section"><div class="doc-section-title">SECTION 8: DISCLAIMERS & WARRANTY LIMITATIONS</div><div class="ld-blur-line" style="width:92%"></div><div class="ld-blur-line" style="width:78%"></div><div class="ld-blur-line" style="width:66%"></div></div>'
-              +'<div class="ld-redacted-section"><div class="doc-section-title">SECTION 10: INDEMNIFICATION</div><div class="ld-blur-line" style="width:88%"></div><div class="ld-blur-line" style="width:70%"></div><div class="ld-blur-line" style="width:58%"></div></div>'
-              +'<div class="ld-preview-note">'+esc(m.living_document.default_note)+'</div>'
-              +'<div class="ld-selection-chip" id="ld-selection-chip"></div>'
-            +'</div>'
+      '<section id="matrix" class="act" data-rail="2">'
+      +'<div class="card-shell">'
+        +'<div id="act2-orientation" class="reveal">'
+          +'<p class="eyebrow">ACT II · DILIGENCE ARCHITECTURE</p>'
+          +'<h2 class="font-display section-title text-white mt-2">From legal taxonomy to review-ready diligence architecture.</h2>'
+          +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:58rem">The source layer does not become a one-off AI risk report. It becomes a reusable diligence architecture: factual profiles are built first, the active vertical registry is applied after the facts are mapped, and the output is a review-ready legal architecture report — not a legal opinion.</p>'
+          +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:54rem">This section shows how the same report architecture can run across different legal domains. The registry changes by vertical; the diligence stack stays fixed.</p>'
+          +flow(['Factual profiles','Active registry','Exposure profile','Redline matrix','Partner assessment'])
+        +'</div>'
+        +'<nav class="act2-diligence-local-rail" aria-label="Act II local map">'+rail.map(function(n){ return '<a href="#'+esc(n.target)+'">'+esc(n.label)+'</a>'; }).join('')+'</nav>'
+
+        +'<div id="act2-active-registry" class="reveal mt-8 act2-diligence-grid">'
+          +'<div>'
+            +'<p class="eyebrow mb-1">Active Vertical Registry</p>'
+            +'<p class="text-sm mb-3" style="color:rgba(229,229,229,.68);line-height:1.6">Select a registry to see how the same diligence architecture adapts across domains.</p>'
+            +'<select id="act2-registry-select" class="act2-diligence-select" aria-label="Active Vertical Registry">'+registries.map(function(r){ return '<option value="'+esc(r.key)+'">'+esc(r.label)+' — '+esc(r.status)+'</option>'; }).join('')+'</select>'
+            +'<div id="act2-registry-context" class="act2-diligence-context"></div>'
           +'</div>'
-        +'</div></div>'
-      +'<div id="act2-vault-router" class="reveal mt-8 vault-panel"><p class="eyebrow mb-1">'+esc(m.vault_router.title)+'</p>'
-        +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:54rem">'+esc(m.vault_router.intro)+'</p>'
-        +'<p class="text-xs mt-2" style="color:var(--gold)">'+esc(m.vault_router.guide_line)+'</p>'
-        +'<div class="vault-toggles" id="vault-toggles"></div><div class="vault-docs" id="vault-docs"></div><div class="vault-route" id="vault-route"></div></div>'
-      +'<div id="act2-act3-bridge" class="connector reveal"><p>'+esc(m.bridge.connector_line)+'</p><div class="act2-flow"><span>'+esc(m.bridge.visual_line.split('→')[0].trim())+'</span><b>→</b><span>'+esc((m.bridge.visual_line.split('→')[1]||'intake logic').trim())+'</span><b>→</b><span>'+esc((m.bridge.visual_line.split('→')[2]||'automated assembly').trim())+'</span></div><a class="btn sm" href="#'+esc(m.bridge.target)+'">'+esc(m.bridge.button_label)+'</a></div>'
-    +'</div></section>'));
-    buildMatrix(m); buildInstrumentMap(m); buildLivingDoc(m); buildVaultRouter(m); bindAct2Rail();
+          +'<div>'
+            +'<p class="eyebrow mb-1">Registry context panel</p>'
+            +'<div id="act2-registry-summary"></div>'
+          +'</div>'
+        +'</div>'
+
+        +'<div id="act2-report-stack" class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Locked Report Stack</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The registry changes by domain, but the diligence stack stays fixed.</p>'
+          +'<div class="act2-diligence-stack">'+stack.map(function(s,i){ return '<button class="act2-diligence-stack-node" type="button" data-act2-stack="'+i+'"><span class="num">'+(i+1)+'</span><strong>'+esc(s.title)+'</strong><p>'+esc(s.question)+'</p></button>'; }).join('')+'</div>'
+        +'</div>'
+
+        +'<div id="act2-division-labor" class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Division of Labor</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The architecture separates domain intelligence, target-specific derivation, mechanical integrity, and legal judgment.</p>'
+          +'<div class="act2-diligence-two">'+labor.map(function(x){ return '<div class="act2-diligence-card"><div class="k">'+esc(x.title)+'</div><p>'+esc(x.body)+'</p></div>'; }).join('')+'</div>'
+        +'</div>'
+
+        +'<div id="act2-boundary" class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Review-Ready Boundary</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The system prepares legal review. It does not replace legal judgment.</p>'
+          +'<div class="act2-diligence-two">'
+            +'<div class="act2-diligence-card"><div class="k">What the system can say</div>'+bulletList(canSay)+'</div>'
+            +'<div class="act2-diligence-card"><div class="k">What the system must never say</div>'+bulletList(mustNeverSay)+'</div>'
+          +'</div>'
+        +'</div>'
+
+        +'<div id="act2-ai-proof-section" class="reveal mt-8">'
+          +'<span id="act2-threat-matrix" class="anchor-point" aria-hidden="true"></span>'
+          +'<p class="eyebrow mb-1">Implemented AI Domain Instance</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: AI is the first completed registry instance. It proves the architecture can be populated with a working domain taxonomy without making the whole system AI-specific.</p>'
+          +'<div class="act2-diligence-proof">'
+            +'<div class="act2-diligence-card"><div class="k">AI registry proof</div><p>'+esc(aiProof.join(' · '))+'</p></div>'
+            +'<div class="act2-diligence-card"><div class="k">Active registry proof</div><p>The AI registry is implemented. Other registries are shown as architecture previews, not completed products.</p><button class="btn sm sec mt-3" type="button" id="act2-ai-proof-open">View implemented AI registry proof</button></div>'
+          +'</div>'
+        +'</div>'
+
+        +'<div id="act2-action-layer" class="reveal mt-8">'
+          +'<span id="act2-living-document" class="anchor-point" aria-hidden="true"></span>'
+          +'<p class="eyebrow mb-1">Downstream Action Layer</p>'
+          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The architecture does not stop at exposure identification. It routes profile findings into review-ready document, control, evidence, and counsel-review actions.</p>'
+          +flow(actionFlow)
+          +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:56rem">The Redline & Remediation Matrix converts the five material profiles into document, clause, control, diligence request, owner, priority, evidence request, and local counsel question routes. The Final Partner Assessment then translates the profiles, exposure rows, and remediation routes into a partner-readable legal architecture posture.</p>'
+        +'</div>'
+
+        +'<div class="connector reveal" id="act2-act3-bridge"><p>Once the architecture is fixed, the next problem is execution: collecting public evidence, building the profiles, applying the active registry, preserving the boundary, and rendering the result into a usable review workflow.</p>'+flow(['Architecture','runtime workflow','qualified review','report assembly'])+'<a class="btn sm" href="#tooling-layer">See the workflow that runs it</a></div>'
+      +'</div></section>'
+    ));
+
+    function renderRegistry(key){
+      var r=registries.filter(function(x){ return x.key===key; })[0] || registries[0];
+      document.getElementById('act2-registry-summary').innerHTML=
+        '<div class="act2-diligence-card"><div class="k">'+esc(r.status)+'</div><p><strong>'+esc(r.label)+'</strong><br>'+esc(r.domain)+'</p><div class="mt-2">'+chipList([r.status])+'</div></div>'
+        +flow(r.routes);
+      document.getElementById('act2-registry-context').innerHTML=
+        listBlock('Behavior taxonomy examples', r.behavior)
+        +listBlock('Surface / regulated context examples', r.surfaces)
+        +listBlock('Sensitive object / asset examples', r.objects)
+        +listBlock('Core document stack examples', r.documents)
+        +listBlock('Example exposure row types', r.exposures)
+        +listBlock('Default remediation route examples', r.routes);
+    }
+
+    function openStackModal(i){
+      var s=stack[i] || stack[0];
+      openModal('<div class="eyebrow">Locked Report Stack</div><h3>'+esc(s.title)+'</h3><div class="beat"><div class="lab">Question it answers</div><p>'+esc(s.question)+'</p></div><div class="beat"><div class="lab">Boundary</div><p>'+esc(s.boundary)+'</p></div>');
+    }
+
+    function openAIProofModal(){
+      openModal('<div class="eyebrow">Implemented AI Domain Instance</div><h3>AI Registry Instance</h3><p class="text-sm mt-2" style="color:rgba(229,229,229,.72);line-height:1.6">AI is the first completed registry instance. It proves the architecture can be populated with a working domain taxonomy without making the whole system AI-specific.</p><div class="act2-diligence-two mt-4"><div class="act2-diligence-card"><div class="k">Already built</div>'+bulletList(aiProof)+'</div><div class="act2-diligence-card"><div class="k">Runtime derived</div>'+bulletList(runtimeDerived)+'</div></div><p class="text-xs mt-4" style="color:var(--gold)">This is active registry proof, not a public dump of private registry content.</p>', true);
+    }
+
+    document.getElementById('act2-registry-select').addEventListener('change', function(){ renderRegistry(this.value); });
+    document.querySelectorAll('[data-act2-stack]').forEach(function(n){ n.addEventListener('click', function(){ openStackModal(parseInt(n.getAttribute('data-act2-stack'),10)); }); });
+    document.getElementById('act2-ai-proof-open').addEventListener('click', openAIProofModal);
+    renderRegistry('ai');
   })();
 
   function normalizeAct2(manifest, fallback){
