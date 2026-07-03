@@ -130,6 +130,11 @@ section{scroll-margin-top:110px;}
 .hero-cta .quiet-link{min-height:36px; font-size:.58rem;}
 .hero-proof-line{font-size:.66rem;}
 .hero-credential{font-size:.74rem; padding:.72rem 1rem!important; margin-top:1.3rem!important;}
+.hero-grid.hero-grid-single{grid-template-columns:minmax(0,1fr);}
+.hero-foundation{color:rgba(229,229,229,.68); max-width:46rem; line-height:1.62; font-size:.8rem; margin-top:.85rem;}
+.hero-formation{display:flex; flex-wrap:wrap; gap:.42rem; align-items:center; margin-top:1rem; color:rgba(229,229,229,.74); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;}
+.hero-formation span{display:inline-flex; align-items:center;}
+.hero-formation span+span::before{content:""; width:18px; height:1px; margin:0 .42rem 0 0; background:rgba(197,160,89,.58);}
 .proof-panel{height:100%; border:1px solid rgba(197,160,89,.26); background:linear-gradient(180deg,rgba(197,160,89,.07),rgba(255,255,255,.018));
   border-radius:1.25rem; padding:1.15rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.03);}
 .proof-chain{position:relative; display:grid; grid-template-columns:1fr; gap:.62rem; margin-top:1rem; padding-left:.75rem;}
@@ -671,7 +676,23 @@ body.ld-theater-lock{overflow:hidden;}
 "use strict";
 (function(){
   var embeddedContent = JSON.parse(document.getElementById('content-data').textContent);
+  var lockedHero = {
+    name: 'Shwetabh Singh',
+    identity_line: 'Technology & Data Protection Lawyer | AI Governance · Cross-Border Privacy · Commercial Contracts for Tech',
+    headline: 'Lawyer first. Systems builder when the legal work demands it.',
+    builder_line: 'I use code, AI systems, and automation as instruments of legal practice — not as substitutes for legal judgment, but to make legal work more structured, traceable, and review-ready.',
+    foundation_paragraph: 'My foundation is 3.5 years of litigation. I now work across AI governance, data protection, commercial contracts, and technology-law workflows, using technical fluency to understand how products work, where legal exposure arises, and how legal review can be made more systematic.',
+    thesis: "The hard part of legal AI isn't the AI — it's making a probabilistic machine deterministic enough to trust with law. That's what I engineered.",
+    formation_spine: ['Litigation','Technology Law','AI Governance','Legal Practice Systems'],
+    credential_bar: 'B.A. LL.B., NLU Odisha · 3.5 years litigation · AI governance · privacy · commercial contracts · building hands-on since Oct 2025',
+    ctas: [
+      {label:'Open live diligence system', target:'https://sandbox.lexnovahq.com/interface-diligence/diligence-system/'},
+      {label:'View proof architecture', target:'#instruments-layer'},
+      {label:'View proof archive', target:'#capstone'}
+    ]
+  };
   function boot(C, act2Manifest){
+  C.hero = Object.assign({}, C.hero || {}, lockedHero);
   var main = document.getElementById('main');
   var esc = function(s){ s = (s==null?'':String(s)); return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
   var el = function(html){ var d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; };
@@ -705,100 +726,30 @@ body.ld-theater-lock{overflow:hidden;}
     var primary = ctas[0] || {label:'Watch project walkthrough', target:'#project-walkthrough'};
     var secondary = ctas[1] || {label:'Explore proof portal', target:'#sandbox-os'};
     var tertiary = ctas[2] || {label:'View build notes', target:'#capstone'};
-    var chain = [
-      {key:'legal-doctrine', label:'Legal doctrine', target:'doctrine-layer', note:'Starts with law, not tooling. Cases, statutes, and regulatory duties define the risk universe.'},
-      {key:'risk-registry', label:'Risk registry', target:'instruments-layer', note:'Converts doctrine into atomic risk units: threat, trigger, authority, consequence, and remediation.'},
-      {key:'diligence-engine', label:'Diligence engine', target:'tooling-layer', note:'Reads product facts against the registry to identify which legal risks are actually triggered.'},
-      {key:'client-product-profile-vault', label:'Client product profile vault', target:'systems-layer', note:'Captures client-specific facts diligence alone cannot know: market, model architecture, PII, SLA posture, outputs, and integrations.'},
-      {key:'documents', label:'Documents', target:'instruments-layer', note:'Converts triggered risks and client facts into clauses, policies, playbooks, and review-ready drafts.'},
-      {key:'portal-delivery', label:'Portal delivery', target:'systems-layer', note:'Organizes intake, review, status, and handoff so the legal work is usable by client and counsel.'}
-    ];
-    function chipChains(chip){
-      var label=String((chip && chip.label) || '').toLowerCase();
-      if(label.indexOf('diligence engine')>=0) return ['diligence-engine'];
-      if(label.indexOf('internal ai use')>=0) return ['diligence-engine'];
-      if(label.indexOf('client product profile vault')>=0) return ['client-product-profile-vault'];
-      if(label.indexOf('risk-to-clause mapping system')>=0) return ['legal-doctrine','risk-registry','documents'];
-      if(label.indexOf('document assembly workflow')>=0) return ['documents'];
-      if(label.indexOf('client review portal')>=0) return ['portal-delivery'];
-      return [];
-    }
-    var chips = Array.isArray(h.proof_chips) ? h.proof_chips : [];
-    var chainHtml = chain.map(function(node){
-      return '<a class="chain-node" href="#'+esc(node.target)+'" data-chain-node="'+esc(node.key)+'">'
-        +'<span class="chain-label">'+esc(node.label)+'</span><span class="chain-note">'+esc(node.note)+'</span></a>';
-    }).join('');
-    var chipHtml = chips.length ? chips.map(function(chip,i){
-      return '<button class="proof-chip" type="button" data-proof-chip="'+i+'" data-proof-chain="'+esc(chipChains(chip).join(' '))+'">'+esc(chip.label || ('Proof '+(i+1)))+'</button>';
-    }).join('') : '<span class="proof-chip" aria-hidden="true">'+esc(h.proof_line || 'Proof artifacts available in the walkthrough')+'</span>';
+    var formation = Array.isArray(h.formation_spine) ? h.formation_spine : [];
+    var formationHtml = formation.map(function(step){ return '<span>'+esc(step)+'</span>'; }).join('');
     main.appendChild(el(
     '<section id="hero" class="act" data-rail="0" style="min-height:auto; display:flex; align-items:center">'
     +'<div class="card-shell w-full">'
-      +'<div class="hero-grid">'
+      +'<div class="hero-grid hero-grid-single">'
         +'<div>'
           +'<h1 class="load-in font-display hero-name">'+esc(h.name || 'Shwetabh Singh')+'</h1>'
           +'<p class="load-in d1 text-sm sm:text-base mt-2 hero-identity">'+esc(h.identity_line || '')+'</p>'
-          +'<p class="load-in d2 text-sm mt-4 hero-builder">'+esc(h.builder_line || h.spine_explainer || '')+'</p>'
           +'<div class="hairline my-4"></div>'
-          +'<h2 class="load-in d3 font-display text-white hero-hook">'+esc(h.hook || '')+'</h2>'
+          +'<h2 class="load-in d2 font-display text-white hero-hook">'+esc(h.headline || h.hook || '')+'</h2>'
+          +'<p class="load-in d3 text-sm mt-4 hero-builder">'+esc(h.builder_line || '')+'</p>'
+          +'<p class="load-in d4 hero-foundation">'+esc(h.foundation_paragraph || '')+'</p>'
           +'<p id="hero-thesis" class="load-in d4 font-display italic gold hero-thesis">'+esc(h.thesis || '')+'</p>'
+          +(formationHtml ? '<div class="load-in d5 hero-formation" aria-label="Formation spine">'+formationHtml+'</div>' : '')
           +'<div class="load-in d5 mt-5 flex flex-col sm:flex-row sm:items-center gap-3 hero-cta">'
             +'<a class="btn" href="'+esc(primary.target || '#project-walkthrough')+'">'+esc(primary.label || 'Watch project walkthrough')+'</a>'
             +'<a class="btn sec" href="'+esc(secondary.target || '#sandbox-os')+'">'+esc(secondary.label || 'Explore proof portal')+'</a>'
             +'<a class="quiet-link" href="'+esc(tertiary.target || '#capstone')+'">'+esc(tertiary.label || 'View build notes')+'</a>'
           +'</div>'
-          +'<p class="load-in d5 mt-3 hero-proof-line" style="color:rgba(229,229,229,.45)">'+esc(h.proof_line || '')+'</p>'
         +'</div>'
-        +'<aside class="load-in d4 proof-panel" aria-label="Built legal delivery system proof">'
-          +'<p class="eyebrow">BUILT LEGAL DELIVERY SYSTEM</p>'
-          +'<div class="proof-chain" aria-label="Legal delivery system chain">'+chainHtml+'</div>'
-          +'<p class="proof-subtitle">System Engines</p>'
-          +'<p class="proof-disclaimer">Click to know more</p>'
-          +'<div class="proof-chips">'+chipHtml+'</div>'
-        +'</aside>'
       +'</div>'
       +'<div class="load-in d5 surface rounded-2xl hero-credential" style="color:rgba(229,229,229,.8);border-left:1px solid var(--gold)">'+esc(h.credential_bar || '')+'</div>'
     +'</div></section>'));
-    function setChainFocus(keys){
-      var list=Array.isArray(keys) ? keys : String(keys||'').split(/\s+/).filter(Boolean);
-      document.querySelectorAll('[data-chain-node]').forEach(function(n){ n.classList.toggle('active', list.indexOf(n.getAttribute('data-chain-node'))>=0); });
-      document.querySelectorAll('[data-proof-chip]').forEach(function(n){
-        var chipKeys=(n.getAttribute('data-proof-chain')||'').split(/\s+/).filter(Boolean);
-        var related=list.some(function(k){ return chipKeys.indexOf(k)>=0; });
-        n.classList.toggle('related', related);
-      });
-    }
-    function clearChainFocus(){
-      document.querySelectorAll('[data-chain-node]').forEach(function(n){ n.classList.remove('active','chain-open'); });
-      document.querySelectorAll('[data-proof-chip]').forEach(function(n){ n.classList.remove('active','related'); });
-    }
-    document.querySelectorAll('[data-chain-node]').forEach(function(node){
-      node.addEventListener('mouseenter', function(){ setChainFocus([node.getAttribute('data-chain-node')]); });
-      node.addEventListener('focus', function(){ setChainFocus([node.getAttribute('data-chain-node')]); });
-      node.addEventListener('mouseleave', clearChainFocus);
-      node.addEventListener('blur', clearChainFocus);
-      node.addEventListener('click', function(){
-        clearChainFocus();
-        node.classList.add('chain-open','active');
-        setChainFocus([node.getAttribute('data-chain-node')]);
-      });
-    });
-    document.querySelectorAll('[data-proof-chip]').forEach(function(btn){
-      var keys=(btn.getAttribute('data-proof-chain')||'').split(/\s+/).filter(Boolean);
-      btn.addEventListener('mouseenter', function(){ btn.classList.add('active'); setChainFocus(keys); });
-      btn.addEventListener('focus', function(){ btn.classList.add('active'); setChainFocus(keys); });
-      btn.addEventListener('mouseleave', clearChainFocus);
-      btn.addEventListener('blur', clearChainFocus);
-      btn.addEventListener('click', function(){
-        btn.classList.add('active');
-        setChainFocus(keys);
-        var chip=chips[parseInt(btn.getAttribute('data-proof-chip'),10)] || {};
-        openModal('<div class="eyebrow">Proof chip</div><h3>'+esc(chip.label || btn.textContent)+'</h3>'
-          +'<div class="beat"><div class="lab">What</div><p>'+esc(chip.what || 'Proof detail is available in the walkthrough.')+'</p></div>'
-          +'<div class="beat"><div class="lab">Supports</div><p>'+esc(chip.supports || 'Supports the legal delivery system argument.')+'</p></div>'
-          +'<div class="beat"><div class="lab">Proof</div><p>'+esc(chip.proof || h.proof_line || 'Shown through scrubbed proof artifacts.')+'</p></div>');
-      });
-    });
   })();
 
   // ---------- ACT I ----------
