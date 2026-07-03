@@ -135,8 +135,10 @@ section{scroll-margin-top:110px;}
 .hero-formation{display:flex; flex-wrap:wrap; gap:.42rem; align-items:center; margin-top:1rem; color:rgba(229,229,229,.74); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase;}
 .hero-formation span{display:inline-flex; align-items:center;}
 .hero-formation span+span::before{content:""; width:18px; height:1px; margin:0 .42rem 0 0; background:rgba(197,160,89,.58);}
-.proof-architecture-grid{display:grid; gap:1rem; align-items:start;}
-@media(min-width:920px){.proof-architecture-grid{grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr);}}
+.proof-architecture-grid{display:grid; gap:1.1rem; align-items:start;}
+@media(min-width:920px){.proof-architecture-grid{grid-template-columns:minmax(0,1fr) 320px;}}
+.proof-architecture-copy{display:grid; gap:.85rem; color:rgba(229,229,229,.74); line-height:1.68; font-size:.9rem;}
+.proof-architecture-copy p{margin:0;}
 .method-chain-panel{border-left:1px solid rgba(197,160,89,.45); padding-left:1rem;}
 .method-chain-instruction{color:rgba(229,229,229,.58); font-size:.76rem; line-height:1.55; margin:.45rem 0 .9rem;}
 .method-chain{display:grid; gap:.55rem;}
@@ -812,7 +814,7 @@ body.ld-theater-lock{overflow:hidden;}
           +'<p class="eyebrow">Proof Architecture</p>'
           +'<h2 class="font-display section-title text-white mt-2">How the legal method became the system.</h2>'
           +'<p class="mini mt-4">Most legal work becomes clearer when doctrine is broken into smaller units: what rule applies, what facts trigger it, what evidence proves it, what control responds, and who must review it.</p>'
-          +'<div class="mt-5" style="display:grid;gap:.85rem;color:rgba(229,229,229,.74);line-height:1.68;font-size:.9rem;max-width:56rem">'
+          +'<div class="proof-architecture-copy">'
             +'<p>Legal work is not mechanical, but much of its preparation is repetitive: classify the issue, test the facts, review the documents, check the evidence, route the control, and prepare the next draft or review question.</p>'
             +'<p>My method was to break legal doctrine into working units. Each unit asks a narrow legal-preparation question: what conduct matters, what surface makes it sensitive, what authority anchors it, what facts trigger it, what evidence is visible, what control may respond, and where human judgment must take over.</p>'
             +'<p>That became the foundation of the system. I did not build it as a product to sell. I built it as practice infrastructure — a way to use code, AI, and automation to make legal preparation more consistent, traceable, and review-ready.</p>'
