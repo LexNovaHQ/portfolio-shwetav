@@ -48,12 +48,12 @@ body::before{content:""; position:fixed; inset:0; pointer-events:none; opacity:.
 .nav-link.active,.nav-link:hover,.nav-link:focus{color:var(--gold); border-color:rgba(197,160,89,.65); outline:none;}
 .page-shell{position:relative; z-index:2;}
 .main-grid{display:grid; grid-template-columns:minmax(0,1fr);}
-@media(min-width:1024px){.main-grid{grid-template-columns:210px minmax(0,1fr); gap:2.5rem;}}
+@media(min-width:1024px){.main-grid{grid-template-columns:170px minmax(0,1fr); gap:1.25rem;}}
 
 /* ---- RAIL (live argument map) ---- */
 .rail-wrap{display:none;}
 @media(min-width:1024px){
-  .rail-wrap{display:block; position:sticky; top:86px; align-self:start; height:calc(100vh - 110px); overflow-y:auto;}
+  .rail-wrap{display:block; position:sticky; top:86px; align-self:start; height:auto; max-height:none; overflow:visible;}
   .rail{position:relative; padding:.5rem .25rem 2rem;}
   .rail::before{content:""; position:absolute; left:21px; top:26px; bottom:40px; width:1px;
     background:linear-gradient(180deg,rgba(197,160,89,.25),rgba(255,255,255,.08),rgba(197,160,89,.25));}
@@ -565,6 +565,19 @@ body.ld-theater-lock{overflow:hidden;}
 .act3-runtime-compat-anchor{position:relative;top:-110px;display:block;height:0;width:0;overflow:hidden;}
 /* ---- ACT III RUNTIME WORKFLOW PATCH END ---- */
 
+/* ---- LEAN READABILITY PASS START ---- */
+.section-hero-box{border:1px solid rgba(197,160,89,.18);border-left:2px solid var(--gold);border-radius:1rem;background:rgba(197,160,89,.045);padding:.95rem 1rem;margin-top:1rem;}
+.section-hero-box p{margin:0;color:rgba(229,229,229,.82);line-height:1.58;font-size:.9rem;max-width:62rem;}
+.lean-bullets{display:grid;gap:.45rem;margin:.85rem 0 0;padding:0;list-style:none;}
+@media(min-width:760px){.lean-bullets.two{grid-template-columns:repeat(2,minmax(0,1fr));}.lean-bullets.three{grid-template-columns:repeat(3,minmax(0,1fr));}}
+.lean-bullets li{border:1px solid rgba(229,229,229,.09);border-radius:.75rem;background:rgba(255,255,255,.018);padding:.58rem .7rem;color:rgba(229,229,229,.72);font-size:.78rem;line-height:1.42;}
+.click-hint{display:inline-flex;align-items:center;gap:.4rem;margin:.65rem 0 .75rem;padding:.38rem .62rem;border:1px solid rgba(197,160,89,.28);border-radius:999px;background:rgba(197,160,89,.055);color:var(--gold);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;}
+.click-hint::before{content:'Click';display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(197,160,89,.4);border-radius:999px;padding:.1rem .34rem;color:rgba(229,229,229,.75);font-size:.52rem;letter-spacing:.1em;}
+.lean-terminal-grid{display:grid;gap:.8rem;grid-template-columns:1fr;margin-top:1rem;}
+@media(min-width:820px){.lean-terminal-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.terminal-point{border:1px solid rgba(229,229,229,.09);border-radius:.9rem;background:rgba(255,255,255,.018);padding:.75rem .85rem;color:rgba(229,229,229,.72);font-size:.82rem;line-height:1.5;}
+.terminal-point strong{display:block;color:var(--gold);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.32rem;}
+/* ---- LEAN READABILITY PASS END ---- */
 /* ---- ACT III / CAPSTONE / CLOSE ---- */
 .act3-kicker{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:800;}
 .act3-copy{color:rgba(229,229,229,.68); line-height:1.65; font-size:.88rem;}
@@ -920,12 +933,8 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div class="reveal">'
           +'<p class="eyebrow">Proof Architecture</p>'
           +'<h2 class="font-display section-title text-white mt-2">How the legal method became the system.</h2>'
-          +'<p class="mini mt-4">Most legal work becomes clearer when doctrine is broken into smaller units: what rule applies, what facts trigger it, what evidence proves it, what control responds, and who must review it.</p>'
-          +'<div class="proof-architecture-copy">'
-            +'<p>Legal work is not mechanical, but much of its preparation is repetitive: classify the issue, test the facts, review the documents, check the evidence, route the control, and prepare the next draft or review question.</p>'
-            +'<p>My method was to break legal doctrine into working units. Each unit asks a narrow legal-preparation question: what conduct matters, what surface makes it sensitive, what authority anchors it, what facts trigger it, what evidence is visible, what control may respond, and where human judgment must take over.</p>'
-            +'<p>That became the foundation of the system. I did not build it as a product to sell. I built it as practice infrastructure — a way to use code, AI, and automation to make legal preparation more consistent, traceable, and review-ready.</p>'
-          +'</div>'
+          +'<div class="section-hero-box"><p>Legal work is not mechanical, but much of its preparation is repetitive: classify the issue, test the facts, review the documents, check the evidence, route the control, and prepare the next draft or review question.</p>'
+            +'<ul class="lean-bullets two"><li>Rules become review questions.</li><li>Facts become trigger conditions.</li><li>Evidence becomes source references.</li><li>Controls become document or workflow routes.</li><li>Uncertainty becomes qualified review.</li><li>Technology stays the instrument, not the identity.</li></ul></div>'
         +'</div>'
         +'<aside class="reveal method-chain-panel" aria-label="Method Chain">'
           +'<p class="eyebrow">Method Chain</p>'
@@ -974,21 +983,21 @@ body.ld-theater-lock{overflow:hidden;}
     var authorityRows=(rules.rows||[]).filter(function(r){return authorityAllowed[r.source];});
     main.appendChild(el(
     '<section id="foundation" class="act" data-rail="1"><div class="card-shell">'
-      +'<div id="act1-orientation" class="reveal act1-orient"><p class="eyebrow">What this is for: The legal source layer behind the system - not automation replacing legal work, but structured preparation for legal review.</p>'
+      +'<div id="act1-orientation" class="reveal act1-orient"><p class="eyebrow">What this is for: the legal source layer behind the system.</p>'
         +'<p class="font-display text-white mt-3" style="font-size:1.55rem;line-height:1.25;margin-bottom:0">The legal work comes first. The system only prepares it.</p>'
-        +'<p class="act1-source-purpose">Act I shows the source layer I built before the tools: how recurring AI behaviors were translated into legal doctrine, controls, and routing logic.</p><div class="act1-diagram">'+diagram+'</div></div>'
+        +'<div class="section-hero-box"><p>Act I shows the source layer I built before the tools: recurring AI behavior converted into doctrine, controls, and routing logic.</p><ul class="lean-bullets two"><li>AI behavior classification</li><li>Legal surface mapping</li><li>Authority anchors</li><li>Defensive controls</li><li>Document / review routes</li><li>Human review boundary</li></ul></div><div class="act1-diagram">'+diagram+'</div></div>'
       +'<nav class="act1-rail reveal" aria-label="Act I local navigation">'+localRail+'</nav>'
       +'<div class="reveal mt-7"><p class="eyebrow">ACT I - SOURCE LAYER</p><h2 class="font-display section-title text-white mt-2">From AI behavior to legal taxonomy.</h2>'
-        +'<div class="surface rounded-2xl p-4 mt-4" style="border-left:1px solid var(--gold)"><p style="margin:0;color:rgba(229,229,229,.82);line-height:1.65">Before any system could run, the legal reasoning had to be structured: what the AI does, what legal exposure that behavior creates, what control responds, and where that control should live.</p></div></div>'
-      +'<div id="act1-first-fork" class="reveal mt-9"><p class="eyebrow mb-2">First Fork - where does the AI risk live?</p><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">Before classification, the legal context has to be separated. The first question is whether the company is building AI for others, or using AI inside its own business.</p><p class="act1-source-purpose">What this is for: The first legal distinction - product-side exposure and internal deployment exposure do not route to the same documents or controls.</p><div class="fork-grid mt-4">'+lanes+'</div><p class="text-sm mt-4" style="color:var(--gold);line-height:1.6">'+esc(fork.transition||'')+'</p></div>'
+        +'<div class="section-hero-box"><p>Before any system could run, the legal reasoning had to be structured.</p><ul class="lean-bullets two"><li>What does the AI do?</li><li>What legal surface does it touch?</li><li>What authority anchors the review?</li><li>What control or document route responds?</li></ul></div></div>'
+      +'<div id="act1-first-fork" class="reveal mt-9"><p class="eyebrow mb-2">First Fork - where does the AI risk live?</p><div class="section-hero-box"><p>First split the legal context. Product-side AI and internal AI deployment do not route to the same documents or controls.</p><ul class="lean-bullets two"><li>Build-side: customer-facing product exposure.</li><li>Internal use: employee, client-data, and governance exposure.</li></ul></div><p class="click-hint">Select a fork card to see which route lights up.</p><div class="fork-grid mt-4">'+lanes+'</div><p class="text-sm mt-4" style="color:var(--gold);line-height:1.6">'+esc(fork.transition||'')+'</p></div>'
       +'<div id="doctrine-layer" class="reveal mt-9"><p class="eyebrow mb-2">Source Layer - recurring AI behaviors converted into legal controls</p><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">The source layer starts from AI behavior, not document templates. Each card shows one recurring AI behavior and the legal-preparation route it creates.</p><p class="act1-source-purpose">What this is for: The recurring AI behaviors I converted into doctrine, controls, and routing logic before building any system.</p><div class="source-pipeline">'+arrowJoin(['AI physics','Legal doctrine','Defensive control','Product / instrument routing'],'source-step')+'</div><div class="bible-list">'+bibleRows+'</div></div>'
       +'<div id="act1-taxonomy-bridge" class="reveal mt-9 taxonomy-strip"><p class="eyebrow mb-2">From source layer to working taxonomy</p><p class="text-sm" style="color:rgba(229,229,229,.74);line-height:1.6">The source layer is the reasoning base. The taxonomy turns that reasoning into units a diligence workflow can read.</p><p class="act1-source-purpose">What this is for: This bridge shows how legal reasoning becomes structured review logic.</p><div class="taxonomy-flow">'+['AI behavior','threat unit','AI function','legal surface','triggered review route','authority','remediation'].map(function(x){return '<span>'+esc(x)+'</span>';}).join('<span class="diagram-op">-></span>')+'</div><p class="text-sm gold">'+esc(bridge.scope_stat||'98 threat units - 10 AI functions - 10 legal surfaces - 3 jurisdiction bands')+'</p><p class="text-sm mt-2" style="color:rgba(229,229,229,.68);line-height:1.6">'+esc(bridge.explanation||'')+'</p><p class="text-xs mt-2" style="color:rgba(229,229,229,.42);line-height:1.5">'+esc(bridge.confidentiality_note||'')+'</p></div>'
-      +'<div id="taxonomy-map" class="reveal mt-9 risk-map-compact"><div><p class="eyebrow mb-1">Risk Map - classify the AI, then identify the legal surface.</p><p class="text-sm mb-2" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">The map demonstrates the legal-preparation route: a common AI use case is classified by function, mapped to a legal surface, and converted into a triggered review route.</p><p class="act1-source-purpose">What this is for: A compact demonstration of how an AI use case becomes a legal surface, a triggered exposure, and a remediation route.</p></div>'
-        +'<div class="risk-step"><p class="eyebrow mb-1">Step 1 - Choose a common AI use case</p><p class="text-xs tracked mb-3" style="color:var(--gold)">Select a common AI use case to light the underlying AI function.</p><div class="preset-grid">'+presets+'</div></div>'
+      +'<div id="taxonomy-map" class="reveal mt-9 risk-map-compact"><div><p class="eyebrow mb-1">Risk Map - classify the AI, then identify the legal surface.</p><div class="section-hero-box"><p>The map demonstrates the legal-preparation route.</p><ul class="lean-bullets three"><li>Choose a use case.</li><li>See the AI function.</li><li>Click a legal surface.</li></ul></div></div>'
+        +'<div class="risk-step"><p class="eyebrow mb-1">Step 1 - Choose a common AI use case</p><p class="click-hint">Select a use case to light the underlying AI function.</p><div class="preset-grid">'+presets+'</div></div>'
         +'<div class="risk-step"><p class="eyebrow mb-3">Step 2 - See how it classifies</p><div class="grid lg:grid-cols-2 gap-4"><div><p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">AI Function</p><div class="rm-arch-grid">'+archs+'</div></div><div><p class="text-xs tracked mb-2" style="color:rgba(229,229,229,.45)">Legal Surface</p><button class="rm-surf rm-floor mb-2" id="rm-floor" data-tip="'+esc((rm.global_floor||{}).def||'')+'">Global Floor <span class="ct">'+esc((rm.global_floor||{}).count||'')+'</span></button><div class="rm-surf-grid" id="rm-surfaces"></div><p class="text-xs mt-3" id="rm-hint" style="color:rgba(229,229,229,.4)">Click a lit surface to see why the risk is triggered.</p></div></div></div>'
         +'<div class="risk-step"><p class="eyebrow mb-1">Step 3 - Triggered legal route</p><div id="worked-card" class="worked-card"></div><div id="rm-route-summary" class="chip-row"></div></div></div>'
-      +'<div id="act1-authority-examples" class="reveal mt-9 authority-examples-card"><p class="text-sm" style="color:rgba(229,229,229,.72);line-height:1.65;max-width:58rem">Authority examples are shown as source-to-rule mappings: how a legal source becomes a registry condition, drafting control, or workflow requirement.</p><button class="btn sm mt-3" type="button" id="authority-examples-open">View authority-to-rule examples</button></div>'
-      +'<div id="act1-act2-bridge" class="connector reveal"><p>A taxonomy protects no one on its own. Once the risk can be classified, it must be routed into clauses, policies, playbooks, and review-ready instruments. That is Act II.</p><div class="act1-diagram"><span class="diagram-link">Classified risk</span><span class="diagram-op">-></span><span class="diagram-link">instrument route</span><span class="diagram-op">-></span><span class="diagram-link">review-ready drafting support</span></div><a class="btn sm mt-3" href="#matrix">See how the source layer becomes instruments</a></div>'
+      +'<div id="act1-authority-examples" class="reveal mt-9 authority-examples-card"><div class="section-hero-box"><p>Authority examples show how a legal source becomes a registry condition, drafting control, or workflow requirement.</p></div><p class="click-hint">Open the source-to-rule examples.</p><button class="btn sm mt-3" type="button" id="authority-examples-open">View authority-to-rule examples</button></div>'
+      +'<div id="act1-act2-bridge" class="connector reveal"><p>A taxonomy protects no one on its own. It has to become a review-ready diligence architecture.</p><div class="act1-diagram"><span class="diagram-link">Classified risk</span><span class="diagram-op">-></span><span class="diagram-link">diligence architecture</span><span class="diagram-op">-></span><span class="diagram-link">review path</span></div><a class="btn sm mt-3" href="#matrix">See how the source layer becomes architecture</a></div>'
     +'</div></section>'));
     buildRiskMap();
     bindAct1Interactions(authorityRows);
@@ -1192,7 +1201,7 @@ body.ld-theater-lock{overflow:hidden;}
     ];
 
     function chipList(items){ return (items||[]).map(function(x){ return '<span class="act2-diligence-badge">'+esc(x)+'</span>'; }).join(''); }
-    function listBlock(title, items){ return '<div class="act2-diligence-card"><div class="k">'+esc(title)+'</div><p>'+esc((items||[]).join(' · '))+'</p></div>'; }
+    function listBlock(title, items){ return '<div class="act2-diligence-card"><div class="k">'+esc(title)+'</div><div>'+chipList((items||[]).slice(0,8))+'</div></div>'; }
     function bulletList(items){ return '<ul class="act2-diligence-list">'+(items||[]).map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul>'; }
     function flow(items){ return '<div class="act2-diligence-flow">'+(items||[]).map(function(x,i){ return (i?'<b>→</b>':'')+'<span>'+esc(x)+'</span>'; }).join('')+'</div>'; }
 
@@ -1202,8 +1211,7 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div id="act2-orientation" class="reveal">'
           +'<p class="eyebrow">ACT II · DILIGENCE ARCHITECTURE</p>'
           +'<h2 class="font-display section-title text-white mt-2">From legal taxonomy to review-ready diligence architecture.</h2>'
-          +'<p class="mt-4" style="color:rgba(229,229,229,.8);line-height:1.6;max-width:58rem">The source layer does not become a one-off AI risk report. It becomes a reusable diligence architecture: factual profiles are built first, the active vertical registry is applied after the facts are mapped, and the output is a review-ready legal architecture report — not a legal opinion.</p>'
-          +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:54rem">This section shows how the same report architecture can run across different legal domains. The registry changes by vertical; the diligence stack stays fixed.</p>'
+          +'<div class="section-hero-box"><p>The source layer becomes a reusable diligence architecture, not a one-off AI risk report.</p><ul class="lean-bullets two"><li>Build factual profiles first.</li><li>Apply the active registry second.</li><li>Render a review-ready report.</li><li>Preserve human and local counsel review.</li></ul></div>'
           +flow(['Factual profiles','Active registry','Exposure profile','Redline matrix','Partner assessment'])
         +'</div>'
         +'<nav class="act2-diligence-local-rail" aria-label="Act II local map">'+rail.map(function(n){ return '<a href="#'+esc(n.target)+'">'+esc(n.label)+'</a>'; }).join('')+'</nav>'
@@ -1211,7 +1219,7 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div id="act2-active-registry" class="reveal mt-8 act2-diligence-grid">'
           +'<div>'
             +'<p class="eyebrow mb-1">Active Vertical Registry</p>'
-            +'<p class="text-sm mb-3" style="color:rgba(229,229,229,.68);line-height:1.6">Select a registry to see how the same diligence architecture adapts across domains.</p>'
+            +'<p class="click-hint">Select a registry to see the same architecture adapt across domains.</p>'
             +'<select id="act2-registry-select" class="act2-diligence-select" aria-label="Active Vertical Registry">'+registries.map(function(r){ return '<option value="'+esc(r.key)+'">'+esc(r.label)+' — '+esc(r.status)+'</option>'; }).join('')+'</select>'
             +'<div id="act2-registry-context" class="act2-diligence-context"></div>'
           +'</div>'
@@ -1223,19 +1231,19 @@ body.ld-theater-lock{overflow:hidden;}
 
         +'<div id="act2-report-stack" class="reveal mt-8">'
           +'<p class="eyebrow mb-1">Locked Report Stack</p>'
-          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The registry changes by domain, but the diligence stack stays fixed.</p>'
+          +'<div class="section-hero-box"><p>The registry changes by domain. The diligence stack stays fixed.</p></div><p class="click-hint">Click a stack card for the question and boundary.</p>'
           +'<div class="act2-diligence-stack">'+stack.map(function(s,i){ return '<button class="act2-diligence-stack-node" type="button" data-act2-stack="'+i+'"><span class="num">'+(i+1)+'</span><strong>'+esc(s.title)+'</strong><p>'+esc(s.question)+'</p></button>'; }).join('')+'</div>'
         +'</div>'
 
         +'<div id="act2-division-labor" class="reveal mt-8">'
           +'<p class="eyebrow mb-1">Division of Labor</p>'
-          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The architecture separates domain intelligence, target-specific derivation, mechanical integrity, and legal judgment.</p>'
+          +'<div class="section-hero-box"><p>The architecture separates domain intelligence, target-specific derivation, mechanical checks, and legal judgment.</p></div>'
           +'<div class="act2-diligence-two">'+labor.map(function(x){ return '<div class="act2-diligence-card"><div class="k">'+esc(x.title)+'</div><p>'+esc(x.body)+'</p></div>'; }).join('')+'</div>'
         +'</div>'
 
         +'<div id="act2-boundary" class="reveal mt-8">'
           +'<p class="eyebrow mb-1">Review-Ready Boundary</p>'
-          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The system prepares legal review. It does not replace legal judgment.</p>'
+          +'<div class="section-hero-box"><p>The system prepares legal review. It does not replace legal judgment.</p></div>'
           +'<div class="act2-diligence-two">'
             +'<div class="act2-diligence-card"><div class="k">What the system can say</div>'+bulletList(canSay)+'</div>'
             +'<div class="act2-diligence-card"><div class="k">What the system must never say</div>'+bulletList(mustNeverSay)+'</div>'
@@ -1245,7 +1253,7 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div id="act2-ai-proof-section" class="reveal mt-8">'
           +'<span id="act2-threat-matrix" class="anchor-point" aria-hidden="true"></span>'
           +'<p class="eyebrow mb-1">Implemented AI Domain Instance</p>'
-          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: AI is the first completed registry instance. It proves the architecture can be populated with a working domain taxonomy without making the whole system AI-specific.</p>'
+          +'<div class="section-hero-box"><p>AI is the first implemented registry instance. It proves the architecture can be populated without making the whole system AI-specific.</p></div><p class="click-hint">Open the implemented AI registry proof.</p>'
           +'<div class="act2-diligence-proof">'
             +'<div class="act2-diligence-card"><div class="k">AI registry proof</div><p>'+esc(aiProof.join(' · '))+'</p></div>'
             +'<div class="act2-diligence-card"><div class="k">Active registry proof</div><p>The AI registry is implemented. Other registries are shown as architecture previews, not completed products.</p><button class="btn sm sec mt-3" type="button" id="act2-ai-proof-open">View implemented AI registry proof</button></div>'
@@ -1255,12 +1263,11 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div id="act2-action-layer" class="reveal mt-8">'
           +'<span id="act2-living-document" class="anchor-point" aria-hidden="true"></span>'
           +'<p class="eyebrow mb-1">Downstream Action Layer</p>'
-          +'<p class="text-sm" style="color:rgba(229,229,229,.68);line-height:1.6;max-width:56rem">What this is for: The architecture does not stop at exposure identification. It routes profile findings into review-ready document, control, evidence, and counsel-review actions.</p>'
+          +'<div class="section-hero-box"><p>The architecture does not stop at exposure identification. It routes findings into review-ready action.</p><ul class="lean-bullets three"><li>Document / clause routes</li><li>Control routes</li><li>Evidence and counsel questions</li></ul></div>'
           +flow(actionFlow)
-          +'<p class="text-sm mt-3" style="color:rgba(229,229,229,.62);line-height:1.6;max-width:56rem">The Redline & Remediation Matrix converts the five material profiles into document, clause, control, diligence request, owner, priority, evidence request, and local counsel question routes. The Final Partner Assessment then translates the profiles, exposure rows, and remediation routes into a partner-readable legal architecture posture.</p>'
         +'</div>'
 
-        +'<div class="connector reveal" id="act2-act3-bridge"><p>Once the architecture is fixed, the next problem is execution: collecting public evidence, building the profiles, applying the active registry, preserving the boundary, and rendering the result into a usable review workflow.</p>'+flow(['Architecture','runtime workflow','qualified review','report assembly'])+'<a class="btn sm" href="#tooling-layer">See the workflow that runs it</a></div>'
+        +'<div class="connector reveal" id="act2-act3-bridge"><p>Once the architecture is fixed, the next problem is execution.</p>'+flow(['Architecture','runtime workflow','qualified review','report assembly'])+'<a class="btn sm" href="#tooling-layer">See the workflow that runs it</a></div>'
       +'</div></section>'
     ));
 
@@ -1685,15 +1692,15 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div id="act3-orientation" class="reveal">'
           +'<p class="eyebrow">ACT III · RUNTIME WORKFLOW</p>'
           +'<h2 class="font-display section-title text-white mt-2">How the diligence architecture runs as a public review system.</h2>'
-          +'<p class="act3-copy mt-3" style="max-width:58rem">The architecture now connects to an operating system. A user enters a URL or supplies materials; the system captures evidence, builds factual profiles, applies the active vertical registry, renders a bounded diligence report, routes uncertainty into qualified review, and prepares the matter for assembly handoff.</p>'
-          +'<p class="font-display italic gold mt-4" style="font-size:1.28rem;line-height:1.3">The law came first. The runtime exists to make the legal work structured, traceable, and review-ready.</p>'
+          +'<div class="section-hero-box"><p>The architecture now runs as a public review system.</p><ul class="lean-bullets two"><li>URL or materials in.</li><li>Evidence captured first.</li><li>Profiles built before exposure routing.</li><li>Uncertainty routed to Qualified Review.</li></ul></div>'
+          +'<p class="font-display italic gold mt-4" style="font-size:1.18rem;line-height:1.3">The law came first. The runtime only makes the work structured, traceable, and review-ready.</p>'
           +flow(['Diligence architecture','Public source intake','Profile stack','Active registry application','Legal exposure report','Qualified review','Assembly handoff'])
           +'<div class="mt-5"><a class="btn" href="'+esc(liveUrl)+'" target="_blank" rel="noopener">Open the live diligence system</a></div>'
         +'</div>'
 
         +'<div id="act3-runtime-spine" class="reveal mt-8">'
           +'<p class="eyebrow mb-1">Runtime spine</p>'
-          +'<p class="act3-copy" style="max-width:56rem">This is the Act II diligence architecture expressed as a running workflow.</p>'
+          +'<div class="section-hero-box"><p>This is the Act II diligence architecture expressed as a running workflow.</p></div><p class="click-hint">Click each runtime step to see what it does.</p>'
           +'<div class="act3-runtime-spine">'+spine.map(function(s,i){ return '<button class="act3-runtime-step" type="button" data-act3-runtime-step="'+i+'"><span class="num">'+(i+1)+'</span><strong>'+esc(s.title)+'</strong><p>'+esc(s.short)+'</p></button>'; }).join('')+'</div>'
         +'</div>'
 
@@ -1701,13 +1708,13 @@ body.ld-theater-lock{overflow:hidden;}
           +'<div>'
             +'<p class="eyebrow mb-1">Interface Diligence Engine</p>'
             +'<h3 class="font-display text-white" style="font-size:2rem;line-height:1.05;margin:.35rem 0">The live system that runs the architecture.</h3>'
-            +'<p class="act3-copy" style="max-width:58rem">The public system is the proof-of-work layer. It is not a legal advice product. It is a review-bounded diligence workflow that turns public evidence and legal materials into a structured report and review path.</p>'
+            +'<div class="section-hero-box"><p>The live system is the proof-of-work layer: a review-bounded diligence workflow, not a legal advice product.</p></div>'
             +'<div class="act3-runtime-system">'+runtimeBlocks.map(function(b){ return card(b.title,b.body); }).join('')+'</div>'
           +'</div>'
           +'<aside class="act3-runtime-cta-card">'
             +'<p class="act3-kicker">Live operating system</p>'
             +'<h3>Interface Diligence Engine</h3>'
-            +'<p>Open the public diligence workflow and see the runtime layer directly: URL intake, evidence capture, report generation, qualified review, and assembly handoff.</p>'
+            +'<p>Open the public diligence workflow and see the runtime layer directly.</p>'
             +'<div class="mt-4"><a class="btn" href="'+esc(liveUrl)+'" target="_blank" rel="noopener">Open live system</a></div>'
             +'<p class="text-xs mt-3" style="color:rgba(229,229,229,.48);line-height:1.5">Public-safe surface. No private prompts, credentials, client data, or private registry corpus are exposed.</p>'
           +'</aside>'
@@ -1715,20 +1722,20 @@ body.ld-theater-lock{overflow:hidden;}
 
         +'<div id="act3-qualified-review" class="reveal mt-8">'
           +'<p class="eyebrow mb-1">Qualified Review</p>'
-          +'<p class="act3-copy" style="max-width:58rem">The reviewer does not click through a decorative form. The review workspace exists to confirm, correct, or supplement what the diligence system could not verify from public materials. That is the human gate before downstream drafting, document routing, and local counsel review.</p>'
+          +'<div class="section-hero-box"><p>Qualified Review is the human gate: confirm, correct, or supplement what public materials cannot prove.</p></div>'
           +flow(['Prefilled public findings','Reviewer correction','Missing-proof answers','Locked review inputs','Assembly handoff'])
         +'</div>'
 
         +'<div id="act3-control-strip" class="reveal mt-8">'
           +'<p class="eyebrow mb-1">Review controls built in</p>'
-          +'<p class="act3-copy" style="max-width:56rem">The control layer is shown here as a boundary strip, not a separate prompt-engineering product.</p>'
+          +'<div class="section-hero-box"><p>The control layer stays visible, but it is not a separate prompt-engineering product.</p></div><p class="click-hint">Click a control to see the guardrail.</p>'
           +'<div class="act3-runtime-control-grid">'+controls.map(function(c,i){ return '<button class="act3-runtime-control" type="button" data-act3-control="'+i+'"><strong>'+esc(c.title)+'</strong><p>'+esc(c.body)+'</p></button>'; }).join('')+'</div>'
-          +'<div class="act3-runtime-proofline">The system does not ask an AI model to give legal advice. It runs a bounded diligence workflow: public evidence is captured, factual profiles are built, the active registry is applied, uncertainty is routed into qualified review, and the final output remains review-ready rather than legally conclusive.</div>'
+          +'<div class="act3-runtime-proofline">The system does not ask an AI model to give legal advice. It prepares evidence-grounded, review-ready work for human legal judgment.</div>'
         +'</div>'
 
         +'<div id="act3-assembly-handoff" class="act3-close-bridge reveal mt-8">'
           +'<h3>Runtime becomes review-ready handoff.</h3>'
-          +'<p class="act3-copy mt-2">Once the report and review inputs are locked, the matter can move into document, clause, control, evidence, and local-counsel review routes without losing the legal source path.</p>'
+          +'<p class="act3-copy mt-2">Once the report and review inputs are locked, the matter moves forward without losing the legal source path.</p>'
           +'<div class="act3-proof-chain mt-4"><span>public evidence</span><span>profiles</span><span>registry application</span><span>qualified review</span><span>assembly handoff</span></div>'
           +'<p class="font-display italic gold mt-4" style="font-size:1.22rem;line-height:1.35">That is the through-line: legal method, converted into architecture, then run through a review-bound workflow.</p>'
           +'<a class="btn sm sec mt-3" href="#capstone">Continue to Capstone</a>'
@@ -1771,8 +1778,8 @@ body.ld-theater-lock{overflow:hidden;}
         +'<div class="reveal">'
           +'<p class="eyebrow">CAPSTONE</p>'
           +'<h2 class="font-display section-title text-white mt-2">One legal method, expressed through technology.</h2>'
-          +'<p class="act3-copy mt-3" style="max-width:58rem">The work across this portfolio is not a shift from law into coding. It is the same legal method applied through better tools: understand the product, classify the activity, identify the legal surface, map the authority, preserve the evidence path, and route the issue into human legal judgment.</p>'
-          +capstoneFlow(['Doctrine became taxonomy','Taxonomy became diligence architecture','Diligence architecture became a review-bound runtime'])
+          +'<div class="section-hero-box"><p>The work across this portfolio is not a shift from law into coding. It is the same legal method applied through better tools.</p><ul class="lean-bullets two"><li>Understand the product.</li><li>Classify the activity.</li><li>Identify the legal surface.</li><li>Map the authority.</li><li>Preserve the evidence path.</li><li>Route uncertainty into human legal judgment.</li></ul></div>'
+          +capstoneFlow(['Doctrine','Taxonomy','Diligence Architecture','Review-bound Runtime'])
         +'</div>'
         +'<div class="reveal mt-6 act3-runtime-system">'+principles.map(principleCard).join('')+'</div>'
         +'<div class="reveal capstone-closing-line">The through-line is lawyer first: technology is the instrument, not the identity.</div>'
@@ -1798,9 +1805,10 @@ body.ld-theater-lock{overflow:hidden;}
     '<section id="contact" class="act" data-rail="5"><span id="close-fit" class="anchor-point" aria-hidden="true"></span>'
     +'<div class="card-shell">'
       +'<div class="reveal"><p class="eyebrow">TERMINAL</p><h2 class="font-display section-title text-white mt-2">The fit</h2></div>'
-      +'<div class="reveal terminal-card mt-6"><p class="body">'+esc(body)+'</p>'
-        +'<p class="terminal-fit-line">'+esc(fit)+'</p>'
-        +'<p class="body" style="font-size:.92rem;color:rgba(229,229,229,.72)">'+esc(proof)+'</p>'
+      +'<div class="reveal terminal-card mt-6"><p class="body">Technology & Data Protection Lawyer. Litigation foundation. Hands-on technical fluency.</p>'
+        +'<p class="terminal-fit-line">I work at the intersection of law and technology without treating law as a software problem.</p>'
+        +'<div class="lean-terminal-grid"><div class="terminal-point"><strong>What I bring</strong>Product-aware legal analysis · AI governance and privacy fluency · commercial-contract judgment · evidence-aware review habits.</div><div class="terminal-point"><strong>What the systems prove</strong>Structured thinking, review boundaries, and practical legal preparation — without losing the lawyer to the builder.</div></div>'
+        +'<p class="body" style="font-size:.92rem;color:rgba(229,229,229,.72)">'+esc(fit)+'</p>'
         +'<div><p class="terminal-safety">'+esc(safety)+'</p><p class="terminal-genuine mt-3">'+esc(genuine)+'</p></div></div>'
       +'<div class="reveal mt-5 contact-row">'
         +'<a class="contact-ico" href="'+esc(contact.linkedin || '#')+'" target="_blank" rel="noopener">'+ico('in')+'LinkedIn</a>'
