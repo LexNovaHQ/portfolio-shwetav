@@ -535,6 +535,36 @@ body.ld-theater-lock{overflow:hidden;}
 .act2-diligence-badge{display:inline-flex; align-items:center; min-height:26px; border:1px solid rgba(197,160,89,.35); color:var(--gold); background:rgba(197,160,89,.06); padding:.28rem .55rem; border-radius:999px; font-size:.58rem; letter-spacing:.11em; text-transform:uppercase; font-weight:800; margin:.25rem .25rem 0 0;}
 /* ---- ACT II DILIGENCE ARCHITECTURE PATCH END ---- */
 
+
+/* ---- ACT III RUNTIME WORKFLOW PATCH START ---- */
+.act3-runtime-shell{display:grid;gap:1rem;}
+.act3-runtime-spine{display:grid;gap:.55rem;grid-template-columns:1fr;margin-top:1rem;}
+@media(min-width:860px){.act3-runtime-spine{grid-template-columns:repeat(7,minmax(0,1fr));}}
+.act3-runtime-step{border:1px solid rgba(197,160,89,.22);border-radius:.85rem;background:rgba(255,255,255,.018);padding:.75rem;min-height:92px;text-align:left;color:rgba(229,229,229,.78);cursor:pointer;transition:border-color .2s,background .2s,transform .2s;}
+.act3-runtime-step:hover,.act3-runtime-step:focus{outline:none;border-color:rgba(197,160,89,.72);background:rgba(197,160,89,.075);transform:translateY(-1px);}
+.act3-runtime-step .num{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;border-radius:999px;border:1px solid rgba(197,160,89,.42);color:var(--gold);font-size:.62rem;font-weight:800;margin-bottom:.52rem;}
+.act3-runtime-step strong{display:block;color:var(--gold);font-size:.7rem;line-height:1.25;letter-spacing:.055em;text-transform:uppercase;}
+.act3-runtime-step p{margin:.42rem 0 0;color:rgba(229,229,229,.58);font-size:.68rem;line-height:1.42;}
+.act3-runtime-system{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:1.25rem;}
+@media(min-width:980px){.act3-runtime-system{grid-template-columns:minmax(0,1.05fr) minmax(310px,.95fr);}}
+.act3-runtime-panel{border:1px solid rgba(229,229,229,.1);border-radius:1rem;background:rgba(255,255,255,.018);padding:1rem;}
+.act3-runtime-panel .k{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:.5rem;}
+.act3-runtime-panel p{margin:0;color:rgba(229,229,229,.68);line-height:1.62;font-size:.86rem;}
+.act3-runtime-flow{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-top:.85rem;}
+.act3-runtime-flow span{border:1px solid rgba(197,160,89,.26);border-radius:.75rem;padding:.5rem .68rem;color:rgba(229,229,229,.78);background:rgba(197,160,89,.045);font-size:.64rem;letter-spacing:.065em;text-transform:uppercase;font-weight:800;}
+.act3-runtime-flow b{color:rgba(229,229,229,.35);font-weight:500;}
+.act3-runtime-control-grid{display:grid;gap:.75rem;grid-template-columns:1fr;margin-top:.9rem;}
+@media(min-width:820px){.act3-runtime-control-grid{grid-template-columns:repeat(4,minmax(0,1fr));}}
+.act3-runtime-control{border:1px solid rgba(229,229,229,.1);border-radius:.9rem;background:rgba(255,255,255,.018);padding:.85rem;text-align:left;color:rgba(229,229,229,.72);cursor:pointer;transition:border-color .2s,background .2s,transform .2s;}
+.act3-runtime-control:hover,.act3-runtime-control:focus{outline:none;border-color:rgba(197,160,89,.65);background:rgba(197,160,89,.065);transform:translateY(-1px);}
+.act3-runtime-control strong{display:block;color:var(--gold);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.45rem;}
+.act3-runtime-control p{margin:0;font-size:.78rem;line-height:1.55;color:rgba(229,229,229,.65);}
+.act3-runtime-cta-card{border:1px solid rgba(197,160,89,.26);border-radius:1.15rem;background:radial-gradient(circle at 16% 0%,rgba(197,160,89,.13),transparent 34%),linear-gradient(180deg,rgba(12,12,12,.95),rgba(7,7,7,.95));padding:1rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+.act3-runtime-cta-card h3{font-family:"Cormorant Garamond",Georgia,serif;color:#fff;font-size:1.8rem;line-height:1.05;margin:.35rem 0 .6rem;}
+.act3-runtime-proofline{border-left:2px solid var(--gold);padding:.8rem .95rem;background:rgba(197,160,89,.055);color:rgba(229,229,229,.76);font-size:.86rem;line-height:1.6;margin-top:1rem;}
+.act3-runtime-compat-anchor{position:relative;top:-110px;display:block;height:0;width:0;overflow:hidden;}
+/* ---- ACT III RUNTIME WORKFLOW PATCH END ---- */
+
 /* ---- ACT III / CAPSTONE / CLOSE ---- */
 .act3-kicker{font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:800;}
 .act3-copy{color:rgba(229,229,229,.68); line-height:1.65; font-size:.88rem;}
@@ -687,7 +717,7 @@ body.ld-theater-lock{overflow:hidden;}
     <nav class="hidden md:flex items-center gap-6 text-xs tracked" aria-label="Primary">
       <a class="nav-link" href="#foundation">Foundation</a>
       <a class="nav-link" href="#matrix">Diligence Architecture</a>
-      <a class="nav-link" href="#delivery-system">Delivery System</a>
+      <a class="nav-link" href="#delivery-system">Runtime Workflow</a>
       <a class="nav-link" href="#capstone">Capstone</a>
     </nav>
     <a class="nav-link text-xs tracked" href="#contact">Contact</a>
@@ -743,6 +773,27 @@ body.ld-theater-lock{overflow:hidden;}
   };
   function boot(C, act2Manifest){
   C.hero = Object.assign({}, C.hero || {}, lockedHero);
+  /* ---- ACT II / ACT III RAIL OVERRIDE START ---- */
+  var lockedRail = {
+    chip: {
+      derived: 'law → method',
+      structured: 'architecture → runtime',
+      running: 'runtime → review'
+    },
+    nodes: [
+      {kind:'start', label:'Start', sub:'the thesis', target:'hero-thesis', why:'Establishes the claim: lawyer first, systems second.'},
+      {band:'ACT I · SOURCE LAYER', band_tag:'the legal method', node:'Doctrine', sub:'AI behavior → legal taxonomy', target:'doctrine-layer', why:'Shows how technical behavior becomes legal source taxonomy.'},
+      {band:'ACT I · SOURCE LAYER', band_tag:'the legal method', node:'Taxonomy', sub:'risk surfaces', target:'taxonomy-map', why:'Shows the classification layer before any system runs.'},
+      {band:'ACT II · DILIGENCE ARCHITECTURE', band_tag:'the architecture', node:'Active Registry', sub:'domain registry selection', target:'act2-active-registry', why:'Shows that the registry changes by vertical while the report stack stays fixed.'},
+      {band:'ACT II · DILIGENCE ARCHITECTURE', band_tag:'the architecture', node:'Report Stack', sub:'profiles → exposure → handoff', target:'act2-report-stack', why:'Shows the locked diligence architecture that turns source taxonomy into review-ready report structure.'},
+      {band:'ACT III · RUNTIME WORKFLOW', band_tag:'the operating system', node:'Runtime', sub:'public review system', target:'delivery-system', why:'Shows the public workflow that runs the diligence architecture.'},
+      {band:'ACT III · RUNTIME WORKFLOW', band_tag:'the operating system', node:'Qualified Review', sub:'human review gate', target:'act3-qualified-review', why:'Shows how uncertainty and public-footprint gaps are routed into review before downstream handoff.'},
+      {band:'CAPSTONE', band_tag:'the method', node:'Synthesis', sub:'one legal method', target:'capstone', why:'Synthesizes the portfolio into one legal method across jurisdictions and systems.'},
+      {kind:'terminal', label:'Close', sub:'technology & data protection lawyer', target:'contact', why:'Converts the proof into the hiring argument.'}
+    ]
+  };
+  C.rail = lockedRail;
+  /* ---- ACT II / ACT III RAIL OVERRIDE END ---- */
   /* ---- ACT II DILIGENCE RAIL PATCH START ---- */
   if(C.rail && Array.isArray(C.rail.nodes)){
     C.rail.nodes = C.rail.nodes.map(function(n){
@@ -1598,195 +1649,105 @@ body.ld-theater-lock{overflow:hidden;}
 
   // ---------- ACT III ----------
   (function(){
-    var a=C.act3 || {};
-    function join(arr, fn){ return (arr||[]).map(fn).join(''); }
-    function renderCtas(ctas){
-      return '<div class="act3-cta-row">'+join(ctas, function(cta,i){
-        var label=cta.label || ('Open '+(i+1));
-        var href=cta.href || '#';
-        if(cta.state==='placeholder' || href==='#'){
-          return '<button class="btn sm sec act3-placeholder" type="button" data-act3-placeholder>'+esc(label)+'</button>';
-        }
-        var external=/^https?:\/\//.test(href);
-        return '<a class="btn sm'+(i?' sec':'')+'" href="'+esc(href)+'"'+(external?' target="_blank" rel="noopener"':'')+'>'+esc(label)+'</a>';
-      })+'</div>';
-    }
-    function chips(items, cls){
-      return join(items, function(x){ return '<span class="'+cls+'">'+esc(x)+'</span>'; });
-    }
-    function videoViewer(label, caption, extraClass){
-      return '<div class="'+esc(extraClass || 'act3-video-viewer')+'"><div class="act3-video-screen">'
-        +'<button class="act3-play-button" type="button" data-act3-placeholder>'+esc(label)+'</button>'
-        +'<div class="act3-video-caption">'+esc(caption)+'</div></div></div>';
-    }
-    function chainStep(engineKey, detailKey, label, output){
-      return '<button class="act3-chain-step'+(output?' act3-output-step':'')+'" type="button" data-act3-engine="'+esc(engineKey)+'" data-act3-node-name="'+esc(detailKey || label)+'">'+esc(label)+'</button>';
-    }
-    function verticalChain(engineKey, nodes, outputNode){
-      return '<div class="act3-vertical-chain">'+join(nodes, function(node, i){
-        return chainStep(engineKey, node.detail || node.label, node.label, outputNode && i===nodes.length-1)
-          +(i<nodes.length-1?'<div class="act3-chain-arrow">↓</div>':'');
-      })+'</div>';
-    }
-    var orientation=a.orientation || {};
-    var spine=orientation.visual_chain || [];
-    var spineHtml=join(spine, function(node,i){
-      return '<button class="act3-spine-node" type="button" data-act3-spine="'+i+'">'+esc(node)+'</button>';
-    });
-    var pw=a.project_walkthrough || {};
-    var os=a.sandbox_os || {};
-    var engineA=os.engine_a || {};
-    var transfer=os.transfer || {};
-    var engineB=os.engine_b || {};
-    var gateway=os.gateway || {};
-    var agent=a.prompt_agent_proof || {};
-    var automation=a.workflow_automation_proof || {};
-    var bridge=a.close_bridge || {};
-    var modeButtons=join(engineA.modes, function(mode,i){
-      return '<button class="act3-mode'+(i===0?' active':'')+'" type="button" data-act3-mode="'+i+'">'+esc(mode.label)+'</button>';
-    });
-    var formula='<div class="act3-formula">'+join(engineB.formula, function(x){ return '<span>'+esc(x)+'</span>'; })+'</div>';
-    var agentNodes=join(agent.modules, function(m,i){
-      var label=(agent.flow && agent.flow[i]) || m.name;
-      return '<button class="act3-agent-node'+(i===0?' active':'')+'" type="button" data-act3-agent="'+i+'">'+esc(label)+'</button>';
-    });
-    var proofLayers=join(automation.proof_layers, function(layer){
-      return '<article class="act3-proof-layer"><h4>'+esc(layer.title)+'</h4><p>'+esc(layer.description)+'</p></article>';
-    });
-    var engineAProcessor=[
-      {label:'Profile extraction', detail:'profile extraction'},
-      {label:'Function / surface classification', detail:'function / surface classification'},
-      {label:'Threat matrix match', detail:'threat matrix match'}
+    var liveUrl = 'https://sandbox.lexnovahq.com/interface-diligence/diligence-system/';
+    var spine = [
+      {title:'Diligence architecture', short:'Act II structure', detail:'The locked report architecture from Act II becomes the runtime blueprint. The registry changes by vertical; the profile and review structure stays fixed.'},
+      {title:'Public source intake', short:'URL / materials', detail:'A user starts from a public URL or public/legal materials. The system captures public evidence and marks what cannot be verified from the public footprint.'},
+      {title:'Profile stack', short:'facts first', detail:'The runtime builds factual profiles before exposure routing: target profile, product/activity profile, data/asset provenance, and legal/governance cartography.'},
+      {title:'Active registry application', short:'domain logic', detail:'The active vertical registry is applied only after the facts are mapped. For the public proof domain, the AI Product Legal Exposure Registry is the implemented instance.'},
+      {title:'Legal exposure report', short:'bounded report', detail:'The report renders findings as public signals, review priorities, document routes, control routes, limitations, and evidence gaps. It does not claim compliance, liability, enforceability, or legal sufficiency.'},
+      {title:'Qualified review', short:'human gate', detail:'The reviewer confirms, corrects, or supplements what the diligence system could not verify. This is where public-footprint limits and legal judgment boundaries are made explicit.'},
+      {title:'Assembly handoff', short:'review-ready output', detail:'The locked report and qualified review answers become a review-ready handoff for downstream document, clause, control, evidence, and local counsel review routes.'}
     ];
-    var engineBProcessor=[
-      {label:'Product profile', detail:'product profile'},
-      {label:'Clause / schedule routing', detail:'clause / schedule routing'},
-      {label:'Assembly payload', detail:'assembly payload'},
-      {label:'Document assembly', detail:'document assembly'}
+    var controls = [
+      {title:'Deterministic phases', body:'The workflow runs through fixed stages instead of an open-ended chat response.', detail:'The point is not to let a model wander. The runtime controls the order: intake, source capture, profiles, registry application, report rendering, review, and handoff.'},
+      {title:'Evidence grounding', body:'Findings connect back to public sources, uploaded materials, artifacts, or marked evidence gaps.', detail:'A finding must carry source context or a limitation. Missing proof becomes a review item instead of being guessed.'},
+      {title:'Boundary language', body:'The system cannot claim compliance, liability, enforceability, legal sufficiency, or that a fix cures an issue.', detail:'This keeps the portfolio and runtime aligned with the legal-architecture boundary: review-ready preparation, not autonomous legal advice.'},
+      {title:'Qualified review', body:'The reviewer confirms, corrects, or supplements what the public footprint cannot prove.', detail:'The human review layer is not decoration. It is the gate before downstream assembly and before any legal judgment is treated as usable.'}
     ];
-    var previewCards=engineB.preview_cards || ['Final review-ready document draft','CRM / client delivery status','Maintenance radar'];
-    var deliveryNodes=(engineB.delivery_layer || ['pushed to CRM / delivery layer','dummy client portal status','maintenance radar']).map(function(x){return {label:x, detail:x};});
+    var runtimeBlocks = [
+      {title:'Input', body:'Website URL or public/legal materials.', detail:'The public workflow begins with a URL and can support materials. The legal point is that evidence is captured before any exposure route is applied.'},
+      {title:'Runtime', body:'Profile stack, active registry application, and bounded report rendering.', detail:'The runtime applies the Act II architecture: factual profiles first, registry second, report third.'},
+      {title:'Review', body:'Qualified Review workspace for verification, corrections, and public-footprint gaps.', detail:'Review is where the system stops pretending public material can answer private legal facts. The reviewer supplies or corrects what the system cannot verify.'},
+      {title:'Output', body:'Review-ready report and assembly handoff.', detail:'The output is structured for legal review, document routing, evidence requests, counsel questions, and downstream assembly. It is not a legal opinion.'}
+    ];
+    function flow(items){ return '<div class="act3-runtime-flow">'+items.map(function(x,i){ return (i?'<b>→</b>':'')+'<span>'+esc(x)+'</span>'; }).join('')+'</div>'; }
+    function card(title, body){ return '<div class="act3-runtime-panel"><div class="k">'+esc(title)+'</div><p>'+esc(body)+'</p></div>'; }
     main.appendChild(el(
-    '<section id="delivery-system" class="act" data-rail="3"><span id="funnel" class="anchor-point" aria-hidden="true"></span>'
-    +'<div class="card-shell">'
-      +'<div id="act3-orientation" class="reveal"><p class="eyebrow">'+esc(a.eyebrow || 'ACT III')+'</p>'
-        +'<h2 class="font-display section-title text-white mt-2">'+esc(a.display_heading || a.header || '')+'</h2>'
-        +'<p class="act3-copy mt-3" style="max-width:58rem">'+esc(a.subline || '')+'</p>'
-        +'<p class="font-display italic gold mt-4" style="font-size:1.35rem;line-height:1.25">'+esc(a.core_thesis || '')+'</p>'
-        +'<div class="act3-spine" aria-label="Act III operating-system spine">'+spineHtml+'</div>'
-        +'<div class="act3-spine-detail" id="act3-spine-detail">'+esc((orientation.node_details||{})[spine[0]] || '')+'</div></div>'
-
-      +'<div id="project-walkthrough" class="reveal surface rounded-2xl p-5 mt-8"><span id="funnel-video" class="anchor-point" aria-hidden="true"></span>'
-        +'<div class="act3-video-block"><div><div class="act3-env-row">'+chips(pw.environment_chips,'act3-env-chip')+'</div>'
-          +'<h3 class="act3-video-title">'+esc(pw.title || '')+'</h3><p class="act3-copy" style="max-width:62rem">'+esc(pw.subline || '')+'</p></div>'
-          +videoViewer('Play walkthrough','Project-environment run · synthetic data','act3-video-viewer')
-          +'<div class="act3-video-bottom"><div class="act3-chapter-chain">'+join(pw.chapters, function(ch){return '<span>'+esc(ch)+'</span>';})+'</div>'
-            +'<div class="act3-proof-short">'+esc(pw.proof_line || '')+'</div><div class="act3-safety-chip">'+esc(pw.safety_note || '')+'</div>'+renderCtas(pw.ctas)+'</div>'
-        +'</div></div>'
-
-      +'<div id="sandbox-os" class="reveal mt-8"><span id="funnel-sandboxes" class="anchor-point" aria-hidden="true"></span><span id="tooling-layer" class="anchor-point" aria-hidden="true"></span><div id="act3-sandbox-os" class="act3-sandbox-os"><span id="systems-layer" class="anchor-point" aria-hidden="true"></span>'
-        +'<div><p class="act3-kicker">Sandbox Operating System</p><h3 class="font-display text-white" style="font-size:2rem;line-height:1.05;margin:.35rem 0">'+esc(os.title || '')+'</h3>'
-          +'<p class="act3-copy" style="max-width:58rem">'+esc(os.subline || '')+'</p><div class="act3-domain mt-2">'+esc(os.domain || '')+'</div></div>'
-        +'<div class="act3-engine-grid mt-5">'
-          +'<article class="act3-engine-panel" id="act3-engine-a"><h3>'+esc(engineA.title || '')+'</h3><p class="act3-copy mt-2">'+esc(engineA.subline || '')+'</p>'
-            +'<p class="act3-copy mt-2">'+esc(engineA.framing || '')+'</p><div class="act3-mode-row">'+modeButtons+'</div>'
-            +'<div class="act3-row-note" id="act3-mode-copy">'+esc(((engineA.modes||[])[0]||{}).description || '')+'</div>'
-            +'<div class="act3-engine-category mt-3"><div class="act3-category-label">Input</div>'+chainStep('a','Source material',engineA.input_row || 'Website · document · pasted materials · internal-use survey',false)+'</div>'
-            +'<div class="act3-engine-category"><div class="act3-category-label">Processor</div>'+verticalChain('a',engineAProcessor,false)+'</div>'
-            +'<div class="act3-engine-category"><div class="act3-category-label">Output</div>'+chainStep('a','diligence report',engineA.output_row || 'Structured diligence report',true)+'</div></article>'
-          +'<button class="act3-transfer-packet" type="button" id="act3-transfer"><p class="act3-kicker">Transfer Object</p><h3>'+esc(transfer.title || '')+'</h3>'
-            +'<div class="act3-chip-row mt-3">'+chips(transfer.contents,'act3-report-chip')+'</div><div class="line">'+esc(transfer.line || '')+'</div></button>'
-          +'<article class="act3-engine-panel" id="act3-engine-b"><h3>'+esc(engineB.title || '')+'</h3><p class="act3-copy mt-2">'+esc(engineB.subline || '')+'</p>'
-            +'<div class="act3-engine-category mt-3"><div class="act3-category-label">Input</div>'+verticalChain('b',[{label:'Vault questionnaire',detail:'Vault questionnaire'},{label:'Diligence report',detail:'Diligence report'}],false)+'</div>'
-            +'<div class="act3-engine-category"><div class="act3-category-label">Processor</div>'+verticalChain('b',engineBProcessor,false)+'</div>'
-            +'<div class="act3-engine-category"><div class="act3-category-label">Output</div>'+chainStep('b','final review-ready document draft','Final review-ready document draft',true)+'</div>'
-            +'<div class="act3-delivery-layer"><div class="act3-category-label">Delivery layer</div>'+verticalChain('b',deliveryNodes,false)+'</div>'
-            +'<div class="act3-preview-grid">'+join(previewCards, function(card){return '<div class="act3-preview-card">'+esc(card)+'</div>';})+'</div></article>'
+      '<section id="delivery-system" class="act" data-rail="3">'
+      +'<span id="tooling-layer" class="anchor-point" aria-hidden="true"></span>'
+      +'<span id="systems-layer" class="anchor-point" aria-hidden="true"></span>'
+      +'<span id="project-walkthrough" class="act3-runtime-compat-anchor" aria-hidden="true"></span>'
+      +'<span id="sandbox-os" class="act3-runtime-compat-anchor" aria-hidden="true"></span>'
+      +'<span id="prompt-agent-proof" class="act3-runtime-compat-anchor" aria-hidden="true"></span>'
+      +'<span id="workflow-automation-proof" class="act3-runtime-compat-anchor" aria-hidden="true"></span>'
+      +'<div class="card-shell">'
+        +'<div id="act3-orientation" class="reveal">'
+          +'<p class="eyebrow">ACT III · RUNTIME WORKFLOW</p>'
+          +'<h2 class="font-display section-title text-white mt-2">How the diligence architecture runs as a public review system.</h2>'
+          +'<p class="act3-copy mt-3" style="max-width:58rem">The architecture now connects to an operating system. A user enters a URL or supplies materials; the system captures evidence, builds factual profiles, applies the active vertical registry, renders a bounded diligence report, routes uncertainty into qualified review, and prepares the matter for assembly handoff.</p>'
+          +'<p class="font-display italic gold mt-4" style="font-size:1.28rem;line-height:1.3">The law came first. The runtime exists to make the legal work structured, traceable, and review-ready.</p>'
+          +flow(['Diligence architecture','Public source intake','Profile stack','Active registry application','Legal exposure report','Qualified review','Assembly handoff'])
+          +'<div class="mt-5"><a class="btn" href="'+esc(liveUrl)+'" target="_blank" rel="noopener">Open the live diligence system</a></div>'
         +'</div>'
-        +'<div class="act3-sandbox-cta"><div><p class="act3-kicker">Sandbox Gateway</p><h3 class="font-display text-white" style="font-size:1.65rem;line-height:1.05;margin:.25rem 0">'+esc(gateway.title || '')+'</h3>'
-          +'<p class="act3-copy">'+esc(gateway.subline || '')+'</p><div class="act3-domain mt-1">'+esc(gateway.domain || '')+'</div><p class="text-xs mt-2" style="color:rgba(229,229,229,.45)">'+esc(gateway.safety_note || '')+'</p></div>'
-          +renderCtas(gateway.ctas)+'</div>'
-      +'</div></div>'
 
-      +'<div id="prompt-agent-proof" class="reveal surface rounded-2xl p-5 mt-8"><div class="act3-video-block"><div><p class="act3-kicker">Prompt-Agent Engineering</p>'
-        +'<h3 class="font-display text-white" style="font-size:2rem;line-height:1.05;margin:.35rem 0">'+esc(agent.title || '')+'</h3><p class="act3-copy" style="max-width:62rem">'+esc(agent.subline || '')+'</p></div>'
-        +videoViewer('Play prompt-agent walkthrough','Signal → evidence → registry → architecture → review','act3-agent-video-viewer')
-        +'<div class="act3-agent-proof"><div><div class="act3-agent-flow">'+agentNodes+'</div><div class="act3-chip-row mt-4">'+chips(agent.proof_format,'act3-proof-chip')+'</div>'
-          +'<div class="act3-safety-chip mt-4">'+esc(agent.why_not_live || '')+'</div>'+renderCtas(agent.ctas)+'</div>'
-          +'<aside class="act3-agent-detail" id="act3-agent-detail"></aside></div></div></div>'
+        +'<div id="act3-runtime-spine" class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Runtime spine</p>'
+          +'<p class="act3-copy" style="max-width:56rem">This is the Act II diligence architecture expressed as a running workflow.</p>'
+          +'<div class="act3-runtime-spine">'+spine.map(function(s,i){ return '<button class="act3-runtime-step" type="button" data-act3-runtime-step="'+i+'"><span class="num">'+(i+1)+'</span><strong>'+esc(s.title)+'</strong><p>'+esc(s.short)+'</p></button>'; }).join('')+'</div>'
+        +'</div>'
 
-      +'<div id="workflow-automation-proof" class="reveal surface rounded-2xl p-5 mt-8"><div class="act3-automation-proof"><div><p class="act3-kicker">Workflow Automation Proof</p>'
-        +'<h3 class="font-display text-white" style="font-size:1.85rem;line-height:1.05;margin:.35rem 0">'+esc(automation.title || '')+'</h3><p class="act3-copy">'+esc(automation.subline || '')+'</p>'
-        +'<div class="act3-auto-flow mt-4">'+join(automation.flow, function(x){ return '<span class="act3-auto-node">'+esc(x)+'</span>'; })+'</div>'+renderCtas(automation.ctas)+'</div>'
-        +'<aside><div style="display:grid;gap:.65rem">'+proofLayers+'<div class="act3-agentic-boundary"><h4>Agentic boundary</h4><p>'+esc(automation.agentic_boundary || '')+'</p></div></div></aside></div></div>'
+        +'<div id="act3-interface-diligence-engine" class="reveal mt-8 act3-runtime-system">'
+          +'<div>'
+            +'<p class="eyebrow mb-1">Interface Diligence Engine</p>'
+            +'<h3 class="font-display text-white" style="font-size:2rem;line-height:1.05;margin:.35rem 0">The live system that runs the architecture.</h3>'
+            +'<p class="act3-copy" style="max-width:58rem">The public system is the proof-of-work layer. It is not a legal advice product. It is a review-bounded diligence workflow that turns public evidence and legal materials into a structured report and review path.</p>'
+            +'<div class="act3-runtime-system">'+runtimeBlocks.map(function(b){ return card(b.title,b.body); }).join('')+'</div>'
+          +'</div>'
+          +'<aside class="act3-runtime-cta-card">'
+            +'<p class="act3-kicker">Live operating system</p>'
+            +'<h3>Interface Diligence Engine</h3>'
+            +'<p>Open the public diligence workflow and see the runtime layer directly: URL intake, evidence capture, report generation, qualified review, and assembly handoff.</p>'
+            +'<div class="mt-4"><a class="btn" href="'+esc(liveUrl)+'" target="_blank" rel="noopener">Open live system</a></div>'
+            +'<p class="text-xs mt-3" style="color:rgba(229,229,229,.48);line-height:1.5">Public-safe surface. No private prompts, credentials, client data, or private registry corpus are exposed.</p>'
+          +'</aside>'
+        +'</div>'
 
-      +'<div class="act3-close-bridge reveal mt-8"><h3>'+esc(bridge.title || '')+'</h3><p class="act3-copy mt-2">'+esc(bridge.line || '')+'</p>'
-        +'<div class="act3-proof-chain mt-4">'+join(bridge.proof_chain, function(x){ return '<span>'+esc(x)+'</span>'; })+'</div><p class="font-display italic gold mt-4" style="font-size:1.25rem;line-height:1.35">'+esc(bridge.bridge || '')+'</p>'
-        +'<a class="btn sm sec mt-3" href="#capstone">'+esc(bridge.cta || 'Continue')+'</a></div>'
-    +'</div></section>'));
+        +'<div id="act3-qualified-review" class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Qualified Review</p>'
+          +'<p class="act3-copy" style="max-width:58rem">The reviewer does not click through a decorative form. The review workspace exists to confirm, correct, or supplement what the diligence system could not verify from public materials. That is the human gate before downstream drafting, document routing, and local counsel review.</p>'
+          +flow(['Prefilled public findings','Reviewer correction','Missing-proof answers','Locked review inputs','Assembly handoff'])
+        +'</div>'
 
-    function updateSpine(idx, shouldScroll){
-      var label=spine[idx] || spine[0] || '';
-      document.querySelectorAll('[data-act3-spine]').forEach(function(n){ n.classList.toggle('active', parseInt(n.getAttribute('data-act3-spine'),10)===idx); });
-      var detail=document.getElementById('act3-spine-detail');
-      if(detail) detail.textContent=(orientation.node_details || {})[label] || '';
-      if(shouldScroll){
-        var target=idx<1 ? 'act3-orientation' : idx<3 ? 'sandbox-os' : idx<5 ? 'act3-engine-b' : 'sandbox-os';
-        var node=document.getElementById(target);
-        if(node) node.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    }
-    document.querySelectorAll('[data-act3-spine]').forEach(function(btn){
-      var idx=parseInt(btn.getAttribute('data-act3-spine'),10);
-      btn.addEventListener('mouseenter', function(){ updateSpine(idx, false); });
-      btn.addEventListener('focus', function(){ updateSpine(idx, false); });
-      btn.addEventListener('click', function(){ updateSpine(idx, true); });
-    });
-    updateSpine(0, false);
+        +'<div id="act3-control-strip" class="reveal mt-8">'
+          +'<p class="eyebrow mb-1">Review controls built in</p>'
+          +'<p class="act3-copy" style="max-width:56rem">The control layer is shown here as a boundary strip, not a separate prompt-engineering product.</p>'
+          +'<div class="act3-runtime-control-grid">'+controls.map(function(c,i){ return '<button class="act3-runtime-control" type="button" data-act3-control="'+i+'"><strong>'+esc(c.title)+'</strong><p>'+esc(c.body)+'</p></button>'; }).join('')+'</div>'
+          +'<div class="act3-runtime-proofline">The system does not ask an AI model to give legal advice. It runs a bounded diligence workflow: public evidence is captured, factual profiles are built, the active registry is applied, uncertainty is routed into qualified review, and the final output remains review-ready rather than legally conclusive.</div>'
+        +'</div>'
 
-    document.querySelectorAll('[data-act3-mode]').forEach(function(btn){
+        +'<div id="act3-assembly-handoff" class="act3-close-bridge reveal mt-8">'
+          +'<h3>Runtime becomes review-ready handoff.</h3>'
+          +'<p class="act3-copy mt-2">Once the report and review inputs are locked, the matter can move into document, clause, control, evidence, and local-counsel review routes without losing the legal source path.</p>'
+          +'<div class="act3-proof-chain mt-4"><span>public evidence</span><span>profiles</span><span>registry application</span><span>qualified review</span><span>assembly handoff</span></div>'
+          +'<p class="font-display italic gold mt-4" style="font-size:1.22rem;line-height:1.35">That is the through-line: legal method, converted into architecture, then run through a review-bound workflow.</p>'
+          +'<a class="btn sm sec mt-3" href="#capstone">Continue to Capstone</a>'
+        +'</div>'
+      +'</div></section>'
+    ));
+
+    document.querySelectorAll('[data-act3-runtime-step]').forEach(function(btn){
       btn.addEventListener('click', function(){
-        var idx=parseInt(btn.getAttribute('data-act3-mode'),10);
-        document.querySelectorAll('[data-act3-mode]').forEach(function(n){ n.classList.toggle('active', n===btn); });
-        var copy=document.getElementById('act3-mode-copy'), mode=(engineA.modes||[])[idx] || {};
-        if(copy) copy.textContent=mode.description || '';
+        var idx=parseInt(btn.getAttribute('data-act3-runtime-step'),10);
+        var s=spine[idx] || spine[0];
+        openModal('<p class="act3-kicker">Runtime spine</p><h3>'+esc(s.title)+'</h3><div class="beat"><div class="lab">What it does</div><p>'+esc(s.detail)+'</p></div>');
       });
     });
-
-    document.querySelectorAll('[data-act3-engine]').forEach(function(btn){
+    document.querySelectorAll('[data-act3-control]').forEach(function(btn){
       btn.addEventListener('click', function(){
-        var engine=btn.getAttribute('data-act3-engine')==='a' ? engineA : engineB;
-        var node=btn.getAttribute('data-act3-node-name') || (engine.chain||[])[parseInt(btn.getAttribute('data-act3-node'),10)] || btn.textContent || '';
-        var detail=(engine.node_details || {})[node] || ('This step is part of the '+(engine.title || 'delivery system')+' path and is shown with synthetic/scrubbed proof only.');
-        openModal('<p class="act3-kicker">'+esc(engine.title || 'System node')+'</p><h3>'+esc(node)+'</h3><div class="beat"><div class="lab">What it does</div><p>'+esc(detail)+'</p></div>', false);
-      });
-    });
-
-    var transferNode=document.getElementById('act3-transfer');
-    if(transferNode){
-      transferNode.addEventListener('click', function(){
-        openModal('<p class="act3-kicker">Synthetic sample only</p><h3>'+esc(transfer.title || 'Structured Diligence Report')+'</h3><p class="act3-copy mt-2">A review-safe report packet that carries diligence findings into assembly. No client data or private registry corpus is exposed.</p><div class="act3-chip-row mt-3">'+chips(transfer.contents,'act3-report-chip')+'</div><div class="placeholder-note">'+esc(transfer.line || 'Push to Assembly')+'</div>', true);
-      });
-    }
-
-    function renderAgent(idx){
-      var m=(agent.modules||[])[idx] || {};
-      document.querySelectorAll('[data-act3-agent]').forEach(function(n){ n.classList.toggle('active', parseInt(n.getAttribute('data-act3-agent'),10)===idx); });
-      var detail=document.getElementById('act3-agent-detail');
-      if(detail){
-        detail.innerHTML='<p class="act3-kicker">Role module</p><h3 class="font-display text-white" style="font-size:1.55rem;line-height:1.05;margin:.35rem 0">'+esc(m.name || '')+'</h3>'
-          +'<div class="lab">Purpose</div><p>'+esc(m.purpose || '')+'</p><div class="lab">Input</div><p>'+esc(m.input || '')+'</p>'
-          +'<div class="lab">Output</div><p>'+esc(m.output || '')+'</p><div class="lab">Guardrail</div><p>'+esc(m.guardrail || '')+'</p>';
-      }
-    }
-    document.querySelectorAll('[data-act3-agent]').forEach(function(btn){
-      btn.addEventListener('click', function(){ renderAgent(parseInt(btn.getAttribute('data-act3-agent'),10)); });
-    });
-    renderAgent(0);
-
-    document.querySelectorAll('[data-act3-placeholder]').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        openModal('<p class="act3-kicker">Proof slot</p><h3>'+esc(btn.textContent || 'Proof artifact')+'</h3><div class="beat"><div class="lab">Status</div><p>This is intentionally marked as a placeholder until the scrubbed proof artifact is linked. No private prompts, credentials, client data, or production portal surfaces are exposed.</p></div>', false);
+        var idx=parseInt(btn.getAttribute('data-act3-control'),10);
+        var c=controls[idx] || controls[0];
+        openModal('<p class="act3-kicker">Review control</p><h3>'+esc(c.title)+'</h3><div class="beat"><div class="lab">Control logic</div><p>'+esc(c.detail)+'</p></div>');
       });
     });
   })();
