@@ -2,7 +2,7 @@
   var page=document.body.getAttribute('data-page')||'home';
   var liveUrl='https://sandbox.lexnovahq.com/interface-diligence/diligence-system/';
   var contactUrl='legal-architecture-in-operation.html#contact';
-  var emailAddress='shwetav.alpna.singh@gmail.com';
+  var emailAddress='shwetabh.singh@lexnovahq.com';
   var fixes=document.createElement('link');
   fixes.rel='stylesheet';
   fixes.href='assets/editorial-multipage-fixes.css';
@@ -67,7 +67,7 @@
   }
   function buildFooter(){
     var footer=document.querySelector('footer'); if(!footer)return;
-    footer.innerHTML='<div class="editorial-footer"><div class="editorial-footer-brand"><strong>The Interface</strong><span>Law × Technology · AI Governance · Privacy · Systems</span></div><div><div class="editorial-footer-links"><a href="https://linkedin.com/in/shwetabh-singh" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:'+emailAddress+'" data-email-link="true">Email</a><a href="'+(page==='act3'?'#contact':contactUrl)+'" data-contact-link="true">Contact</a><span>© 2026 Shwetav Singh</span></div><div class="editorial-footer-note">Public, synthetic and scrubbed proof only.</div></div></div>';
+    footer.innerHTML='<div class="editorial-footer"><div class="editorial-footer-brand"><strong>The Interface</strong><span>Law × Technology · AI Governance · Privacy · Systems</span></div><div><div class="editorial-footer-links"><a href="https://linkedin.com/in/shwetabh-singh" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:'+emailAddress+'" data-email-link="true">Email</a><a href="'+(page==='act3'?'#contact':contactUrl)+'" data-contact-link="true">Contact</a><span>© 2026 Shwetabh Singh</span></div><div class="editorial-footer-note">Public, synthetic and scrubbed proof only.</div></div></div>';
   }
   function wireContactAndEmail(){
     document.addEventListener('click',function(event){

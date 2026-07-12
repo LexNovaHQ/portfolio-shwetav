@@ -1,13 +1,13 @@
 {
   "_meta": {
     "note": "Single content source for portfolio-shwetabh.lexnovahq.com. Stripped/watermarked-safe: no commercial framing, no Architect Notes, no secrets. Matrix rows derived from verified LEX_NOVA_REGISTRY_v2 (98 threats).",
-    "page_title": "Shwetav Singh — Technology & Data Protection Lawyer",
-    "og_title": "Shwetav Singh — Technology & Data Protection Lawyer",
+    "page_title": "Shwetabh Singh — Technology & Data Protection Lawyer",
+    "og_title": "Shwetabh Singh — Technology & Data Protection Lawyer",
     "og_description": "Technology, data protection, AI governance and commercial-contract work grounded in litigation, evidence and reviewable legal judgment.",
-    "footer": "© 2026 Shwetav Singh"
+    "footer": "© 2026 Shwetabh Singh"
   },
   "hero": {
-    "name": "Shwetav Singh",
+    "name": "Shwetabh Singh",
     "identity_line": "Technology & Data Protection Lawyer | AI Governance · Cross-Border Privacy · Commercial Contracts for Technology",
     "builder_line": "I work at the point where product mechanics, evidence and legal consequence meet.",
     "spine_eyebrow": "Doctrine → Taxonomy → Instruments → Tooling → Systems",
@@ -1207,11 +1207,6 @@
       ],
       "ctas": [
         {
-          "label": "Watch walkthrough",
-          "href": "#",
-          "state": "placeholder"
-        },
-        {
           "label": "View system map",
           "href": "#sandbox-os"
         },
@@ -1393,18 +1388,7 @@
         "role decomposition map"
       ],
       "why_not_live": "Video only: public live signal hunting would misframe the work as outreach tooling.",
-      "ctas": [
-        {
-          "label": "Watch prompt-agent walkthrough",
-          "href": "#",
-          "state": "placeholder"
-        },
-        {
-          "label": "View scrubbed output sample",
-          "href": "#",
-          "state": "placeholder"
-        }
-      ]
+      "ctas": []
     },
     "workflow_automation_proof": {
       "title": "Workflow Automation Proof — the same control logic outside law.",
@@ -1432,16 +1416,6 @@
       ],
       "agentic_boundary": "The agentic node recommends, drafts, classifies, or prepares a next action. It does not autonomously send, spend, delete, or execute external actions without human review.",
       "ctas": [
-        {
-          "label": "View automation build notes",
-          "href": "#",
-          "state": "placeholder"
-        },
-        {
-          "label": "Watch Category 2 demo",
-          "href": "#",
-          "state": "placeholder"
-        },
         {
           "label": "View repository",
           "href": "#",
@@ -1472,7 +1446,7 @@
     "genuineness": "All work shown is mine.",
     "contact": {
       "linkedin": "https://linkedin.com/in/shwetabh-singh",
-      "email": "shwetav.alpna.singh@gmail.com",
+      "email": "shwetabh.singh@lexnovahq.com",
       "phone": "+918825334336",
       "render": "clickable icons (LinkedIn / mail / phone), not pasted URLs"
     }
