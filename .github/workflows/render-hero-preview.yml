@@ -7,7 +7,7 @@ on:
     branches: [act2-live-run-rebuild]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   render:
@@ -16,6 +16,31 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: act2-live-run-rebuild
+      - name: Remove stale hero override
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '  var lockedHero = {'
+          boot = '  function boot(C, act2Manifest){'
+          if marker in s:
+              start = s.index(marker)
+              end = s.index(boot, start)
+              s = s[:start] + '  // Hero content is governed by the synchronized embedded content source.\n' + s[end:]
+          s = s.replace('  C.hero = Object.assign({}, C.hero || {}, lockedHero);\n', '')
+          s = s.replace('>Shwetabh Singh</div>', '>Shwetav Singh</div>')
+          s = s.replace('© 2026 Shwetabh Singh', '© 2026 Shwetav Singh')
+          p.write_text(s, encoding='utf-8')
+          PY
+          git diff --check
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add index.html
+            git commit -m "Remove stale hero content override"
+            git push origin HEAD:act2-live-run-rebuild
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -27,7 +52,6 @@ jobs:
       - name: Serve portfolio
         run: |
           python3 -m http.server 4173 > /tmp/portfolio-preview.log 2>&1 &
-          echo $! > /tmp/portfolio-preview.pid
           for i in {1..30}; do
             curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0
             sleep 1
@@ -50,16 +74,10 @@ jobs:
           await browser.close();
           EOF
           node render-preview.mjs
-      - name: Copy active source snapshots
-        run: |
-          cp index.html rendered-index.html
-          cp content.json rendered-content.json
       - uses: actions/upload-artifact@v4
         with:
           name: hero-preview
           path: |
             hero-desktop.png
             hero-mobile.png
-            rendered-index.html
-            rendered-content.json
           if-no-files-found: error
