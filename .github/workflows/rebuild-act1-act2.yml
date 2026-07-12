@@ -1,0 +1,114 @@
+name: Rebuild Act I and Act II
+
+on:
+  pull_request:
+    types: [edited, synchronize]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'act2-live-run-rebuild'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: act2-live-run-rebuild
+          fetch-depth: 0
+
+      - name: Apply locked Act I and Act II rebuild
+        run: python3 .github/tmp/rebuild_act1_act2.py
+
+      - name: Validate active sections
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          t=Path('index.html').read_text(encoding='utf-8')
+          required=[
+            'How I determine what legally matters.',
+            'What the grammar establishes',
+            'ACT II · APPLIED LEGAL ARCHITECTURE',
+            'From Commercial Reality to Legal Architecture.',
+            'Movement I · Deconstruct',
+            'Movement II · Test',
+            'Movement III · Reconstruct',
+            'Act II is the lawyer’s work',
+            'Act III is supporting execution'
+          ]
+          missing=[x for x in required if x not in t]
+          if missing: raise SystemExit('Missing required content: '+repr(missing))
+          active=t[t.index('  // ---------- ACT II ----------'):t.index('  function normalizeAct2')]
+          forbidden=['ACT II · DILIGENCE ARCHITECTURE','Active Vertical Registry','Locked Report Stack','GPT derives','Implemented AI Domain Instance']
+          leaked=[x for x in forbidden if x in active]
+          if leaked: raise SystemExit('Legacy Act II remains active: '+repr(leaked))
+          scripts=re.findall(r'<script(?![^>]*type="application/json")[^>]*>(.*?)</script>',t,re.S)
+          Path('/tmp/runtime.js').write_text('\n'.join(scripts),encoding='utf-8')
+          print('Structural validation: PASS')
+          PY
+          node --check /tmp/runtime.js
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install browser
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.52.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+
+      - name: Serve portfolio
+        run: |
+          python3 -m http.server 4173 >/tmp/portfolio.log 2>&1 &
+          for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
+          cat /tmp/portfolio.log
+          exit 1
+
+      - name: Test interactions and render
+        run: |
+          cat > /tmp/render-act2.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({headless:true});
+          for (const cfg of [{name:'desktop',width:1440,height:1100},{name:'mobile',width:390,height:844}]) {
+            const page = await browser.newPage({viewport:{width:cfg.width,height:cfg.height},deviceScaleFactor:1});
+            await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle',timeout:120000});
+            await page.waitForTimeout(1200);
+            const section = page.locator('#matrix');
+            await section.scrollIntoViewIfNeeded();
+            await page.waitForTimeout(250);
+            await page.locator('[data-act2-movement="test"]').click({force:true});
+            await page.locator('[data-act2-thread="credit"]').click({force:true});
+            await page.locator('#act2-thread-panel').getByText('The score materially determines').waitFor();
+            await page.locator('[data-act2-movement="reconstruct"]').click({force:true});
+            await page.locator('#act2-movement-panel').getByText('Rebuild the separate findings').waitFor();
+            await page.locator('[data-act2-movement="deconstruct"]').click({force:true});
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+            if (overflow > 1) throw new Error(`${cfg.name} horizontal overflow: ${overflow}px`);
+            await page.waitForTimeout(150);
+            await section.screenshot({path:`act2-${cfg.name}.png`});
+            await page.close();
+          }
+          await browser.close();
+          EOF
+          node /tmp/render-act2.mjs
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: act2-applied-legal-architecture-preview
+          path: |
+            act2-desktop.png
+            act2-mobile.png
+          if-no-files-found: error
+
+      - name: Commit rebuild
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Reposition Act I and rebuild Act II as applied legal architecture"
+          git push origin HEAD:act2-live-run-rebuild
