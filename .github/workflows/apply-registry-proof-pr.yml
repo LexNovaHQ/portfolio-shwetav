@@ -26,6 +26,9 @@ jobs:
       - name: Apply integrated registry proof
         run: python scripts/apply-registry-proof.py
 
+      - name: Validate integrated content contract
+        run: node scripts/check-portfolio-content-contract.mjs
+
       - name: Restore temporary runner files before bot commit
         shell: bash
         run: |
@@ -37,9 +40,6 @@ jobs:
             REGISTRY_PROOF_BRANCH_NOTE.md \
             REGISTRY_PROOF_ROLLOUT_PENDING.md
           rm -f .github/workflows/portfolio-content-contract.yml
-
-      - name: Validate integrated content contract
-        run: node scripts/check-portfolio-content-contract.mjs
 
       - name: Commit changes to PR branch
         shell: bash
