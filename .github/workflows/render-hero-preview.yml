@@ -1,0 +1,55 @@
+name: Render hero preview
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [act2-live-run-rebuild]
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install browser
+        run: |
+          npm init -y
+          npm install playwright@1.52.0
+          npx playwright install --with-deps chromium
+      - name: Serve portfolio
+        run: |
+          python3 -m http.server 4173 > /tmp/portfolio-preview.log 2>&1 &
+          echo $! > /tmp/portfolio-preview.pid
+          for i in {1..30}; do
+            curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/portfolio-preview.log
+          exit 1
+      - name: Render screenshots
+        run: |
+          cat > /tmp/render-preview.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch({ headless: true });
+          const desktop = await browser.newPage({ viewport: { width: 1440, height: 1100 }, deviceScaleFactor: 1 });
+          await desktop.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle', timeout: 120000 });
+          await desktop.screenshot({ path: 'hero-desktop.png', fullPage: false });
+          const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+          await mobile.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle', timeout: 120000 });
+          await mobile.screenshot({ path: 'hero-mobile.png', fullPage: false });
+          await browser.close();
+          EOF
+          node /tmp/render-preview.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hero-preview
+          path: |
+            hero-desktop.png
+            hero-mobile.png
+          if-no-files-found: error
