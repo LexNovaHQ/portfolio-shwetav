@@ -1,0 +1,46 @@
+name: Sync portfolio navigation
+
+on:
+  pull_request:
+    types: [synchronize, edited]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'act2-live-run-rebuild'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: act2-live-run-rebuild
+          fetch-depth: 0
+      - name: Synchronize navigation and rail
+        run: python3 .github/tmp/sync_portfolio_navigation.py
+      - name: Validate synchronization
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path('index.html').read_text(encoding='utf-8')
+          required=['Legal Grammar</a>','Applied Architecture</a>','Supporting Workflow</a>','ACT I · LEGAL GRAMMAR','ACT II · APPLIED LEGAL ARCHITECTURE','ACT III · SUPPORTING WORKFLOW']
+          missing=[x for x in required if x not in t]
+          if missing: raise SystemExit('Missing synchronized labels: '+repr(missing))
+          m=re.search(r'<script id="content-data" type="application/json">(.*?)</script>',t,re.S)
+          if not m: raise SystemExit('embedded content missing')
+          embedded=json.loads(m.group(1))
+          external=json.loads(Path('content.json').read_text(encoding='utf-8'))
+          if embedded['rail'] != external['rail']: raise SystemExit('rail mismatch')
+          print('Navigation sync validation: PASS')
+          PY
+      - name: Commit synchronization
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html content.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Synchronize legal grammar, applied architecture, and workflow navigation"
+          git push origin HEAD:act2-live-run-rebuild
