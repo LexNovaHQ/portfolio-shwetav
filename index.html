@@ -300,6 +300,7 @@
     .resolution p:last-child { margin-bottom: 0; }
 
     .map-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .mobile-swipe-note { display: none; }
     .map-card { padding: 18px; border: 1px solid #3a3c3e; background: #202326; }
     .map-card strong { display: flex; align-items: center; justify-content: space-between; color: #fff; }
     .map-card strong code { color: #d9b77a; font-family: inherit; }
@@ -374,6 +375,41 @@
     }
     @media (max-width: 640px) {
       .shell { width: min(100% - 24px, 1180px); }
+      .act2 h2 { font-size: clamp(2rem, 9.6vw, 2.75rem); line-height: 1.02; }
+      .stage { margin-top: 40px; }
+      .stage-title { gap: 10px; margin-bottom: 16px; }
+      .activity-tabs {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .activity-tab { flex: 0 0 82%; scroll-snap-align: start; }
+      .obligation-grid, .map-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .obligation { flex: 0 0 88%; scroll-snap-align: start; }
+      .map-card { flex: 0 0 82%; scroll-snap-align: start; }
+      .mobile-swipe-note { display: block; margin: -4px 0 10px; color: #aaa69f; font-size: .72rem; }
+      .architecture-table, .architecture-table tbody, .architecture-table tr, .architecture-table td { display: block; width: 100%; }
+      .architecture-table thead { display: none; }
+      .architecture-table { overflow: visible; background: transparent; }
+      .architecture-table tr { margin-bottom: 12px; border: 1px solid #3a3c3e; background: #202326; }
+      .architecture-table td { border: 0; border-top: 1px solid #3a3c3e; padding: 13px 14px; }
+      .architecture-table td:first-child { border-top: 0; }
+      .architecture-table td::before { display: block; margin-bottom: 5px; color: #d9b77a; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+      .architecture-table td:nth-child(1)::before { content: "Resolved issue"; }
+      .architecture-table td:nth-child(2)::before { content: "Contract route"; }
+      .architecture-table td:nth-child(3)::before { content: "Operational control"; }
+      .architecture-table td:nth-child(4)::before { content: "Evidence / counsel route"; }
+      .sticky-sandbox { display: none; }
       .section { padding: 68px 0; }
       .topbar-inner { min-height: 62px; }
       .wordmark span { display: none; }
@@ -387,11 +423,9 @@
       .axis { border-right: 0; border-bottom: 1px solid #4b4740; }
       .axis:last-child { border-bottom: 0; }
       .legal-questions { columns: 1; }
-      .architecture-table { display: block; overflow-x: auto; }
       .act2-cta { align-items: flex-start; flex-direction: column; }
       .time-row { grid-template-columns: 1fr; gap: 5px; }
       .footer-inner { flex-direction: column; }
-      .sticky-sandbox { right: 12px; bottom: 12px; }
     }
   </style>
 </head>
@@ -412,16 +446,14 @@
     </div>
   </header>
 
-  <a class="cta sticky-sandbox" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Open engine</a>
-
   <main id="top">
     <section class="hero">
       <div class="shell">
         <div class="hero-grid">
           <div>
             <p class="eyebrow">Legal technology portfolio · law-firm application</p>
-            <h1>I built a diligence engine that converts <span>product reality</span> into reviewable legal decisions.</h1>
-            <p class="hero-sub">It does not begin with a generic checklist or an open-ended prompt. It reconstructs the target, decomposes each offering into legally material activities, classifies those activities through domain-specific legal taxonomies, tests only the relevant obligations and exposure rows against evidence, controls and exclusions, and routes the result into drafting and review.</p>
+            <h1>I turn complex <span>product reality</span> into reviewable legal decisions.</h1>
+            <p class="hero-sub">I am an advocate with a litigation foundation working across technology, data, commercial contracts and legal systems. I built the diligence engine to preserve that legal method in practice: reconstruct the target, decompose the offering into legally material activities, apply domain-specific legal taxonomies, test only the relevant obligations and exposure rows against evidence, controls and exclusions, and route the result into drafting and review.</p>
             <div class="hero-actions">
               <a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Enter the diligence sandbox</a>
               <a class="cta secondary" href="#applied">See the legal architecture</a>
@@ -507,16 +539,16 @@
         <div class="section-head reveal">
           <p class="eyebrow">Act II · From Commercial Reality to Legal Architecture</p>
           <h2>How I deconstruct a complex matter into legally material facts, test the legal consequences of those facts against the relevant duties and authorities, and reconstruct the resulting conclusions into a coherent legal position.</h2>
-          <p class="section-intro">This is not a research paper or a conventional case study. It is a selected decision path through one synthetic diligence run, showing how the engine moves from activity mechanics to legal classification, obligation routing, exposure testing and remediation.</p>
+          <p class="section-intro">This selected AsterPay run shows the method in operation: activity mechanics are established first, classifications narrow the review universe, obligations and exposure rows are applied against evidence and exclusions, and the resolved findings are rebuilt into coordinated legal architecture.</p>
           <p class="run-note">Illustrative matter only. Jurisdictional applicability and final legal judgment remain subject to qualified and local counsel review.</p>
         </div>
 
         <article class="matter-card reveal">
           <div class="matter-main">
-            <p class="eyebrow">Synthetic target · AsterPay</p>
+            <p class="eyebrow">Simulated diligence instruction · AsterPay</p>
             <h3>AI-enabled merchant payments, identity verification and credit-risk decisioning.</h3>
-            <p>AsterPay presents itself as one platform. The legal review cannot treat it as one activity. The run separates money movement, risk scoring, identity verification, model routing and grievance handling because each produces a different legal route.</p>
-            <a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Run a target in the sandbox</a>
+            <p>AsterPay is being reviewed for an enterprise rollout involving a licensed partner bank, merchant settlement, applicant scoring and third-party model services. The legal review cannot treat the platform as one activity. It separates money movement, risk scoring, identity verification, model routing and grievance handling because each produces a different legal route.</p>
+            <a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Enter the diligence sandbox</a>
           </div>
           <div class="matter-meta">
             <div class="meta-cell"><strong>Primary domain</strong><span>FinTech</span></div>
@@ -524,7 +556,7 @@
             <div class="meta-cell"><strong>Evidence boundary</strong><span>Public footprint</span></div>
             <div class="meta-cell"><strong>Market signals</strong><span>India · EU · US</span></div>
             <div class="meta-cell"><strong>Customer model</strong><span>Merchant / enterprise</span></div>
-            <div class="meta-cell"><strong>Decision status</strong><span>Review-ready, not final opinion</span></div>
+            <div class="meta-cell"><strong>Review instruction</strong><span>Enterprise rollout and partner diligence</span></div>
           </div>
         </article>
 
@@ -544,6 +576,7 @@
             <span>02</span><h3>Route the obligations created by the classified activity</h3>
             <p>The taxonomy narrows the review universe. It does not itself decide applicability or compliance. It determines which obligations must be investigated and what evidence or control would answer them.</p>
           </div>
+          <p class="mobile-swipe-note">Swipe to inspect the routed obligations.</p>
           <div class="obligation-grid">
             <article class="obligation">
               <div class="code">FIN-OBL-01</div><h4>Licensing & Authorisation</h4>
@@ -702,6 +735,7 @@
             <span>04</span><h3>Resolve the matter across terminal harm categories</h3>
             <p>The subcategory records the legal harm at the end of the chain — what the claimant, customer or regulator ultimately acts on — rather than merely the technology through which the problem arose.</p>
           </div>
+          <p class="mobile-swipe-note">Swipe to inspect the terminal harm categories.</p>
           <div class="map-grid">
             <article class="map-card"><strong><code>LIC</code><span class="status controlled">Controlled</span></strong><p>Licensing / authorisation exposure narrowed by the sponsor-bank and no-custody structure.</p></article>
             <article class="map-card"><strong><code>FUND</code><span class="status limited">Limited</span></strong><p>Safeguarding structure requires private proof of escrow, segregation and reconciliation.</p></article>
@@ -731,7 +765,7 @@
 
         <div class="act2-cta reveal">
           <div><h3>The portfolio shows selected rows. The engine shows the complete run.</h3><p>Enter a target, inspect the evidence-led profiles, and follow the route from activity mechanics to exposure resolution.</p></div>
-          <a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Open the complete diligence run</a>
+          <a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Enter the diligence sandbox</a>
         </div>
       </div>
     </section>
@@ -785,7 +819,7 @@
           <h3>Built as an inspectable legal workflow, not a black-box chatbot.</h3>
           <p>Node.js and Express runtime; ES modules; Zod schema contracts; YAML/JSON legal registries; deterministic validators and routing; model-assisted semantic evaluation inside bounded contracts; Firestore and Cloud Tasks; Firebase Admin and Google APIs; static web interface.</p>
           <div class="stack"><span>Node.js</span><span>Express</span><span>Zod</span><span>YAML / JSON registries</span><span>Deterministic validators</span><span>Model-assisted semantic review</span><span>Firestore</span><span>Cloud Tasks</span><span>Google APIs</span></div>
-          <div style="margin-top:24px"><a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Inspect the running system</a></div>
+          <div style="margin-top:24px"><a class="cta" href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Enter the diligence sandbox</a></div>
         </div>
       </div>
     </section>
@@ -794,8 +828,8 @@
       <div class="shell">
         <div class="section-head reveal">
           <p class="eyebrow">Professional foundation</p>
-          <h2>The builder is still a lawyer.</h2>
-          <p class="section-intro">My systems work grows out of litigation, legal drafting and operational responsibility. The technology is evidence that I can make legal reasoning structured and deployable inside a practice team.</p>
+          <h2>Legal judgment is the foundation.</h2>
+          <p class="section-intro">My systems work grows out of litigation, legal drafting and operational responsibility. The technology is evidence that I can make legal reasoning structured, reviewable and deployable inside a practice team.</p>
         </div>
 
         <div class="experience-grid reveal">
@@ -814,7 +848,7 @@
             <p>I understand both sides of legal technology work: the legal team needs accuracy, reviewability and professional boundaries; the product or engineering team needs explicit rules, schemas, states and acceptance criteria.</p>
             <p>The diligence engine is proof that I can move between those languages without reducing law to a checklist or turning technology into theatre.</p>
             <div class="utility-links">
-              <a href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Enter the diligence sandbox →</a>
+              <a href="https://sandbox.lexnovahq.com/interface-diligence/diligence-system/" target="_blank" rel="noopener">Enter the diligence sandbox</a>
               <a href="https://linkedin.com/in/shwetabh-singh" target="_blank" rel="noopener">LinkedIn →</a>
               <a href="mailto:shwetav.alpna.singh@gmail.com">Email →</a>
             </div>
