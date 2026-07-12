@@ -1,4 +1,4 @@
-name: Rebuild Act III CTA and Capstone
+name: Diagnose final Act III CTA
 
 on:
   pull_request:
@@ -6,158 +6,82 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: read
 
 jobs:
-  build:
-    if: github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'act2-live-run-rebuild'
+  render:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'act2-live-run-rebuild'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: act2-live-run-rebuild
-          fetch-depth: 0
-      - name: Apply CTA hierarchy and integrated synthesis
-        run: |
-          python3 .github/tmp/rebuild_act3_cta_capstone.py
-          python3 .github/tmp/scrub_standalone_capstone.py
-      - name: Validate structure and JavaScript
-        id: validate
-        continue-on-error: true
-        run: |
-          python3 - <<'PY' > structural-validation.txt 2>&1
-          from pathlib import Path
-          import json,re,subprocess,tempfile
-          t=Path('index.html').read_text(encoding='utf-8')
-          required=[
-            'ACT III · LEGAL ARCHITECTURE IN OPERATION',
-            'One legal method, expressed through technology.',
-            'See the legal architecture operate.',
-            'act3-launch-btn',
-            'data-upstream-system-cta="true"',
-            'Understand the method before running the system.',
-            'id="act3-synthesis"',
-            'id="sandbox-os"'
-          ]
-          missing=[x for x in required if x not in t]
-          print('missing=',missing)
-          if missing: raise SystemExit('Missing required Act III elements: '+repr(missing))
-          forbidden=['<a class="nav-link" href="#capstone">Capstone</a>','<section id="capstone"','Continue to Capstone','data-interface-os-gate="true"']
-          leaked=[x for x in forbidden if x in t]
-          print('leaked=',leaked)
-          if leaked: raise SystemExit('Old Capstone/gate elements remain: '+repr(leaked))
-          print('upstream_count=',t.count('data-upstream-system-cta="true"'))
-          print('launch_count=',t.count('class="act3-launch-btn"'))
-          if t.count('data-upstream-system-cta="true"') != 3:
-            raise SystemExit('Expected three upstream system CTAs')
-          if t.count('class="act3-launch-btn"') != 1:
-            raise SystemExit('Expected one dominant Act III launch button')
-          m=re.search(r'<script id="content-data" type="application/json">(.*?)</script>',t,re.S)
-          if not m: raise SystemExit('Embedded content missing')
-          embedded=json.loads(m.group(1)); external=json.loads(Path('content.json').read_text(encoding='utf-8'))
-          print('rail_equal=',embedded['rail']==external['rail'])
-          if embedded['rail'] != external['rail']: raise SystemExit('Rail sources are not synchronized')
-          if any(n.get('target')=='capstone' for n in external['rail']['nodes']): raise SystemExit('Capstone remains in rail')
-          if 'capstone' in embedded or 'capstone' in external: raise SystemExit('Standalone Capstone content remains')
-          scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',t)
-          runtime='\n'.join(s for s in scripts if s.strip() and not s.lstrip().startswith('{'))
-          with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False,encoding='utf-8') as f:
-            f.write(runtime); p=f.name
-          check=subprocess.run(['node','--check',p],capture_output=True,text=True)
-          print('node_stdout=',check.stdout)
-          print('node_stderr=',check.stderr)
-          if check.returncode: raise SystemExit(check.returncode)
-          print('Structural and JavaScript validation: PASS')
-          PY
-          cat structural-validation.txt
-          test "${PIPESTATUS[0]}" -eq 0
-      - name: Upload diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: act3-cta-diagnostics
-          path: |
-            structural-validation.txt
-            index.html
-          if-no-files-found: error
-      - name: Commit rebuilt page
-        if: steps.validate.outcome == 'success'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html content.json
-          git diff --cached --quiet && exit 0
-          git commit -m "Make the diligence system the Act III climax and absorb Capstone"
-          git push origin HEAD:act2-live-run-rebuild
       - uses: actions/setup-node@v4
-        if: steps.validate.outcome == 'success'
         with:
           node-version: 20
       - name: Install browser
-        if: steps.validate.outcome == 'success'
         run: |
           npm init -y >/dev/null 2>&1
           npm install playwright@1.52.0 >/dev/null 2>&1
           npx playwright install --with-deps chromium >/dev/null 2>&1
       - name: Serve portfolio
-        if: steps.validate.outcome == 'success'
         run: |
           python3 -m http.server 4173 >/tmp/portfolio.log 2>&1 &
           for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
           cat /tmp/portfolio.log
           exit 1
-      - name: Validate CTA behavior and capture
-        if: steps.validate.outcome == 'success'
+      - name: Diagnose and capture
         run: |
-          cat > validate-act3-cta.mjs <<'EOF'
+          cat > diagnose-act3.mjs <<'EOF'
           import { chromium } from 'playwright';
           import { writeFile } from 'node:fs/promises';
           const browser=await chromium.launch({headless:true});
-          const results=[];
+          const logs=[];
           for(const cfg of [{name:'desktop',width:1440,height:1100},{name:'mobile',width:390,height:844}]){
             const page=await browser.newPage({viewport:{width:cfg.width,height:cfg.height},deviceScaleFactor:1});
-            const errors=[]; page.on('pageerror',e=>errors.push(String(e)));
-            await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle',timeout:120000});
-            await page.waitForTimeout(1000);
-            if(await page.locator('[data-upstream-system-cta]').count()!==3) throw new Error(`${cfg.name}: upstream CTA count mismatch`);
-            await page.locator('[data-upstream-system-cta]').first().click({force:true});
-            await page.waitForTimeout(100);
-            const modalText=await page.locator('#modal').innerText();
-            if(!modalText.includes('Understand the method before running the system')) throw new Error(`${cfg.name}: gate modal missing`);
-            if(!modalText.includes('Continue reading')||!modalText.includes('Open the system anyway')) throw new Error(`${cfg.name}: gate actions missing`);
-            await page.locator('[data-system-continue]').click({force:true});
-            await page.waitForTimeout(150);
-            if(await page.locator('#modal.open').count()) throw new Error(`${cfg.name}: gate did not close`);
-            const act3=page.locator('#delivery-system');
-            await act3.scrollIntoViewIfNeeded();
-            await page.evaluate((mobile)=>{
-              document.querySelectorAll('#delivery-system .reveal').forEach(n=>n.classList.add('visible'));
-              const top=document.querySelector('.topnav'); const funnel=document.querySelector('.mobile-funnel');
-              if(top) top.style.display='none'; if(mobile&&funnel) funnel.style.display='none';
-            },cfg.name==='mobile');
-            await page.waitForTimeout(100);
-            const launch=page.locator('.act3-launch-btn');
-            if(await launch.count()!==1) throw new Error(`${cfg.name}: dominant launch missing`);
-            if(await launch.getAttribute('data-upstream-system-cta')) throw new Error(`${cfg.name}: Act III launch is incorrectly gated`);
-            if(await page.locator('#capstone').count()) throw new Error(`${cfg.name}: standalone Capstone remains`);
-            const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
-            if(overflow>1) throw new Error(`${cfg.name}: horizontal overflow ${overflow}px`);
-            if(errors.length) throw new Error(`${cfg.name}: browser errors: ${errors.join(' | ')}`);
-            await act3.screenshot({path:`act3-${cfg.name}.png`});
-            results.push(`${cfg.name}: PASS — upstream gate, direct dominant launch, integrated synthesis, no Capstone, 0px overflow`);
+            const pageErrors=[]; page.on('pageerror',e=>pageErrors.push(String(e)));
+            try{
+              await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle',timeout:120000});
+              await page.waitForTimeout(1000);
+              logs.push(`${cfg.name} upstream-count=${await page.locator('[data-upstream-system-cta]').count()}`);
+              await page.locator('[data-upstream-system-cta]').first().click({force:true,timeout:15000});
+              await page.waitForTimeout(100);
+              logs.push(`${cfg.name} modal-open=${await page.locator('#modal.open').count()}`);
+              logs.push(`${cfg.name} modal-text=${(await page.locator('#modal').innerText()).slice(0,220)}`);
+              await page.locator('[data-system-continue]').click({force:true,timeout:15000});
+              await page.waitForTimeout(200);
+              logs.push(`${cfg.name} modal-after-continue=${await page.locator('#modal.open').count()}`);
+              const act3=page.locator('#delivery-system');
+              await act3.scrollIntoViewIfNeeded();
+              await page.evaluate((mobile)=>{
+                document.querySelectorAll('#delivery-system .reveal').forEach(n=>n.classList.add('visible'));
+                const top=document.querySelector('.topnav'); const funnel=document.querySelector('.mobile-funnel');
+                if(top) top.style.display='none'; if(mobile&&funnel) funnel.style.display='none';
+              },cfg.name==='mobile');
+              await page.waitForTimeout(100);
+              logs.push(`${cfg.name} launch-count=${await page.locator('.act3-launch-btn').count()}`);
+              logs.push(`${cfg.name} capstone-count=${await page.locator('#capstone').count()}`);
+              logs.push(`${cfg.name} overflow=${await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)}`);
+              logs.push(`${cfg.name} page-errors=${pageErrors.join(' | ')||'none'}`);
+              await act3.screenshot({path:`act3-${cfg.name}.png`});
+            }catch(error){
+              logs.push(`${cfg.name} ERROR=${String(error)}`);
+              logs.push(`${cfg.name} page-errors=${pageErrors.join(' | ')||'none'}`);
+              await page.screenshot({path:`act3-${cfg.name}.png`,fullPage:true}).catch(()=>{});
+            }
             await page.close();
           }
           await browser.close();
-          await writeFile('validation.txt',results.join('\n'));
+          await writeFile('browser-diagnostic.txt',logs.join('\n'));
           EOF
-          node validate-act3-cta.mjs
+          node diagnose-act3.mjs || true
       - uses: actions/upload-artifact@v4
-        if: steps.validate.outcome == 'success'
+        if: always()
         with:
-          name: act3-cta-capstone-preview
+          name: act3-cta-browser-diagnostic
           path: |
             act3-desktop.png
             act3-mobile.png
-            validation.txt
-          if-no-files-found: error
+            browser-diagnostic.txt
+          if-no-files-found: warn
