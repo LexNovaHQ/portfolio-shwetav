@@ -19,7 +19,9 @@ jobs:
           ref: act2-live-run-rebuild
           fetch-depth: 0
       - name: Apply CTA hierarchy and integrated synthesis
-        run: python3 .github/tmp/rebuild_act3_cta_capstone.py
+        run: |
+          python3 .github/tmp/rebuild_act3_cta_capstone.py
+          python3 .github/tmp/scrub_standalone_capstone.py
       - name: Validate structure and JavaScript
         id: validate
         continue-on-error: true
@@ -57,6 +59,7 @@ jobs:
           print('rail_equal=',embedded['rail']==external['rail'])
           if embedded['rail'] != external['rail']: raise SystemExit('Rail sources are not synchronized')
           if any(n.get('target')=='capstone' for n in external['rail']['nodes']): raise SystemExit('Capstone remains in rail')
+          if 'capstone' in embedded or 'capstone' in external: raise SystemExit('Standalone Capstone content remains')
           scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',t)
           runtime='\n'.join(s for s in scripts if s.strip() and not s.lstrip().startswith('{'))
           with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False,encoding='utf-8') as f:
