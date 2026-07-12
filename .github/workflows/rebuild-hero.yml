@@ -1,0 +1,62 @@
+name: Rebuild hero on original UI
+
+on:
+  push:
+    branches:
+      - act2-live-run-rebuild
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore original portfolio UI baseline
+        run: |
+          git fetch origin main
+          git checkout origin/main -- index.html content.json portfolio.html data/act2-manifest.json
+
+      - name: Apply hero-only surgery
+        run: python .github/scripts/rebuild_hero.py
+
+      - name: Validate embedded content and runtime JavaScript
+        run: |
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+          html = Path('index.html').read_text(encoding='utf-8')
+          m = re.search(r'<script id="content-data" type="application/json">(.*?)</script>', html, re.S)
+          assert m, 'embedded content JSON missing'
+          json.loads(m.group(1))
+          scripts = re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>', html, re.S)
+          executable = []
+          for block in scripts:
+              if block.strip().startswith('{'):
+                  continue
+              executable.append(block)
+          Path('/tmp/portfolio-runtime.js').write_text('\n'.join(executable), encoding='utf-8')
+          assert html.count('class="legal-method-step"') == 1, 'renderer definition missing or duplicated'
+          assert 'Regulatory Update Signals' in html
+          assert html.find('hero-method-cta') > html.find('legal-method-chain')
+          print('HTML and embedded JSON validation: PASS')
+          PY
+          node --check /tmp/portfolio-runtime.js
+
+      - name: Commit rebuilt hero
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html content.json portfolio.html data/act2-manifest.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Rebuild lawyer-first hero on original portfolio UI"
+          git push origin HEAD:act2-live-run-rebuild
