@@ -31,65 +31,51 @@ jobs:
           for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
           cat /tmp/portfolio.log
           exit 1
-      - name: Capture Act II
+      - name: Validate and capture Act II
         run: |
-          echo 'Capture started.' > browser-errors.txt
           cat > render-act2.mjs <<'EOF'
           import { chromium } from 'playwright';
-          import { appendFile } from 'node:fs/promises';
+          import { writeFile } from 'node:fs/promises';
           const browser = await chromium.launch({headless:true});
-          const NL=String.fromCharCode(10);
+          const logs=[];
           for (const cfg of [{name:'desktop',width:1440,height:1100},{name:'mobile',width:390,height:844}]) {
             const page = await browser.newPage({viewport:{width:cfg.width,height:cfg.height},deviceScaleFactor:1});
-            const logs=[];
-            page.on('pageerror', error => logs.push(`pageerror: ${String(error)}`));
-            try {
-              await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle',timeout:120000});
-              await page.waitForTimeout(1200);
-              const section=page.locator('#matrix');
-              await section.scrollIntoViewIfNeeded();
-              await page.waitForTimeout(250);
-              const movementCount=await page.locator('[data-act2-movement]').count();
-              const threadCountBefore=await page.locator('[data-act2-thread]').count();
-              const initial=await page.locator('#act2-movement-panel').innerText().catch(()=> 'movement panel unavailable');
-              logs.push(`movement-count: ${movementCount}`);
-              logs.push(`thread-count-before-test: ${threadCountBefore}`);
-              logs.push(`initial: ${initial.slice(0,220)}`);
-              await page.screenshot({path:`act2-${cfg.name}.png`,fullPage:false});
-              if(movementCount>=3){
-                await page.locator('[data-act2-movement="test"]').click({force:true}).catch(error=>logs.push(`test-click: ${String(error)}`));
-                await page.waitForTimeout(150);
-                const threadCount=await page.locator('[data-act2-thread]').count();
-                logs.push(`thread-count-after-test: ${threadCount}`);
-                if(threadCount){
-                  await page.locator('[data-act2-thread="credit"]').click({force:true}).catch(error=>logs.push(`credit-click: ${String(error)}`));
-                  await page.waitForTimeout(100);
-                  const tested=await page.locator('#act2-thread-panel').innerText().catch(()=> 'thread panel unavailable');
-                  logs.push(`tested: ${tested.slice(0,240)}`);
-                }
-                await page.locator('[data-act2-movement="reconstruct"]').click({force:true}).catch(error=>logs.push(`reconstruct-click: ${String(error)}`));
-                await page.waitForTimeout(100);
-                const rebuilt=await page.locator('#act2-movement-panel').innerText().catch(()=> 'movement panel unavailable');
-                logs.push(`reconstructed: ${rebuilt.slice(0,220)}`);
-              }
-              const overflow=await page.evaluate(() => document.documentElement.scrollWidth-window.innerWidth);
-              logs.push(`horizontal-overflow: ${overflow}px`);
-            } catch(error) {
-              logs.push(`capture-error: ${String(error)}`);
-              await page.screenshot({path:`act2-${cfg.name}.png`,fullPage:false}).catch(()=>{});
-            }
-            await appendFile('browser-errors.txt',NL+'['+cfg.name+']'+NL+logs.join(NL)+NL);
+            const errors=[];
+            page.on('pageerror', error => errors.push(String(error)));
+            await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle',timeout:120000});
+            await page.waitForTimeout(1200);
+            const section=page.locator('#matrix');
+            await section.scrollIntoViewIfNeeded();
+            await page.waitForTimeout(250);
+            const initial=await page.locator('#act2-movement-panel').innerText();
+            if(!initial.includes('Expose the legally distinct matter')) throw new Error(`${cfg.name}: Deconstruct did not render`);
+            await section.screenshot({path:`act2-${cfg.name}.png`});
+            await page.evaluate(() => document.querySelector('[data-act2-movement="test"]').click());
+            await page.waitForTimeout(100);
+            if(await page.locator('[data-act2-thread]').count() !== 4) throw new Error(`${cfg.name}: issue thread tabs missing`);
+            await page.evaluate(() => document.querySelector('[data-act2-thread="credit"]').click());
+            await page.waitForTimeout(100);
+            const tested=await page.locator('#act2-thread-panel').innerText();
+            if(!tested.includes('The score materially determines')) throw new Error(`${cfg.name}: Credit Scoring test did not render`);
+            await page.evaluate(() => document.querySelector('[data-act2-movement="reconstruct"]').click());
+            await page.waitForTimeout(100);
+            const rebuilt=await page.locator('#act2-movement-panel').innerText();
+            if(!rebuilt.includes('Rebuild the separate findings')) throw new Error(`${cfg.name}: Reconstruct did not render`);
+            const overflow=await page.evaluate(() => document.documentElement.scrollWidth-window.innerWidth);
+            if(overflow>1) throw new Error(`${cfg.name}: horizontal overflow ${overflow}px`);
+            if(errors.length) throw new Error(`${cfg.name}: browser errors: ${errors.join(' | ')}`);
+            logs.push(`${cfg.name}: PASS — Deconstruct, Test, Credit Scoring, Reconstruct, 0px overflow`);
             await page.close();
           }
           await browser.close();
+          await writeFile('validation.txt',logs.join('\n'));
           EOF
-          node render-act2.mjs 2>> browser-errors.txt || true
+          node render-act2.mjs
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: act2-applied-legal-architecture-preview
+          name: act2-final-preview
           path: |
             act2-desktop.png
             act2-mobile.png
-            browser-errors.txt
-          if-no-files-found: warn
+            validation.txt
+          if-no-files-found: error
