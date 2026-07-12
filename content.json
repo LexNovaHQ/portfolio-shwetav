@@ -78,9 +78,9 @@
   },
   "rail": {
     "chip": {
-      "derived": "law → method",
-      "structured": "risks → instruments",
-      "running": "instruments → delivery system"
+      "derived": "grammar → matter",
+      "structured": "matter → architecture",
+      "running": "architecture → workflow"
     },
     "nodes": [
       {
@@ -91,76 +91,76 @@
         "why": "Establishes the claim: lawyer first, systems second."
       },
       {
-        "band": "ACT I · FOUNDATION",
-        "band_tag": "the law",
-        "node": "Doctrine",
-        "sub": "AI physics → legal doctrine",
+        "band": "ACT I · LEGAL GRAMMAR",
+        "band_tag": "how I determine what matters",
+        "node": "Legal Lenses",
+        "sub": "conduct → role → consequence",
         "target": "doctrine-layer",
-        "why": "Shows the legal source layer: how AI mechanics create legal consequences."
+        "why": "Shows the recurring legal questions used to identify what is materially relevant."
       },
       {
-        "band": "ACT I · FOUNDATION",
-        "band_tag": "the law",
-        "node": "Taxonomy",
-        "sub": "risk surfaces",
+        "band": "ACT I · LEGAL GRAMMAR",
+        "band_tag": "how I determine what matters",
+        "node": "Domain Vocabulary",
+        "sub": "behavior · lane · surface · harm",
         "target": "taxonomy-map",
-        "why": "Shows how AI use cases become legal risk categories."
+        "why": "Shows how the same legal grammar adapts without collapsing distinct domain vocabularies."
       },
       {
-        "band": "ACT II · THE LEGAL MATRIX",
-        "band_tag": "the instruments",
-        "node": "Matrix",
-        "sub": "98 threats → authority → controls",
+        "band": "ACT II · APPLIED LEGAL ARCHITECTURE",
+        "band_tag": "the commercial matter",
+        "node": "Deconstruct",
+        "sub": "commercial reality → legal parts",
         "target": "act2-threat-matrix",
-        "why": "Shows the registry that converts AI legal risk into traceable threat units."
+        "why": "Shows how one commercial proposition becomes separate activities, roles, flows, data, decisions and dependencies."
       },
       {
-        "band": "ACT II · THE LEGAL MATRIX",
-        "band_tag": "the instruments",
-        "node": "Instruments",
-        "sub": "document stack + clause viewer",
+        "band": "ACT II · APPLIED LEGAL ARCHITECTURE",
+        "band_tag": "the commercial matter",
+        "node": "Test & Reconstruct",
+        "sub": "duties → position → response",
         "target": "act2-living-document",
-        "why": "Shows how mapped risks become clauses, policies, addenda, and playbooks."
+        "why": "Shows how material facts are tested and recombined into one coherent legal architecture."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Walkthrough",
-        "sub": "project runs",
+        "band": "ACT III · SUPPORTING WORKFLOW",
+        "band_tag": "architecture in operation",
+        "node": "Evidence Path",
+        "sub": "sources → factual profiles",
         "target": "project-walkthrough",
-        "why": "Shows the full-power system run in project/model environments."
+        "why": "Shows how the engine preserves the evidence and factual structure defined by the lawyer."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Sandbox OS",
-        "sub": "diligence → assembly → delivery",
+        "band": "ACT III · SUPPORTING WORKFLOW",
+        "band_tag": "architecture in operation",
+        "node": "Live System",
+        "sub": "structured testing → report",
         "target": "sandbox-os",
-        "why": "Shows the public-safe sandbox where the delivery loop can be tested with synthetic data."
+        "why": "Shows the public-safe workflow applying the architecture without originating legal judgment."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Prompt Systems",
-        "sub": "controlled legal intelligence",
+        "band": "ACT III · SUPPORTING WORKFLOW",
+        "band_tag": "architecture in operation",
+        "node": "Review Controls",
+        "sub": "boundaries · evidence · escalation",
         "target": "prompt-agent-proof",
-        "why": "Shows controlled prompt-agent workflows for legal intelligence and reviewable output."
+        "why": "Shows the controls that prevent unsupported conclusions and preserve qualified review."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Automation",
-        "sub": "general workflow proof",
+        "band": "ACT III · SUPPORTING WORKFLOW",
+        "band_tag": "architecture in operation",
+        "node": "Handoff",
+        "sub": "review → assembly route",
         "target": "workflow-automation-proof",
-        "why": "Shows that the same controlled workflow logic can be applied outside law."
+        "why": "Shows how reviewed findings move forward without losing their source, limitation or counsel route."
       },
       {
         "band": "CAPSTONE",
         "band_tag": "the method",
         "node": "Synthesis",
-        "sub": "one legal method",
+        "sub": "lawyer → architecture → system",
         "target": "capstone",
-        "why": "Synthesizes the portfolio into one legal method across jurisdictions and systems."
+        "why": "Synthesizes the portfolio into one lawyer-first Law × Technology method."
       },
       {
         "kind": "terminal",
