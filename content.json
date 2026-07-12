@@ -72,7 +72,7 @@
     ],
     "proof_line": "Portfolio examples use public, synthetic or scrubbed materials. The live sandbox demonstrates the delivery workflow; final legal reliance remains with qualified counsel.",
     "credential_bar": "3.5 years litigation · B.A. LL.B., NLU Odisha · AI governance · cross-border privacy · commercial contracts · legal systems",
-    "headline": "Technology changes the fact pattern. Legal judgment determines the position.",
+    "headline": "A litigator making AI legal work defensible enough to deploy.",
     "foundation_paragraph": "My legal foundation is 3.5 years of litigation. That experience taught me to separate assertion from evidence, identify the issue that actually determines the outcome, and draft for scrutiny rather than appearance. I now apply that discipline to technology, data, AI governance and commercial-contract work—understanding how the product operates, identifying the legal consequences, and translating those conclusions into contracts, controls and review-ready legal work.",
     "formation_spine": []
   },
@@ -199,7 +199,7 @@
         "Remediation"
       ],
       "worked_line": "A model is probabilistic (mechanism) → its confident false output creates reliance liability (consequence) → a hallucination-specific waiver + output-authority boundary closes it (remediation).",
-      "scope_stat": "98 threats · 10 archetypes · 10 surfaces · 3 jurisdictions — authored solo since October 2025, refined from 81 through forensic-engine runs.",
+      "scope_stat": "Registry lineage: 81 → 98 AI-governance rows. A second FinTech registry now contains 46 routable rows under the same key structure.",
       "applied_practice": "Applied-practice layer shown frosted, with a count only. No raw corpus, no commercial labels."
     },
     "risk_map": {
@@ -1450,5 +1450,65 @@
       "phone": "+918825334336",
       "render": "clickable icons (LinkedIn / mail / phone), not pasted URLs"
     }
+  },
+  "registry_proof": {
+    "title": "Two registries. One key structure.",
+    "eyebrow": "CROSS-DOMAIN REGISTRY PROOF",
+    "supporting_line": "The vocabulary changes by domain. The derivation contract does not.",
+    "intro": "The AI-governance and FinTech packages use different legal vocabularies, but the same controlled derivation contract. Each activity is resolved through the same seven gates before a row-specific threat trigger can fire.",
+    "ai_governance": {
+      "label": "AI Governance",
+      "package_id": "ai-governance",
+      "key_file": "AI_Registry_Key.yml",
+      "key_version": "v4.0",
+      "routable_rows": 98,
+      "behavior_classes": 14,
+      "scope": "AI product and deployment exposures"
+    },
+    "fintech": {
+      "label": "FinTech",
+      "package_id": "fintech",
+      "key_file": "FinTech_Registry_Key.yml",
+      "key_version": "v1.0",
+      "routable_rows": 46,
+      "behavior_classes": 14,
+      "scope": "Payments, lending, custody, digital assets and financial-regulatory exposures",
+      "built_to_structure_of": "AI_Registry_Key.yml"
+    },
+    "derivation_order": [
+      "Behavior Class",
+      "Lane",
+      "Surface",
+      "Subcategory / Terminal Harm",
+      "Compliance Framework",
+      "Severity",
+      "Threat Trigger"
+    ],
+    "doctrine": "Model suggests. Rules decide. Evidence locks. Conflicts block auto-lock.",
+    "lineage": "Registry lineage: 81 → 98 AI-governance rows. A second FinTech registry now contains 46 routable rows under the same key structure.",
+    "sample_rows": [
+      {
+        "threat_id": "PAY_LIC_001",
+        "threat_name": "Unlicensed Money Transmission / Payment Aggregation",
+        "classification": "PAY · Lane A · Transaction-Data | Merchant-SME · Licensing / Authorisation Defect",
+        "authority_route": "RBI Payment Aggregator Directions 2025 · EU payment-institution authorisation / incoming PSD3-PSR · FinCEN MSB and state money-transmitter licensing",
+        "trigger": "Funds are collected, pooled or transmitted through the product without the required authorisation or a disclosed licensed sponsor structure."
+      },
+      {
+        "threat_id": "XCHG_LIC_001",
+        "threat_name": "Unauthorised Crypto-Asset Service — CASP / VASP",
+        "classification": "XCHG · Lane A · Crypto-VirtualAsset | Cross-Border · Licensing / Authorisation Defect",
+        "authority_route": "FIU-IND registration · MiCA CASP authorisation · FinCEN MSB and applicable securities registration",
+        "trigger": "Exchange, custody, transfer or brokerage is offered in a market without the required registration, authorisation or effective geographic exclusion."
+      },
+      {
+        "threat_id": "SCOR_CONS_001",
+        "threat_name": "Algorithmic Underwriting Bias / AI Credit-Model Governance",
+        "classification": "SCOR · Lane A · Credit-Data | Sensitive-Financial · Consumer Harm",
+        "authority_route": "RBI fair-practices and model-governance expectations · GDPR Article 22 and EU AI Act · ECOA / Regulation B and model-risk guidance",
+        "trigger": "A credit model lacks bias testing, validation, specific adverse-action reasons, human oversight or a contest route."
+      }
+    ],
+    "closing_line": "Different vocabulary. Identical structure. Domain-specific authority. Review-bound output."
   }
 }

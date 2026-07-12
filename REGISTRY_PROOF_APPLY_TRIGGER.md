@@ -1,1 +1,1 @@
-One-time trigger for the integrated registry-proof rollout. Retry after validation-order correction.
+One-time trigger for the integrated registry-proof rollout. This file is removed by the application script.
