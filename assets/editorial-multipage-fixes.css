@@ -2,37 +2,41 @@
 body[data-page="home"] #main>#page-transition{display:block!important}
 
 /* The original interface used low-opacity white text. Restore full editorial contrast. */
-.reveal.visible{opacity:1!important;transform:none!important}
-#proof-architecture .legal-method-chain,#proof-architecture .legal-method-chain *{opacity:1!important}
+.reveal.visible{opacity:1!important;transform:none!important;filter:none!important}
+#proof-architecture .legal-method-chain,#proof-architecture .legal-method-chain *{opacity:1!important;filter:none!important}
 #proof-architecture .legal-method-chain{color:var(--editorial-ink)!important}
 #proof-architecture .legal-method-chain button,#proof-architecture .legal-method-chain strong,#proof-architecture .legal-method-chain h3,#proof-architecture .legal-method-chain h4{color:var(--editorial-ink)!important}
 #proof-architecture .legal-method-chain p,#proof-architecture .legal-method-chain span{color:#4a4e51!important}
 #proof-architecture .legal-method-chain [class*="num"],#proof-architecture .legal-method-chain [class*="step"]::before{color:var(--editorial-oxblood)!important}
-#proof-architecture .regulatory-signal-strip,#proof-architecture .regulatory-signal-strip *{opacity:1!important}
+#proof-architecture .regulatory-signal-strip,#proof-architecture .regulatory-signal-strip *{opacity:1!important;filter:none!important}
 #proof-architecture .regulatory-signal-strip p{color:#4a4e51!important}
-#proof-architecture .hero-method-cta,#proof-architecture .hero-method-cta *{opacity:1!important}
+#proof-architecture .hero-method-cta,#proof-architecture .hero-method-cta *{opacity:1!important;filter:none!important}
 #proof-architecture .hero-method-note{color:#64686c!important}
 
-.act1-domain,.act1-domain *,.act1-disciplines,.act1-disciplines *,.act1-output,.act1-output *,.act1-bridge,.act1-bridge *{opacity:1!important}
+.act1-domain,.act1-domain *,.act1-disciplines,.act1-disciplines *,.act1-output,.act1-output *,.act1-bridge,.act1-bridge *{opacity:1!important;filter:none!important}
 .act1-domain-head h3,.act1-domain-context,.act1-domain-cell strong,.act1-discipline strong{color:var(--editorial-ink)!important}
 .act1-domain-head p,.act1-domain-note,.act1-domain-cell span,.act1-application span,.act1-discipline span,.act1-output p,.act1-bridge p{color:#4a4e51!important}
 .act1-domain-row .lens,.act1-domain-note strong,.act1-application strong,.act1-output .eyebrow{color:var(--editorial-oxblood)!important}
 .act1-output-strip,.act1-output-strip span{color:#3f4346!important}
 .act1-bridge a,.act1-bridge .page-return-link{color:var(--editorial-oxblood)!important}
 
-.act2-movement-panel,.act2-movement-panel *,.act2-output,.act2-output *,.act2-boundary,.act2-boundary *,.act2-bridge,.act2-bridge *{opacity:1!important}
+.act2-movement-shell,.act2-movement-shell *,.act2-movement-panel,.act2-movement-panel *,.act2-output,.act2-output *,.act2-boundary,.act2-boundary *,.act2-bridge,.act2-bridge *{opacity:1!important;filter:none!important}
 .act2-movement-panel h3,.act2-movement-panel .act2-thread-summary,.act2-movement-panel .act2-reconstruction-note{color:#f3eee5!important}
 .act2-movement-panel p,.act2-movement-panel span,.act2-component span,.act2-test-row span,.act2-architecture-col p{color:#c6c1ba!important}
 .act2-movement-panel strong,.act2-movement-panel .eyebrow,.act2-component strong,.act2-test-row strong,.act2-architecture-col strong,.act2-output .eyebrow,.act2-boundary strong{color:#d9b77a!important}
+.act2-movement-tab{opacity:1!important;filter:none!important;color:#aaa69f!important}
+.act2-movement-tab.active{color:#d9b77a!important}
 .act2-output p,.act2-boundary p{color:#c6c1ba!important}
 .act2-output-strip,.act2-output-strip span{color:#e2ddd6!important}
 .act2-bridge p{color:#eee8df!important}
 .act2-bridge a,.act2-bridge .page-return-link{color:#d9b77a!important}
 
-.act3-controls,.act3-controls *,.act3-synthesis,.act3-synthesis *,.act3-regulatory-loop,.act3-regulatory-loop *,.act3-launch,.act3-launch *{opacity:1!important}
-.act3-control-line strong,.act3-synthesis h3,.act3-synthesis-line{color:var(--editorial-ink)!important}
-.act3-control-line span,.act3-synthesis-intro,.act3-synthesis-item p{color:#4a4e51!important}
-.act3-synthesis-item strong{color:var(--editorial-oxblood)!important}
+.act3-trace,.act3-trace *,.act3-controls,.act3-controls *,.act3-synthesis,.act3-synthesis *,.act3-regulatory-loop,.act3-regulatory-loop *,.act3-launch,.act3-launch *{opacity:1!important;filter:none!important}
+.act3-trace-head h3,.act3-control-line strong,.act3-synthesis h3,.act3-synthesis-line{color:var(--editorial-ink)!important}
+.act3-trace-head p,.act3-trace-row span,.act3-control-line span,.act3-synthesis-intro,.act3-synthesis-item p{color:#4a4e51!important}
+.act3-trace-row strong,.act3-synthesis-item strong{color:var(--editorial-oxblood)!important}
+.act3-trace-tab{opacity:1!important;color:#6b6e71!important}
+.act3-trace-tab.active{color:var(--editorial-oxblood)!important}
 .act3-regulatory-loop p{color:#4a4e51!important}
 .act3-launch h3{color:#fff8ee!important}
 .act3-launch p,.act3-launch-boundary{color:#f0dddd!important}
@@ -42,13 +46,13 @@ body[data-page="home"] #main>#page-transition{display:block!important}
 /* Keep the Terminal inside the Act III content grid. */
 #contact{left:auto!important;right:auto!important;width:auto!important;margin:34px 0 0!important;padding:44px 32px 48px!important;border-radius:3px!important;overflow:hidden!important}
 #contact>.card-shell{width:100%!important;margin:0!important}
-#contact,#contact *{opacity:1!important}
+#contact,#contact *{opacity:1!important;filter:none!important}
 #contact h2,#contact h3,#contact strong{color:#fff7ee!important}
 #contact p,#contact span{color:#ead8da!important}
 #contact .eyebrow,#contact .terminal-genuine,#contact .contact-ico{color:#f3d49a!important}
 #contact .terminal-safety{color:#d7b9bd!important}
 
-.page-transition,.page-transition *{opacity:1!important}
+.page-transition,.page-transition *{opacity:1!important;filter:none!important}
 .page-transition{display:block!important}
 
 @media(max-width:860px){
@@ -67,5 +71,5 @@ body[data-page="home"] #main>#page-transition{display:block!important}
 
 @media(max-width:640px){
   #contact{padding:32px 18px 36px!important}
-  .act1-domain,.act1-disciplines,.act1-output,.act1-bridge,.act2-movement-panel,.act2-output,.act2-boundary,.act2-bridge{opacity:1!important}
+  .act1-domain,.act1-disciplines,.act1-output,.act1-bridge,.act2-movement-shell,.act2-movement-panel,.act2-output,.act2-boundary,.act2-bridge,.act3-trace{opacity:1!important;filter:none!important}
 }
