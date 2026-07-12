@@ -34,7 +34,7 @@ jobs:
           exit 1
       - name: Render screenshots
         run: |
-          cat > /tmp/render-preview.mjs <<'EOF'
+          cat > render-preview.mjs <<'EOF'
           import { chromium } from 'playwright';
           const browser = await chromium.launch({ headless: true });
           const desktop = await browser.newPage({ viewport: { width: 1440, height: 1100 }, deviceScaleFactor: 1 });
@@ -45,7 +45,7 @@ jobs:
           await mobile.screenshot({ path: 'hero-mobile.png', fullPage: false });
           await browser.close();
           EOF
-          node /tmp/render-preview.mjs
+          node render-preview.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: hero-preview
