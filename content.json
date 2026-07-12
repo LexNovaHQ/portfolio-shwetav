@@ -1,26 +1,26 @@
 {
   "_meta": {
     "note": "Single content source for portfolio-shwetabh.lexnovahq.com. Stripped/watermarked-safe: no commercial framing, no Architect Notes, no secrets. Matrix rows derived from verified LEX_NOVA_REGISTRY_v2 (98 threats).",
-    "page_title": "Shwetabh Singh — Technology & Data Protection Lawyer building legal delivery systems",
-    "og_title": "Shwetabh Singh — Technology & Data Protection Lawyer building legal delivery systems",
-    "og_description": "AI governance, cross-border privacy, commercial contracts, and the legal delivery systems that make the work structured, reviewable, and deployable.",
-    "footer": "© 2026 Shwetabh Singh"
+    "page_title": "Shwetav Singh — Technology & Data Protection Lawyer",
+    "og_title": "Shwetav Singh — Technology & Data Protection Lawyer",
+    "og_description": "Technology, data protection, AI governance and commercial-contract work grounded in litigation, evidence and reviewable legal judgment.",
+    "footer": "© 2026 Shwetav Singh"
   },
   "hero": {
-    "name": "Shwetabh Singh",
-    "identity_line": "Technology & Data Protection Lawyer | AI Governance · Cross-Border Privacy · Commercial Contracts for Tech",
-    "builder_line": "Building legal delivery systems that make AI governance, privacy, and contract work structured, reviewable, and deployable.",
+    "name": "Shwetav Singh",
+    "identity_line": "Technology & Data Protection Lawyer | AI Governance · Cross-Border Privacy · Commercial Contracts for Technology",
+    "builder_line": "I work at the point where product mechanics, evidence and legal consequence meet.",
     "spine_eyebrow": "Doctrine → Taxonomy → Instruments → Tooling → Systems",
     "spine_explainer": "The path the work actually took — law first, systems second.",
-    "hook": "My legal foundation is 3.5 years of litigation. Since October 2025, I have been turning AI governance and commercial-contract work into structured legal systems — risk registries, diligence workflows, client intake logic, document assembly, and review portals — so the work becomes easier to review, repeat, and deploy.",
-    "thesis": "The hard part of legal AI isn't the AI — it's making a probabilistic machine deterministic enough to trust with law. That's what I engineered.",
+    "hook": "Technology changes the fact pattern. Legal judgment determines the position.",
+    "thesis": "The work is not complete when a risk is identified. It is complete when the legal position is evidenced, defensible and capable of being implemented.",
     "proof_architecture": [
-      "Legal doctrine",
-      "Risk registry",
-      "Diligence engine",
-      "Client product profile vault",
-      "Documents",
-      "Portal"
+      "Doctrine",
+      "Product Reality",
+      "Legal Classification",
+      "Exposure Analysis",
+      "Legal Instruments",
+      "Review-Ready Delivery"
     ],
     "proof_chips": [
       {
@@ -62,26 +62,25 @@
     ],
     "ctas": [
       {
-        "label": "Watch project walkthrough",
-        "target": "#project-walkthrough"
+        "label": "See the legal architecture",
+        "target": "#act2-threat-matrix"
       },
       {
-        "label": "Explore proof portal",
-        "target": "#sandbox-os"
-      },
-      {
-        "label": "View build notes",
-        "target": "#capstone"
+        "label": "Open the diligence system",
+        "target": "https://sandbox.lexnovahq.com/interface-diligence/diligence-system/"
       }
     ],
-    "proof_line": "Demos and videos use public, synthetic, or scrubbed proof artifacts only.",
-    "credential_bar": "3.5 years litigation · B.A. LL.B., NLU Odisha · AI governance · privacy · commercial contracts · building hands-on since Oct 2025"
+    "proof_line": "Portfolio examples use public, synthetic or scrubbed materials. The live sandbox demonstrates the delivery workflow; final legal reliance remains with qualified counsel.",
+    "credential_bar": "3.5 years litigation · B.A. LL.B., NLU Odisha · AI governance · cross-border privacy · commercial contracts · legal systems",
+    "headline": "Technology changes the fact pattern. Legal judgment determines the position.",
+    "foundation_paragraph": "My legal foundation is 3.5 years of litigation. That experience taught me to separate assertion from evidence, identify the issue that actually determines the outcome, and draft for scrutiny rather than appearance. I now apply that discipline to technology, data, AI governance and commercial-contract work—understanding how the product operates, identifying the legal consequences, and translating those conclusions into contracts, controls and review-ready legal work.",
+    "formation_spine": []
   },
   "rail": {
     "chip": {
-      "derived": "law → method",
-      "structured": "risks → instruments",
-      "running": "instruments → delivery system"
+      "derived": "grammar → matter",
+      "structured": "matter → architecture",
+      "running": "architecture → workflow"
     },
     "nodes": [
       {
@@ -92,76 +91,76 @@
         "why": "Establishes the claim: lawyer first, systems second."
       },
       {
-        "band": "ACT I · FOUNDATION",
-        "band_tag": "the law",
-        "node": "Doctrine",
-        "sub": "AI physics → legal doctrine",
+        "band": "ACT I · LEGAL GRAMMAR",
+        "band_tag": "how I determine what matters",
+        "node": "Legal Lenses",
+        "sub": "conduct → role → consequence",
         "target": "doctrine-layer",
-        "why": "Shows the legal source layer: how AI mechanics create legal consequences."
+        "why": "Shows the recurring legal questions used to identify what is materially relevant."
       },
       {
-        "band": "ACT I · FOUNDATION",
-        "band_tag": "the law",
-        "node": "Taxonomy",
-        "sub": "risk surfaces",
+        "band": "ACT I · LEGAL GRAMMAR",
+        "band_tag": "how I determine what matters",
+        "node": "Domain Vocabulary",
+        "sub": "behavior · lane · surface · terminal harm",
         "target": "taxonomy-map",
-        "why": "Shows how AI use cases become legal risk categories."
+        "why": "Shows how the same legal grammar adapts without collapsing distinct domain vocabularies."
       },
       {
-        "band": "ACT II · THE LEGAL MATRIX",
-        "band_tag": "the instruments",
-        "node": "Matrix",
-        "sub": "98 threats → authority → controls",
+        "band": "ACT II · APPLIED LEGAL ARCHITECTURE",
+        "band_tag": "the commercial matter",
+        "node": "Deconstruct",
+        "sub": "commercial reality → legal parts",
         "target": "act2-threat-matrix",
-        "why": "Shows the registry that converts AI legal risk into traceable threat units."
+        "why": "Shows how one commercial proposition becomes separate activities, roles, flows, data, decisions and dependencies."
       },
       {
-        "band": "ACT II · THE LEGAL MATRIX",
-        "band_tag": "the instruments",
-        "node": "Instruments",
-        "sub": "document stack + clause viewer",
+        "band": "ACT II · APPLIED LEGAL ARCHITECTURE",
+        "band_tag": "the commercial matter",
+        "node": "Test & Reconstruct",
+        "sub": "duties → position → response",
         "target": "act2-living-document",
-        "why": "Shows how mapped risks become clauses, policies, addenda, and playbooks."
+        "why": "Shows how material facts are tested and recombined into one coherent legal architecture."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Walkthrough",
-        "sub": "project runs",
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Evidence Path",
+        "sub": "source → structured fact",
         "target": "project-walkthrough",
-        "why": "Shows the full-power system run in project/model environments."
+        "why": "Shows how the system preserves source evidence and the factual structure authored by the lawyer."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Sandbox OS",
-        "sub": "diligence → assembly → delivery",
-        "target": "sandbox-os",
-        "why": "Shows the public-safe sandbox where the delivery loop can be tested with synthetic data."
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Legal Testing",
+        "sub": "controlled test → limitation",
+        "target": "act3-trace",
+        "why": "Shows one legal conclusion traced from source through controlled testing and evidence gaps."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Prompt Systems",
-        "sub": "controlled legal intelligence",
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Qualified Review",
+        "sub": "uncertainty → human judgment",
         "target": "prompt-agent-proof",
-        "why": "Shows controlled prompt-agent workflows for legal intelligence and reviewable output."
+        "why": "Shows that unsupported or private facts become review questions instead of automated conclusions."
       },
       {
-        "band": "ACT III · LEGAL DELIVERY SYSTEM",
-        "band_tag": "built to deliver it",
-        "node": "Automation",
-        "sub": "general workflow proof",
-        "target": "workflow-automation-proof",
-        "why": "Shows that the same controlled workflow logic can be applied outside law."
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Handoff",
+        "sub": "position → review route",
+        "target": "act3-synthesis",
+        "why": "Shows the synthesis and review-ready route while preserving the lawyer’s boundary."
       },
       {
-        "band": "CAPSTONE",
-        "band_tag": "the method",
-        "node": "Synthesis",
-        "sub": "one legal method",
-        "target": "capstone",
-        "why": "Synthesizes the portfolio into one legal method across jurisdictions and systems."
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Open System",
+        "sub": "live supporting proof",
+        "target": "sandbox-os",
+        "why": "Opens the public-safe diligence workflow after the legal method and architecture are understood."
       },
       {
         "kind": "terminal",
@@ -461,18 +460,9 @@
         "line": "The chatbot speaks with the company's authority; no “separate tool” defence."
       },
       {
-        "name": "Walters v. OpenAI",
-        "line": "Point-of-interaction disclaimers defeat reasonable reliance."
-      },
-      {
         "name": "Thaler v. Perlmutter",
         "tag": "aff'd D.C. Cir. 2025",
         "line": "No copyright for autonomous AI output; forces human-in-the-loop."
-      },
-      {
-        "name": "Bartz v. Anthropic",
-        "tag": "$1.5B",
-        "line": "The training-data reckoning; forces upstream IP indemnities."
       },
       {
         "name": "Mobley v. Workday",
@@ -482,11 +472,6 @@
       {
         "name": "FTC v. Rite Aid",
         "line": "Algorithmic disgorgement; a regulator can force the model destroyed."
-      },
-      {
-        "name": "Cruz v. Fireflies",
-        "tag": "BIPA",
-        "line": "Meeting-capture AI triggers strict biometric / recording consent."
       }
     ],
     "connector1": "A taxonomy protects no one on its own. Once the risk can be classified, it must be routed into clauses, policies, playbooks, and review-ready instruments. That is Act II.",
@@ -659,7 +644,7 @@
           "move1": "Companion — the AI speaks directly to users in a conversational interface.",
           "move2": "Consumer-public + personal data.",
           "output": "Reliance, misleading output, customer-facing disclosure, privacy, and consent risk.",
-          "authority": "Moffatt v. Air Canada · Walters v. OpenAI · privacy notice / consent principles",
+          "authority": "chatbot authority / consumer notice / privacy consent principles",
           "remediation": "Hallucination waiver, output authority boundary, point-of-interaction warning, privacy notice, and escalation path.",
           "routes_into": "ToS · Privacy Policy · AUP · diligence engine"
         },
@@ -695,7 +680,7 @@
           "move1": "Translator / Reader — the AI records, transcribes, summarizes, or analyzes spoken content.",
           "move2": "Personal data + sensitive/biometric-adjacent + enterprise-private.",
           "output": "Recording consent, biometric/voice risk, confidential information leakage, and privacy disclosure risk.",
-          "authority": "Cruz v. Fireflies · privacy notice/consent principles · confidentiality and workplace privacy principles",
+          "authority": "privacy notice/consent principles / confidentiality and workplace privacy principles",
           "remediation": "meeting consent notice, recording disclosure, retention limit, processing disclosure, and confidential-data handling rule.",
           "routes_into": "Privacy Policy · DPA · AI Use Handbook · DPIA"
         },
@@ -729,7 +714,7 @@
       }
     },
     "source_rule_spine": {
-      "title": "Source Rule Spine — authority converted into operating rules",
+      "title": "Authority Examples",
       "intro": "The cases are not citations for decoration. Each source creates a rule that becomes a registry condition, drafting control, or workflow requirement.",
       "rows": [
         {
@@ -738,19 +723,9 @@
           "powers": "Output authority boundary · hallucination controls · customer-facing warning design"
         },
         {
-          "source": "Walters v. OpenAI",
-          "rule": "Point-of-interaction disclaimers matter because reliance forms at the moment of use.",
-          "powers": "interface warning · output disclaimer · reliance limitation"
-        },
-        {
           "source": "Thaler v. Perlmutter",
           "rule": "Autonomous AI output may fail human authorship requirements.",
           "powers": "HITL authorship protocol · IP assignment structure · work-product evidence trail"
-        },
-        {
-          "source": "Bartz v. Anthropic",
-          "rule": "Training-data provenance can become a major copyright and dataset-risk issue.",
-          "powers": "dataset provenance controls · upstream IP indemnity · training-data review"
         },
         {
           "source": "FTC v. Rite Aid",
@@ -1484,75 +1459,9 @@
         "controlled assembly",
         "human review"
       ],
-      "bridge": "That is the through-line: a legal mind using systems to make legal work more precise, not a technologist borrowing legal language.",
-      "cta": "Continue to Capstone"
+      "bridge": "That is the through-line: a legal mind using systems to make legal work more precise, not a technologist borrowing legal language."
     },
     "display_heading": "from legal risk to review-ready delivery."
-  },
-  "capstone": {
-    "eyebrow": "CAPSTONE",
-    "title": "One legal method. Three jurisdictions. One delivery system.",
-    "subline": "The jurisdiction changes. The method does not: classify the technology, identify the legal surface, map the authority, route the instrument, preserve review.",
-    "jurisdiction_lenses": [
-      {
-        "label": "IN",
-        "title": "India lens",
-        "body": "DPDP, IT Act, Consumer Protection, Copyright, platform and intermediary duties.",
-        "method": "Data, disclosure, platform conduct, consumer-facing risk, and IP/output review."
-      },
-      {
-        "label": "EU",
-        "title": "EU lens",
-        "body": "GDPR, EU AI Act, SCCs, product liability, high-risk systems, transparency duties.",
-        "method": "Personal data, high-risk classification, provider/deployer duties, transfer and safety controls."
-      },
-      {
-        "label": "US",
-        "title": "US lens",
-        "body": "UCC, UETA, CCPA/CPRA, TRAIGA, state AI/privacy and commercial-risk regimes.",
-        "method": "Contract formation, electronic agents, privacy promises, AI-use restrictions, commercial remedies."
-      }
-    ],
-    "method_spine": [
-      "Classify the technology",
-      "Identify the legal surface",
-      "Map the authority",
-      "Route the instrument",
-      "Assemble review-ready output",
-      "Preserve human review"
-    ],
-    "method_note": "The legal question changes by jurisdiction, but the operating method stays the same.",
-    "mirror": {
-      "header": "The legal method becomes the system.",
-      "frame": "The code does not lead the law. The legal method shapes the system: classification, routing, controlled assembly, and review.",
-      "rows": [
-        {
-          "legal": "Legal doctrine",
-          "system": "Risk registry"
-        },
-        {
-          "legal": "Risk classification",
-          "system": "Diligence Engine"
-        },
-        {
-          "legal": "Client facts",
-          "system": "Product Profile Vault"
-        },
-        {
-          "legal": "Instrument design",
-          "system": "Clause / schedule routing"
-        },
-        {
-          "legal": "Review-ready drafting",
-          "system": "Assembly payload"
-        },
-        {
-          "legal": "Legal judgment",
-          "system": "Human review checkpoint"
-        }
-      ]
-    },
-    "closing_line": "A technology and data protection lawyer using systems to make legal work more structured, reviewable, repeatable, and deployable."
   },
   "close": {
     "eyebrow": "TERMINAL",
