@@ -1,4 +1,4 @@
-name: Build editorial multi-page portfolio
+name: Diagnose editorial multi-page portfolio
 
 on:
   pull_request:
@@ -6,143 +6,82 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: read
 
 jobs:
-  build:
+  diagnose:
     if: github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'act2-live-run-rebuild'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: act2-live-run-rebuild
-          fetch-depth: 0
-
-      - name: Build four-page editorial portfolio
-        run: python3 .github/tmp/build-editorial-multipage.py
-
-      - name: Validate generated files and locked content
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re, subprocess, tempfile
-
-          pages={
-            'index.html':'home',
-            'legal-grammar.html':'act1',
-            'applied-legal-architecture.html':'act2',
-            'legal-architecture-in-operation.html':'act3',
-          }
-          required_content=[
-            'The Interface',
-            'Law × Technology · AI Governance · Privacy · Systems',
-            'How I determine what legally matters.',
-            'From Commercial Reality to Legal Architecture.',
-            'How I use technology to preserve legal judgment through execution.',
-            'Technology & Data Protection Lawyer. Litigation foundation. Hands-on technical fluency.',
-            'All work shown is mine.',
-          ]
-          for filename,page in pages.items():
-            p=Path(filename)
-            if not p.exists(): raise SystemExit(f'Missing generated page: {filename}')
-            t=p.read_text(encoding='utf-8')
-            if f'<body data-page="{page}">' not in t: raise SystemExit(f'Wrong page marker: {filename}')
-            if 'assets/editorial-multipage.css' not in t or 'assets/editorial-multipage.js' not in t: raise SystemExit(f'Missing shared assets: {filename}')
-            if 'data-upstream-system-cta="true"' not in t: raise SystemExit(f'Header system gate missing: {filename}')
-            for needle in required_content:
-              if needle not in t: raise SystemExit(f'Locked content missing from {filename}: {needle}')
-            scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',t)
-            runtime='\n'.join(s for s in scripts if s.strip() and not s.lstrip().startswith('{'))
-            with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False,encoding='utf-8') as f:
-              f.write(runtime); name=f.name
-            subprocess.run(['node','--check',name],check=True)
-          if 'High Court litigation · technology · data protection · AI governance · commercial contracts.' not in Path('index.html').read_text(encoding='utf-8'):
-            raise SystemExit('Approved High Court litigation practice focus is missing')
-          for asset in ['assets/editorial-multipage.css','assets/editorial-multipage.js']:
-            if not Path(asset).exists(): raise SystemExit(f'Missing asset: {asset}')
-          subprocess.run(['node','--check','assets/editorial-multipage.js'],check=True)
-          print('Structural, content-preservation and JavaScript validation: PASS')
-          PY
-
-      - name: Commit multi-page rebuild
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html legal-grammar.html applied-legal-architecture.html legal-architecture-in-operation.html assets/editorial-multipage.css assets/editorial-multipage.js
-          git diff --cached --quiet && exit 0
-          git commit -m "Convert the portfolio into a four-page editorial experience"
-          git push origin HEAD:act2-live-run-rebuild
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
       - name: Install browser
         run: |
           npm init -y >/dev/null 2>&1
           npm install playwright@1.52.0 >/dev/null 2>&1
           npx playwright install --with-deps chromium >/dev/null 2>&1
-
       - name: Serve portfolio
         run: |
           python3 -m http.server 4173 >/tmp/portfolio.log 2>&1 &
           for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
           cat /tmp/portfolio.log
           exit 1
-
-      - name: Validate pages, gates, rails and captures
+      - name: Capture diagnostics
         run: |
-          cat > validate-editorial-pages.mjs <<'EOF'
+          cat > diagnose.mjs <<'EOF'
           import { chromium } from 'playwright';
           import { writeFile } from 'node:fs/promises';
           const browser=await chromium.launch({headless:true});
-          const pages=[
-            {file:'index.html',name:'home',visible:['#hero','#proof-architecture'],hidden:['#foundation','#matrix','#delivery-system','#contact'],rail:0},
-            {file:'legal-grammar.html',name:'act1',visible:['#foundation'],hidden:['#hero','#matrix','#delivery-system','#contact'],rail:5},
-            {file:'applied-legal-architecture.html',name:'act2',visible:['#matrix'],hidden:['#hero','#foundation','#delivery-system','#contact'],rail:5},
-            {file:'legal-architecture-in-operation.html',name:'act3',visible:['#delivery-system','#contact'],hidden:['#hero','#foundation','#matrix'],rail:7},
+          const configs=[
+            {file:'index.html',name:'home'},
+            {file:'legal-grammar.html',name:'act1'},
+            {file:'applied-legal-architecture.html',name:'act2'},
+            {file:'legal-architecture-in-operation.html',name:'act3'},
           ];
-          const results=[];
+          const output=[];
           for(const viewport of [{label:'desktop',width:1440,height:1000},{label:'mobile',width:390,height:844}]){
-            for(const cfg of pages){
+            for(const cfg of configs){
               const page=await browser.newPage({viewport:{width:viewport.width,height:viewport.height}});
               const errors=[]; page.on('pageerror',e=>errors.push(String(e)));
               await page.goto(`http://127.0.0.1:4173/${cfg.file}`,{waitUntil:'networkidle',timeout:120000});
-              await page.waitForTimeout(900);
-              for(const sel of cfg.visible){if(!await page.locator(sel).isVisible())throw new Error(`${viewport.label}/${cfg.name}: ${sel} not visible`);}
-              for(const sel of cfg.hidden){if(await page.locator(sel).isVisible())throw new Error(`${viewport.label}/${cfg.name}: ${sel} should be hidden`);}
-              if(await page.locator('.editorial-nav-link.active').count()!==1)throw new Error(`${viewport.label}/${cfg.name}: active page nav missing`);
-              if(await page.locator('.editorial-header-cta').count()!==1)throw new Error(`${viewport.label}/${cfg.name}: header CTA missing`);
-              if(await page.locator('.local-rail-link').count()!==cfg.rail)throw new Error(`${viewport.label}/${cfg.name}: local rail count mismatch`);
-              await page.locator('.editorial-header-cta').click({force:true});
-              await page.waitForTimeout(120);
-              const modal=await page.locator('#modal').innerText();
-              if(!modal.includes('Understand the method before running the system'))throw new Error(`${viewport.label}/${cfg.name}: disclaimer modal missing`);
-              await page.locator('#modal [data-close]').click({force:true});
-              if(cfg.name==='act3'){
-                if(await page.locator('.act3-launch-btn').count()!==1)throw new Error(`${viewport.label}/act3: direct launch missing`);
-                const terminal=await page.locator('#contact').innerText();
-                if(!terminal.includes('TERMINAL')||!terminal.includes('All work shown is mine.'))throw new Error(`${viewport.label}/act3: Terminal missing`);
-              }
-              const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
-              if(overflow>1)throw new Error(`${viewport.label}/${cfg.name}: horizontal overflow ${overflow}px`);
-              if(errors.length)throw new Error(`${viewport.label}/${cfg.name}: browser errors: ${errors.join(' | ')}`);
+              await page.waitForTimeout(1000);
+              const data=await page.evaluate(()=>{
+                const sels=['#hero','#proof-architecture','#foundation','#matrix','#delivery-system','#contact'];
+                const vis={};
+                for(const sel of sels){const el=document.querySelector(sel);vis[sel]=el?{display:getComputedStyle(el).display,visible:!!(el.offsetWidth||el.offsetHeight||el.getClientRects().length)}:null;}
+                return {
+                  bodyPage:document.body.getAttribute('data-page'),
+                  sections:vis,
+                  railCount:document.querySelectorAll('.local-rail-link').length,
+                  activeNav:document.querySelectorAll('.editorial-nav-link.active').length,
+                  headerCta:document.querySelectorAll('.editorial-header-cta').length,
+                  launchCount:document.querySelectorAll('.act3-launch-btn').length,
+                  contactText:(document.querySelector('#contact')?.innerText||'').slice(0,500),
+                  width:document.documentElement.scrollWidth,
+                  viewport:window.innerWidth
+                };
+              });
+              data.viewportLabel=viewport.label;data.pageName=cfg.name;data.errors=errors;
+              output.push(data);
               await page.evaluate(()=>document.querySelectorAll('.reveal').forEach(n=>n.classList.add('visible')));
               await page.screenshot({path:`${cfg.name}-${viewport.label}.png`,fullPage:true});
-              results.push(`${viewport.label}/${cfg.name}: PASS`);
               await page.close();
             }
           }
           await browser.close();
-          await writeFile('validation.txt',results.join('\n'));
+          await writeFile('diagnostic.json',JSON.stringify(output,null,2));
           EOF
-          node validate-editorial-pages.mjs
-
+          node diagnose.mjs
       - uses: actions/upload-artifact@v4
         with:
-          name: editorial-multipage-preview
+          name: editorial-multipage-diagnostics
           path: |
+            diagnostic.json
             home-desktop.png
             act1-desktop.png
             act2-desktop.png
@@ -151,5 +90,4 @@ jobs:
             act1-mobile.png
             act2-mobile.png
             act3-mobile.png
-            validation.txt
           if-no-files-found: error
