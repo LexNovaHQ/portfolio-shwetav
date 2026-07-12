@@ -7,6 +7,10 @@
   fixes.rel='stylesheet';
   fixes.href='assets/editorial-multipage-fixes.css';
   document.head.appendChild(fixes);
+  var productionFixes=document.createElement('link');
+  productionFixes.rel='stylesheet';
+  productionFixes.href='assets/editorial-main-hotfix.css';
+  document.head.appendChild(productionFixes);
   var configs={
     act1:{title:'ACT I OF III',items:[['Legal Lenses','doctrine-layer'],['Domain Vocabulary','taxonomy-map'],['Governing Disciplines','act1-disciplines'],['Grammar Output','act1-output'],['Continue','act1-act2-bridge']]},
     act2:{title:'ACT II OF III',items:[['AsterPay Matter','act2-orientation'],['Matter Analysis','act2-movement-shell'],['Architecture Output','act2-output'],['Lawyer / System Boundary','act2-boundary'],['Continue','act2-act3-bridge']]},
