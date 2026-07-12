@@ -22,12 +22,13 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import textwrap
           workflow = Path('.github/workflows/apply-act1-minimal.yml').read_text(encoding='utf-8')
           marker = "          python3 - <<'PY'\n"
           start = workflow.index(marker) + len(marker)
           end = workflow.index("\n          PY", start)
-          exec(compile(textwrap.dedent(workflow[start:end]), 'act1-patch', 'exec'))
+          raw = workflow[start:end].splitlines()
+          code = '\n'.join(line[10:] if line.startswith('          ') else line for line in raw)
+          exec(compile(code, 'act1-patch', 'exec'))
           PY
       - name: Validate
         run: |
