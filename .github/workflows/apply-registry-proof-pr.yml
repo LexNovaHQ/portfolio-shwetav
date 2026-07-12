@@ -1,0 +1,40 @@
+name: Apply registry proof through PR
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  apply:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Apply integrated registry proof
+        run: python scripts/apply-registry-proof.py
+
+      - name: Validate integrated content contract
+        run: node scripts/check-portfolio-content-contract.mjs
+
+      - name: Commit changes to PR branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Add cross-domain registry proof and content contract"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
