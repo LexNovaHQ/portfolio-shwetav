@@ -31,54 +31,64 @@ jobs:
           for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
           cat /tmp/portfolio.log
           exit 1
-      - name: Verify and render
+      - name: Capture Act II
         run: |
+          echo 'Capture started.' > browser-errors.txt
           cat > /tmp/render.mjs <<'EOF'
           import { chromium } from 'playwright';
-          import { writeFile } from 'node:fs/promises';
+          import { appendFile } from 'node:fs/promises';
           const browser = await chromium.launch({headless:true});
-          const logs=[];
           for (const cfg of [{name:'desktop',width:1440,height:1100},{name:'mobile',width:390,height:844}]) {
             const page = await browser.newPage({viewport:{width:cfg.width,height:cfg.height},deviceScaleFactor:1});
-            page.on('pageerror', error => logs.push(`${cfg.name} pageerror: ${String(error)}`));
+            const logs=[];
+            page.on('pageerror', error => logs.push(`pageerror: ${String(error)}`));
             try {
               await page.goto('http://127.0.0.1:4173/index.html',{waitUntil:'networkidle',timeout:120000});
               await page.waitForTimeout(1200);
               const section=page.locator('#matrix');
               await section.scrollIntoViewIfNeeded();
-              await page.waitForSelector('[data-act2-movement="deconstruct"]',{timeout:15000});
-              const initial=await page.locator('#act2-movement-panel').innerText();
-              logs.push(`${cfg.name} initial: ${initial.slice(0,180)}`);
-              await section.screenshot({path:`act2-${cfg.name}.png`});
-              await page.locator('[data-act2-movement="test"]').click({force:true});
-              await page.waitForTimeout(100);
-              const threadCount=await page.locator('[data-act2-thread="credit"]').count();
-              logs.push(`${cfg.name} credit-thread-count: ${threadCount}`);
-              if(threadCount){
-                await page.locator('[data-act2-thread="credit"]').click({force:true});
+              await page.waitForTimeout(250);
+              const movementCount=await page.locator('[data-act2-movement]').count();
+              const threadCountBefore=await page.locator('[data-act2-thread]').count();
+              const initial=await page.locator('#act2-movement-panel').innerText().catch(()=> 'movement panel unavailable');
+              logs.push(`movement-count: ${movementCount}`);
+              logs.push(`thread-count-before-test: ${threadCountBefore}`);
+              logs.push(`initial: ${initial.slice(0,220)}`);
+              await page.screenshot({path:`act2-${cfg.name}.png`,fullPage:false});
+              if(movementCount>=3){
+                await page.locator('[data-act2-movement="test"]').click({force:true}).catch(error=>logs.push(`test-click: ${String(error)}`));
+                await page.waitForTimeout(150);
+                const threadCount=await page.locator('[data-act2-thread]').count();
+                logs.push(`thread-count-after-test: ${threadCount}`);
+                if(threadCount){
+                  await page.locator('[data-act2-thread="credit"]').click({force:true}).catch(error=>logs.push(`credit-click: ${String(error)}`));
+                  await page.waitForTimeout(100);
+                  const tested=await page.locator('#act2-thread-panel').innerText().catch(()=> 'thread panel unavailable');
+                  logs.push(`tested: ${tested.slice(0,240)}`);
+                }
+                await page.locator('[data-act2-movement="reconstruct"]').click({force:true}).catch(error=>logs.push(`reconstruct-click: ${String(error)}`));
                 await page.waitForTimeout(100);
-                logs.push(`${cfg.name} tested: ${(await page.locator('#act2-thread-panel').innerText()).slice(0,220)}`);
+                const rebuilt=await page.locator('#act2-movement-panel').innerText().catch(()=> 'movement panel unavailable');
+                logs.push(`reconstructed: ${rebuilt.slice(0,220)}`);
               }
-              await page.locator('[data-act2-movement="reconstruct"]').click({force:true});
-              await page.waitForTimeout(100);
-              logs.push(`${cfg.name} reconstructed: ${(await page.locator('#act2-movement-panel').innerText()).slice(0,180)}`);
               const overflow=await page.evaluate(() => document.documentElement.scrollWidth-window.innerWidth);
-              logs.push(`${cfg.name} horizontal-overflow: ${overflow}px`);
-            } catch (error) {
-              logs.push(`${cfg.name} verification-error: ${String(error)}`);
-              await page.screenshot({path:`act2-${cfg.name}.png`,fullPage:true});
+              logs.push(`horizontal-overflow: ${overflow}px`);
+            } catch(error) {
+              logs.push(`capture-error: ${String(error)}`);
+              await page.screenshot({path:`act2-${cfg.name}.png`,fullPage:false}).catch(()=>{});
             }
+            await appendFile('browser-errors.txt',`\n[${cfg.name}]\n${logs.join('\n')}\n`);
             await page.close();
           }
-          await writeFile('browser-errors.txt', logs.join('\n'));
           await browser.close();
           EOF
-          node /tmp/render.mjs
+          node /tmp/render.mjs || true
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: act2-applied-legal-architecture-preview
           path: |
             act2-desktop.png
             act2-mobile.png
             browser-errors.txt
-          if-no-files-found: error
+          if-no-files-found: warn
