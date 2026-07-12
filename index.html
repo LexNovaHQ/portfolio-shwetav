@@ -852,8 +852,8 @@ body.ld-theater-lock{overflow:hidden;}
 
 <footer class="relative z-10 border-t border-[rgba(197,160,89,.16)] py-8 mt-6">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-neutral-500">
-    <div class="font-display gold text-lg" style="letter-spacing:.06em">Shwetabh Singh</div>
-    <div id="footer-text">© 2026 Shwetabh Singh</div>
+    <div class="font-display gold text-lg" style="letter-spacing:.06em">Shwetav Singh</div>
+    <div id="footer-text">© 2026 Shwetav Singh</div>
   </div>
 </footer>
 
@@ -871,23 +871,8 @@ body.ld-theater-lock{overflow:hidden;}
 "use strict";
 (function(){
   var embeddedContent = JSON.parse(document.getElementById('content-data').textContent);
-  var lockedHero = {
-    name: 'Shwetabh Singh',
-    identity_line: 'Technology & Data Protection Lawyer | AI Governance · Cross-Border Privacy · Commercial Contracts for Tech',
-    headline: 'Lawyer first. Systems builder when the legal work demands it.',
-    builder_line: 'I use code, AI systems, and automation as instruments of legal practice — not as substitutes for legal judgment, but to make legal work more structured, traceable, and review-ready.',
-    foundation_paragraph: 'My foundation is 3.5 years of litigation. I now work across AI governance, data protection, commercial contracts, and technology-law workflows, using technical fluency to understand how products work, where legal exposure arises, and how legal review can be made more systematic.',
-    thesis: "The hard part of legal AI isn't the AI — it's making a probabilistic machine deterministic enough to trust with law. That's what I engineered.",
-    formation_spine: ['Litigation','Technology Law','AI Governance','Legal Practice Systems'],
-    credential_bar: 'B.A. LL.B., NLU Odisha · 3.5 years litigation · AI governance · privacy · commercial contracts · building hands-on since Oct 2025',
-    ctas: [
-      {label:'Open live diligence system', target:'https://sandbox.lexnovahq.com/interface-diligence/diligence-system/'},
-      {label:'View proof architecture', target:'#proof-architecture'},
-      {label:'View proof archive', target:'#capstone'}
-    ]
-  };
+  // Hero content is governed by the synchronized embedded content source.
   function boot(C, act2Manifest){
-  C.hero = Object.assign({}, C.hero || {}, lockedHero);
   /* ---- ACT II / ACT III RAIL OVERRIDE START ---- */
   var lockedRail = {
     chip: {
