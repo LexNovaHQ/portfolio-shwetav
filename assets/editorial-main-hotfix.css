@@ -1,0 +1,102 @@
+/* Production corrections for the multi-page portfolio closings and interactive links. */
+
+/* The Home page has one closing transition only. The earlier inline CTA is redundant. */
+body[data-page="home"] #proof-architecture .hero-method-cta,
+body[data-page="home"] #proof-architecture .hero-method-note{
+  display:none!important;
+}
+
+/* Keep the shared navigation and footer links above decorative layers and fully clickable. */
+.editorial-header,
+.editorial-header-inner,
+.editorial-nav,
+footer,
+.editorial-footer,
+.editorial-footer-links{
+  position:relative;
+  z-index:80;
+  pointer-events:auto!important;
+}
+.editorial-nav a,
+.editorial-footer a{
+  position:relative;
+  z-index:2;
+  pointer-events:auto!important;
+  cursor:pointer!important;
+}
+.editorial-footer-links a:hover,
+.editorial-footer-links a:focus{
+  color:#f3d49a!important;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  outline:none;
+}
+
+/* Act endings are proper chapter-closing panels, not compressed bridge rows. */
+.act1-bridge,
+.act2-bridge{
+  margin-top:42px!important;
+  padding:34px 36px!important;
+  display:block!important;
+  border-radius:3px!important;
+  box-shadow:0 18px 50px rgba(32,29,24,.10)!important;
+}
+.act1-bridge{
+  border:1px solid var(--editorial-line)!important;
+  border-top:3px solid var(--editorial-oxblood)!important;
+  background:var(--editorial-white)!important;
+}
+.act2-bridge{
+  border:1px solid #4a4740!important;
+  border-top:3px solid #d9b77a!important;
+  background:#17191b!important;
+}
+.act1-bridge>p,
+.act2-bridge>p{
+  max-width:820px!important;
+  margin:0!important;
+  font-family:"Libre Caslon Display",Georgia,serif!important;
+  font-size:clamp(1.3rem,2.15vw,1.85rem)!important;
+  line-height:1.35!important;
+  letter-spacing:-.012em!important;
+}
+.act1-bridge>p{color:var(--editorial-ink)!important;}
+.act2-bridge>p{color:#f3eee5!important;}
+.act1-bridge .journey-bridge-actions,
+.act2-bridge .journey-bridge-actions{
+  width:100%!important;
+  margin-top:24px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  flex-wrap:wrap!important;
+  gap:12px 18px!important;
+}
+.act1-bridge .page-return-link,
+.act2-bridge .page-return-link{
+  margin-left:auto!important;
+  min-height:42px;
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+}
+.act1-bridge .quiet-link,
+.act2-bridge .quiet-link,
+.act1-bridge .upstream-system-link,
+.act2-bridge .upstream-system-link{
+  min-height:42px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+}
+
+@media(max-width:760px){
+  .act1-bridge,
+  .act2-bridge{padding:26px 20px!important;margin-top:30px!important;}
+  .act1-bridge .journey-bridge-actions,
+  .act2-bridge .journey-bridge-actions{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+  }
+  .act1-bridge .page-return-link,
+  .act2-bridge .page-return-link{margin-left:0!important;}
+}
