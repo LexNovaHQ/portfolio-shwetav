@@ -34,7 +34,7 @@ jobs:
       - name: Capture Act II
         run: |
           echo 'Capture started.' > browser-errors.txt
-          cat > /tmp/render.mjs <<'EOF'
+          cat > render-act2.mjs <<'EOF'
           import { chromium } from 'playwright';
           import { appendFile } from 'node:fs/promises';
           const browser = await chromium.launch({headless:true});
@@ -83,7 +83,7 @@ jobs:
           }
           await browser.close();
           EOF
-          node /tmp/render.mjs 2>> browser-errors.txt || true
+          node render-act2.mjs 2>> browser-errors.txt || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
