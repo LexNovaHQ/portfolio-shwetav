@@ -2,7 +2,7 @@ name: Render Act II visual review
 
 on:
   pull_request:
-    types: [edited]
+    types: [edited, synchronize]
     branches: [main]
 
 permissions:
