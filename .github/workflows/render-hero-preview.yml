@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: act2-live-run-rebuild
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -39,17 +41,25 @@ jobs:
           const browser = await chromium.launch({ headless: true });
           const desktop = await browser.newPage({ viewport: { width: 1440, height: 1100 }, deviceScaleFactor: 1 });
           await desktop.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle', timeout: 120000 });
+          await desktop.waitForTimeout(2200);
           await desktop.screenshot({ path: 'hero-desktop.png', fullPage: false });
           const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
           await mobile.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle', timeout: 120000 });
+          await mobile.waitForTimeout(2200);
           await mobile.screenshot({ path: 'hero-mobile.png', fullPage: false });
           await browser.close();
           EOF
           node render-preview.mjs
+      - name: Copy active source snapshots
+        run: |
+          cp index.html rendered-index.html
+          cp content.json rendered-content.json
       - uses: actions/upload-artifact@v4
         with:
           name: hero-preview
           path: |
             hero-desktop.png
             hero-mobile.png
+            rendered-index.html
+            rendered-content.json
           if-no-files-found: error
