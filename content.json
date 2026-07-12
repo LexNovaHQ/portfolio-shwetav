@@ -66,7 +66,7 @@
         "target": "#act2-threat-matrix"
       },
       {
-        "label": "Enter the diligence sandbox",
+        "label": "Open the diligence system",
         "target": "https://sandbox.lexnovahq.com/interface-diligence/diligence-system/"
       }
     ],
@@ -102,7 +102,7 @@
         "band": "ACT I · LEGAL GRAMMAR",
         "band_tag": "how I determine what matters",
         "node": "Domain Vocabulary",
-        "sub": "behavior · lane · surface · harm",
+        "sub": "behavior · lane · surface · terminal harm",
         "target": "taxonomy-map",
         "why": "Shows how the same legal grammar adapts without collapsing distinct domain vocabularies."
       },
@@ -123,44 +123,44 @@
         "why": "Shows how material facts are tested and recombined into one coherent legal architecture."
       },
       {
-        "band": "ACT III · SUPPORTING WORKFLOW",
-        "band_tag": "architecture in operation",
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
         "node": "Evidence Path",
-        "sub": "sources → factual profiles",
+        "sub": "source → structured fact",
         "target": "project-walkthrough",
-        "why": "Shows how the engine preserves the evidence and factual structure defined by the lawyer."
+        "why": "Shows how the system preserves source evidence and the factual structure authored by the lawyer."
       },
       {
-        "band": "ACT III · SUPPORTING WORKFLOW",
-        "band_tag": "architecture in operation",
-        "node": "Live System",
-        "sub": "structured testing → report",
-        "target": "sandbox-os",
-        "why": "Shows the public-safe workflow applying the architecture without originating legal judgment."
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Legal Testing",
+        "sub": "controlled test → limitation",
+        "target": "act3-trace",
+        "why": "Shows one legal conclusion traced from source through controlled testing and evidence gaps."
       },
       {
-        "band": "ACT III · SUPPORTING WORKFLOW",
-        "band_tag": "architecture in operation",
-        "node": "Review Controls",
-        "sub": "boundaries · evidence · escalation",
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Qualified Review",
+        "sub": "uncertainty → human judgment",
         "target": "prompt-agent-proof",
-        "why": "Shows the controls that prevent unsupported conclusions and preserve qualified review."
+        "why": "Shows that unsupported or private facts become review questions instead of automated conclusions."
       },
       {
-        "band": "ACT III · SUPPORTING WORKFLOW",
-        "band_tag": "architecture in operation",
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
         "node": "Handoff",
-        "sub": "review → assembly route",
-        "target": "workflow-automation-proof",
-        "why": "Shows how reviewed findings move forward without losing their source, limitation or counsel route."
+        "sub": "position → review route",
+        "target": "act3-synthesis",
+        "why": "Shows the synthesis and review-ready route while preserving the lawyer’s boundary."
       },
       {
-        "band": "CAPSTONE",
-        "band_tag": "the method",
-        "node": "Synthesis",
-        "sub": "lawyer → architecture → system",
-        "target": "capstone",
-        "why": "Synthesizes the portfolio into one lawyer-first Law × Technology method."
+        "band": "ACT III · LEGAL ARCHITECTURE IN OPERATION",
+        "band_tag": "architecture preserved",
+        "node": "Open System",
+        "sub": "live supporting proof",
+        "target": "sandbox-os",
+        "why": "Opens the public-safe diligence workflow after the legal method and architecture are understood."
       },
       {
         "kind": "terminal",
@@ -1459,75 +1459,9 @@
         "controlled assembly",
         "human review"
       ],
-      "bridge": "That is the through-line: a legal mind using systems to make legal work more precise, not a technologist borrowing legal language.",
-      "cta": "Continue to Capstone"
+      "bridge": "That is the through-line: a legal mind using systems to make legal work more precise, not a technologist borrowing legal language."
     },
     "display_heading": "from legal risk to review-ready delivery."
-  },
-  "capstone": {
-    "eyebrow": "CAPSTONE",
-    "title": "One legal method. Three jurisdictions. One delivery system.",
-    "subline": "The jurisdiction changes. The method does not: classify the technology, identify the legal surface, map the authority, route the instrument, preserve review.",
-    "jurisdiction_lenses": [
-      {
-        "label": "IN",
-        "title": "India lens",
-        "body": "DPDP, IT Act, Consumer Protection, Copyright, platform and intermediary duties.",
-        "method": "Data, disclosure, platform conduct, consumer-facing risk, and IP/output review."
-      },
-      {
-        "label": "EU",
-        "title": "EU lens",
-        "body": "GDPR, EU AI Act, SCCs, product liability, high-risk systems, transparency duties.",
-        "method": "Personal data, high-risk classification, provider/deployer duties, transfer and safety controls."
-      },
-      {
-        "label": "US",
-        "title": "US lens",
-        "body": "UCC, UETA, CCPA/CPRA, TRAIGA, state AI/privacy and commercial-risk regimes.",
-        "method": "Contract formation, electronic agents, privacy promises, AI-use restrictions, commercial remedies."
-      }
-    ],
-    "method_spine": [
-      "Classify the technology",
-      "Identify the legal surface",
-      "Map the authority",
-      "Route the instrument",
-      "Assemble review-ready output",
-      "Preserve human review"
-    ],
-    "method_note": "The legal question changes by jurisdiction, but the operating method stays the same.",
-    "mirror": {
-      "header": "The legal method becomes the system.",
-      "frame": "The code does not lead the law. The legal method shapes the system: classification, routing, controlled assembly, and review.",
-      "rows": [
-        {
-          "legal": "Legal doctrine",
-          "system": "Risk registry"
-        },
-        {
-          "legal": "Risk classification",
-          "system": "Diligence Engine"
-        },
-        {
-          "legal": "Client facts",
-          "system": "Product Profile Vault"
-        },
-        {
-          "legal": "Instrument design",
-          "system": "Clause / schedule routing"
-        },
-        {
-          "legal": "Review-ready drafting",
-          "system": "Assembly payload"
-        },
-        {
-          "legal": "Legal judgment",
-          "system": "Human review checkpoint"
-        }
-      ]
-    },
-    "closing_line": "A technology and data protection lawyer using systems to make legal work more structured, reviewable, repeatable, and deployable."
   },
   "close": {
     "eyebrow": "TERMINAL",
