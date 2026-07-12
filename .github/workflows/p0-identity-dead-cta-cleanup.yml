@@ -1,0 +1,161 @@
+name: P0 identity and dead CTA cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/p0-identity-dead-cta-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Apply repository-wide cleanup
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          ROOT = Path('.')
+          OLD_NAME = 'Shwetav Singh'
+          NEW_NAME = 'Shwetabh Singh'
+          OLD_EMAIL = 'shwetav.alpna.singh@gmail.com'
+          NEW_EMAIL = 'shwetabh.singh@lexnovahq.com'
+          DEAD = {
+              'Watch walkthrough',
+              'Watch prompt-agent walkthrough',
+              'View scrubbed output sample',
+              'View automation build notes',
+              'Watch Category 2 demo.',
+              'Watch Category 2 demo',
+          }
+
+          def normalized(value):
+              return re.sub(r'\s+', ' ', value).strip()
+
+          def clean_json(node):
+              if isinstance(node, list):
+                  out = []
+                  for item in node:
+                      if isinstance(item, dict):
+                          strings = {normalized(v) for v in item.values() if isinstance(v, str)}
+                          if strings & DEAD:
+                              continue
+                      if isinstance(item, str) and normalized(item) in DEAD:
+                          continue
+                      out.append(clean_json(item))
+                  return out
+              if isinstance(node, dict):
+                  out = {}
+                  for key, value in node.items():
+                      if isinstance(value, str) and normalized(value) in DEAD:
+                          continue
+                      cleaned = clean_json(value)
+                      if isinstance(cleaned, dict):
+                          strings = {normalized(v) for v in cleaned.values() if isinstance(v, str)}
+                          if strings & DEAD:
+                              continue
+                      out[key] = cleaned
+                  return out
+              if isinstance(node, str):
+                  return node.replace(OLD_NAME, NEW_NAME).replace(OLD_EMAIL, NEW_EMAIL)
+              return node
+
+          anchor_patterns = []
+          for label in sorted(DEAD, key=len, reverse=True):
+              escaped = re.escape(label)
+              anchor_patterns.append(re.compile(
+                  r'<a\b(?=[^>]*\bhref=["\']#["\'])[^>]*>\s*' + escaped + r'\s*</a>',
+                  re.IGNORECASE | re.DOTALL,
+              ))
+              anchor_patterns.append(re.compile(
+                  r'<button\b[^>]*>\s*' + escaped + r'\s*</button>',
+                  re.IGNORECASE | re.DOTALL,
+              ))
+
+          script_json_pattern = re.compile(
+              r'(<script\b[^>]*type=["\']application/json["\'][^>]*>)(.*?)(</script>)',
+              re.IGNORECASE | re.DOTALL,
+          )
+
+          changed = []
+          for path in ROOT.rglob('*'):
+              if not path.is_file() or '.git' in path.parts or path.as_posix() == '.github/workflows/p0-identity-dead-cta-cleanup.yml':
+                  continue
+              if path.suffix.lower() not in {'.html', '.json', '.js', '.css', '.md', '.txt'}:
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              original = text
+              text = text.replace(OLD_NAME, NEW_NAME).replace(OLD_EMAIL, NEW_EMAIL)
+
+              if path.suffix.lower() == '.json':
+                  data = json.loads(text)
+                  text = json.dumps(clean_json(data), ensure_ascii=False, indent=2) + '\n'
+              elif path.suffix.lower() == '.html':
+                  for pattern in anchor_patterns:
+                      text = pattern.sub('', text)
+
+                  def clean_script(match):
+                      raw = match.group(2).strip()
+                      try:
+                          data = json.loads(raw)
+                      except Exception:
+                          return match.group(0)
+                      cleaned = json.dumps(clean_json(data), ensure_ascii=False)
+                      return match.group(1) + cleaned + match.group(3)
+
+                  text = script_json_pattern.sub(clean_script, text)
+
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(path.as_posix())
+
+          # Hard assertions across all text sources.
+          offenders = []
+          for path in ROOT.rglob('*'):
+              if not path.is_file() or '.git' in path.parts or path.as_posix() == '.github/workflows/p0-identity-dead-cta-cleanup.yml':
+                  continue
+              if path.suffix.lower() not in {'.html', '.json', '.js', '.css', '.md', '.txt'}:
+                  continue
+              try:
+                  text = path.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if OLD_NAME in text or OLD_EMAIL in text:
+                  offenders.append(f'{path}: stale identity')
+              for label in DEAD:
+                  if re.search(r'href=["\']#["\'][^>]*>\s*' + re.escape(label), text, re.I | re.S):
+                      offenders.append(f'{path}: dead CTA {label}')
+
+          if offenders:
+              raise SystemExit('\n'.join(offenders))
+
+          print('Changed files:')
+          for item in changed:
+              print(' -', item)
+          PY
+
+      - name: Remove temporary workflow and commit
+        shell: bash
+        run: |
+          rm -f .github/workflows/p0-identity-dead-cta-cleanup.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Fix portfolio identity, email, and dead CTAs"
+          git push origin main
