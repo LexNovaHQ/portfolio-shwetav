@@ -49,6 +49,16 @@ jobs:
             await page.waitForTimeout(250);
             const initial=await page.locator('#act2-movement-panel').innerText();
             if(!initial.includes('Expose the legally distinct matter')) throw new Error(`${cfg.name}: Deconstruct did not render`);
+            await page.evaluate((mobile) => {
+              document.querySelectorAll('#matrix .reveal').forEach(node => node.classList.add('visible'));
+              if(mobile){
+                const top=document.querySelector('.topnav');
+                const funnel=document.querySelector('.mobile-funnel');
+                if(top) top.style.display='none';
+                if(funnel) funnel.style.display='none';
+              }
+            }, cfg.name==='mobile');
+            await page.waitForTimeout(100);
             await section.screenshot({path:`act2-${cfg.name}.png`});
             await page.evaluate(() => document.querySelector('[data-act2-movement="test"]').click());
             await page.waitForTimeout(100);
