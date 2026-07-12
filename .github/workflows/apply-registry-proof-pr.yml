@@ -3,7 +3,7 @@ name: Apply registry proof through PR
 on:
   pull_request:
     branches: [main]
-    types: [opened]
+    types: [opened, synchronize]
 
 permissions:
   contents: write
@@ -25,6 +25,18 @@ jobs:
 
       - name: Apply integrated registry proof
         run: python scripts/apply-registry-proof.py
+
+      - name: Restore temporary runner files before bot commit
+        shell: bash
+        run: |
+          git checkout origin/main -- \
+            .github/workflows/apply-registry-proof.yml \
+            .github/workflows/apply-registry-proof-pr.yml \
+            scripts/apply-registry-proof.py \
+            REGISTRY_PROOF_APPLY_TRIGGER.md \
+            REGISTRY_PROOF_BRANCH_NOTE.md \
+            REGISTRY_PROOF_ROLLOUT_PENDING.md
+          rm -f .github/workflows/portfolio-content-contract.yml
 
       - name: Validate integrated content contract
         run: node scripts/check-portfolio-content-contract.mjs
