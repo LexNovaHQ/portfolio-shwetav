@@ -21,8 +21,10 @@ jobs:
       - name: Apply CTA hierarchy and integrated synthesis
         run: python3 .github/tmp/rebuild_act3_cta_capstone.py
       - name: Validate structure and JavaScript
+        id: validate
+        continue-on-error: true
         run: |
-          python3 - <<'PY'
+          python3 - <<'PY' > structural-validation.txt 2>&1
           from pathlib import Path
           import json,re,subprocess,tempfile
           t=Path('index.html').read_text(encoding='utf-8')
@@ -37,10 +39,14 @@ jobs:
             'id="sandbox-os"'
           ]
           missing=[x for x in required if x not in t]
+          print('missing=',missing)
           if missing: raise SystemExit('Missing required Act III elements: '+repr(missing))
           forbidden=['<a class="nav-link" href="#capstone">Capstone</a>','<section id="capstone"','Continue to Capstone','data-interface-os-gate="true"']
           leaked=[x for x in forbidden if x in t]
+          print('leaked=',leaked)
           if leaked: raise SystemExit('Old Capstone/gate elements remain: '+repr(leaked))
+          print('upstream_count=',t.count('data-upstream-system-cta="true"'))
+          print('launch_count=',t.count('class="act3-launch-btn"'))
           if t.count('data-upstream-system-cta="true"') != 3:
             raise SystemExit('Expected three upstream system CTAs')
           if t.count('class="act3-launch-btn"') != 1:
@@ -48,16 +54,32 @@ jobs:
           m=re.search(r'<script id="content-data" type="application/json">(.*?)</script>',t,re.S)
           if not m: raise SystemExit('Embedded content missing')
           embedded=json.loads(m.group(1)); external=json.loads(Path('content.json').read_text(encoding='utf-8'))
+          print('rail_equal=',embedded['rail']==external['rail'])
           if embedded['rail'] != external['rail']: raise SystemExit('Rail sources are not synchronized')
           if any(n.get('target')=='capstone' for n in external['rail']['nodes']): raise SystemExit('Capstone remains in rail')
           scripts=re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',t)
           runtime='\n'.join(s for s in scripts if s.strip() and not s.lstrip().startswith('{'))
           with tempfile.NamedTemporaryFile('w',suffix='.js',delete=False,encoding='utf-8') as f:
             f.write(runtime); p=f.name
-          subprocess.run(['node','--check',p],check=True)
+          check=subprocess.run(['node','--check',p],capture_output=True,text=True)
+          print('node_stdout=',check.stdout)
+          print('node_stderr=',check.stderr)
+          if check.returncode: raise SystemExit(check.returncode)
           print('Structural and JavaScript validation: PASS')
           PY
+          cat structural-validation.txt
+          test "${PIPESTATUS[0]}" -eq 0
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: act3-cta-diagnostics
+          path: |
+            structural-validation.txt
+            index.html
+          if-no-files-found: error
       - name: Commit rebuilt page
+        if: steps.validate.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -66,20 +88,24 @@ jobs:
           git commit -m "Make the diligence system the Act III climax and absorb Capstone"
           git push origin HEAD:act2-live-run-rebuild
       - uses: actions/setup-node@v4
+        if: steps.validate.outcome == 'success'
         with:
           node-version: 20
       - name: Install browser
+        if: steps.validate.outcome == 'success'
         run: |
           npm init -y >/dev/null 2>&1
           npm install playwright@1.52.0 >/dev/null 2>&1
           npx playwright install --with-deps chromium >/dev/null 2>&1
       - name: Serve portfolio
+        if: steps.validate.outcome == 'success'
         run: |
           python3 -m http.server 4173 >/tmp/portfolio.log 2>&1 &
           for i in {1..30}; do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
           cat /tmp/portfolio.log
           exit 1
       - name: Validate CTA behavior and capture
+        if: steps.validate.outcome == 'success'
         run: |
           cat > validate-act3-cta.mjs <<'EOF'
           import { chromium } from 'playwright';
@@ -124,6 +150,7 @@ jobs:
           EOF
           node validate-act3-cta.mjs
       - uses: actions/upload-artifact@v4
+        if: steps.validate.outcome == 'success'
         with:
           name: act3-cta-capstone-preview
           path: |
